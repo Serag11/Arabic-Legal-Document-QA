@@ -1,0 +1,13 @@
+stages:
+  extract_civil_code:
+    cmd: uv run python src/extract_egyptian_civil_code.py data/1576751803.pdf 
+      --out data/egyptian_civil_code_articles.jsonl --qa-dir data/qa_civil_code 
+      --qa-count 20 --qa-seed 42
+    deps:
+    - data/1576751803.pdf
+    - pyproject.toml
+    - src/extract_egyptian_civil_code.py
+    - uv.lock
+    outs:
+    - data/egyptian_civil_code_articles.jsonl
+    - data/qa_civil_code

@@ -1,0 +1,33 @@
+schema: '2.0'
+stages:
+  extract_civil_code:
+    cmd: uv run python src/extract_egyptian_civil_code.py data/1576751803.pdf 
+      --out data/egyptian_civil_code_articles.jsonl --qa-dir data/qa_civil_code 
+      --qa-count 20 --qa-seed 42
+    deps:
+    - path: data/1576751803.pdf
+      hash: md5
+      md5: 5086ef5f16f15d856278db943e58e948
+      size: 2599703
+    - path: pyproject.toml
+      hash: md5
+      md5: 069189eeafaaccdc30ff6e48bd41bb78
+      size: 325
+    - path: src/extract_egyptian_civil_code.py
+      hash: md5
+      md5: 06f367d0eae82e6f9fb26c02b5e9577b
+      size: 23672
+    - path: uv.lock
+      hash: md5
+      md5: feca7dc8ef5ef780e078ad837159c9c3
+      size: 358131
+    outs:
+    - path: data/egyptian_civil_code_articles.jsonl
+      hash: md5
+      md5: 6351ee34658f202483734ca5c9e9e0bc
+      size: 1773431
+    - path: data/qa_civil_code
+      hash: md5
+      md5: 4e7cbd307395243bcf02b14994d1ea0b.dir
+      size: 806165
+      nfiles: 21
