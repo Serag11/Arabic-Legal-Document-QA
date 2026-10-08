@@ -11,23 +11,43 @@ stages:
       size: 2599703
     - path: pyproject.toml
       hash: md5
-      md5: 069189eeafaaccdc30ff6e48bd41bb78
-      size: 325
+      md5: 832d610db9053dd8791170c54d560add
+      size: 344
     - path: src/extract_egyptian_civil_code.py
       hash: md5
-      md5: 06f367d0eae82e6f9fb26c02b5e9577b
-      size: 23672
+      md5: b1361bf3408f6f56caa75c528ca9d2b9
+      size: 34548
     - path: uv.lock
       hash: md5
-      md5: feca7dc8ef5ef780e078ad837159c9c3
-      size: 358131
+      md5: d62582873aa7e1ea31aadb952e176a27
+      size: 360471
     outs:
     - path: data/egyptian_civil_code_articles.jsonl
       hash: md5
-      md5: 6351ee34658f202483734ca5c9e9e0bc
-      size: 1773431
+      md5: 28c2758edf10a851b756fcb12595e9a3
+      size: 1770974
     - path: data/qa_civil_code
       hash: md5
-      md5: 4e7cbd307395243bcf02b14994d1ea0b.dir
-      size: 806165
-      nfiles: 21
+      md5: c46903834a0e5258040f20402be5d301.dir
+      size: 897032
+      nfiles: 42
+  validate_corpus:
+    cmd: uv run python -m pytest tests/ -q
+    deps:
+    - path: data/egyptian_civil_code_articles.jsonl
+      hash: md5
+      md5: 28c2758edf10a851b756fcb12595e9a3
+      size: 1770974
+    - path: pyproject.toml
+      hash: md5
+      md5: 832d610db9053dd8791170c54d560add
+      size: 344
+    - path: tests
+      hash: md5
+      md5: 7803385ceef5841bc491b4b5a390ea72.dir
+      size: 32578
+      nfiles: 5
+    - path: uv.lock
+      hash: md5
+      md5: d62582873aa7e1ea31aadb952e176a27
+      size: 360471

@@ -11,3 +11,10 @@ stages:
     outs:
     - data/egyptian_civil_code_articles.jsonl
     - data/qa_civil_code
+  validate_corpus:
+    cmd: uv run python -m pytest tests/ -q
+    deps:
+    - data/egyptian_civil_code_articles.jsonl
+    - tests
+    - pyproject.toml
+    - uv.lock

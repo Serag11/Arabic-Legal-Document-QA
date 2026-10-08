@@ -22,6 +22,7 @@ import html
 import json
 import random
 import re
+import shutil
 import unicodedata
 from collections import defaultdict
 from pathlib import Path
@@ -46,6 +47,7 @@ EA_INDIC = "۰۱۲۳۴۵۶۷۸۹"
 DIGIT_TRANS = str.maketrans(AR_INDIC + EA_INDIC, "0123456789" * 2)
 AR_DIGIT_RUN_RE = re.compile(r"[٠-٩۰-۹]+")
 BIDI_CONTROL_RE = re.compile(r"[\u200e\u200f\u202a-\u202e\u2066-\u2069]")
+ZERO_WIDTH_ALEF_VARIANTS = "اأإآ"
 
 EN_ARTICLE_RE = re.compile(
     r"^(?:Article|rticle)\s*(\d{1,4})\s*\.?\s*$", re.IGNORECASE
@@ -61,6 +63,12 @@ REPEAL_RE = re.compile(
 STOPWORDS = {
     "and", "or", "of", "the", "in", "on", "as", "to", "for", "from", "by", "with", "at"
 }
+
+# Source-specific exceptions, verified against this bilingual PDF.
+# Article 558's Arabic body is bold, unlike the other operative provisions.
+BOLD_ARABIC_BODY_ARTICLES = {558}
+# Article 1022 has no Arabic body in the source; never invent a translation.
+MISSING_ARABIC_IN_SOURCE = {1022}
 
 
 def clean_unicode(text: str) -> str:
@@ -167,6 +175,28 @@ def extract_page_lines(page: fitz.Page, side: str, y_tol: float = 2.3) -> list[d
     assert side in {"en", "ar"}
     left = side == "en"
     mid = page.rect.width / 2
+    zero_width_alef_lam_pairs: list[tuple[float, float, float, str, str, int]] = []
+
+    if side == "ar":
+        # A source-glyph-backed correction map: only these zero-width alef
+        # variants immediately before lam are candidates for reordering.
+        for block in page.get_text("rawdict")["blocks"]:
+            for raw_line in block.get("lines", []):
+                for span in raw_line.get("spans", []):
+                    chars = span.get("chars", [])
+                    span_text = "".join(char["c"] for char in chars)
+                    for idx, char in enumerate(chars[:-1]):
+                        x0, y0, x1, _ = char["bbox"]
+                        next_char = chars[idx + 1]
+                        if (
+                            char["c"] in ZERO_WIDTH_ALEF_VARIANTS
+                            and x1 - x0 <= 0.1
+                            and next_char["c"] == "ل"
+                            and x0 >= mid
+                        ):
+                            zero_width_alef_lam_pairs.append(
+                                (y0, x0, next_char["bbox"][0], char["c"], span_text, idx)
+                            )
 
     # Capture bold baselines so hierarchy headings can be filtered and parsed.
     bold_y: list[float] = []
@@ -206,9 +236,50 @@ def extract_page_lines(page: fitz.Page, side: str, y_tol: float = 2.3) -> list[d
             token = word[4]
             if side == "ar":
                 token = fix_visual_arabic_digit_runs(token)
+                wx0, wy0, wx1, _ = word[:4]
+                matching_pairs = [
+                    pair for pair in zero_width_alef_lam_pairs
+                    if abs(pair[0] - wy0) <= y_tol
+                    and wx0 - 0.5 <= pair[1] <= wx1 + 0.5
+                    and wx0 - 0.5 <= pair[2] <= wx1 + 0.5
+                ]
+                original_token = token
+                swaps: list[tuple[int, str]] = []
+                for _, _, _, alef, span_text, span_idx in matching_pairs:
+                    before = alef + "ل"
+                    # Use the glyph's actual character offset within its source
+                    # span. Replacing the first matching pair in a word could
+                    # corrupt an ordinary definite article elsewhere in it.
+                    starts = [
+                        start for start in range(len(span_text))
+                        if span_text.startswith(original_token, start)
+                    ]
+                    relative_idx = next(
+                        (
+                            span_idx - start for start in starts
+                            if 0 <= span_idx - start < len(original_token) - 1
+                            and original_token[span_idx - start:span_idx - start + 2] == before
+                        ),
+                        None,
+                    )
+                    if relative_idx is not None:
+                        swaps.append((relative_idx, alef))
+                # Apply right-to-left so replacements keep earlier offsets stable.
+                for relative_idx, alef in sorted(swaps, reverse=True):
+                    token = token[:relative_idx] + "ل" + alef + token[relative_idx + 2:]
             tokens.append(token)
 
-        text = clean_unicode(" ".join(tokens))
+        if side == "ar" and len(tokens) > 1:
+            # PyMuPDF may split a visually continuous Arabic word at a span
+            # boundary. Join touching word boxes; retain spaces for normal gaps.
+            joined_tokens = [tokens[0]]
+            for idx in range(1, len(tokens)):
+                gap = ws[idx - 1][0] - ws[idx][2]
+                separator = "" if gap <= 0.5 else " "
+                joined_tokens.append(separator + tokens[idx])
+            text = clean_unicode("".join(joined_tokens))
+        else:
+            text = clean_unicode(" ".join(tokens))
         if not text:
             continue
         y0 = min(w[1] for w in ws)
@@ -418,7 +489,10 @@ def build_contexts(anchors: dict[int, dict], events: list[tuple]) -> dict[int, d
     }
 
 
-def extract_article_text(lines: list[dict], start: tuple, end: tuple, side: str) -> str:
+def extract_article_text(
+    lines: list[dict], start: tuple, end: tuple, side: str,
+    *, include_bold_body: bool = False,
+) -> str:
     chunks: list[str] = []
     for line in lines:
         line_pos = pos(line["page_idx"], line["y0"])
@@ -429,7 +503,7 @@ def extract_article_text(lines: list[dict], start: tuple, end: tuple, side: str)
             continue
         if is_repeal_text(text):
             continue
-        if line["bold"]:  # hierarchy/topic heading
+        if line["bold"] and not include_bold_body:  # hierarchy/topic heading
             continue
         chunks.append(text)
 
@@ -475,7 +549,10 @@ def build_records(
             start = pos(anchor["page_idx"], anchor["y0"])
             end = next_position[number]
             text_en = extract_article_text(en_lines, start, end, "en")
-            ar_text = extract_article_text(ar_lines, start, end, "ar")
+            ar_text = extract_article_text(
+                ar_lines, start, end, "ar",
+                include_bold_body=number in BOLD_ARABIC_BODY_ARTICLES,
+            )
             source_page = anchor["page"]
             context = contexts.get(number, {})
         elif repeal is not None:
@@ -499,7 +576,10 @@ def build_records(
         if anchor is not None and anchor["score"] == 1:
             qa_flags.append("single_column_article_anchor")
         if not is_repealed and not ar_text:
-            qa_flags.append("missing_ar_text")
+            qa_flags.append(
+                "missing_ar_text_in_source"
+                if number in MISSING_ARABIC_IN_SOURCE else "missing_ar_text"
+            )
         if not is_repealed and not text_en:
             qa_flags.append("missing_en_text")
 
@@ -608,6 +688,151 @@ p{{line-height:1.55}}
     return output
 
 
+def write_zero_width_alef_qa(doc: fitz.Document, qa_dir: Path) -> Path:
+    """Create a reproducible 20-line diagnostic sample of zero-width alefs.
+
+    All four common alef forms are counted. A candidate لا-ordering correction
+    is shown separately and never applied to the generated corpus.
+    """
+    qa_dir.mkdir(parents=True, exist_ok=True)
+    # This folder is generated exclusively by this diagnostic, so remove stale
+    # crops from previous versions of the page before writing the 20-card sample.
+    old_crop_dir = qa_dir / "zero_width_alef_crops"
+    if old_crop_dir.exists():
+        shutil.rmtree(old_crop_dir)
+    crop_dir = qa_dir / "zero_width_alef_sample_crops"
+    if crop_dir.exists():
+        shutil.rmtree(crop_dir)
+    crop_dir.mkdir(parents=True, exist_ok=True)
+    entries: list[dict] = []
+    variant_counts: dict[str, int] = {variant: 0 for variant in "اأإآ"}
+
+    for page_idx, page in enumerate(doc):
+        mid = page.rect.width / 2
+        grouped: dict[float, dict] = {}
+        for block in page.get_text("rawdict")["blocks"]:
+            for line in block.get("lines", []):
+                suspicious = []
+                for span in line.get("spans", []):
+                    for char in span.get("chars", []):
+                        x0, y0, x1, _ = char["bbox"]
+                        if char["c"] in variant_counts and x1 - x0 <= 0.1:
+                            variant_counts[char["c"]] += 1
+                            if x0 >= mid:
+                                suspicious.append(
+                                    {
+                                        "char": char["c"],
+                                        "x": round(x0, 2),
+                                        "y": round(y0, 2),
+                                        "width": round(x1 - x0, 3),
+                                    }
+                                )
+                if not suspicious:
+                    continue
+                y0, y1 = line["bbox"][1], line["bbox"][3]
+                # Text sometimes comes in separate blocks with the same visual
+                # baseline. Merge those into one review card/crop.
+                key = round(y0, 1)
+                group = grouped.setdefault(
+                    key, {"y0": y0, "y1": y1, "spans": [], "glyphs": []}
+                )
+                group["y0"] = min(group["y0"], y0)
+                group["y1"] = max(group["y1"], y1)
+                group["spans"].extend(line.get("spans", []))
+                group["glyphs"].extend(suspicious)
+
+        for y_key, group in sorted(grouped.items()):
+            entries.append(
+                {
+                    "page": page_idx + 1,
+                    "y": round(y_key, 1),
+                    "glyphs": group["glyphs"],
+                    "spans": group["spans"],
+                    "y0": group["y0"],
+                    "y1": group["y1"],
+                }
+            )
+
+    rng = random.Random(42)
+    sample = sorted(rng.sample(entries, min(20, len(entries))), key=lambda item: (item["page"], item["y"]))
+    cards = []
+    for idx, entry in enumerate(sample, start=1):
+        y0, y1 = entry["y0"], entry["y1"]
+        page = doc[entry["page"] - 1]
+        clip = fitz.Rect(mid, max(0, y0 - 3), page.rect.width, min(page.rect.height, y1 + 3))
+        crop_name = f"page_{entry['page']:03d}_sample_{idx:02d}.png"
+        pix = page.get_pixmap(matrix=fitz.Matrix(1.5, 1.5), clip=clip, alpha=False)
+        pix.save(str(crop_dir / crop_name))
+
+        original_parts = []
+        corrected_parts = []
+        candidate_swaps = 0
+        for span in entry["spans"]:
+            chars = span.get("chars", [])
+            original_parts.append("".join(char["c"] for char in chars))
+            corrected = []
+            char_idx = 0
+            while char_idx < len(chars):
+                char = chars[char_idx]
+                width = char["bbox"][2] - char["bbox"][0]
+                if (
+                    char["c"] in "اأإآ" and width <= 0.1
+                    and char_idx + 1 < len(chars)
+                    and chars[char_idx + 1]["c"] == "ل"
+                ):
+                    # Diagnostic candidate: any zero-width alef variant + lam
+                    # -> lam + that alef variant. Review before using in corpus.
+                    corrected.extend((chars[char_idx + 1]["c"], char["c"]))
+                    char_idx += 2
+                    candidate_swaps += 1
+                else:
+                    corrected.append(char["c"])
+                    char_idx += 1
+            corrected_parts.append("".join(corrected))
+
+        glyph_positions = ", ".join(
+            f"{glyph['char']} at x={glyph['x']} (w={glyph['width']})"
+            for glyph in entry["glyphs"]
+        )
+        cards.append(
+            f"""<article id="line-{idx}">
+              <h2>Sample {idx} — PDF page {entry['page']}, y={entry['y']}</h2>
+              <p><b>Zero-width alef variant(s):</b> {html.escape(glyph_positions)}</p>
+              <img src="zero_width_alef_sample_crops/{html.escape(crop_name)}" alt="PDF Arabic source crop">
+              <h3>Extracted text — before</h3>
+              <p class="extracted" dir="rtl">{html.escape(clean_unicode(" ".join(original_parts)))}</p>
+              <h3>Candidate لا-order correction — after ({candidate_swaps} swap(s))</h3>
+              <p class="extracted candidate" dir="rtl">{html.escape(clean_unicode(" ".join(corrected_parts)))}</p>
+            </article>"""
+        )
+
+    output = qa_dir / "qa_zero_width_alefs.html"
+    total_glyphs = sum(variant_counts.values())
+    variant_summary = ", ".join(
+        f"{variant}: {count}" for variant, count in variant_counts.items()
+    )
+    output.write_text(
+        f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Zero-width alef review</title>
+<style>
+body{{font-family:Arial,sans-serif;margin:24px;max-width:1100px;color:#222}}
+article{{border-top:2px solid #ddd;padding:14px 0;scroll-margin-top:12px}}
+img{{display:block;max-width:100%;height:auto;border:1px solid #bbb;background:#fff}}
+.extracted{{font-size:1.15rem;line-height:1.8;background:#f5f5f5;padding:10px}}
+.candidate{{background:#fff4d6}}
+</style></head><body>
+<h1>Zero-width Arabic alef review</h1>
+<p>Scanned the full PDF and found {total_glyphs} zero-width alef-variant glyphs
+({html.escape(variant_summary)}) on {len(entries)} lines. Showing 20 reproducible random lines (seed 42).
+Each card compares source crop, extracted text, and the candidate correction. Extraction applies this
+swap only when the source glyph positions confirm a zero-width alef variant immediately before lam.</p>
+{''.join(cards)}
+</body></html>""",
+        encoding="utf-8",
+    )
+    return output
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("pdf", type=Path)
@@ -647,6 +872,8 @@ def main() -> None:
     if not args.no_qa:
         qa_html = write_qa_html(doc, records, anchors, args.qa_dir, args.qa_count, args.qa_seed)
         print(f"QA HTML -> {qa_html}")
+        alef_qa_html = write_zero_width_alef_qa(doc, args.qa_dir)
+        print(f"Zero-width alef QA HTML -> {alef_qa_html}")
 
 
 if __name__ == "__main__":
