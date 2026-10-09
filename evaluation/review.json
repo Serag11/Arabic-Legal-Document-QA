@@ -1,0 +1,8 @@
+{
+  "status": "approved",
+  "review_method": "user-confirmed manual review",
+  "evaluation_file": "evaluation/retrieval_questions.jsonl",
+  "evaluation_sha256": "109a7978fca2e345c5754fa35c4d2ebf46b48fa9280de42b63eb67f866901953",
+  "scope": "Bilingual retrieval questions, expected article labels, and reference evidence",
+  "note": "User confirmed manual review before starting Stage 3. Earlier result files retain their draft-at-run-time flag."
+}

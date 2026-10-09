@@ -6,9 +6,13 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "arabic-reshaper>=3.0.1",
+    "chromadb>=1.0,<2",
     "pyarabic>=0.6.15",
     "pymupdf>=1.28.2",
     "python-bidi>=0.6.11",
+    "sentence-transformers>=5,<6",
+    "torch==2.7.1",
+    "transformers>=4.51,<5",
 ]
 
 [dependency-groups]
@@ -17,3 +21,11 @@ dev = [
     "pyopenssl>=24.2.1,<=24.2.1",
     "pytest>=8.0",
 ]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu", marker = "sys_platform == 'linux'" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

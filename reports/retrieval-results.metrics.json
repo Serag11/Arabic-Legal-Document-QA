@@ -1,0 +1,49 @@
+{
+  "k": 5,
+  "pair_count": 30,
+  "metrics": {
+    "all_supported": {
+      "ar": {
+        "count": 28,
+        "hit_at_k": 0.9642857142857143,
+        "recall_at_k": 0.9642857142857143,
+        "reciprocal_rank": 0.8297619047619048
+      },
+      "en": {
+        "count": 28,
+        "hit_at_k": 1.0,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 0.9011904761904762
+      }
+    },
+    "semantic_only": {
+      "ar": {
+        "count": 25,
+        "hit_at_k": 0.96,
+        "recall_at_k": 0.96,
+        "reciprocal_rank": 0.8093333333333333
+      },
+      "en": {
+        "count": 25,
+        "hit_at_k": 1.0,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 0.8893333333333334
+      }
+    },
+    "article_lookup": {
+      "ar": {
+        "count": 3,
+        "hit_at_k": 1.0,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 1.0
+      },
+      "en": {
+        "count": 3,
+        "hit_at_k": 1.0,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 1.0
+      }
+    }
+  },
+  "bilingual_top1_agreement_supported": 0.6428571428571429
+}

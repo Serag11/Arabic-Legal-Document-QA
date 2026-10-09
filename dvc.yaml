@@ -16,5 +16,53 @@ stages:
     deps:
     - data/egyptian_civil_code_articles.jsonl
     - tests
+    - src/rag.py
+    - src/retrieval.py
+    - config/retrieval.json
     - pyproject.toml
     - uv.lock
+  prepare_retrieval:
+    cmd: uv run python -m pytest tests/ -q && uv run python src/retrieval.py prepare
+    deps:
+    - data/egyptian_civil_code_articles.jsonl
+    - src/rag.py
+    - src/retrieval.py
+    - src/extract_egyptian_civil_code.py
+    - tests
+    - config/retrieval.json
+    - pyproject.toml
+    - uv.lock
+    outs:
+    - data/retrieval/chunks.jsonl
+    - data/retrieval/chunks.manifest.json
+  index_retrieval:
+    cmd: uv run python src/retrieval.py index
+    deps:
+    - data/retrieval/chunks.jsonl
+    - data/retrieval/chunks.manifest.json
+    - src/rag.py
+    - src/retrieval.py
+    - src/extract_egyptian_civil_code.py
+    - tests
+    - config/retrieval.json
+    - pyproject.toml
+    - uv.lock
+    outs:
+    - data/retrieval/chroma
+  evaluate_retrieval:
+    cmd: uv run python src/retrieval.py evaluate
+    deps:
+    - data/retrieval/chroma
+    - evaluation/retrieval_questions.jsonl
+    - src/rag.py
+    - src/retrieval.py
+    - src/extract_egyptian_civil_code.py
+    - config/retrieval.json
+    - pyproject.toml
+    - uv.lock
+    outs:
+    - reports/retrieval-results.json:
+        cache: false
+    metrics:
+    - reports/retrieval-results.metrics.json:
+        cache: false

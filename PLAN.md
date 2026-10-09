@@ -58,64 +58,70 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 
 ### 1. Define ingestion and result contracts
 
-- [ ] Create the ingestion/retrieval entry point in `src/rag.py`, separating loading, chunking, embedding, indexing, and retrieval responsibilities.
-- [ ] Preserve integer article number, citation, book, chapter, section, topic, source page, language, QA flags, and repeal metadata.
-- [ ] Assign stable IDs containing corpus identity, article number, language, and chunk position.
-- [ ] Retain source-faithful text for returned passages and quotations; use normalized Arabic separately for embedding input.
-- [ ] Handle Article 1022's missing Arabic explicitly: index its available English text and retain the source-exception flag.
+- [X] Create `src/rag.py` ingestion entry point with source-traceable document/result contracts and separate loading/preparation responsibilities.
+- [X] Implement embedding, indexing, and retrieval in the separate `src/retrieval.py` entry point after selecting the model.
+- [X] Preserve integer article number, citation, book, chapter, section, topic, source page, language, QA flags, and repeal metadata.
+- [X] Assign stable IDs containing corpus identity, article number, language, and chunk position.
+- [X] Retain source-faithful text for returned passages and quotations; use normalized Arabic separately for embedding input.
+- [X] Prepare Article 1022's available English text only and retain its missing-Arabic source-exception flag.
 
 **Acceptance:** each chunk references an existing corpus article, carries that article's number and citation, and contains a passage from that article (or its source repeal notice). Splitting Article 147 into several chunks must leave every chunk traceable to Article 147.
 
 ### 2. Implement article-aware chunking
 
-- [ ] Begin with one chunk per article per available language.
-- [ ] Inspect how paragraph/numbered-provision boundaries survived extraction before implementing the splitter.
-- [ ] Split long articles only at identifiable paragraph/provision boundaries; repeat the article number and citation on every chunk and never cross article boundaries.
-- [ ] Retain repealed records as searchable source repeal notices without inventing original provision text.
-- [ ] Record strategy, size limit and its units, and overlap; use zero overlap for the initial article baseline.
+- [X] Begin with one chunk per article per available language.
+- [X] Inspect paragraph boundaries: Arabic line breaks are flattened; 509 articles retain parenthesized numeric markers. Maximum Arabic/English article lengths are 1,404/2,141 characters.
+- [X] Token-audit all passages and split only at source provision boundaries: English Article 1143 is 518 tokens; source-verified provision anchors on PDF pages 168–169 produce two exact-source chunks. All other language documents fit whole.
+- [X] Prepare and index repealed records as English source repeal-notice chunks without inventing original provision text.
+- [X] Record whole-article strategy, no size limit, and zero overlap in the preparation manifest; enforce model input limits when embeddings are selected.
+
+**Preparation verified:** the initial whole-article output has 2,241 documents. Token-safe E5 preparation has 2,242 chunks covering all 1,149 articles: 1,092 Arabic and 1,150 English (including 56 repeal notices and the two Article 1143 English chunks). Maximum chunk length is 450 tokens including prefix/special tokens, with zero overlap. Use `uv run python src/retrieval.py prepare`; a persistent Chroma index is now built.
 
 **Acceptance:** chunks never cross article boundaries or cut arbitrarily through provisions; no passage is silently truncated to fit the embedding model. Document any provision too long for the selected model.
 
 ### 3. Select multilingual embeddings
 
-- [ ] Check available compute and shortlist suitable Arabic/English models or providers.
+- [X] Check local resources and shortlist multilingual local models in `reports/embedding-model-options.md`: initially 18 GiB free disk, 5.2 GiB available RAM, GTX 1650 with 4 GiB VRAM. User approved `intfloat/multilingual-e5-base`.
 - [ ] Compare candidates using the same paired bilingual questions.
-- [ ] Pin the selected model/version and document input limits, dimensions, preprocessing, and required query/document formatting.
-- [ ] Apply consistent Arabic normalization to documents and queries, preserving source text separately.
+- [X] Pin `intfloat/multilingual-e5-base` revision `d128750597153bb5987e10b1c3493a34e5a4502a` in `config/retrieval.json`: 768 dimensions, 512 tokens including prefixes/special tokens, normalized vectors, `query: ` / `passage: ` formatting.
+- [X] Apply consistent Arabic normalization to documents and queries, preserving source text separately.
 
 **Acceptance:** a concrete embedding configuration is selected and documented, with measured Arabic/English retrieval results.
 
 ### 4. Build the persistent index reproducibly
 
-- [ ] Build the Chroma collection from generated chunks and explicit embeddings.
-- [ ] Support language, hierarchy, repeal-status, and integer article-number filters.
-- [ ] Record corpus hash, embedding configuration, normalization version, chunking configuration, and document counts in an index manifest.
-- [ ] Add chunk preparation and index construction to the DVC pipeline downstream of corpus validation, declaring code/configuration dependencies and generated outputs.
-- [ ] Verify rebuilds and persistence/reload; rebuilding must not accumulate duplicates or leave stale chunks.
+- [X] Build the Chroma collection from generated chunks and explicit embeddings.
+- [X] Support language, hierarchy, repeal-status, and integer article-number filters.
+- [X] Record corpus hash, embedding configuration, normalization version/code hash, chunking configuration, runtime precision/device, package versions, memory, and document counts in an index manifest.
+- [X] Add test-gated preparation, index construction, and evaluation to DVC, with declared code/configuration dependencies and generated outputs. Model weights are an explicitly downloaded, pinned external prerequisite.
+- [X] Verify rebuilds and persistence/reload with offline tests and a repeated real DVC run; use temporary runtime copies to prevent query/evaluation writes from changing tracked Chroma artifacts.
 
 **Acceptance:** the index can be reconstructed from the tracked corpus and recorded configuration and loaded in a fresh process. Index binary files need not be byte-identical; document IDs, content, configuration, and retrieval checks must remain reproducible.
 
 ### 5. Implement retrieval-only queries
 
-- [ ] Return ranked source passages, article citations, language, hierarchy, and repeal status.
-- [ ] Group duplicate language/chunk matches by article while preserving useful supporting passages.
-- [ ] Support direct article-number lookup, including repealed articles, so explicit article queries do not depend entirely on semantic similarity.
-- [ ] Keep article citations as the public source identity for the later `/ask` response.
-- [ ] Test source mapping, missing Arabic, repeal notices, paragraph splitting, filters, persistence/reload, and rebuild behavior without live external model calls.
+- [X] Return ranked source passages, article citations, language, hierarchy, and repeal status.
+- [X] Group duplicate language/chunk matches by article while preserving useful supporting passages.
+- [X] Support direct article-number lookup, including repealed articles, so explicit article queries do not depend entirely on semantic similarity.
+- [X] Keep article citations as the public source identity for the later `/ask` response.
+- [X] Test source mapping, missing Arabic, repeal notices, paragraph splitting, filters, persistence/reload, immutable-artifact reads, and rebuild behavior without live external model calls (32 tests pass).
 
 **Acceptance:** results identify verifiable legal articles and clearly identify repeal notices.
 
 ### 6. Establish bilingual evaluation and experiment records
 
-- [ ] Create a hand-checked set of equivalent Arabic/English questions with expected article citations.
-- [ ] Include paraphrases, long articles, repeal queries, and the missing-language exception.
-- [ ] Measure article-level Hit@k/Recall@k, MRR, and bilingual agreement; report Arabic and English results separately.
-- [ ] Save configuration and per-question results for later MLflow comparisons, including `chunk_size`, its units, `overlap`, and `embedding_model`.
-- [ ] Record the baseline and failures in `reports/retrieval-baseline.md`.
+- [X] Create a draft paired evaluation set in `evaluation/retrieval_questions.jsonl`: 28 supported pairs over 27 articles plus two unsupported pairs; verify exact reference excerpts and citations.
+- [X] User confirmed manual review of the bilingual evaluation set; approval and file hash are recorded in `evaluation/review.json`.
+- [X] Include paraphrases, long articles, repeal queries, and the missing-language exception.
+- [X] Measure article-level Hit@5/Recall@5, MRR@5, and bilingual top-1 agreement; report Arabic and English, semantic retrieval, and exact lookup separately.
+- [X] Save configuration and per-question results in `reports/retrieval-results.json` for later MLflow comparisons, with token budget, source-provision chunk strategy, zero overlap, and pinned embedding model.
+- [X] Record the provisional baseline and Arabic Article 1065 failure in `reports/retrieval-baseline.md`: semantic Hit@5 is 24/25 Arabic and 25/25 English; exact lookup is 3/3 in each language.
 
 **Evaluation handoff:** RAGAS faithfulness requires generated answers and will be measured in the later end-to-end chunking experiments. Retrieval-only scores are not a substitute. Retain the paired questions for the later RAGAS scorecard and contract-law versus family-law query-shift scenario described on p. 65.
 
 **Phase 2 exit criteria:** corpus validation passes; a persistent index rebuilds reproducibly; source-mapping and metadata tests pass; and a hand-checked bilingual evaluation produces a documented retrieval baseline. Complete the deferred visual corpus audit before treating this baseline as verified corpus quality.
+
+**Stage 2 accepted:** user confirmed manual evaluation review and authorized Stage 3. Deferred Stage 1 source-audit/remote tasks and candidate-model comparisons remain follow-ups, not blockers to starting generation.
 
 ## Phase 3 — Create the first end-to-end RAG baseline
 
@@ -133,7 +139,7 @@ POST /ask
 {"question": "ما أثر العقد بين المتعاقدين؟"}
 ```
 
-```json
+```JSON
 {
   "answer": "...",
   "sources": ["Egyptian Civil Code, Article 147"]
@@ -184,9 +190,8 @@ Complete these after the baseline RAG service, evaluation, and CI are working.
 
 ## Suggested order for the next work session
 
-1. Define Phase 2 ingestion/result records and source-mapping checks.
-2. Inspect paragraph boundaries in the existing JSONL and implement article-aware chunk preparation.
-3. Prepare paired bilingual retrieval questions, then choose the embedding model/provider.
-4. Build and evaluate the persistent Chroma index with a reproducible DVC index stage.
+1. Start Stage 3 cited answer generation using Google's API and `GOOGLE_API_KEY` from the root `.env`.
+2. Test supported questions, insufficient evidence, repeal notices, and the missing-language exception.
+3. Retain the Arabic Article 1065 miss and deferred source QA/model comparisons as follow-ups.
 
 **Return to Phase 1:** review all 20 sampled article crops and every flagged record; review the zero-width alef diagnostic sample; document findings in `reports/corpus-extraction.md`; add the Article 1021 regression assertion; configure a DVC remote and verify clean-checkout push/pull reproduction. Keep these tasks unchecked until completed, and rebuild the index after any corpus corrections.

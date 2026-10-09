@@ -94,8 +94,10 @@ configured to use the service account. The initial HTTP 404 folder-access
 error was resolved by granting access. A subsequent push reached upload but
 failed for 45 files with HTTP 403: `Service Accounts do not have storage quota`.
 For the personal Google Drive destination, authentication has now been
-switched locally to user OAuth (`gdrive_use_service_account=false`). The push
-is awaiting browser authorization before upload can complete.
+switched locally to user OAuth (`gdrive_use_service_account=false`). The
+pending authorization/upload process was stopped when Stage 1 was paused
+to start Stage 2. Resume with `uv run dvc push -r storage` when returning
+to remote verification.
 No successful upload or clean-checkout pull is claimed.
 
 ## Manual review status and remaining work
