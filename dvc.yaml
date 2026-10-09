@@ -22,6 +22,9 @@ stages:
     - src/generation.py
     - config/generation.json
     - prompts/answer_v1.txt
+    - src/api.py
+    - src/experiments.py
+    - src/quality_gate.py
     - pyproject.toml
     - uv.lock
   prepare_retrieval:
@@ -35,6 +38,9 @@ stages:
     - src/generation.py
     - config/generation.json
     - prompts/answer_v1.txt
+    - src/api.py
+    - src/experiments.py
+    - src/quality_gate.py
     - config/retrieval.json
     - pyproject.toml
     - uv.lock
@@ -72,4 +78,22 @@ stages:
         cache: false
     metrics:
     - reports/retrieval-results.metrics.json:
+        cache: false
+  prepare_answer_evaluation:
+    cmd: uv run python -m src.experiments prepare
+    deps:
+    - evaluation/retrieval_questions.jsonl
+    - evaluation/review.json
+    - data/egyptian_civil_code_articles.jsonl
+    - src/experiments.py
+    - src/quality_gate.py
+    - src/generation.py
+    - src/rag.py
+    - src/retrieval.py
+    - pyproject.toml
+    - uv.lock
+    outs:
+    - evaluation/answer_questions.jsonl:
+        cache: false
+    - evaluation/answer_questions.manifest.json:
         cache: false

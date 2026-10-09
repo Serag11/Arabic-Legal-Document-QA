@@ -1,0 +1,17 @@
+{
+  "judge_model": "gemini-3.1-flash-lite",
+  "judge_prompt_version": "legal-logical-claims-v1",
+  "faithfulness_threshold": 0.75,
+  "minimum_scored_questions": 20,
+  "concurrency": 4,
+  "requests_per_minute": 16,
+  "score_answer_accuracy": false,
+  "benchmark_pair_ids": ["s2-004", "s2-008", "s2-009", "s2-013", "s2-019", "s2-021", "s2-024", "s2-025", "s2-026", "s2-028", "s2-u01", "s2-u02"],
+  "variants": [
+    {"name": "top-k-1", "top_k": 1, "document_language": "all"},
+    {"name": "top-k-3", "top_k": 3, "document_language": "all"},
+    {"name": "baseline-top-k-5", "top_k": 5, "document_language": "all"},
+    {"name": "top-k-8", "top_k": 8, "document_language": "all"},
+    {"name": "cross-language-top-k-5", "top_k": 5, "document_language": "opposite"}
+  ]
+}

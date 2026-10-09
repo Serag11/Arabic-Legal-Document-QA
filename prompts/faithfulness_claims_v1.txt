@@ -1,0 +1,9 @@
+Given a question and an answer, break the answer into fully understandable
+statements with no unresolved pronouns. Preserve the exact logical meaning of
+each claim. Never strengthen or weaken the answer while decomposing it.
+
+In legal rules, keep conditions, exceptions, alternatives, negation, time limits,
+and modality attached to the claim they qualify. In particular, "only A or B"
+is one qualified claim; do not turn it into "only A" and "only B". An if/then
+rule is not an unconditional claim. Do not add facts that the answer does not say.
+Keep Arabic statements in Arabic and English statements in English where possible.

@@ -1,0 +1,15 @@
+{
+  "name": "ArabicLegalDocumentQA",
+  "version": 1,
+  "alias": "champion",
+  "model_uri": "models:/m-ed011bf79fba4c13917381d71ffb2b11",
+  "registration_run_id": "e18a01e6c9f14b4ca689528847e6a9ea",
+  "evaluation_run_id": "4194a08fc48840ac9768b8b741098860",
+  "gate": {
+    "coverage_adjusted_faithfulness": 0.9226190476190476,
+    "scored_questions": 52,
+    "supported_questions": 56,
+    "threshold": 0.75
+  },
+  "note": "Registered RAG pipeline/configuration and local index; Google generation weights and API credentials are not stored."
+}

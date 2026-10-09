@@ -1,0 +1,17 @@
+{
+  "question_count": 60,
+  "pair_count": 30,
+  "supported_count": 56,
+  "questions_sha256": "ac7084a279bc928542613ee894b27c5da95d6aa17929b24778b84acdf634e722",
+  "reviewed_pairs_sha256": "109a7978fca2e345c5754fa35c4d2ebf46b48fa9280de42b63eb67f866901953",
+  "manual_review": {
+    "status": "approved",
+    "review_method": "user-confirmed manual review",
+    "evaluation_file": "evaluation/retrieval_questions.jsonl",
+    "evaluation_sha256": "109a7978fca2e345c5754fa35c4d2ebf46b48fa9280de42b63eb67f866901953",
+    "scope": "Bilingual retrieval questions, expected article labels, and reference evidence",
+    "note": "User confirmed manual review before starting Stage 3. Earlier result files retain their draft-at-run-time flag."
+  },
+  "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+  "note": "60 language-specific questions derived from 30 user-reviewed pairs; reference answers are their reviewed source excerpts, not invented translations."
+}

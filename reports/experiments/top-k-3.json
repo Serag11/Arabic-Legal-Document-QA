@@ -1,0 +1,3353 @@
+{
+  "variant": {
+    "name": "top-k-3",
+    "top_k": 3,
+    "document_language": "all"
+  },
+  "metrics": {
+    "supported_count": 20,
+    "scored_count": 18,
+    "unsupported_count": 4,
+    "retrieval_hit": 0.9,
+    "retrieval_recall": 0.9,
+    "retrieval_mrr": 0.8666666666666666,
+    "supported_answer_coverage": 0.9,
+    "expected_citation_hit": 0.9,
+    "faithfulness_answered": 0.9861111111111112,
+    "faithfulness_coverage_adjusted": 0.8875,
+    "answer_accuracy_coverage_adjusted": null,
+    "unsupported_refusal_accuracy": 1.0,
+    "mean_seconds": 36.41687807179187,
+    "error_count": 0,
+    "retrieval_hit_ar": 0.8,
+    "faithfulness_ar": 0.775,
+    "citation_hit_ar": 0.8,
+    "retrieval_hit_en": 1.0,
+    "faithfulness_en": 1.0,
+    "citation_hit_en": 1.0
+  },
+  "records": [
+    {
+      "id": "s2-004-ar",
+      "pair_id": "s2-004",
+      "language": "ar",
+      "question": "مع مراعاة الشكليات الخاصة التي قد يتطلبها القانون، متى ينشأ العقد بتبادل إرادتين؟",
+      "category": "contract_formation",
+      "expected_article_numbers": [
+        89
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 89"
+      ],
+      "reference_answer": "A contract is created, subject to any special formalities that may be required by law for its conclusion, from the moment that two persons have exchanged two concordant intentions.",
+      "reference_contexts": [
+        "يتم العقد بمجرد أن يتبادل طرفان التعبير عن إرادتين متطابقتين، مع مراعاة ما يقرره القانون فوق ذلك من أوضاع معينة لانعقاد العقد."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        89,
+        101,
+        20
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 89,
+          "citation": "Egyptian Civil Code, Article 89",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "يتم العقد بمجرد أن يتبادل طرفان التعبير عن إرادتين متطابقتين، مع مراعاة ما يقرره القانون فوق ذلك من أوضاع معينة لانعقاد العقد."
+        },
+        {
+          "article_number": 101,
+          "citation": "Egyptian Civil Code, Article 101",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) الاتفاق الذي يعد بموجبه كلا المتعاقدين أو أحدهما بابرام عقد معين في المستقبل لا ينعقد، إلا إذا عينت جميع المسائل الجوهرية للعقد المراد إبرامه، والمدة التي يجب إبرامه فيها. (٢) إذا اشترط القانون لتمام العقد استيفاء شكل معين، فهذا الشكل تجب مراعاته أيضاً في الاتفاق الذي يتضمن الوعد بإبرام هذا العقد."
+        },
+        {
+          "article_number": 20,
+          "citation": "Egyptian Civil Code, Article 20",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "العقود ما بين الأحياء تخضع في شكلها لقانون البلد الذي تمت فيه، ويجوز أيضا أن تخضع للقانون الذي يسري علي أحكامها الموضوعية، كما يجوز أن تخضع لقانون موطن المتعاقدين أو قانونهما الوطني المشترك."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "ينشأ العقد بمجرد أن يتبادل الطرفان التعبير عن إرادتين متطابقتين، وذلك مع مراعاة ما يقرره القانون من أوضاع وشكليات معينة لانعقاد العقد.",
+        "sources": [
+          "Egyptian Civil Code, Article 89"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 89",
+            "quote": "يتم العقد بمجرد أن يتبادل طرفان التعبير عن إرادتين متطابقتين، مع مراعاة ما يقرره القانون فوق ذلك من أوضاع معينة لانعقاد العقد.",
+            "language": "ar"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 161,
+          "prompt_token_count": 776,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 776
+            }
+          ],
+          "total_token_count": 937
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 32.352584125997964
+    },
+    {
+      "id": "s2-004-en",
+      "pair_id": "s2-004",
+      "language": "en",
+      "question": "Subject to any special formalities required by law, when does an exchange of two intentions create a contract?",
+      "category": "contract_formation",
+      "expected_article_numbers": [
+        89
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 89"
+      ],
+      "reference_answer": "A contract is created, subject to any special formalities that may be required by law for its conclusion, from the moment that two persons have exchanged two concordant intentions.",
+      "reference_contexts": [
+        "A contract is created, subject to any special formalities that may be required by law for its conclusion, from the moment that two persons have exchanged two concordant intentions."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        89,
+        150,
+        1017
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 89,
+          "citation": "Egyptian Civil Code, Article 89",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "A contract is created, subject to any special formalities that may be required by law for its conclusion, from the moment that two persons have exchanged two concordant intentions."
+        },
+        {
+          "article_number": 150,
+          "citation": "Egyptian Civil Code, Article 150",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "When the wording of a contract is clear, it cannot be deviated from in order to ascertain by means of interpretation the intention of the parties. When a contract has to be construed, it is necessary to ascertain the common intention of the parties and to go beyond the literal meaning of the words, taking into account the nature of the transaction as well as that loyalty and confidence which should exist between the parties in accordance with commercial usage."
+        },
+        {
+          "article_number": 1017,
+          "citation": "Egyptian Civil Code, Article 1017",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "Apparent servitudes may also be created by the intention of the original owner. An intention of the original owner is deemed to exist when it is established, by any means of proof, that the owner of two separate properties has made between the two properties an apparent distinction, thereby creating a relationship of subordination between them which would indicate the existence of a servitude if the two properties belonged to different owners. If, in such a case, the two properties pass into the hands of different owners without any change in their condition, a servitude is deemed, in the absence of a clear condition to the contrary, to have been constituted to the benefit of or has as a burden on the two properties respectively."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "A contract is created at the moment two persons exchange two concordant intentions, provided that any special formalities required by law for its conclusion are satisfied.",
+        "sources": [
+          "Egyptian Civil Code, Article 89"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 89",
+            "quote": "A contract is created, subject to any special formalities that may be required by law for its conclusion, from the moment that two persons have exchanged two concordant intentions.",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 122,
+          "prompt_token_count": 819,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 819
+            }
+          ],
+          "total_token_count": 941
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 35.90496063200408
+    },
+    {
+      "id": "s2-008-ar",
+      "pair_id": "s2-008",
+      "language": "ar",
+      "question": "ما الالتزام الذي ينشأ على من يرتكب خطأ يسبب ضرراً لشخص آخر؟",
+      "category": "personal_tort_liability",
+      "expected_article_numbers": [
+        163
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 163"
+      ],
+      "reference_answer": "Every fault which cause injury to another, imposes an obligation to make reparation upon the person by whom it is committed.",
+      "reference_contexts": [
+        "كل خطأ سبب ضررا للغير يلزم من ارتكبه بالتعويض."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        949,
+        990,
+        179
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 949,
+          "citation": "Egyptian Civil Code, Article 949",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) لا تقوم الحيازة على عمل يأتيه شخص على أنه مجرد رخصة من المباحات أو عمل يتحمله الغير على سبيل التسامح. (٢) وإذا اقترنت بإكراه أو حصلت خفية أو كان فيها لبس لا يكون لها أثر قبل من وقع عليه الإكراه أو أخفيت عنه الحيازة أو التبس عليه أمرها، إلا من الوقت الذى تزول فيه هذه العيوب."
+        },
+        {
+          "article_number": 990,
+          "citation": "Egyptian Civil Code, Article 990",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) على المنتفع أن يبذل من العناية فى حفظ الشيء ما يبذله الشخص المعتاد. (٢) وهو مسئول عن هلاك الشيء ولو بسبب أجنبي إذا كان قد تأخر عن رده إلى صاحبة بعد انتهاء حق الانتفاع."
+        },
+        {
+          "article_number": 179,
+          "citation": "Egyptian Civil Code, Article 179",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "كل شخص، ولو غير مميز، يثرى دون سبب مشروع على حساب شخص آخر يلتزم فى حدود ما أثرى به بتعويض هذا الشخص عما لحقه من خسارة، ويبقى هذا الإلتزام قائما ولو زال الأثراء فيما بعد."
+        }
+      ],
+      "faithfulness": null,
+      "answer_accuracy": null,
+      "retrieval_hit": 0,
+      "retrieval_recall": 0.0,
+      "retrieval_rr": 0,
+      "result": {
+        "answer": "لا تتوفر في النصوص المسترجعة أدلة كافية للإجابة عن هذا السؤال.",
+        "sources": [],
+        "insufficient_evidence": true,
+        "evidence": [],
+        "reason": "model_reported_insufficient_evidence",
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 74,
+          "prompt_token_count": 777,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 777
+            }
+          ],
+          "total_token_count": 851
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 8.82058285002131
+    },
+    {
+      "id": "s2-008-en",
+      "pair_id": "s2-008",
+      "language": "en",
+      "question": "What obligation arises for someone whose fault causes injury to another person?",
+      "category": "personal_tort_liability",
+      "expected_article_numbers": [
+        163
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 163"
+      ],
+      "reference_answer": "Every fault which cause injury to another, imposes an obligation to make reparation upon the person by whom it is committed.",
+      "reference_contexts": [
+        "Every fault which cause injury to another, imposes an obligation to make reparation upon the person by whom it is committed."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        163,
+        168,
+        175
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 163,
+          "citation": "Egyptian Civil Code, Article 163",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "Every fault which cause injury to another, imposes an obligation to make reparation upon the person by whom it is committed."
+        },
+        {
+          "article_number": 168,
+          "citation": "Egyptian Civil Code, Article 168",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "A person who causes injury to another person, in order to avoid greater injury that threatens him or a third party, is only responsible for such damages as the judge deems equitable."
+        },
+        {
+          "article_number": 175,
+          "citation": "Egyptian Civil Code, Article 175",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "A person responsible for an act of another person has a claim for redress against that other person to the extent that the other person is responsible for the reparation of the injury."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "Any person who commits a fault that results in injury to another is obligated to provide reparation for that injury.",
+        "sources": [
+          "Egyptian Civil Code, Article 163"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 163",
+            "quote": "Every fault which cause injury to another, imposes an obligation to make reparation upon the person by whom it is committed.",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 106,
+          "prompt_token_count": 648,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 648
+            }
+          ],
+          "total_token_count": 754
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 42.97358703400823
+    },
+    {
+      "id": "s2-009-ar",
+      "pair_id": "s2-009",
+      "language": "ar",
+      "question": "إذا أثرى شخص بلا سبب مشروع على حساب غيره ثم زال هذا الإثراء، فهل يبقى التزام التعويض وما حدوده؟",
+      "category": "unjust_enrichment",
+      "expected_article_numbers": [
+        179
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 179"
+      ],
+      "reference_answer": "A person, even one lacking discretion, who without just cause enriches himself to the detriment of another person, is liable, to the extent of his profit, to compensate such other person for the loss sustained by him. This obligation remains, even if the profit disappeared at a later date.",
+      "reference_contexts": [
+        "كل شخص، ولو غير مميز، يثرى دون سبب مشروع على حساب شخص آخر يلتزم فى حدود ما أثرى به بتعويض هذا الشخص عما لحقه من خسارة، ويبقى هذا الإلتزام قائما ولو زال الأثراء فيما بعد."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        179,
+        153,
+        215
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 179,
+          "citation": "Egyptian Civil Code, Article 179",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "كل شخص، ولو غير مميز، يثرى دون سبب مشروع على حساب شخص آخر يلتزم فى حدود ما أثرى به بتعويض هذا الشخص عما لحقه من خسارة، ويبقى هذا الإلتزام قائما ولو زال الأثراء فيما بعد."
+        },
+        {
+          "article_number": 153,
+          "citation": "Egyptian Civil Code, Article 153",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) إذا تعهد شخص بأن يجعل الغير يلتزم بأمر فلا يلزم الغير بتعهده، فإذا رفض الغير أن يلتزم، وجب على المتعهد أن يعوض من تعاقد معه، ويجوز له مع ذلك أن يتخلص من التعويض بأن يقوم هو نفسه بتنفيذ الإلتزام الذى تعهد به. (٢) اما إذا قبل الغير هذا التعهد، فإن قبوله لا ينتج أثرا الا من وقت صدوره، ما لم يتبين انه قصد صراحة أو ضمنا أن يستند أثر هذا القبول إلى الوقت الذى صدر فيه التعهد."
+        },
+        {
+          "article_number": 215,
+          "citation": "Egyptian Civil Code, Article 215",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "إذا استحال على المدين أن ينف الإلتزام غينا حكم عليه بالتعويض لعدم الوفاء بإلتزامه، ما لم يثبت أن استحالة التنفيذ قد نشأت عن سبب أجنبى لا يد له فيه.ويكون الحكم كذلك إذا تأخر المدين فى تنفيذ إلتزامه."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "نعم، يبقى التزام التعويض قائماً حتى لو زال الإثراء فيما بعد، ويكون التعويض في حدود ما أثرى به الشخص على حساب غيره.",
+        "sources": [
+          "Egyptian Civil Code, Article 179"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 179",
+            "quote": "يلتزم فى حدود ما أثرى به بتعويض هذا الشخص عما لحقه من خسارة، ويبقى هذا الإلتزام قائما ولو زال الأثراء فيما بعد.",
+            "language": "ar"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 139,
+          "prompt_token_count": 831,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 831
+            }
+          ],
+          "total_token_count": 970
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 55.20814076301758
+    },
+    {
+      "id": "s2-009-en",
+      "pair_id": "s2-009",
+      "language": "en",
+      "question": "If someone is enriched without just cause at another's expense and the enrichment later disappears, does the compensation obligation remain, and what limits apply?",
+      "category": "unjust_enrichment",
+      "expected_article_numbers": [
+        179
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 179"
+      ],
+      "reference_answer": "A person, even one lacking discretion, who without just cause enriches himself to the detriment of another person, is liable, to the extent of his profit, to compensate such other person for the loss sustained by him. This obligation remains, even if the profit disappeared at a later date.",
+      "reference_contexts": [
+        "A person, even one lacking discretion, who without just cause enriches himself to the detriment of another person, is liable, to the extent of his profit, to compensate such other person for the loss sustained by him. This obligation remains, even if the profit disappeared at a later date."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        179,
+        180,
+        365
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 179,
+          "citation": "Egyptian Civil Code, Article 179",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "A person, even one lacking discretion, who without just cause enriches himself to the detriment of another person, is liable, to the extent of his profit, to compensate such other person for the loss sustained by him. This obligation remains, even if the profit disappeared at a later date."
+        },
+        {
+          "article_number": 180,
+          "citation": "Egyptian Civil Code, Article 180",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "A claim for compensation for enrichment without just cause is prescribed after three years from the date on which the injured party knew of his right to be compensated and in any case after fifteen years from the date that the right first arose."
+        },
+        {
+          "article_number": 365,
+          "citation": "Egyptian Civil Code, Article 365",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "Compensation only takes place when set up by the interested party. Compensation cannot be renounced before the right thereto has come into existence. Compensation extinguishes the two debts to the extent of the amount of the smaller debt, from the moment they become subject to compensation. Imputation of the amount discharged in compensation takes place in the same way as in ordinary payment."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "Yes, the obligation to compensate remains even if the enrichment disappears at a later date. The liability is limited to the extent of the profit gained. Additionally, the claim for compensation is subject to a prescription period of three years from the date the injured party becomes aware of their right, or fifteen years from the date the right first arose.",
+        "sources": [
+          "Egyptian Civil Code, Article 179",
+          "Egyptian Civil Code, Article 180"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 179",
+            "quote": "A person, even one lacking discretion, who without just cause enriches himself to the detriment of another person, is liable, to the extent of his profit, to compensate such other person for the loss sustained by him. This obligation remains, even if the profit disappeared at a later date.",
+            "language": "en"
+          },
+          {
+            "citation": "Egyptian Civil Code, Article 180",
+            "quote": "A claim for compensation for enrichment without just cause is prescribed after three years from the date on which the injured party knew of his right to be compensated and in any case after fifteen years from the date that the right first arose.",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 266,
+          "prompt_token_count": 746,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 746
+            }
+          ],
+          "total_token_count": 1012
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 61.97408246001578
+    },
+    {
+      "id": "s2-013-ar",
+      "pair_id": "s2-013",
+      "language": "ar",
+      "question": "هل يضمن البائع تعرض الغير للمشتري إذا نشأ حق الغير بعد البيع ولكنه مستمد من البائع نفسه؟",
+      "category": "sale_warranty",
+      "expected_article_numbers": [
+        439
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 439"
+      ],
+      "reference_answer": "The vendor is bound by his warranty, even if the right of the third party has been established after the sale, provided that it was derived from the vendor himself.",
+      "reference_contexts": [
+        "يضمن البائع عدم التعرض للمشتري في الانتفاع بالمبيع كله أو بعضه سواء كان التعرض من فعله هو أو من فعل أجنبي يكون له وقت البيع حق على المبيع يحتج به على المشتري البيع إذا كان هذا الحق قد آل إليه من البائع نفسه."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        439,
+        446,
+        447
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 439,
+          "citation": "Egyptian Civil Code, Article 439",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "يضمن البائع عدم التعرض للمشتري في الانتفاع بالمبيع كله أو بعضه سواء كان التعرض من فعله هو أو من فعل أجنبي يكون له وقت البيع حق على المبيع يحتج به على المشتري البيع إذا كان هذا الحق قد آل إليه من البائع نفسه."
+        },
+        {
+          "article_number": 446,
+          "citation": "Egyptian Civil Code, Article 446",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) إذا اتفق على عدم الضمان بقي البائع مع ذلك مسئولا عن أي استحقاق ينشأ من فعله، ويقع باطلا كل اتفاق يقضي بغير ذلك. (٢) أما إذا كان استحقاق المبيع قد تنشأ من فعل الغير، فان البائع يكون مسئولا عن رد قيمة المبيع وقت الاستحقاق، إلا إذا ثبت أن المشتري كان يعلم وقت البيع سبب الاستحقاق، أو أنه اشتري ساقط الخيار."
+        },
+        {
+          "article_number": 447,
+          "citation": "Egyptian Civil Code, Article 447",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) يكون البائع ملزما بالضمان إذا لم يتوافر في المبيع وقت التسليم الصفات التي كفل للمشتري وجودها فيه، أو إذا كان بالمبيع عيب ينقص من قيمته أو من نفعه بحسب الغاية المقصودة مستفادة مما هو مبين في العقد أو مما هو ظاهر من طبيعة الشيء، أو الغرض الذي أعد له، ويضمن البائع هذا العيب ولو لم يكن عالما بوجوده. (٢) ومع ذلك لا يضمن البائع العيوب التي كان المشتري يعرفها وقت البيع، أو كان يستطيع أن يتبينها بنفسه لو أنه فحص المبيع بعناية الرجل العادي، إلا إذا أثبت المشتري أن البائع قد أكد له خلو المبيع من هذا العيب، أو أثبت أن البائع قد تعمد إخفاء العيب غشا منه."
+        }
+      ],
+      "faithfulness": 0.75,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "نعم، يضمن البائع عدم التعرض للمشتري إذا كان حق الغير مستمداً من البائع نفسه، حتى لو نشأ هذا الحق بعد البيع، حيث نصت المادة 439 على أن البائع يضمن عدم التعرض للمشتري سواء كان التعرض من فعله هو أو من فعل أجنبي يكون له وقت البيع حق على المبيع يحتج به على المشتري إذا كان هذا الحق قد آل إليه من البائع نفسه.",
+        "sources": [
+          "Egyptian Civil Code, Article 439"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 439",
+            "quote": "يضمن البائع عدم التعرض للمشتري في الانتفاع بالمبيع كله أو بعضه سواء كان التعرض من فعله هو أو من فعل أجنبي يكون له وقت البيع حق على المبيع يحتج به على المشتري البيع إذا كان هذا الحق قد آل إليه من البائع نفسه.",
+            "language": "ar"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 227,
+          "prompt_token_count": 925,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 925
+            }
+          ],
+          "total_token_count": 1152
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 43.77797753599589
+    },
+    {
+      "id": "s2-013-en",
+      "pair_id": "s2-013",
+      "language": "en",
+      "question": "Does the vendor warrant against a third party's disturbance if that party's right arose after the sale but was derived from the vendor?",
+      "category": "sale_warranty",
+      "expected_article_numbers": [
+        439
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 439"
+      ],
+      "reference_answer": "The vendor is bound by his warranty, even if the right of the third party has been established after the sale, provided that it was derived from the vendor himself.",
+      "reference_contexts": [
+        "The vendor warrants the purchaser against disturbance in his enjoyment of the thing sold both totally and partially, whether such disturbance is caused by his act or that of a third party having a right over the thing sold at the time of the sale enforceable against the purchaser. The vendor is bound by his warranty, even if the right of the third party has been established after the sale, provided that it was derived from the vendor himself."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        439,
+        441,
+        457
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 439,
+          "citation": "Egyptian Civil Code, Article 439",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "The vendor warrants the purchaser against disturbance in his enjoyment of the thing sold both totally and partially, whether such disturbance is caused by his act or that of a third party having a right over the thing sold at the time of the sale enforceable against the purchaser. The vendor is bound by his warranty, even if the right of the third party has been established after the sale, provided that it was derived from the vendor himself."
+        },
+        {
+          "article_number": 441,
+          "citation": "Egyptian Civil Code, Article 441",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "The right of a purchaser to warranty exists even if he has acknowledged, in good faith, the third party's claim or has entered into a compromise with him without awaiting a decision of the court, if he has, in due time, given notice of the action to the vendor and has, without result, called upon him to take his place in the action, subject always, to proof by the vendor that the third party's claim is unfounded."
+        },
+        {
+          "article_number": 457,
+          "citation": "Egyptian Civil Code, Article 457",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "Subject to a clause or custom to the contrary, the price is payable at the time of delivery of the thing sold is made. When the purchaser is disturbed in his enjoyment by a third party invoking a right existing prior to the sale or derived from the vendor, or if he is in danger of being dispossessed of the thing sold, he may, subject to an agreement to the contrary, retain the price until the disturbance in his enjoyment or the danger of dispossession has ceased. The vendor may, however, in such a case, demand payment of the price upon his supplying security. The provisions of the preceding paragraph will also apply if the purchaser has discovered a defect in the thing sold."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "Yes, the vendor is bound by the warranty against disturbance even if the third party's right was established after the sale, provided that the right was derived from the vendor.",
+        "sources": [
+          "Egyptian Civil Code, Article 439"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 439",
+            "quote": "The vendor is bound by his warranty, even if the right of the third party has been established after the sale, provided that it was derived from the vendor himself.",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 130,
+          "prompt_token_count": 884,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 884
+            }
+          ],
+          "total_token_count": 1014
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 37.93897511900286
+    },
+    {
+      "id": "s2-019-ar",
+      "pair_id": "s2-019",
+      "language": "ar",
+      "question": "ما الشروط التي يذكرها النص لحرمان شخص من ملكه، وما نوع التعويض المطلوب؟",
+      "category": "property_deprivation",
+      "expected_article_numbers": [
+        805
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 805"
+      ],
+      "reference_answer": "No one can be deprived of his property except in the cases and in the manner provided for by law and upon payment of fair compensation.",
+      "reference_contexts": [
+        "لا يجوز أن يحرم أحد من ملكه إلا فى الأحوال التى يقررها القانون، وبالطريقة التى يرسمها، يكون ذلك فى مقابل تعويض عادل."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        805,
+        923,
+        528
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 805,
+          "citation": "Egyptian Civil Code, Article 805",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "لا يجوز أن يحرم أحد من ملكه إلا فى الأحوال التى يقررها القانون، وبالطريقة التى يرسمها، يكون ذلك فى مقابل تعويض عادل."
+        },
+        {
+          "article_number": 923,
+          "citation": "Egyptian Civil Code, Article 923",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) يكون ملكا خالصا لصاحب الأرض ما يحدثه فيها من بناء أو غراس أو منشآت أخرى يقيمها بمواد مملوكة لغيرة، إذا لم يكن ممكنا نزع هذه المواد دون أن يلحق هذه المنشآت ضرر جسيم، أو كان ممكنا نزعها ولكن لم ترفع الدعوى باستردادها خلال سنة من اليوم الذى يعلم فيه مالك المواد أنها اندمجت فى هذه المنشآت. (٢) فإذا تملك صاحب الأرض المواد، كان عليه أن يدفع قيمتها مع التعويض إن كان له وجه. أما إذا استرد المواد صاحبها فإن نزعها يكون على نفقة صاحب الأرض."
+        },
+        {
+          "article_number": 528,
+          "citation": "Egyptian Civil Code, Article 528",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) تنتهي الشركة بموت أحد الشركاء أو بالحجر عليه أو بإعساره أو بإفلاسه. (٢) ومع ذلك يجوز الاتفاق على أنه إذا مات أحد الشركاء تستمر الشركة مع ورثته، ولو كانوا قصرا. (٣) ويجوز أيضا الاتفاق على أنه إذا مات أحد الشركاء أو حجز عليه أو أفلس أو انسحب وفقا لأحكام المادة التالية، تستمر الشركة فيما بين الباقين من الشركاء، وفي هذه الحالة لا يكون لهذا الشريك أو ورثته إلا نصيبه في أموال الشركة، ويقدر هذا النصيب بحسب قيمته يوم وقع الحادث الذي أدي إلى خروجه من الشركة ويدفع له نقدا. ولا يكون له نصيب فيما يستجد بعد ذلك من حقوق، إلا بقدر ما تكون تلك الحقوق ناتجة من عمليات سابقة على ذلك الحادث."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "لا يجوز حرمان الشخص من ملكه إلا في الأحوال التي يقررها القانون وبالطريقة التي يرسمها، ويكون ذلك في مقابل تعويض عادل.",
+        "sources": [
+          "Egyptian Civil Code, Article 805"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 805",
+            "quote": "لا يجوز أن يحرم أحد من ملكه إلا فى الأحوال التى يقررها القانون، وبالطريقة التى يرسمها، يكون ذلك فى مقابل تعويض عادل.",
+            "language": "ar"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 137,
+          "prompt_token_count": 935,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 935
+            }
+          ],
+          "total_token_count": 1072
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 37.46558654899127
+    },
+    {
+      "id": "s2-019-en",
+      "pair_id": "s2-019",
+      "language": "en",
+      "question": "What conditions does the text impose on depriving someone of property, and what kind of compensation is required?",
+      "category": "property_deprivation",
+      "expected_article_numbers": [
+        805
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 805"
+      ],
+      "reference_answer": "No one can be deprived of his property except in the cases and in the manner provided for by law and upon payment of fair compensation.",
+      "reference_contexts": [
+        "No one can be deprived of his property except in the cases and in the manner provided for by law and upon payment of fair compensation."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        605,
+        565,
+        805
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 605,
+          "citation": "Egyptian Civil Code, Article 605",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "A person acquiring a leased property, who is not bound by the lease can only evict the lessee by giving him notice as provided for in Article 563. In the absence of a provision to the contrary, the lessor must, if notice of eviction is given before the end of the lease, compensate the lessee. The lessee cannot be evicted before he receives compensation either from the lessor or from the new owner paying on behalf of the lessor, or until he has obtained an adequate security for the payment of such compensation."
+        },
+        {
+          "article_number": 565,
+          "citation": "Egyptian Civil Code, Article 565",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "If the leased property is delivered to the lessee in such a condition that it is unfit for the use for which it is leased, or if its usefulness is appreciably diminished, the lessee may demand either the resiliation of the lease or the reduction of the rent equivalent to the loss of use; in both cases he is entitled to claim compensation, if compensation is due. If the leased property is in such a condition that it constitutes a serious danger to the health of the lessee, or those who live with him, or his employees or workmen, the lessee may demand resiliation of the lease, even if he has renounced the right to do so beforehand."
+        },
+        {
+          "article_number": 805,
+          "citation": "Egyptian Civil Code, Article 805",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "No one can be deprived of his property except in the cases and in the manner provided for by law and upon payment of fair compensation."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 0.3333333333333333,
+      "result": {
+        "answer": "According to Article 805, no person may be deprived of their property except in cases and manners prescribed by law, and such deprivation must be accompanied by the payment of fair compensation.",
+        "sources": [
+          "Egyptian Civil Code, Article 805"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 805",
+            "quote": "No one can be deprived of his property except in the cases and in the manner provided for by law and upon payment of fair compensation.",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 127,
+          "prompt_token_count": 826,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 826
+            }
+          ],
+          "total_token_count": 953
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 38.32986271500704
+    },
+    {
+      "id": "s2-021-ar",
+      "pair_id": "s2-021",
+      "language": "ar",
+      "question": "وفق النص، ما مدة الحيازة المستمرة دون انقطاع التي قد تكسب ملكية منقول أو عقار لمن ليس مالكه؟",
+      "category": "acquisitive_prescription",
+      "expected_article_numbers": [
+        968
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 968"
+      ],
+      "reference_answer": "A person who has possession of a movable or immovable without being its owner, or of a real right over a movable or immovable without a just title thereto, may acquire the ownership of the thing or the title to the real right if his possession continues uninterrupted for fifteen years.",
+      "reference_contexts": [
+        "من حاز منقولا أو عقارا دون أن يكون مالكا له، أو حاز حقا عينيا على منقول أو عقار دون أن يكون هذا الحق خاصا به، كان له أن يكسب ملكية الشيء أو الحق العينى إذا استمرت حيازته دون انقطاع خمس عشرة سنة."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        968,
+        969,
+        18
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 968,
+          "citation": "Egyptian Civil Code, Article 968",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "من حاز منقولا أو عقارا دون أن يكون مالكا له، أو حاز حقا عينيا على منقول أو عقار دون أن يكون هذا الحق خاصا به، كان له أن يكسب ملكية الشيء أو الحق العينى إذا استمرت حيازته دون انقطاع خمس عشرة سنة."
+        },
+        {
+          "article_number": 969,
+          "citation": "Egyptian Civil Code, Article 969",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) إذا وقعت الحيازة على عقار أو على حق عيني عقاري وكانت مقترنة بحسن النية ومستندة فى الوقت ذاته إلى سبب صحيح، فإن مدة التقادم المكسب تكون خمس سنوات. (٢) ولا يشترط توافر حسن النية إلا وقت تلقى الحق. (٣) والسبب الصحيح سند يصدر من شخص لا يكون مالكا للشيء أو صاحبا للحق الذى يراد كسبه بالتقادم، ويجب أن يكون مسجلا طبقا للقانون."
+        },
+        {
+          "article_number": 18,
+          "citation": "Egyptian Civil Code, Article 18",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "يسري علي الحيازة والملكية والحقوق العينية الأخرى، قانون الموقع فيما يختص بالعقار، ويسري بالنسبة إلي المنقول، قانون الجهة التي يوجد فيها هذا المنقول وقت تحقق السبب الذي ترتب عليه كسب الحيازة أو الملكية أو الحقوق العينية الأخرى أو فقدها."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "مدة الحيازة المستمرة دون انقطاع التي تكسب ملكية منقول أو عقار لمن ليس مالكه هي خمس عشرة سنة، وذلك وفقاً للمادة 968 من القانون المدني.",
+        "sources": [
+          "Egyptian Civil Code, Article 968"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 968",
+            "quote": "كان له أن يكسب ملكية الشيء أو الحق العينى إذا استمرت حيازته دون انقطاع خمس عشرة سنة.",
+            "language": "ar"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 134,
+          "prompt_token_count": 820,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 820
+            }
+          ],
+          "total_token_count": 954
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 64.26313879201189
+    },
+    {
+      "id": "s2-021-en",
+      "pair_id": "s2-021",
+      "language": "en",
+      "question": "Under the text, what period of uninterrupted possession may allow someone who is not the owner to acquire ownership of a movable or immovable?",
+      "category": "acquisitive_prescription",
+      "expected_article_numbers": [
+        968
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 968"
+      ],
+      "reference_answer": "A person who has possession of a movable or immovable without being its owner, or of a real right over a movable or immovable without a just title thereto, may acquire the ownership of the thing or the title to the real right if his possession continues uninterrupted for fifteen years.",
+      "reference_contexts": [
+        "A person who has possession of a movable or immovable without being its owner, or of a real right over a movable or immovable without a just title thereto, may acquire the ownership of the thing or the title to the real right if his possession continues uninterrupted for fifteen years."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        968,
+        870,
+        961
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 968,
+          "citation": "Egyptian Civil Code, Article 968",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "A person who has possession of a movable or immovable without being its owner, or of a real right over a movable or immovable without a just title thereto, may acquire the ownership of the thing or the title to the real right if his possession continues uninterrupted for fifteen years."
+        },
+        {
+          "article_number": 870,
+          "citation": "Egyptian Civil Code, Article 870",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "Whoever takes possession of a movable which has no owner, with the intention of its appropriation, acquires the ownership thereof."
+        },
+        {
+          "article_number": 961,
+          "citation": "Egyptian Civil Code, Article 961",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "A person who remains in possession of an immovable for a whole year may, if he is disturbed in his possession, take proceedings during the year which follows the disturbance for the discontinuance of the disturbance."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "A person who possesses a movable or immovable property without being its owner, or who holds a real right without a just title, may acquire ownership through uninterrupted possession for a period of fifteen years.",
+        "sources": [
+          "Egyptian Civil Code, Article 968"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 968",
+            "quote": "A person who has possession of a movable or immovable without being its owner, or of a real right over a movable or immovable without a just title thereto, may acquire the ownership of the thing or the title to the real right if his possession continues uninterrupted for fifteen years.",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 154,
+          "prompt_token_count": 686,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 686
+            }
+          ],
+          "total_token_count": 840
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 42.80346973700216
+    },
+    {
+      "id": "s2-024-ar",
+      "pair_id": "s2-024",
+      "language": "ar",
+      "question": "عند تطهير عقار من الرهون، إذا كانت أجزاؤه محملة برهون مستقلة، فهل يجب تقدير قيمة كل جزء على حدة؟",
+      "category": "long_article_mortgage_purge",
+      "expected_article_numbers": [
+        1065
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 1065"
+      ],
+      "reference_answer": "If parts of the property are charged with separate mortgages, each part must be valued separately;",
+      "reference_contexts": [
+        "إذا أراد الحائز تطهير العقار وجب عليه أن يوجه إلى الدائنين المقيدة حقوقهم فى مواطنهم المختارة المذكورة فى القيد إعلانات تشتمل على البيانات الآتية: ) أ ) خلاصة من سند ملكية الحائز تقتصر على بيان نوع التصرف وتاريخه واسم المالك السابق للعقار مع تعيين هذا المالك تعيبنا دقيقا ومحل العقار مع تعيينه وتحديده بالدفة. وإذا كان التصرف بيعا يذكر أيضا الثمن وما عسى أن يوجد من تكاليف تعتبر جزءا من هذا الثمن. ) ب) تاريخ تسجيل ملكية الحائز ورقم هذا التسجيل. ) جـ) المبلغ الذى يقدره الحائز قيمة للعقار ولو كان التصرف بيعا ويجب ألا يقل هذا المبلغ عن السعر الذى يتخذ أساسا لتقدير الثمن فى حالة نزع الملكية، ولا أن يقل فى أى حال عن الباقي فى ذمة الحائز من ثمن العقار إذا كان التصرف بيعا. وإذا كانت أجزاء العاقر مثقلة برهون مختلفة وجب قيمة كل جزء على حدة. ) د ) قائمة بالحقوق التى تم قيدها على العقار قبل تسجيل سند الحائز تشتمل على بيان تاريخ هذه القيود ومقدار هذه الحقوق وأسماء الدائنين."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        331,
+        1075,
+        1101
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 331,
+          "citation": "Egyptian Civil Code, Article 331",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "إذا وفي حائز العقار المرهون كل الدين، وحل محل الدائنين، فلا يكون له بمقتضى هذا الحلول أن يرجع على حائز لعقار آخر مرهون في ذات الدين إلا بقدر حصة هذا الحائز بحسب قيمة ما حازه من عقار."
+        },
+        {
+          "article_number": 1075,
+          "citation": "Egyptian Civil Code, Article 1075",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "إذا نزعت ملكية العقار المرهون ولو كان ذلك بعد اتخاذ إجراءات التطهير أو التخلية ورسا المزاد على الحائز نفسه، اعتبر هذا مالكا للعقار بمقتضى سند ملكيته الأصلى، ويتطهر العقار من كل حق مقيدا إذا دفع الحائز الثمن الذى رسا به المزاد أو أودعه خزانة المحكمة."
+        },
+        {
+          "article_number": 1101,
+          "citation": "Egyptian Civil Code, Article 1101",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "يضمن الراهن سلامة الرهن ونفاذه، وليس له أن يأتي عملا ينقص من قيمة الشيء المرهون أو يحول دون استعمال الدائن لحقوقه المستمدة من العقد، وللدائن المر ن فى حالة الاستعجال أن يتخذ على نفقة الراهن كل الوسائل التى تلزم للمحافظة على الشيء المرهون."
+        }
+      ],
+      "faithfulness": null,
+      "answer_accuracy": null,
+      "retrieval_hit": 0,
+      "retrieval_recall": 0.0,
+      "retrieval_rr": 0,
+      "result": {
+        "answer": "لا تتوفر في النصوص المسترجعة أدلة كافية للإجابة عن هذا السؤال.",
+        "sources": [],
+        "insufficient_evidence": true,
+        "evidence": [],
+        "reason": "model_reported_insufficient_evidence",
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 82,
+          "prompt_token_count": 806,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 806
+            }
+          ],
+          "total_token_count": 888
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 12.425819810014218
+    },
+    {
+      "id": "s2-024-en",
+      "pair_id": "s2-024",
+      "language": "en",
+      "question": "When purging a property of mortgages, must each part be valued separately if its parts are charged with separate mortgages?",
+      "category": "long_article_mortgage_purge",
+      "expected_article_numbers": [
+        1065
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 1065"
+      ],
+      "reference_answer": "If parts of the property are charged with separate mortgages, each part must be valued separately;",
+      "reference_contexts": [
+        "If the third part holder decides to proceed with the purge of the property, he must serve upon the inscribed creditors, at their elected domiciles indicated in their inscriptions, summons containing the following particulars: a- an extract of his title deed, setting the out particulars and the nature and date of the act of disposition, the name in full and precise particulars of the previous owner of the property, the situation and a detailed and precise description of the property, and, if the disposal is a sale, the price and the charges, if any, that may be considered as part of the price; b- the date and number of the transcription of his title; c- the sum at which he values the property, even if the property is disposed of by sale: this sum must not be less than the reserve price in the case of expropriation nor in any case less than the sum remaining to be paid by the third party holder on the price of the property if the act of disposition was a sale. If parts of the property are charged with separate mortgages, each part must be valued separately; d- a list of rights inscribed on the property before the transcription of his title: this list shall contain the date of the inscriptions, the amount of the inscribed debts and the names of the creditors."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        1065,
+        1075,
+        1083
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 1065,
+          "citation": "Egyptian Civil Code, Article 1065",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "If the third part holder decides to proceed with the purge of the property, he must serve upon the inscribed creditors, at their elected domiciles indicated in their inscriptions, summons containing the following particulars: a- an extract of his title deed, setting the out particulars and the nature and date of the act of disposition, the name in full and precise particulars of the previous owner of the property, the situation and a detailed and precise description of the property, and, if the disposal is a sale, the price and the charges, if any, that may be considered as part of the price; b- the date and number of the transcription of his title; c- the sum at which he values the property, even if the property is disposed of by sale: this sum must not be less than the reserve price in the case of expropriation nor in any case less than the sum remaining to be paid by the third party holder on the price of the property if the act of disposition was a sale. If parts of the property are charged with separate mortgages, each part must be valued separately; d- a list of rights inscribed on the property before the transcription of his title: this list shall contain the date of the inscriptions, the amount of the inscribed debts and the names of the creditors."
+        },
+        {
+          "article_number": 1075,
+          "citation": "Egyptian Civil Code, Article 1075",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "If the mortgaged property is expropriated, even after proceedings for purge or abandonment have been taken and the third party holder acquires the property at auction, he will be deemed to be the owner of the property by virtue of his original title deed and the property will be purged of all inscriptions if he pays the price for which he acquired the property at the auction or if he deposits the price in the Caisse of the Court."
+        },
+        {
+          "article_number": 1083,
+          "citation": "Egyptian Civil Code, Article 1083",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "When the formalities of a purge are carried out, the mortgage is definitely extinguished even if the ownership of the third party holder who proceeded with the purge disappears for any cause whatsoever."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "Yes, if parts of the property are charged with separate mortgages, each part must be valued separately when the third party holder proceeds with the purge of the property.",
+        "sources": [
+          "Egyptian Civil Code, Article 1065"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 1065",
+            "quote": "If parts of the property are charged with separate mortgages, each part must be valued separately",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 114,
+          "prompt_token_count": 949,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 949
+            }
+          ],
+          "total_token_count": 1063
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 35.56092893498135
+    },
+    {
+      "id": "s2-025-ar",
+      "pair_id": "s2-025",
+      "language": "ar",
+      "question": "وفق النص، ما مدة الأجرة التي يشملها امتياز المؤجر على المنقولات والمحاصيل الموجودة بالعين المؤجرة والمملوكة للمستأجر، وما المبالغ الأخرى التي يشملها؟",
+      "category": "longest_article_lessor_privilege",
+      "expected_article_numbers": [
+        1143
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 1143"
+      ],
+      "reference_answer": "House and agricultural rents for two years, or for the duration of the lease if less than two years, and all sums due to the lessor by virtue of the contract of lease, are secured by a privilege over all attachable movables and crops existing on the leased property and belonging to the lessee.",
+      "reference_contexts": [
+        "(١) أجرة المبانى والأراضي الزراعية لسنتين أو لمدة الإيجار إن قلت عن ذلك، وكل حق أخر للمؤجر بمقتضى عقد الإيجار، يكون لها جميعا امتياز على ما يكون موجودا بالعين المؤجرة ومملوكا للمستأجر من منقول قابل للحجز ومن محصول زراعي. (٢) ويثبت الامتياز ولو كانت المنقولات مملوكة لزوجة المستأجر أو كانت مملوكة للغير ولم يثبت أن المؤجر كان يعلم وقت وضعها فى العين المؤجرة بوجود حق للغير عليها، وذلك دون إخلال بالأحكام المتعلقة بالمنقولات المسروقة أو الضائعة. (٣) ويقع الامتياز أيضا على المنقولات والمحصولات المملوكة للمستأجر من الباطن إذا كان المؤجر قد اشترط صراحة عدم الإيجار من الباطن، فإذا لم يشترط ذلك فلا يثبت الامتياز إلا للمبالغ التى تكون مستحقة للمستأجر الأصلى فى ذمة المستأجر من الباطن فى الوقت الذى ينذره فيه المؤجر. (٤) وتستوفى هذه المبالغ الممتازة من ثمن الأموال المثقلة بالامتياز بعد الحقوق المتقدمة الذكر، إلا ما كان من هذه الحقوق غير نافذ فى حق المؤجر باعتباره حائزا حسن النية. (٥) وإذا نقلت الأموال المثقلة بالامتياز من العين المؤجرة على الرغم من معارضة المؤجر أو على غير علم منه ولم يبق فى العين أمول كافية لضمان الحقوق الممتازة، بقى الامتياز قائما على الأموال التى نقلت دون أن يضر ذلك بالحق الذى كسبه غير الحسن النية على هذه الأموال، ويبقى الامتياز قائما ولو أضر بحق الغير لمدة ثلاث سنوات من يوم نقلها إذا أوقع المؤجر عليها حجزا استحقاقيا فى الميعاد القانوني. ومع ذلك إذا بيعت هذه الأموال إلى مشتري حسن النية فى سوق عام أو فى مزاد على أو ممن يتجر فى مثلها، وجب على المؤجر أن يرد الثمن إلى هذا المشترى."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        1143,
+        589,
+        588
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 1143,
+          "citation": "Egyptian Civil Code, Article 1143",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) أجرة المبانى والأراضي الزراعية لسنتين أو لمدة الإيجار إن قلت عن ذلك، وكل حق أخر للمؤجر بمقتضى عقد الإيجار، يكون لها جميعا امتياز على ما يكون موجودا بالعين المؤجرة ومملوكا للمستأجر من منقول قابل للحجز ومن محصول زراعي. (٢) ويثبت الامتياز ولو كانت المنقولات مملوكة لزوجة المستأجر أو كانت مملوكة للغير ولم يثبت أن المؤجر كان يعلم وقت وضعها فى العين المؤجرة بوجود حق للغير عليها، وذلك دون إخلال بالأحكام المتعلقة بالمنقولات المسروقة أو الضائعة. (٣) ويقع الامتياز أيضا على المنقولات والمحصولات المملوكة للمستأجر من الباطن إذا كان المؤجر قد اشترط صراحة عدم الإيجار من الباطن، فإذا لم يشترط ذلك فلا يثبت الامتياز إلا للمبالغ التى تكون مستحقة للمستأجر الأصلى فى ذمة المستأجر من الباطن فى الوقت الذى ينذره فيه المؤجر. (٤) وتستوفى هذه المبالغ الممتازة من ثمن الأموال المثقلة بالامتياز بعد الحقوق المتقدمة الذكر، إلا ما كان من هذه الحقوق غير نافذ فى حق المؤجر باعتباره حائزا حسن النية. (٥) وإذا نقلت الأموال المثقلة بالامتياز من العين المؤجرة على الرغم من معارضة المؤجر أو على غير علم منه ولم يبق فى العين أمول كافية لضمان الحقوق الممتازة، بقى الامتياز قائما على الأموال التى نقلت دون أن يضر ذلك بالحق الذى كسبه غير الحسن النية على هذه الأموال، ويبقى الامتياز قائما ولو أضر بحق الغير لمدة ثلاث سنوات من يوم نقلها إذا أوقع المؤجر عليها حجزا استحقاقيا فى الميعاد القانوني. ومع ذلك إذا بيعت هذه الأموال إلى مشتري حسن النية فى سوق عام أو فى مزاد على أو ممن يتجر فى مثلها، وجب على المؤجر أن يرد الثمن إلى هذا المشترى."
+        },
+        {
+          "article_number": 589,
+          "citation": "Egyptian Civil Code, Article 589",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) يكون للمؤجر، ضمانا لكل حق يثبت له بمقتضى عقد الإيجار، أي يحبس جميع المنقولات القابلة للحجز الموجود في العين المؤجرة مادامت مثقلة بامتياز المؤجر ولو لم تكن مملوكة للمستأجر. وللمؤجر الحق في أن يمانع في نقلها، فإذا نقلت رغم معارضته أو دون عمله كان له الحق في استردادها من الحائز لها ولو كان حسن النية، مع عدم الإخلال بما يكون لهذا الحائز من حقوق. (٢) وليس للمؤجر أن يستعمل حقه في الحبس أو في الاسترداد إذا كان نقل هذه الأشياء أمرا اقتضته حرفة المستأجر أو المألوف من شؤون الحياة، أو كانت المنقولات التي تركت في العين المؤجرة أو التي تم استردادها تفي بضمان الأجرة وفاء تاما."
+        },
+        {
+          "article_number": 588,
+          "citation": "Egyptian Civil Code, Article 588",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "يجب على من استأجر مترلا أو مخزنا أو حانوتا أو مكانا مماثلا لذلك أو أرضا زراعية أن يضع في العين المؤجرة أثاثا أو بضائع أو محصولات أو مواشي أو أدوات تكون قيمتها كافية لضمان الأجرة عن سنتين، أو عن كل مدة الإيجار إذا قلت عن سنتين هذا ما لم تكن الأجرة قد عجلت، ويعفي المستأجر من هذا الالتزام إذا تم الاتفاق على هذا الإعفاء أو إذا قدم المستأجر تأمينا أخر."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "يشمل امتياز المؤجر على المنقولات والمحاصيل الموجودة بالعين المؤجرة والمملوكة للمستأجر أجرة المباني والأراضي الزراعية لمدة سنتين أو لمدة الإيجار إن كانت أقل من ذلك، بالإضافة إلى كل حق آخر للمؤجر بمقتضى عقد الإيجار، وذلك وفقاً للمادة 1143 من القانون المدني.",
+        "sources": [
+          "Egyptian Civil Code, Article 1143"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 1143",
+            "quote": "أجرة المبانى والأراضي الزراعية لسنتين أو لمدة الإيجار إن قلت عن ذلك، وكل حق أخر للمؤجر بمقتضى عقد الإيجار، يكون لها جميعا امتياز على ما يكون موجودا بالعين المؤجرة ومملوكا للمستأجر من منقول قابل للحجز ومن محصول زراعي.",
+            "language": "ar"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 221,
+          "prompt_token_count": 1390,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 1390
+            }
+          ],
+          "total_token_count": 1611
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 49.43160383598297
+    },
+    {
+      "id": "s2-025-en",
+      "pair_id": "s2-025",
+      "language": "en",
+      "question": "Under the text, what period of rent is covered by the lessor's privilege over the lessee's movables and crops on the leased property, and what other sums does it cover?",
+      "category": "longest_article_lessor_privilege",
+      "expected_article_numbers": [
+        1143
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 1143"
+      ],
+      "reference_answer": "House and agricultural rents for two years, or for the duration of the lease if less than two years, and all sums due to the lessor by virtue of the contract of lease, are secured by a privilege over all attachable movables and crops existing on the leased property and belonging to the lessee.",
+      "reference_contexts": [
+        "House and agricultural rents for two years, or for the duration of the lease if less than two years, and all sums due to the lessor by virtue of the contract of lease, are secured by a privilege over all attachable movables and crops existing on the leased property and belonging to the lessee. Subject to the provisions relating to stolen or lost property, this privilege is enforceable even when the immovables belong to the wife of the lessee or to a third party, as long as it is not established that the lessor had knowledge, at the time the movables were brought onto the leased property, of the existence of a third party's rights. This privilege is also enforceable over movables and crops belonging to a sub-lessee, if the lessor had expressly prohibited sub-letting. If sub-letting was not prohibited, the privilege will only be enforceable up to the amount due by the sub-lessee to the principal lessee on the date a formal summons is served by the lessor upon the sub-lessee. These privileged claims are payable out of the proceeds of sale of such movables and crops subject to such privilege, immediately after the claims above mentioned, with the exception of such claims in respect of which the privilege does not operate as against the lessor in as much as he is a third party holder in good faith. If movables and crops so charged are removed from the leased property, notwithstanding the objection of the lessor or without his knowledge, and the movables remaining on the property are not sufficient to secure the privileged claim, the privilege is enforceable on the movables and crops so removed subject to rights acquired on these movables and crops by third parties in good faith. The privilege shall remain in force for three years from the date of removal, even to the detriment of a third party's rights, if the lessor effects within the prescribed time limit an attachment on the movables and crops removed. If, however, the movables and crops are sold to a purchaser in good faith in the market by public auction or by a merchant dealing in similar articles, the lessor must reimburse the purchaser with the price."
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        1143,
+        589,
+        588
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 1143,
+          "citation": "Egyptian Civil Code, Article 1143",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "House and agricultural rents for two years, or for the duration of the lease if less than two years, and all sums due to the lessor by virtue of the contract of lease, are secured by a privilege over all attachable movables and crops existing on the leased property and belonging to the lessee. Subject to the provisions relating to stolen or lost property, this privilege is enforceable even when the immovables belong to the wife of the lessee or to a third party, as long as it is not established that the lessor had knowledge, at the time the movables were brought onto the leased property, of the existence of a third party's rights. This privilege is also enforceable over movables and crops belonging to a sub-lessee, if the lessor had expressly prohibited sub-letting. If sub-letting was not prohibited, the privilege will only be enforceable up to the amount due by the sub-lessee to the principal lessee on the date a formal summons is served by the lessor upon the sub-lessee. These privileged claims are payable out of the proceeds of sale of such movables and crops subject to such privilege, immediately after the claims above mentioned, with the exception of such claims in respect of which the privilege does not operate as against the lessor in as much as he is a third party holder in good faith. "
+        },
+        {
+          "article_number": 1143,
+          "citation": "Egyptian Civil Code, Article 1143",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "If movables and crops so charged are removed from the leased property, notwithstanding the objection of the lessor or without his knowledge, and the movables remaining on the property are not sufficient to secure the privileged claim, the privilege is enforceable on the movables and crops so removed subject to rights acquired on these movables and crops by third parties in good faith. The privilege shall remain in force for three years from the date of removal, even to the detriment of a third party's rights, if the lessor effects within the prescribed time limit an attachment on the movables and crops removed. If, however, the movables and crops are sold to a purchaser in good faith in the market by public auction or by a merchant dealing in similar articles, the lessor must reimburse the purchaser with the price."
+        },
+        {
+          "article_number": 589,
+          "citation": "Egyptian Civil Code, Article 589",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "The lessor has, as warranty for all amounts due to him under the agreement of lease; a lien on all the attachable movables stocking the leased property, while they are subject to the lessor's right of privilege, even when they do not belong to the lessee. The lessor has the right to object to their removal and if, they are removed notwithstanding his objections or without his knowledge, to claim their recovery from their possessor even in good faith, subject always to the rights of such possessor thereon. The lessor cannot exercise his rights of retention or of recovery when the movables have been removed to meet the professional requirements of the lessee in accordance with customary requirements of daily life, or if the movables remaining on the leased property or already recovered as sufficiently fully to cover the rent."
+        },
+        {
+          "article_number": 588,
+          "citation": "Egyptian Civil Code, Article 588",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "Unless the rent is paid in advance or unless the lessee provides for other guarantees, the lessee of a house, warehouse, shop or similar establishment or of agricultural land, is bound in the absence of an agreement to the contrary, to stock the leased property with furniture, goods, crops, cattle, or implements of sufficient value to secure the rent for two years or for the period of the lessee if less than two years."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "The lessor's privilege covers house and agricultural rents for a period of two years, or for the duration of the lease if it is less than two years. Additionally, it covers all other sums due to the lessor by virtue of the lease contract.",
+        "sources": [
+          "Egyptian Civil Code, Article 1143"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 1143",
+            "quote": "House and agricultural rents for two years, or for the duration of the lease if less than two years, and all sums due to the lessor by virtue of the contract of lease, are secured by a privilege over all attachable movables and crops existing on the leased property and belonging to the lessee.",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 4
+        },
+        "usage": {
+          "candidates_token_count": 174,
+          "prompt_token_count": 1327,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 1327
+            }
+          ],
+          "total_token_count": 1501
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 37.790551837999374
+    },
+    {
+      "id": "s2-026-ar",
+      "pair_id": "s2-026",
+      "language": "ar",
+      "question": "هل يجب قيد امتياز الشركاء الناتج عن قسمة عقار، وبأي تاريخ تتحدد مرتبته؟",
+      "category": "partition_privilege",
+      "expected_article_numbers": [
+        1149
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 1149"
+      ],
+      "reference_answer": "This privilege must be inscribed: its rank is fixed by the date of its inscription",
+      "reference_contexts": [
+        "للشركاء الذين اقتسموا عقاراً، حق امتياز عليه تأمينا لما تخوله القسمة من حق في رجوع كل منهم على الآخرين بما فى ذلك حق المطالبة بمعدل القسمة. ويجب أن يقيد هذا الامتياز، وتكون مرتبته من وقت القيد"
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        1149,
+        869,
+        1147
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 1149,
+          "citation": "Egyptian Civil Code, Article 1149",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "للشركاء الذين اقتسموا عقاراً، حق امتياز عليه تأمينا لما تخوله القسمة من حق في رجوع كل منهم على الآخرين بما فى ذلك حق المطالبة بمعدل القسمة. ويجب أن يقيد هذا الامتياز، وتكون مرتبته من وقت القيد"
+        },
+        {
+          "article_number": 869,
+          "citation": "Egyptian Civil Code, Article 869",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) كل قرض يمنحه الاتحاد أحد الشركاء لتمكينه من القيام بالتزاماته يكون مضمونا بامتياز على الجزء المفرز الذى يملكه وعلى حصته الشائعة فى الأجزاء المشتركة من العقار. (٢) وتحسب مرتبة هذا الامتياز من يوم قيده."
+        },
+        {
+          "article_number": 1147,
+          "citation": "Egyptian Civil Code, Article 1147",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) ما يستحق لبائع العقار من الثمن وملحقاته، يكون له امتياز على العقار المبيع. (٢) ويجب أن يقيد الامتياز ولو كان البيع مسجلاً، وتكون مرتبته من وقت القيد."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "نعم، يجب قيد امتياز الشركاء الناتج عن قسمة عقار، وتتحدد مرتبة هذا الامتياز من وقت إتمام القيد.",
+        "sources": [
+          "Egyptian Civil Code, Article 1149"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 1149",
+            "quote": "ويجب أن يقيد هذا الامتياز، وتكون مرتبته من وقت القيد",
+            "language": "ar"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 121,
+          "prompt_token_count": 765,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 765
+            }
+          ],
+          "total_token_count": 886
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 40.80340630200226
+    },
+    {
+      "id": "s2-026-en",
+      "pair_id": "s2-026",
+      "language": "en",
+      "question": "Must the co-owners' privilege arising from partition of an immovable be inscribed, and what date determines its rank?",
+      "category": "partition_privilege",
+      "expected_article_numbers": [
+        1149
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 1149"
+      ],
+      "reference_answer": "This privilege must be inscribed: its rank is fixed by the date of its inscription",
+      "reference_contexts": [
+        "Co-owners who have partitioned an immovable have a privilege over this immovable in respect of their respective remedies against each other resulting from the partition, including the right to claim payment of any difference reverting to them in the partition. This privilege must be inscribed: its rank is fixed by the date of its inscription"
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        1149,
+        1146,
+        1147
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 1149,
+          "citation": "Egyptian Civil Code, Article 1149",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "Co-owners who have partitioned an immovable have a privilege over this immovable in respect of their respective remedies against each other resulting from the partition, including the right to claim payment of any difference reverting to them in the partition. This privilege must be inscribed: its rank is fixed by the date of its inscription"
+        },
+        {
+          "article_number": 1146,
+          "citation": "Egyptian Civil Code, Article 1146",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "Co-owners who have partitioned a movable have a privilege over this movable in respect of their respective remedies against each other resulting from partition, and for repayment of any difference reverting to them in the partition. The privilege of a co-partitioner has the same rank as a vendor's privilege. Should the movable in question be subject to both rights, the first in date will have priority."
+        },
+        {
+          "article_number": 1147,
+          "citation": "Egyptian Civil Code, Article 1147",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "The price and accessories due to a vendor of an immovable are secured by a privilege over the immovable sold. Such privilege must be inscribed, notwithstanding the transcription of the sale, and its rank is fixed by the date of inscription."
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "Yes, the co-owners' privilege arising from the partition of an immovable must be inscribed. The rank of this privilege is determined by the date of its inscription.",
+        "sources": [
+          "Egyptian Civil Code, Article 1149"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 1149",
+            "quote": "This privilege must be inscribed: its rank is fixed by the date of its inscription",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 118,
+          "prompt_token_count": 756,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 756
+            }
+          ],
+          "total_token_count": 874
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 43.573517622979125
+    },
+    {
+      "id": "s2-028-ar",
+      "pair_id": "s2-028",
+      "language": "ar",
+      "question": "ما إشعار الإلغاء المسجل للمادة 389، وما نطاق المواد المذكور في ذلك الإشعار؟",
+      "category": "direct_number_repeal",
+      "expected_article_numbers": [
+        389
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 389"
+      ],
+      "reference_answer": "Articles 389-417 repealed",
+      "reference_contexts": [
+        "Articles 389-417 repealed"
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        389
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 389,
+          "citation": "Egyptian Civil Code, Article 389",
+          "language": "en",
+          "is_repealed": true,
+          "repeal_note": "Articles 389-417 repealed",
+          "qa_flags": [],
+          "content_kind": "repeal_notice",
+          "source_text": "Articles 389-417 repealed"
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "تم إلغاء المادة 389 بموجب إشعار يفيد بإلغاء المواد من 389 إلى 417.",
+        "sources": [
+          "Egyptian Civil Code, Article 389"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 389",
+            "quote": "Articles 389-417 repealed",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 1
+        },
+        "usage": {
+          "candidates_token_count": 107,
+          "prompt_token_count": 460,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 460
+            }
+          ],
+          "total_token_count": 567
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 48.33656117701321
+    },
+    {
+      "id": "s2-028-en",
+      "pair_id": "s2-028",
+      "language": "en",
+      "question": "What repeal notice is recorded for Article 389, and which article range does that notice mention?",
+      "category": "direct_number_repeal",
+      "expected_article_numbers": [
+        389
+      ],
+      "expected_citations": [
+        "Egyptian Civil Code, Article 389"
+      ],
+      "reference_answer": "Articles 389-417 repealed",
+      "reference_contexts": [
+        "Articles 389-417 repealed"
+      ],
+      "reference_answer_kind": "reviewed_verbatim_source_excerpt",
+      "retrieved_article_numbers": [
+        389
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 389,
+          "citation": "Egyptian Civil Code, Article 389",
+          "language": "en",
+          "is_repealed": true,
+          "repeal_note": "Articles 389-417 repealed",
+          "qa_flags": [],
+          "content_kind": "repeal_notice",
+          "source_text": "Articles 389-417 repealed"
+        }
+      ],
+      "faithfulness": 1.0,
+      "answer_accuracy": null,
+      "retrieval_hit": 1,
+      "retrieval_recall": 1.0,
+      "retrieval_rr": 1.0,
+      "result": {
+        "answer": "Article 389 is repealed, and the repeal notice specifies that Articles 389 through 417 have been repealed.",
+        "sources": [
+          "Egyptian Civil Code, Article 389"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 389",
+            "quote": "Articles 389-417 repealed",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 1
+        },
+        "usage": {
+          "candidates_token_count": 102,
+          "prompt_token_count": 450,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 450
+            }
+          ],
+          "total_token_count": 552
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 51.300930793979205
+    },
+    {
+      "id": "s2-u01-ar",
+      "pair_id": "s2-u01",
+      "language": "ar",
+      "question": "ما الجرعة الموصى بها من لقاح الإنفلونزا لطفل عمره خمس سنوات؟",
+      "category": "unsupported",
+      "expected_article_numbers": [],
+      "expected_citations": [],
+      "reference_answer": "",
+      "reference_contexts": [],
+      "reference_answer_kind": "unsupported_probe",
+      "retrieved_article_numbers": [
+        764,
+        940,
+        1004
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 764,
+          "citation": "Egyptian Civil Code, Article 764",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) لا يترتب على البيانات الخاطئة ولا على الغلط فى سن الشخص الذى عقد التأمين على حياته بطلان التأمين، إلا إذا كانت السن الحقيقة للمؤمن عليه تجاوز الحد المعين الذى نصت عليه تعريفة التأمين. (٢) وفى غير ذلك من الأحوال، إذا ترتب على البيانات الخاطئة أو الغلط، أن القسط المتفق عليه أقل من القسط الذى كان يجب أداؤه، وجب تخفيض مبلغ التأمين بما يتعادل مع النسبة بين القسط المتفق عليه والقسط الواجب أداؤه على أساس السن الحقيقة. (٣) أما إذا كان القسط المتفق على دفعه أكبر مما كان يجب دفعه على أساس السن الحقيقة للؤمن على حياته، وجب على المؤمن أن يرد دون فوائد، الزيادة التى حصل عليها، وأن يخفض الأقساط التالية إلى الحد الذى يتناسب مع السن الحقيقية للمؤمن عليه."
+        },
+        {
+          "article_number": 940,
+          "citation": "Egyptian Civil Code, Article 940",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "على من يريد الأخذ بالشفعة أن يعلن رغبته فيها إلى كل من البائع والمشترى خلال خمسة عشر يوما من تاريخ الإنذار الرسمى الذى يوجهه إليه البائع أو المشترى وإلا سقط حقه. ويزاد على تلك المدة ميعاد المسافة إذا اقتضى الأمر ذلك."
+        },
+        {
+          "article_number": 1004,
+          "citation": "Egyptian Civil Code, Article 1004",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) لا يجوز التحكير بأقل من أجرة المثل. (٢) وتزيد هذه الأجرة أو تنقص كلما بلغ التغيير فى أجرة المثل حدا يجوز الخمس زيادة أو نقصاً، على أن يكون قد مضى ثماني سنوات على أخر تقدير."
+        }
+      ],
+      "faithfulness": null,
+      "answer_accuracy": null,
+      "retrieval_hit": 0,
+      "retrieval_recall": null,
+      "retrieval_rr": 0,
+      "result": {
+        "answer": "لا تتوفر في النصوص المسترجعة أدلة كافية للإجابة عن هذا السؤال.",
+        "sources": [],
+        "insufficient_evidence": true,
+        "evidence": [],
+        "reason": "model_reported_insufficient_evidence",
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 79,
+          "prompt_token_count": 911,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 911
+            }
+          ],
+          "total_token_count": 990
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 14.558928830985678
+    },
+    {
+      "id": "s2-u01-en",
+      "pair_id": "s2-u01",
+      "language": "en",
+      "question": "What influenza vaccine dose is recommended for a five-year-old child?",
+      "category": "unsupported",
+      "expected_article_numbers": [],
+      "expected_citations": [],
+      "reference_answer": "",
+      "reference_contexts": [],
+      "reference_answer_kind": "unsupported_probe",
+      "retrieved_article_numbers": [
+        425,
+        764,
+        969
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 425,
+          "citation": "Egyptian Civil Code, Article 425",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "When an immovable belonging to a person who is legally incapable, has been sold with a lesion of more than one fifth of its value, the vendor will have a right of action with a view to making up the price to four fifths of the normal price. In order to ascertain whether the lesion was of more than one fifth, the value of the immovable at the time of the sale should be ascertained."
+        },
+        {
+          "article_number": 764,
+          "citation": "Egyptian Civil Code, Article 764",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "Neither incorrect particulars nor misstatements as to the age of the life assured shall render the assurance void, unless the true age of the life assured exceeds the limit specified in the table of rates. In all other cases, if, as a result of incorrect particulars or misstatements, the premium agreed upon is less than the premium which should have been paid, the sum assured shall be reduced in the proportion that the agreed premium bears to the premiums which should be paid on the basis of the true age. Should, however, the agreed premium be higher than the premium which should have been paid on the basis of the true age of the life assured the insurer shall be bound to refund, without interest, the excess received by him and to reduce the subsequent premiums to the limit corresponding to the true age of the life assured."
+        },
+        {
+          "article_number": 969,
+          "citation": "Egyptian Civil Code, Article 969",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "When a person remains in possession, in good faith and by virtue of a just title, of an immovable or of a real right over an immovable, the period of acquisitive prescription is five years. Good faith is required only at the moment of conveyance of the right. A just title is a document of title emanating from a person who is not the owner of the property or the beneficiary of the right that it is desired to acquire by prescription, and must be duly transcribed."
+        }
+      ],
+      "faithfulness": null,
+      "answer_accuracy": null,
+      "retrieval_hit": 0,
+      "retrieval_recall": null,
+      "retrieval_rr": 0,
+      "result": {
+        "answer": "The retrieved passages do not provide sufficient evidence to answer this question.",
+        "sources": [],
+        "insufficient_evidence": true,
+        "evidence": [],
+        "reason": "model_reported_insufficient_evidence",
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 51,
+          "prompt_token_count": 896,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 896
+            }
+          ],
+          "total_token_count": 947
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 10.60683130499092
+    },
+    {
+      "id": "s2-u02-ar",
+      "pair_id": "s2-u02",
+      "language": "ar",
+      "question": "كيف أحسب سرعة الإفلات من سطح المريخ باستخدام كتلته ونصف قطره؟",
+      "category": "unsupported",
+      "expected_article_numbers": [],
+      "expected_citations": [],
+      "reference_answer": "",
+      "reference_contexts": [],
+      "reference_answer_kind": "unsupported_probe",
+      "retrieved_article_numbers": [
+        940,
+        380,
+        536
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 940,
+          "citation": "Egyptian Civil Code, Article 940",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "على من يريد الأخذ بالشفعة أن يعلن رغبته فيها إلى كل من البائع والمشترى خلال خمسة عشر يوما من تاريخ الإنذار الرسمى الذى يوجهه إليه البائع أو المشترى وإلا سقط حقه. ويزاد على تلك المدة ميعاد المسافة إذا اقتضى الأمر ذلك."
+        },
+        {
+          "article_number": 380,
+          "citation": "Egyptian Civil Code, Article 380",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "تحسب مدة التقادم بالأيام ولا بالساعات ولا بحسب اليوم الأول، وتكمل المدة بانقضاء أخر يوم منها."
+        },
+        {
+          "article_number": 536,
+          "citation": "Egyptian Civil Code, Article 536",
+          "language": "ar",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "(١) تقسم أموال الشركة بين الشركاء جميعا وذلك بعد استيفاء الدائنين لحقوقهم، وبعد استترال المبالغ اللازمة لوفاء الديون التي لم تحل أو الديون المتنازع فيها، وبعد رد المصروفات أو القروض التي يكون أحد الشركاء قد باشرها في مصلحة الشركة. (٢) وتختص كل واحد من الشركاء بمبلغ يعادل قيمة الحصة التي قدمها في راس المال، كما هي مبينة ف العقد، أو يعادل قيمة هذه الحصة وقت تسليمها إذا لم تبين قيمتها في العقد، ما لم يكن الشريك قد اقتصر على تقدي عمله أو اقتصر فيما قدمه من شيء على حق المنفعة فيه أو على مجرد الانتفاع به. (٣) وإذا بقي شيء بعد ذلك وجبت قسمته بين الشركاء بنسبة نصيب كل منهم في الأرباح. (٤) أما إذا لم يكف صافي مال الشركة للوفاء بحصص الشركاء فان الخسارة توزع عليهم جميعا بحسب النسبة المتفق عليها في توزيع الخسائر."
+        }
+      ],
+      "faithfulness": null,
+      "answer_accuracy": null,
+      "retrieval_hit": 0,
+      "retrieval_recall": null,
+      "retrieval_rr": 0,
+      "result": {
+        "answer": "لا تتوفر في النصوص المسترجعة أدلة كافية للإجابة عن هذا السؤال.",
+        "sources": [],
+        "insufficient_evidence": true,
+        "evidence": [],
+        "reason": "model_reported_insufficient_evidence",
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "ar",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 84,
+          "prompt_token_count": 901,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 901
+            }
+          ],
+          "total_token_count": 985
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 10.872949350014096
+    },
+    {
+      "id": "s2-u02-en",
+      "pair_id": "s2-u02",
+      "language": "en",
+      "question": "How do I calculate escape velocity from the surface of Mars using its mass and radius?",
+      "category": "unsupported",
+      "expected_article_numbers": [],
+      "expected_citations": [],
+      "reference_answer": "",
+      "reference_contexts": [],
+      "reference_answer_kind": "unsupported_probe",
+      "retrieved_article_numbers": [
+        626,
+        36,
+        3
+      ],
+      "retrieved_contexts": [
+        {
+          "article_number": 626,
+          "citation": "Egyptian Civil Code, Article 626",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "The amodiation does not determine on the death of the lessor, but determines on the death of the lessee."
+        },
+        {
+          "article_number": 36,
+          "citation": "Egyptian Civil Code, Article 36",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "The degree of relationship will be calculated, as regards direct lineal relationship, by ascending to the common ancestor and counting each relative excluding the common ancestor. The degree of relationship will be calculated, as regards collateral relationship by ascending from the descendant to the common ancestor, then descending to the other descendant. Each relative, excluding the common ancestor counts for one degree."
+        },
+        {
+          "article_number": 3,
+          "citation": "Egyptian Civil Code, Article 3",
+          "language": "en",
+          "is_repealed": false,
+          "repeal_note": null,
+          "qa_flags": [],
+          "content_kind": "article_text",
+          "source_text": "Periods of limitation will be calculated according to the Gregorian calendar, unless expressly provided otherwise by a law."
+        }
+      ],
+      "faithfulness": null,
+      "answer_accuracy": null,
+      "retrieval_hit": 0,
+      "retrieval_recall": null,
+      "retrieval_rr": 0,
+      "result": {
+        "answer": "The retrieved passages do not provide sufficient evidence to answer this question.",
+        "sources": [],
+        "insufficient_evidence": true,
+        "evidence": [],
+        "reason": "model_reported_insufficient_evidence",
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 3,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 3
+        },
+        "usage": {
+          "candidates_token_count": 53,
+          "prompt_token_count": 667,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 667
+            }
+          ],
+          "total_token_count": 720
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 16.93009560898645
+    }
+  ],
+  "generation_config": {
+    "schema_version": 1,
+    "provider": "google",
+    "model": "gemini-3.1-flash-lite",
+    "thinking_level": "minimal",
+    "api_key_env": "GOOGLE_API_KEY",
+    "prompt_version": "civil-code-grounded-v1",
+    "grounding_version": "exact-evidence-and-source-notes-v1",
+    "temperature": 0.0,
+    "max_output_tokens": 2048,
+    "thinking_budget": 0,
+    "timeout_ms": 60000,
+    "retrieval_top_k": 3,
+    "max_context_characters": 24000
+  },
+  "retrieval_config": {
+    "schema_version": 1,
+    "model_id": "intfloat/multilingual-e5-base",
+    "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+    "dimensions": 768,
+    "max_tokens": 512,
+    "query_prefix": "query: ",
+    "passage_prefix": "passage: ",
+    "normalize_embeddings": true,
+    "normalization_version": "extractor-arabic-search-v1",
+    "chunk_strategy": "whole_article_or_source_provisions",
+    "source_provision_starts": {
+      "egyptian-civil-code:1143:en:0": [
+        "House and agricultural rents",
+        "Subject to the provisions relating to stolen or lost property",
+        "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+        "These privileged claims are payable",
+        "If movables and crops so charged are removed"
+      ]
+    },
+    "overlap": 0,
+    "collection": "egyptian-civil-code-e5-base",
+    "distance": "cosine",
+    "device": "auto",
+    "gpu_precision": "float16",
+    "cpu_precision": "float32",
+    "cpu_threads": 6,
+    "batch_size": 4
+  },
+  "pipeline_fingerprint": "f3dceb41e96c96f66063ba0c312c3b600bbc28e2c0416998a0734c2059ea629d",
+  "questions_sha256": "ac7084a279bc928542613ee894b27c5da95d6aa17929b24778b84acdf634e722",
+  "reused_record_count": 0,
+  "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+  "judge_model": "gemini-3.1-flash-lite",
+  "judge_prompt_version": "legal-logical-claims-v1",
+  "judge_prompt_sha256": "04bc9d28c7d0256d18b47e807b61616336c1efc1a4db63934dd0e763474846ed",
+  "packages": {
+    "ragas": "0.4.3",
+    "instructor": "1.17.0",
+    "google-genai": "2.29.0",
+    "mlflow": "3.17.0"
+  },
+  "mlflow_run_id": "1f850cd6221742938bfe824f6d03209b",
+  "judge_sanity_check": {
+    "supported_control": 1.0,
+    "unsupported_control": 0.0
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "variant": {
+    "name": "top-k-8",
+    "top_k": 8,
+    "document_language": "all"
+  },
+  "generation_config": {
+    "schema_version": 1,
+    "provider": "google",
+    "model": "gemini-3.1-flash-lite",
+    "thinking_level": "minimal",
+    "api_key_env": "GOOGLE_API_KEY",
+    "prompt_version": "civil-code-grounded-v1",
+    "grounding_version": "exact-evidence-and-source-notes-v1",
+    "temperature": 0.0,
+    "max_output_tokens": 2048,
+    "thinking_budget": 0,
+    "timeout_ms": 60000,
+    "retrieval_top_k": 8,
+    "max_context_characters": 24000
+  },
+  "retrieval_config": {
+    "schema_version": 1,
+    "model_id": "intfloat/multilingual-e5-base",
+    "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+    "dimensions": 768,
+    "max_tokens": 512,
+    "query_prefix": "query: ",
+    "passage_prefix": "passage: ",
+    "normalize_embeddings": true,
+    "normalization_version": "extractor-arabic-search-v1",
+    "chunk_strategy": "whole_article_or_source_provisions",
+    "source_provision_starts": {
+      "egyptian-civil-code:1143:en:0": [
+        "House and agricultural rents",
+        "Subject to the provisions relating to stolen or lost property",
+        "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+        "These privileged claims are payable",
+        "If movables and crops so charged are removed"
+      ]
+    },
+    "overlap": 0,
+    "collection": "egyptian-civil-code-e5-base",
+    "distance": "cosine",
+    "device": "auto",
+    "gpu_precision": "float16",
+    "cpu_precision": "float32",
+    "cpu_threads": 6,
+    "batch_size": 4
+  },
+  "pipeline_fingerprint": "f3dceb41e96c96f66063ba0c312c3b600bbc28e2c0416998a0734c2059ea629d"
+}

@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local MLflow database/model artifacts and resumable evaluation scratch files
+data/mlflow/
+mlruns/
+mlartifacts/
+reports/experiments/*.partial.json

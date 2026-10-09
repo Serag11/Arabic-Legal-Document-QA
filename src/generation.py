@@ -15,7 +15,7 @@ else:
     from retrieval import Retriever
 
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(os.environ.get("LEGAL_QA_ROOT", Path(__file__).resolve().parent.parent)).resolve()
 DEFAULT_GENERATION_CONFIG = ROOT / "config/generation.json"
 PROMPT_PATH = ROOT / "prompts/answer_v1.txt"
 ARABIC = re.compile(r"[\u0600-\u06ff]")
@@ -87,7 +87,8 @@ class GoogleGenerator:
                         system_instruction=system_prompt,
                         temperature=self.config["temperature"],
                         max_output_tokens=self.config["max_output_tokens"],
-                        thinking_config=types.ThinkingConfig(thinking_budget=self.config["thinking_budget"]),
+                        thinking_config=(types.ThinkingConfig(thinking_level=self.config["thinking_level"])
+                                         if self.config.get("thinking_level") else types.ThinkingConfig(thinking_budget=self.config["thinking_budget"])),
                         response_mime_type="application/json", response_json_schema=GeneratedAnswer.model_json_schema(),
                     ),
                 )
@@ -96,7 +97,10 @@ class GoogleGenerator:
             else:
                 answer = GeneratedAnswer.model_validate_json(response.text or "")
         except errors.APIError as exc:
-            raise GenerationError(f"Google generation failed (HTTP {exc.code})") from None
+            failure = GenerationError(f"Google generation failed (HTTP {exc.code})")
+            failure.status_code = exc.code
+            failure.daily_quota = exc.code == 429 and "PerDay" in str(exc)
+            raise failure from None
         except ValidationError:
             raise GenerationError("Google returned an invalid structured answer") from None
         except GenerationError:
@@ -156,11 +160,11 @@ def validate_grounding(answer, context):
 
 
 class AnsweringService:
-    def __init__(self, retriever=None, generator=None, config=None, index=None):
+    def __init__(self, retriever=None, generator=None, config=None, index=None, prompt_path=None):
         self.config = config or load_generation_config()
         self.retriever = retriever or Retriever(index or ROOT / "data/retrieval/chroma")
         self.generator = generator or GoogleGenerator(self.config)
-        self.prompt = PROMPT_PATH.read_text(encoding="utf-8")
+        self.prompt = Path(prompt_path or PROMPT_PATH).read_text(encoding="utf-8")
 
     def ask(self, question, *, language=None, filters=None):
         question = question.strip()

@@ -1,0 +1,16 @@
+.git
+.dvc
+.venv
+.env
+.env.*
+data
+evaluation
+reports
+tests
+__pycache__
+**/__pycache__
+.pytest_cache
+mlruns
+mlartifacts
+*.db
+*.egg-info

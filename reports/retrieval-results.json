@@ -275,7 +275,7 @@
           "rank": 5
         }
       ],
-      "seconds": 7.2825971560087055,
+      "seconds": 8.337730538012693,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -468,7 +468,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05880051900749095,
+      "seconds": 0.048833936016308144,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -661,7 +661,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06295466399751604,
+      "seconds": 0.048411572992336005,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -879,7 +879,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0591616680030711,
+      "seconds": 0.08943958600866608,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1072,7 +1072,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05271144799189642,
+      "seconds": 0.04360267400625162,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1265,7 +1265,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.055654178984696046,
+      "seconds": 0.045176147017627954,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1458,7 +1458,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.052535162976710126,
+      "seconds": 0.054462450003484264,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1676,7 +1676,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05258231802145019,
+      "seconds": 0.052210343012120575,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1869,7 +1869,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05354715100838803,
+      "seconds": 0.04981090099317953,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -2062,7 +2062,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05195502899005078,
+      "seconds": 0.048761187994387,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2255,7 +2255,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06412602899945341,
+      "seconds": 0.05596201098524034,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.3333333333333333,
@@ -2448,7 +2448,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0663892819720786,
+      "seconds": 0.05499218299519271,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2641,7 +2641,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.059133438975550234,
+      "seconds": 0.053773611987708136,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2834,7 +2834,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05719100998248905,
+      "seconds": 0.056704065995290875,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3027,7 +3027,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05240152298938483,
+      "seconds": 0.04413738998118788,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -3220,7 +3220,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04684312400058843,
+      "seconds": 0.04568116899463348,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3413,7 +3413,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05630901799304411,
+      "seconds": 0.0593364629894495,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3606,7 +3606,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0664935480162967,
+      "seconds": 0.05864919401938096,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3799,7 +3799,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0627224869967904,
+      "seconds": 0.054800812009489164,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3992,7 +3992,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06925453300937079,
+      "seconds": 0.0683426299947314,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4185,7 +4185,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.057476125977700576,
+      "seconds": 0.054046461009420455,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4378,7 +4378,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06781521000084467,
+      "seconds": 0.05132847698405385,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4571,7 +4571,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07109358001616783,
+      "seconds": 0.052942855982109904,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4764,7 +4764,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06723113000043668,
+      "seconds": 0.053605241992045194,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4957,7 +4957,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.058477412996580824,
+      "seconds": 0.05360553401988,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5150,7 +5150,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06926244799979031,
+      "seconds": 0.05995467398315668,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5343,7 +5343,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.062294433009810746,
+      "seconds": 0.1582923140085768,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5536,7 +5536,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07024779601488262,
+      "seconds": 0.07516171401948668,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5729,7 +5729,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.062287313980050385,
+      "seconds": 0.05676949501503259,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -5922,7 +5922,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06612128298729658,
+      "seconds": 0.06037329099490307,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6115,7 +6115,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.058985287992982194,
+      "seconds": 0.045791826996719465,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -6308,7 +6308,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06273956599761732,
+      "seconds": 0.057194394001271576,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6501,7 +6501,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05710902399732731,
+      "seconds": 0.05324854498030618,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6694,7 +6694,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06225072799134068,
+      "seconds": 0.05406665301416069,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6912,7 +6912,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05380180399515666,
+      "seconds": 0.044922998000402004,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7130,7 +7130,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.056658612011233345,
+      "seconds": 0.052742843981832266,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7323,7 +7323,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.055978497985051945,
+      "seconds": 0.05048152297968045,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7516,7 +7516,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07062315801158547,
+      "seconds": 0.05873756398796104,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.3333333333333333,
@@ -7709,7 +7709,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06363720999797806,
+      "seconds": 0.09654946901719086,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7902,7 +7902,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06464405998121947,
+      "seconds": 0.05705754901282489,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -8095,7 +8095,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06259371302439831,
+      "seconds": 0.05816831401898526,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8288,7 +8288,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06795584998326376,
+      "seconds": 0.06184468499850482,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8344,7 +8344,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0019869929819833487,
+      "seconds": 0.0023870209988672286,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8400,7 +8400,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0016530909924767911,
+      "seconds": 0.0020048070000484586,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8593,7 +8593,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07278939001844265,
+      "seconds": 0.07448693001060747,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8786,7 +8786,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07025178297772072,
+      "seconds": 0.11711770299007185,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -8979,7 +8979,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07530407400918193,
+      "seconds": 0.05246996600180864,
       "hit_at_k": 0,
       "recall_at_k": 0.0,
       "reciprocal_rank": 0,
@@ -9172,7 +9172,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06849531599436887,
+      "seconds": 0.05107716401107609,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9365,7 +9365,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.09737372299423441,
+      "seconds": 0.07347439299337566,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9583,7 +9583,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.08493019701563753,
+      "seconds": 0.07282423999276944,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9776,7 +9776,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06565662502544001,
+      "seconds": 0.05303205901873298,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9969,7 +9969,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06358838401501998,
+      "seconds": 0.05308901201351546,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10024,7 +10024,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0018825889856088907,
+      "seconds": 0.001331356994342059,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10079,7 +10079,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0013159129885025322,
+      "seconds": 0.001097014988772571,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10132,7 +10132,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.001331811014097184,
+      "seconds": 0.0015412649954669178,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10185,7 +10185,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0012899430003017187,
+      "seconds": 0.0013049890112597495,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10202,7 +10202,7 @@
         940,
         1004,
         45,
-        130
+        425
       ],
       "results": [
         {
@@ -10342,29 +10342,29 @@
           "rank": 4
         },
         {
-          "article_number": 130,
-          "citation": "Egyptian Civil Code, Article 130",
-          "score": 0.7788748741149902,
+          "article_number": 425,
+          "citation": "Egyptian Civil Code, Article 425",
+          "score": 0.7759990692138672,
           "method": "semantic",
           "passages": [
             {
-              "document_id": "egyptian-civil-code:130:ar:0",
+              "document_id": "egyptian-civil-code:425:ar:0",
               "chunk_index": 0,
               "source_field": "ar_text",
               "source_start": 0,
-              "source_end": 95,
-              "source_text": "يراعى فى تطبيق المادة السابقة عدم الإخلال بالأحكام الخاصة بالغبن فى بعض العقود أو بسعر الفائدة.",
-              "embedding_text": "يراعي في تطبيق المادة السابقة عدم الاخلال بالاحكام الخاصة بالغبن في بعض العقود او بسعر الفايدة.",
+              "source_end": 222,
+              "source_text": "(١) إذا بيع عقار مملوك لشخص لا تتوافر فيه الأهلية وكان في البيع غبن يزيد على الخمس فالبائع أن يطلب تكملة الثمن إلى أربعة أخماس ثمن المثل. (٢) ويجب لتقدير ما إذا كان الغبن يزيد على الخمس أن يقوم العقار بحسب قيمته وقت البيع.",
+              "embedding_text": "(١) اذا بيع عقار مملوك لشخص لا تتوافر فيه الاهلية وكان في البيع غبن يزيد علي الخمس فالبايع ان يطلب تكملة الثمن الي اربعة اخماس ثمن المثل. (٢) ويجب لتقدير ما اذا كان الغبن يزيد علي الخمس ان يقوم العقار بحسب قيمته وقت البيع.",
               "metadata": {
                 "corpus_id": "egyptian-civil-code",
-                "article_number": 130,
-                "citation": "Egyptian Civil Code, Article 130",
+                "article_number": 425,
+                "citation": "Egyptian Civil Code, Article 425",
                 "book": "Obligations or Personal Rights",
-                "chapter": "Sources of Obligations",
-                "section": "Contracts",
-                "topic": "Consent",
-                "source_book": "Obligations Generally",
-                "source_page": 14,
+                "chapter": "Contracts as Regards Ownership",
+                "section": "Sale",
+                "topic": "Elements of Sale",
+                "source_book": "Specific Contracts",
+                "source_page": 54,
                 "language": "ar",
                 "is_repealed": false,
                 "repeal_note": null,
@@ -10376,7 +10376,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05725101102143526,
+      "seconds": 0.047735772997839376,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10567,7 +10567,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.054034512024372816,
+      "seconds": 0.04346504600835033,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10758,7 +10758,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.057105002022581175,
+      "seconds": 0.05347490499843843,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10949,7 +10949,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05549463999341242,
+      "seconds": 0.05110834600054659,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,

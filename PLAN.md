@@ -150,23 +150,25 @@ POST /ask
 
 ## Phase 4 — Package and expose the service
 
-- [ ] Create a `src/` package and `pyproject.toml` configuration suitable for installing the project.
-- [ ] Implement a FastAPI `/ask` endpoint with Pydantic request/response schemas; reject empty questions with HTTP 422.
-- [ ] Implement `/health` reporting service health and the number of indexed documents/articles.
-- [ ] Load the retriever/index once during application startup, not once per request.
-- [ ] Add API tests that do not require a live external LLM call (mock the generator/retriever boundary).
-- [ ] Add a Dockerfile and Compose configuration so a reviewer can run the service locally.
-- [ ] Update `README.md` with a short project description, architecture, example request, and exactly three quickstart commands.
+- [X] Create installable `src/` package with setuptools and `legal-qa` / `legal-qa-evaluate` entry points; external resources are located via `LEGAL_QA_ROOT` for deployment.
+- [X] Implement FastAPI `/ask` with Pydantic schemas and HTTP 422 for empty/invalid questions.
+- [X] Implement `/health` reporting service status and indexed document/article counts.
+- [X] Load a shared retriever at startup; serialize the baseline CPU path to avoid duplicate encoder loads.
+- [X] Add offline API lifecycle, response, validation, and provider-error tests.
+- [X] Build Docker image and verify Compose startup/health and a live cited `/ask` response; use read-only index/cache mounts and runtime `.env` credentials.
+- [X] Update README with architecture, request examples, and exactly three quickstart commands.
 
 ## Phase 5 — Evaluate and track experiments
 
-- [ ] Build a fixed, manually checked evaluation set of at least 20 questions with reference answers/contexts and expected article citations.
-- [ ] Include Arabic and English questions, paraphrases, cross-language retrieval checks, and questions that should be refused as unsupported.
-- [ ] Measure retrieval quality and RAG answer quality; log the metric definitions and baseline results.
-- [ ] Expand the evaluation set to at least 50 questions for the final RAGAS/monitoring deliverables.
-- [ ] Run at least five MLflow experiments comparing chunking/retrieval configurations; log `chunk_size`, `overlap`, `embedding_model`, retrieval settings, and faithfulness.
-- [ ] Register the best configuration/model artifact in MLflow after selecting it based on measured results.
-- [ ] Add a CI quality gate that fails if faithfulness drops below the agreed threshold (the handbook specifies 0.75 for the 20-question gate).
+- [X] Derive fixed answer-evaluation records from the user-reviewed retrieval pairs, preserving their reference excerpts, source contexts, and expected citations.
+- [X] Include Arabic/English paraphrases, source exceptions, opposite-language retrieval experiment, and unsupported refusal probes.
+- [X] Measure retrieval hit/recall/MRR, citation/answer coverage, refusal accuracy and RAGAS faithfulness; document metric definitions and results in `reports/answer-evaluation.md`.
+- [X] Expand to 60 language-specific questions (30 reviewed pairs): 56 supported questions and four refusal probes; record provenance in `evaluation/answer_questions.manifest.json`.
+- [X] Run five MLflow retrieval comparisons on the same 24-question subset; log chunk size/units/strategy, overlap, embedding model/revision, retrieval settings and faithfulness. Validate the selected top-k-8 configuration on all 60 questions.
+- [X] Register `ArabicLegalDocumentQA` version 1 with alias `champion`; verify artifact reload and live prediction. Credentials and Google weights are not stored.
+- [X] Add and locally pass the CI gate: complete fixed-dataset coverage, >=20 scored supported questions, no operational errors, current provenance and coverage-adjusted faithfulness >=0.75. Measured result: 0.9226 with 52 scored supported answers.
+
+**Stages 4 and 5 complete:** installable package, healthy Docker/FastAPI service, 64 offline tests, five comparative runs, full 60-question evaluation, registered champion and locally passing CI gate. The service baseline remains top-k 5; the registered champion uses top-k 8. Live GitHub execution and delivery/publishing are Stage 6.
 
 ## Phase 6 — Add CI and delivery automation
 
@@ -192,8 +194,8 @@ Complete these after the baseline RAG service, evaluation, and CI are working.
 
 ## Suggested order for the next work session
 
-1. Start Stage 3 cited answer generation using Google's API and `GOOGLE_API_KEY` from the root `.env`.
-2. Test supported questions, insufficient evidence, repeal notices, and the missing-language exception.
-3. Retain the Arabic Article 1065 miss and deferred source QA/model comparisons as follow-ups.
+1. Start Stage 6 CI/delivery and choose how the registered champion is deployed.
+2. Complete deferred DVC remote reproduction before promising clean-checkout data availability.
+3. Retain source QA and the Arabic Article 1065 retrieval miss as follow-ups.
 
 **Return to Phase 1:** review all 20 sampled article crops and every flagged record; review the zero-width alef diagnostic sample; document findings in `reports/corpus-extraction.md`; add the Article 1021 regression assertion; configure a DVC remote and verify clean-checkout push/pull reproduction. Keep these tasks unchecked until completed, and rebuild the index after any corpus corrections.
