@@ -1,5 +1,13 @@
 {
-  "draft_ground_truth": true,
+  "draft_ground_truth": false,
+  "evaluation_review": {
+    "status": "approved",
+    "review_method": "user-confirmed manual review",
+    "evaluation_file": "evaluation/retrieval_questions.jsonl",
+    "evaluation_sha256": "109a7978fca2e345c5754fa35c4d2ebf46b48fa9280de42b63eb67f866901953",
+    "scope": "Bilingual retrieval questions, expected article labels, and reference evidence",
+    "note": "User confirmed manual review before starting Stage 3. Earlier result files retain their draft-at-run-time flag."
+  },
   "k": 5,
   "pair_count": 30,
   "metrics": {
@@ -267,7 +275,7 @@
           "rank": 5
         }
       ],
-      "seconds": 7.167183652985841,
+      "seconds": 7.2825971560087055,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -460,7 +468,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07086191198322922,
+      "seconds": 0.05880051900749095,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -653,7 +661,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06588519000797532,
+      "seconds": 0.06295466399751604,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -871,7 +879,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06999770400580019,
+      "seconds": 0.0591616680030711,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1064,7 +1072,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07509728299919516,
+      "seconds": 0.05271144799189642,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1257,7 +1265,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06650006998097524,
+      "seconds": 0.055654178984696046,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1450,7 +1458,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05417791401850991,
+      "seconds": 0.052535162976710126,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1668,7 +1676,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05372067299322225,
+      "seconds": 0.05258231802145019,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1861,7 +1869,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05727875899174251,
+      "seconds": 0.05354715100838803,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -2054,7 +2062,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0573702150140889,
+      "seconds": 0.05195502899005078,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2247,7 +2255,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07047085699741729,
+      "seconds": 0.06412602899945341,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.3333333333333333,
@@ -2440,7 +2448,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07006905300659128,
+      "seconds": 0.0663892819720786,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2633,7 +2641,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06557057102327235,
+      "seconds": 0.059133438975550234,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2826,7 +2834,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06353141900035553,
+      "seconds": 0.05719100998248905,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3019,7 +3027,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06226301201968454,
+      "seconds": 0.05240152298938483,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -3212,7 +3220,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05441662500379607,
+      "seconds": 0.04684312400058843,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3405,7 +3413,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06462093401933089,
+      "seconds": 0.05630901799304411,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3598,7 +3606,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0701283459784463,
+      "seconds": 0.0664935480162967,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3791,7 +3799,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06475937398499809,
+      "seconds": 0.0627224869967904,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3984,7 +3992,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0704791950120125,
+      "seconds": 0.06925453300937079,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4177,7 +4185,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0583446110249497,
+      "seconds": 0.057476125977700576,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4370,7 +4378,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05540364599437453,
+      "seconds": 0.06781521000084467,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4563,7 +4571,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.057107491011265665,
+      "seconds": 0.07109358001616783,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4756,7 +4764,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05493643198860809,
+      "seconds": 0.06723113000043668,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4949,7 +4957,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05764257401460782,
+      "seconds": 0.058477412996580824,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5142,7 +5150,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06252051997580566,
+      "seconds": 0.06926244799979031,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5335,7 +5343,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05410487297922373,
+      "seconds": 0.062294433009810746,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5528,7 +5536,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06022731598932296,
+      "seconds": 0.07024779601488262,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5721,7 +5729,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.060502617998281494,
+      "seconds": 0.062287313980050385,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -5914,7 +5922,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06189325702143833,
+      "seconds": 0.06612128298729658,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6107,7 +6115,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05570403698948212,
+      "seconds": 0.058985287992982194,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -6300,7 +6308,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05959350400371477,
+      "seconds": 0.06273956599761732,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6493,7 +6501,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05571619397960603,
+      "seconds": 0.05710902399732731,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6686,7 +6694,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05601026301155798,
+      "seconds": 0.06225072799134068,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6733,6 +6741,31 @@
                 "source_book": "The Principal Real Rights",
                 "source_page": 113,
                 "language": "ar",
+                "is_repealed": false,
+                "repeal_note": null,
+                "qa_flags": [],
+                "content_kind": "article_text"
+              }
+            },
+            {
+              "document_id": "egyptian-civil-code:802:en:0",
+              "chunk_index": 0,
+              "source_field": "text_en",
+              "source_start": 0,
+              "source_end": 104,
+              "source_text": "The owner of a thing has alone, within the limits of the law, the right to use, enjoy and dispose of it.",
+              "embedding_text": "The owner of a thing has alone, within the limits of the law, the right to use, enjoy and dispose of it.",
+              "metadata": {
+                "corpus_id": "egyptian-civil-code",
+                "article_number": 802,
+                "citation": "Egyptian Civil Code, Article 802",
+                "book": "Real Rights",
+                "chapter": "The Right of Ownership",
+                "section": "The Right of Ownership in General",
+                "topic": "Limits and Sanctions",
+                "source_book": "The Principal Real Rights",
+                "source_page": 113,
+                "language": "en",
                 "is_repealed": false,
                 "repeal_note": null,
                 "qa_flags": [],
@@ -6879,7 +6912,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04649322500335984,
+      "seconds": 0.05380180399515666,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6926,6 +6959,31 @@
                 "source_book": "The Principal Real Rights",
                 "source_page": 113,
                 "language": "en",
+                "is_repealed": false,
+                "repeal_note": null,
+                "qa_flags": [],
+                "content_kind": "article_text"
+              }
+            },
+            {
+              "document_id": "egyptian-civil-code:802:ar:0",
+              "chunk_index": 0,
+              "source_field": "ar_text",
+              "source_start": 0,
+              "source_end": 69,
+              "source_text": "لمالك الشيء وحده، فى حدود القانون، حق استعماله واستغلاله والتصرف فيه.",
+              "embedding_text": "لمالك الشيء وحده، في حدود القانون، حق استعماله واستغلاله والتصرف فيه.",
+              "metadata": {
+                "corpus_id": "egyptian-civil-code",
+                "article_number": 802,
+                "citation": "Egyptian Civil Code, Article 802",
+                "book": "Real Rights",
+                "chapter": "The Right of Ownership",
+                "section": "The Right of Ownership in General",
+                "topic": "Limits and Sanctions",
+                "source_book": "The Principal Real Rights",
+                "source_page": 113,
+                "language": "ar",
                 "is_repealed": false,
                 "repeal_note": null,
                 "qa_flags": [],
@@ -7072,7 +7130,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05448443299974315,
+      "seconds": 0.056658612011233345,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7265,7 +7323,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.051400074997218326,
+      "seconds": 0.055978497985051945,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7458,7 +7516,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.055533278005896136,
+      "seconds": 0.07062315801158547,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.3333333333333333,
@@ -7651,7 +7709,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06049938901560381,
+      "seconds": 0.06363720999797806,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7844,7 +7902,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05944486599764787,
+      "seconds": 0.06464405998121947,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -7891,31 +7949,6 @@
                 "source_book": "The Principal Real Rights",
                 "source_page": 140,
                 "language": "ar",
-                "is_repealed": false,
-                "repeal_note": null,
-                "qa_flags": [],
-                "content_kind": "article_text"
-              }
-            },
-            {
-              "document_id": "egyptian-civil-code:968:en:0",
-              "chunk_index": 0,
-              "source_field": "text_en",
-              "source_start": 0,
-              "source_end": 286,
-              "source_text": "A person who has possession of a movable or immovable without being its owner, or of a real right over a movable or immovable without a just title thereto, may acquire the ownership of the thing or the title to the real right if his possession continues uninterrupted for fifteen years.",
-              "embedding_text": "A person who has possession of a movable or immovable without being its owner, or of a real right over a movable or immovable without a just title thereto, may acquire the ownership of the thing or the title to the real right if his possession continues uninterrupted for fifteen years.",
-              "metadata": {
-                "corpus_id": "egyptian-civil-code",
-                "article_number": 968,
-                "citation": "Egyptian Civil Code, Article 968",
-                "book": "Real Rights",
-                "chapter": "The Right of Ownership",
-                "section": "Acquisition of Ownership",
-                "topic": "Acquisitive Prescription",
-                "source_book": "The Principal Real Rights",
-                "source_page": 140,
-                "language": "en",
                 "is_repealed": false,
                 "repeal_note": null,
                 "qa_flags": [],
@@ -8062,7 +8095,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05892107597901486,
+      "seconds": 0.06259371302439831,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8255,7 +8288,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06296508997911587,
+      "seconds": 0.06795584998326376,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8311,7 +8344,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0017660170269664377,
+      "seconds": 0.0019869929819833487,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8367,7 +8400,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0012398480030242354,
+      "seconds": 0.0016530909924767911,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8560,7 +8593,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06466416001785547,
+      "seconds": 0.07278939001844265,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8753,7 +8786,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06446836798568256,
+      "seconds": 0.07025178297772072,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -8946,7 +8979,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06265901101869531,
+      "seconds": 0.07530407400918193,
       "hit_at_k": 0,
       "recall_at_k": 0.0,
       "reciprocal_rank": 0,
@@ -9139,7 +9172,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05768672199337743,
+      "seconds": 0.06849531599436887,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9332,7 +9365,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.08280184099567123,
+      "seconds": 0.09737372299423441,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9550,7 +9583,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07986072800122201,
+      "seconds": 0.08493019701563753,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9743,7 +9776,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05565795599250123,
+      "seconds": 0.06565662502544001,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9936,7 +9969,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06022319500334561,
+      "seconds": 0.06358838401501998,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9991,7 +10024,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0013036809978075325,
+      "seconds": 0.0018825889856088907,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10046,7 +10079,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0011609919893089682,
+      "seconds": 0.0013159129885025322,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10099,7 +10132,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0011111839849036187,
+      "seconds": 0.001331811014097184,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10152,7 +10185,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0010786039929371327,
+      "seconds": 0.0012899430003017187,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10343,7 +10376,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.052191844006301835,
+      "seconds": 0.05725101102143526,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10534,7 +10567,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04959623501054011,
+      "seconds": 0.054034512024372816,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10548,10 +10581,10 @@
       "expected_article_numbers": [],
       "retrieved_article_numbers": [
         940,
-        36,
         380,
         536,
-        433
+        433,
+        624
       ],
       "results": [
         {
@@ -10589,40 +10622,6 @@
           "rank": 1
         },
         {
-          "article_number": 36,
-          "citation": "Egyptian Civil Code, Article 36",
-          "score": 0.796493411064148,
-          "method": "semantic",
-          "passages": [
-            {
-              "document_id": "egyptian-civil-code:36:ar:0",
-              "chunk_index": 0,
-              "source_field": "ar_text",
-              "source_start": 0,
-              "source_end": 227,
-              "source_text": "يراعى في حساب درجة القرابة المباشرة، اعتبار كل فرع درجة عند الصعود للأصل بخروج هذا الأصل، وعدد حساب درجة الحواشي تعد الدرجات صعوداً من الفرع للأصل المشترك ثم نزولا منه إلى الفرع الآخر، وكل فرع فيما عدا الأصل المشترك يعتبر درجة.",
-              "embedding_text": "يراعي في حساب درجة القرابة المباشرة، اعتبار كل فرع درجة عند الصعود للاصل بخروج هذا الاصل، وعدد حساب درجة الحواشي تعد الدرجات صعودا من الفرع للاصل المشترك ثم نزولا منه الي الفرع الاخر، وكل فرع فيما عدا الاصل المشترك يعتبر درجة.",
-              "metadata": {
-                "corpus_id": "egyptian-civil-code",
-                "article_number": 36,
-                "citation": "Egyptian Civil Code, Article 36",
-                "book": null,
-                "chapter": null,
-                "section": "Persons",
-                "topic": "Individuals",
-                "source_book": null,
-                "source_page": 5,
-                "language": "ar",
-                "is_repealed": false,
-                "repeal_note": null,
-                "qa_flags": [],
-                "content_kind": "article_text"
-              }
-            }
-          ],
-          "rank": 2
-        },
-        {
           "article_number": 380,
           "citation": "Egyptian Civil Code, Article 380",
           "score": 0.7904000282287598,
@@ -10654,7 +10653,7 @@
               }
             }
           ],
-          "rank": 3
+          "rank": 2
         },
         {
           "article_number": 536,
@@ -10688,7 +10687,7 @@
               }
             }
           ],
-          "rank": 4
+          "rank": 3
         },
         {
           "article_number": 433,
@@ -10722,10 +10721,44 @@
               }
             }
           ],
+          "rank": 4
+        },
+        {
+          "article_number": 624,
+          "citation": "Egyptian Civil Code, Article 624",
+          "score": 0.7808246612548828,
+          "method": "semantic",
+          "passages": [
+            {
+              "document_id": "egyptian-civil-code:624:ar:0",
+              "chunk_index": 0,
+              "source_field": "ar_text",
+              "source_start": 0,
+              "source_end": 240,
+              "source_text": "(١) توزع الغلة بين الطرفين بالنسبة المتفق عليها أو بالنسبة التى يعينها العرف، فإذا لم يوجد اتفاق أو عرف كان لكل منهما نصف الغلة. (٢) هلكت الغلة كلها أو بعضها بسبب قوة قاهرة، تحمل الطرفانًفإذامعا تبعه هذا الهلاك ولا يرجع أحد منهما على الآخر.",
+              "embedding_text": "(١) توزع الغلة بين الطرفين بالنسبة المتفق عليها او بالنسبة التي يعينها العرف، فاذا لم يوجد اتفاق او عرف كان لكل منهما نصف الغلة. (٢) هلكت الغلة كلها او بعضها بسبب قوة قاهرة، تحمل الطرفانفاذامعا تبعه هذا الهلاك ولا يرجع احد منهما علي الاخر.",
+              "metadata": {
+                "corpus_id": "egyptian-civil-code",
+                "article_number": 624,
+                "citation": "Egyptian Civil Code, Article 624",
+                "book": "Obligations or Personal Rights",
+                "chapter": "Contracts relating to the use of a thing",
+                "section": "Leases",
+                "topic": "Amodiation",
+                "source_book": "Specific Contracts",
+                "source_page": 84,
+                "language": "ar",
+                "is_repealed": false,
+                "repeal_note": null,
+                "qa_flags": [],
+                "content_kind": "article_text"
+              }
+            }
+          ],
           "rank": 5
         }
       ],
-      "seconds": 0.05211852601496503,
+      "seconds": 0.057105002022581175,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10916,7 +10949,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05909471699851565,
+      "seconds": 0.05549463999341242,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,

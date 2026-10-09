@@ -8,8 +8,8 @@ question in Arabic and English and shares its article-level target.
 **Status: manually reviewed and approved by the user for Stage 2 acceptance.**
 `review.json` records that confirmation and the exact evaluation-file hash.
 Measured results are in `reports/retrieval-baseline.md` and
-`reports/retrieval-results.json`. The latter retains its historical
-`draft_ground_truth` flag because the run preceded approval. Deferred Stage 1
+`reports/retrieval-results.json`. New runs verify the approval-file hash and
+record `draft_ground_truth: false` for this approved set. Deferred Stage 1
 corpus-audit tasks remain recorded separately in `PLAN.md`.
 
 ## Source and coverage

@@ -106,7 +106,7 @@ uv run python src/retrieval.py query "lease obligations" --filters '{"language":
 - `dvc status` reports the local data and pipeline up to date.
 
 **Stage 2 is accepted following the user's manual evaluation review.** The
-saved results retain their draft-at-run-time flag. Deferred Stage 1 corpus QA,
+latest saved results include the matching manual approval record. Deferred Stage 1 corpus QA,
 candidate-model comparison, MLflow experiment tracking, RAGAS faithfulness,
 and the Drive upload remain follow-ups. Stage 3 starts with Google-backed
 generation using the root `.env` key.

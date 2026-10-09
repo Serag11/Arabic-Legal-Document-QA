@@ -125,12 +125,14 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 
 ## Phase 3 — Create the first end-to-end RAG baseline
 
-- [ ] Add a generator that answers only from retrieved article context.
-- [ ] Define a clear insufficient-evidence response; do not guess when the retrieved passages do not support an answer.
-- [ ] Ensure generated answers return article citations, not chunk IDs or PDF page numbers.
-- [ ] Extend Phase 2's `src/rag.py` entry point with generation and end-to-end query responsibilities.
-- [ ] Add tests for empty questions, retrieval citations, unsupported questions, and source formatting.
-- [ ] Track configuration such as chunking, embedding model, retrieval top-k, and prompt version for every baseline run.
+- [X] Add Google `gemini-2.5-flash` generation from retrieved context in `src/generation.py`, using `GOOGLE_API_KEY` from root `.env`.
+- [X] Define localized insufficient-evidence responses for empty retrieval, model-reported unsupported questions, and invalid source grounding.
+- [X] Return article citations and validated verbatim source excerpts; reject citations outside context and fabricated quotes.
+- [X] Extend `src/rag.py` with the `ask` command while preserving chunk-preparation usage.
+- [X] Add offline tests for empty questions, citations, unsupported questions, exact source formatting, missing Arabic, repeal metadata, credential loading, and redacted provider errors.
+- [X] Record generation/prompt settings, retrieval configuration, corpus/chunk hashes, filters, response model version, and token usage for every answer.
+
+**Stage 3 baseline:** six live Google smoke cases passed; see `reports/generation-baseline.md` and `reports/generation-smoke.json`. These check source identity and abstention, not a RAGAS faithfulness score. Service/API packaging remains Stage 4.
 
 **Example API contract:**
 

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "provider": "google",
+  "model": "gemini-2.5-flash",
+  "api_key_env": "GOOGLE_API_KEY",
+  "prompt_version": "civil-code-grounded-v1",
+  "grounding_version": "exact-evidence-and-source-notes-v1",
+  "temperature": 0.0,
+  "max_output_tokens": 2048,
+  "thinking_budget": 0,
+  "timeout_ms": 60000,
+  "retrieval_top_k": 5,
+  "max_context_characters": 24000
+}

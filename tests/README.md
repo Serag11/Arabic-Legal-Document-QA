@@ -71,11 +71,33 @@ without stale IDs, and rejection of mismatched configuration.
 Queries group passage matches by article. Explicit article-number queries use
 exact lookup and return no similarity score. Semantic scores are cosine
 similarity, not confidence or an unsupported-question decision. Out-of-domain
-probes are excluded from retrieval relevance metrics. Evaluation labels remain
-draft pending manual review.
+probes are excluded from retrieval relevance metrics. The user confirmed manual
+review; approval of the evaluation-file hash is recorded in `evaluation/review.json`.
 
 Chroma updates local SQLite bookkeeping when loading a collection. Retrieval
 therefore opens a temporary runtime copy of the persisted index so queries and
 evaluation do not mutate DVC-tracked index files. The copy lives for the lifetime
 of the retriever and is automatically cleaned up. `.dvcignore` excludes Python
 bytecode/test caches from pipeline dependency hashes.
+
+## Stage 3 Google answer generation
+
+```bash
+uv run python src/rag.py ask "وفق المادة 147، هل يجوز نقض العقد بإرادة طرف واحد؟"
+uv run python src/rag.py ask "What is a lease under Article 558?" --language en
+```
+
+The root `.env` supplies `GOOGLE_API_KEY`; the key is neither tracked nor added
+to answer reports. `config/generation.json` selects `gemini-2.5-flash`.
+`test_generation.py` uses fake retrieval/provider boundaries, makes no Google
+calls, and tests exact evidence, citation membership, insufficient evidence,
+empty inputs, context limits, source exceptions, dotenv loading and error redaction.
+
+Explicit live smoke evaluation (six billable Google generation calls):
+
+```bash
+uv run python src/evaluate_generation.py
+```
+
+This saves `reports/generation-smoke.json`. It is not part of DVC reproduction
+or the offline test suite, and does not measure semantic faithfulness/RAGAS.

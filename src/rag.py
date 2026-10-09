@@ -1,6 +1,6 @@
-"""Article-first ingestion contracts for the retrieval baseline.
+"""Article-first preparation and end-to-end cited question answering.
 
-Prepare source-traceable chunks without selecting an embedding provider yet.
+Prepare source-traceable chunks, or use `ask` with local retrieval and Google generation.
 Source text is returned verbatim; normalized text is only embedding input.
 """
 
@@ -166,9 +166,30 @@ def prepare_corpus(path: Path, output: Path) -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS)
-    parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--out", type=Path)
+    commands = parser.add_subparsers(dest="command")
+    ask = commands.add_parser("ask", help="Answer from retrieved articles using Google's API")
+    ask.add_argument("question")
+    ask.add_argument("--language", choices=("ar", "en"))
+    ask.add_argument("--index", type=Path)
+    ask.add_argument("--generation-config", type=Path)
+    ask.add_argument("--filters", type=json.loads, default={})
     args = parser.parse_args()
-    print(json.dumps(prepare_corpus(args.corpus, args.out), indent=2))
+    if args.command == "ask":
+        if __package__:
+            from .generation import AnsweringService, GenerationError, load_generation_config
+        else:
+            from generation import AnsweringService, GenerationError, load_generation_config
+        try:
+            config = load_generation_config(args.generation_config) if args.generation_config else None
+            result = AnsweringService(config=config, index=args.index).ask(args.question, language=args.language, filters=args.filters)
+        except (GenerationError, ValueError) as exc:
+            parser.exit(1, f"Error: {exc}\n")
+    else:
+        if args.out is None:
+            parser.error("--out is required for chunk preparation, or use the ask command")
+        result = prepare_corpus(args.corpus, args.out)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

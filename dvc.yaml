@@ -19,6 +19,9 @@ stages:
     - src/rag.py
     - src/retrieval.py
     - config/retrieval.json
+    - src/generation.py
+    - config/generation.json
+    - prompts/answer_v1.txt
     - pyproject.toml
     - uv.lock
   prepare_retrieval:
@@ -29,6 +32,9 @@ stages:
     - src/retrieval.py
     - src/extract_egyptian_civil_code.py
     - tests
+    - src/generation.py
+    - config/generation.json
+    - prompts/answer_v1.txt
     - config/retrieval.json
     - pyproject.toml
     - uv.lock
@@ -54,6 +60,7 @@ stages:
     deps:
     - data/retrieval/chroma
     - evaluation/retrieval_questions.jsonl
+    - evaluation/review.json
     - src/rag.py
     - src/retrieval.py
     - src/extract_egyptian_civil_code.py

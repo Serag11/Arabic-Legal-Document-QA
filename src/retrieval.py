@@ -379,7 +379,11 @@ def evaluate(retriever, questions, output, k=5):
     for r in records:
         matched[r["id"]][r["language"]] = r
     agreement = sum(matched[p["id"]]["ar"]["retrieved_article_numbers"][:1] == matched[p["id"]]["en"]["retrieved_article_numbers"][:1] for p in supported) / len(supported)
-    summary = {"draft_ground_truth": True, "k": k, "pair_count": len(pairs), "metrics": metrics,
+    review_path = Path(questions).with_name("review.json")
+    review = json.loads(review_path.read_text()) if review_path.exists() else None
+    approved = bool(review and review.get("status") == "approved" and review.get("evaluation_sha256") == sha256(questions))
+    summary = {"draft_ground_truth": not approved, "evaluation_review": review if approved else None,
+               "k": k, "pair_count": len(pairs), "metrics": metrics,
                "bilingual_top1_agreement_supported": agreement, "config": retriever.config,
                "corpus_sha256": retriever.manifest["corpus_sha256"],
                "unsupported_probes_excluded_from_metrics": sum(not p["expected_article_numbers"] for p in pairs),
