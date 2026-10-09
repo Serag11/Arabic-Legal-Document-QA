@@ -17,7 +17,7 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 - [ ] Configure a DVC remote and make the full corpus pipeline reproducible for others.
 - [ ] Build article-aware retrieval, then generation and the `/ask` API.
 
-## Phase 1 — Make the corpus trustworthy (next)
+## Phase 1 — Make the corpus trustworthy (remaining work deferred)
 
 ### 1. Investigate extraction defects
 
@@ -25,7 +25,8 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 - [X] Check the Article 1021–1022 boundary against the source; preserve Article 1022 as an explicit missing-Arabic source exception.
 - [ ] Review every record with a `qa_flags` entry, prioritizing single-column article anchors and missing text.
 - [ ] Inspect `data/qa_civil_code/qa_random_articles.html` and compare all 20 sampled records with their PDF crops.
-- [ ] Record extraction issues, fixes, and the manual sample-review outcome in `reports/corpus-extraction.md`.
+- [X] Record known extraction issues, bold-body and zero-width alef fixes, source exceptions, and current review status in `reports/corpus-extraction.md`.
+- [ ] Complete the report with the 20-article and flagged-record manual review outcomes.
 
 ### 2. Add automated validation
 
@@ -41,29 +42,87 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 
 - [X] Use `ar_text` as the canonical source-text field in the extractor and corpus tests; carry it forward into ingestion and the API.
 - [X] Keep source-faithful Arabic separate from normalized retrieval text; do not use normalized text as a legal quotation.
-- [ ] Configure a DVC remote, then verify `dvc push` and `dvc pull` from a clean checkout.
+- [X] Configure Google Drive DVC remote `storage`; use local user OAuth settings for the personal Drive destination (browser authorization pending).
+- [ ] Push tracked artifacts to `storage` and verify `dvc pull` from a clean checkout.
 - [X] Verify `dvc repro` regenerates the structured corpus and QA artifacts from the tracked source PDF.
 
 **Phase 1 exit criteria:** corpus tests pass; active article text is present in both languages except the documented source exception; flagged records and the 20-item visual sample have been reviewed; DVC can reproduce the extraction and a remote is available to collaborators.
 
 ## Phase 2 — Build article-aware retrieval
 
-- [ ] Create an ingestion module that reads validated JSONL and preserves article number, citation, book, chapter, section, topic, language, and repeal status as metadata.
-- [ ] Begin with one chunk per article. For very long articles, split only at paragraph boundaries and repeat the article citation/number on every chunk.
-- [ ] Select a multilingual embedding model and document its version/configuration.
-- [ ] Build a persistent vector index from the structured corpus; make index creation reproducible rather than committing an opaque, untracked index.
-- [ ] Add a retrieval-only path and try a small set of Arabic and English questions with known expected article citations.
-- [ ] Test bilingual retrieval: equivalent Arabic and English questions should retrieve the same relevant article where applicable.
-- [ ] Add filters for hierarchy and repeal metadata where useful.
+**Goal:** validated JSONL → article-aware chunks → multilingual embeddings → persistent Chroma index → cited retrieval results. This implements the article-first guidance on handbook pp. 64–66.
 
-**Phase 2 exit criteria:** a reproducible index exists, and a small hand-checked retrieval set returns the expected article citations in both Arabic and English.
+**Sequence decision:** proceed with Phase 2 development now and return to the unchecked Phase 1 tasks. Automated corpus validation must pass before each index build. The handbook's 20-article visual review remains outstanding, so initial retrieval results are provisional until that audit is completed.
+
+**Chosen defaults:** persistent local Chroma; include repealed articles with explicit status and source repeal notices. Embedding provider/model selection is deferred until implementation, before the first real index build.
+
+### 1. Define ingestion and result contracts
+
+- [ ] Create the ingestion/retrieval entry point in `src/rag.py`, separating loading, chunking, embedding, indexing, and retrieval responsibilities.
+- [ ] Preserve integer article number, citation, book, chapter, section, topic, source page, language, QA flags, and repeal metadata.
+- [ ] Assign stable IDs containing corpus identity, article number, language, and chunk position.
+- [ ] Retain source-faithful text for returned passages and quotations; use normalized Arabic separately for embedding input.
+- [ ] Handle Article 1022's missing Arabic explicitly: index its available English text and retain the source-exception flag.
+
+**Acceptance:** each chunk references an existing corpus article, carries that article's number and citation, and contains a passage from that article (or its source repeal notice). Splitting Article 147 into several chunks must leave every chunk traceable to Article 147.
+
+### 2. Implement article-aware chunking
+
+- [ ] Begin with one chunk per article per available language.
+- [ ] Inspect how paragraph/numbered-provision boundaries survived extraction before implementing the splitter.
+- [ ] Split long articles only at identifiable paragraph/provision boundaries; repeat the article number and citation on every chunk and never cross article boundaries.
+- [ ] Retain repealed records as searchable source repeal notices without inventing original provision text.
+- [ ] Record strategy, size limit and its units, and overlap; use zero overlap for the initial article baseline.
+
+**Acceptance:** chunks never cross article boundaries or cut arbitrarily through provisions; no passage is silently truncated to fit the embedding model. Document any provision too long for the selected model.
+
+### 3. Select multilingual embeddings
+
+- [ ] Check available compute and shortlist suitable Arabic/English models or providers.
+- [ ] Compare candidates using the same paired bilingual questions.
+- [ ] Pin the selected model/version and document input limits, dimensions, preprocessing, and required query/document formatting.
+- [ ] Apply consistent Arabic normalization to documents and queries, preserving source text separately.
+
+**Acceptance:** a concrete embedding configuration is selected and documented, with measured Arabic/English retrieval results.
+
+### 4. Build the persistent index reproducibly
+
+- [ ] Build the Chroma collection from generated chunks and explicit embeddings.
+- [ ] Support language, hierarchy, repeal-status, and integer article-number filters.
+- [ ] Record corpus hash, embedding configuration, normalization version, chunking configuration, and document counts in an index manifest.
+- [ ] Add chunk preparation and index construction to the DVC pipeline downstream of corpus validation, declaring code/configuration dependencies and generated outputs.
+- [ ] Verify rebuilds and persistence/reload; rebuilding must not accumulate duplicates or leave stale chunks.
+
+**Acceptance:** the index can be reconstructed from the tracked corpus and recorded configuration and loaded in a fresh process. Index binary files need not be byte-identical; document IDs, content, configuration, and retrieval checks must remain reproducible.
+
+### 5. Implement retrieval-only queries
+
+- [ ] Return ranked source passages, article citations, language, hierarchy, and repeal status.
+- [ ] Group duplicate language/chunk matches by article while preserving useful supporting passages.
+- [ ] Support direct article-number lookup, including repealed articles, so explicit article queries do not depend entirely on semantic similarity.
+- [ ] Keep article citations as the public source identity for the later `/ask` response.
+- [ ] Test source mapping, missing Arabic, repeal notices, paragraph splitting, filters, persistence/reload, and rebuild behavior without live external model calls.
+
+**Acceptance:** results identify verifiable legal articles and clearly identify repeal notices.
+
+### 6. Establish bilingual evaluation and experiment records
+
+- [ ] Create a hand-checked set of equivalent Arabic/English questions with expected article citations.
+- [ ] Include paraphrases, long articles, repeal queries, and the missing-language exception.
+- [ ] Measure article-level Hit@k/Recall@k, MRR, and bilingual agreement; report Arabic and English results separately.
+- [ ] Save configuration and per-question results for later MLflow comparisons, including `chunk_size`, its units, `overlap`, and `embedding_model`.
+- [ ] Record the baseline and failures in `reports/retrieval-baseline.md`.
+
+**Evaluation handoff:** RAGAS faithfulness requires generated answers and will be measured in the later end-to-end chunking experiments. Retrieval-only scores are not a substitute. Retain the paired questions for the later RAGAS scorecard and contract-law versus family-law query-shift scenario described on p. 65.
+
+**Phase 2 exit criteria:** corpus validation passes; a persistent index rebuilds reproducibly; source-mapping and metadata tests pass; and a hand-checked bilingual evaluation produces a documented retrieval baseline. Complete the deferred visual corpus audit before treating this baseline as verified corpus quality.
 
 ## Phase 3 — Create the first end-to-end RAG baseline
 
 - [ ] Add a generator that answers only from retrieved article context.
 - [ ] Define a clear insufficient-evidence response; do not guess when the retrieved passages do not support an answer.
 - [ ] Ensure generated answers return article citations, not chunk IDs or PDF page numbers.
-- [ ] Create `src/rag.py` with separate ingestion/retrieval/query responsibilities.
+- [ ] Extend Phase 2's `src/rag.py` entry point with generation and end-to-end query responsibilities.
 - [ ] Add tests for empty questions, retrieval citations, unsupported questions, and source formatting.
 - [ ] Track configuration such as chunking, embedding model, retrieval top-k, and prompt version for every baseline run.
 
@@ -118,17 +177,16 @@ Complete these after the baseline RAG service, evaluation, and CI are working.
 - [ ] Add batch re-indexing and test it with at least one additional document.
 - [ ] Document a canary rollout configuration and rollout stages.
 - [ ] Compare original and AWQ 4-bit generation using RAGAS; report quality, latency, and model size.
-- [ ] Evaluate reranker distillation if a reranker is part of the system.
+- [ ] Add a reranker baseline and distill it; compare retrieval and RAGAS quality before/after as required by the handbook's Project 2 optimization deliverables (p. 66).
 - [ ] Add Langfuse traces for every `/ask` request, including retrieval and generation spans; attach the faithfulness score when available.
 - [ ] Track answer faithfulness, embedding/cosine drift, and token usage/cost; add Prometheus/Grafana panels and an alert threshold.
 - [ ] Document the final architecture and measured results in the README and project reports.
 
 ## Suggested order for the next work session
 
-1. Review all 20 entries in `data/qa_civil_code/qa_random_articles.html` against their source crops.
-2. Review the remaining `qa_flags` entries in the generated corpus; the known 558/1022 cases are already handled.
-3. Review the 20-line sample in `data/qa_civil_code/qa_zero_width_alefs.html`, paying attention to both the displayed source crop and the before/after candidate text.
-4. Record what you checked, any remaining extraction problems, and any approved correction in `reports/corpus-extraction.md`.
-5. Add the Article 1021 regression assertion, then configure a DVC remote and verify `dvc push` / `dvc pull` from a clean checkout.
+1. Define Phase 2 ingestion/result records and source-mapping checks.
+2. Inspect paragraph boundaries in the existing JSONL and implement article-aware chunk preparation.
+3. Prepare paired bilingual retrieval questions, then choose the embedding model/provider.
+4. Build and evaluate the persistent Chroma index with a reproducible DVC index stage.
 
-After this manual audit, proceed to Phase 2: build reproducible, article-aware ingestion and retrieval. Keep the corpus validation stage passing as the ingestion work begins.
+**Return to Phase 1:** review all 20 sampled article crops and every flagged record; review the zero-width alef diagnostic sample; document findings in `reports/corpus-extraction.md`; add the Article 1021 regression assertion; configure a DVC remote and verify clean-checkout push/pull reproduction. Keep these tasks unchecked until completed, and rebuild the index after any corpus corrections.

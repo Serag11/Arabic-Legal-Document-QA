@@ -13,6 +13,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "dvc>=3.67.1",
+    "dvc[gdrive]>=3.67.1",
+    "pyopenssl>=24.2.1,<=24.2.1",
     "pytest>=8.0",
 ]
