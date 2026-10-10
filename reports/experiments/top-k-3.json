@@ -17,7 +17,7 @@
     "faithfulness_coverage_adjusted": 0.8875,
     "answer_accuracy_coverage_adjusted": null,
     "unsupported_refusal_accuracy": 1.0,
-    "mean_seconds": 36.41687807179187,
+    "mean_seconds": 36.224517835916835,
     "error_count": 0,
     "retrieval_hit_ar": 0.8,
     "faithfulness_ar": 0.775,
@@ -165,7 +165,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 32.352584125997964
+      "seconds": 43.43481930899907
     },
     {
       "id": "s2-004-en",
@@ -305,7 +305,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 35.90496063200408
+      "seconds": 48.43699929600007
     },
     {
       "id": "s2-008-ar",
@@ -437,7 +437,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 8.82058285002131
+      "seconds": 9.018171660998632
     },
     {
       "id": "s2-008-en",
@@ -577,7 +577,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 42.97358703400823
+      "seconds": 39.3729072999995
     },
     {
       "id": "s2-009-ar",
@@ -717,7 +717,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 55.20814076301758
+      "seconds": 37.95598054000038
     },
     {
       "id": "s2-009-en",
@@ -863,7 +863,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 61.97408246001578
+      "seconds": 44.868930090000504
     },
     {
       "id": "s2-013-ar",
@@ -1003,7 +1003,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 43.77797753599589
+      "seconds": 41.4559393920008
     },
     {
       "id": "s2-013-en",
@@ -1143,7 +1143,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 37.93897511900286
+      "seconds": 41.397947835001105
     },
     {
       "id": "s2-019-ar",
@@ -1283,7 +1283,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 37.46558654899127
+      "seconds": 43.62173154700031
     },
     {
       "id": "s2-019-en",
@@ -1423,7 +1423,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 38.32986271500704
+      "seconds": 41.201882577001015
     },
     {
       "id": "s2-021-ar",
@@ -1563,7 +1563,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 64.26313879201189
+      "seconds": 47.92362446399966
     },
     {
       "id": "s2-021-en",
@@ -1703,7 +1703,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 42.80346973700216
+      "seconds": 45.260547064001
     },
     {
       "id": "s2-024-ar",
@@ -1835,7 +1835,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 12.425819810014218
+      "seconds": 16.982298537001043
     },
     {
       "id": "s2-024-en",
@@ -1975,7 +1975,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 35.56092893498135
+      "seconds": 51.113366194000264
     },
     {
       "id": "s2-025-ar",
@@ -2115,7 +2115,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 49.43160383598297
+      "seconds": 48.111323069999344
     },
     {
       "id": "s2-025-en",
@@ -2265,7 +2265,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 37.790551837999374
+      "seconds": 44.0016931400005
     },
     {
       "id": "s2-026-ar",
@@ -2405,7 +2405,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 40.80340630200226
+      "seconds": 45.05715007899926
     },
     {
       "id": "s2-026-en",
@@ -2545,7 +2545,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 43.573517622979125
+      "seconds": 38.50277377600105
     },
     {
       "id": "s2-028-ar",
@@ -2663,7 +2663,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 48.33656117701321
+      "seconds": 41.99683142499998
     },
     {
       "id": "s2-028-en",
@@ -2781,7 +2781,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 51.300930793979205
+      "seconds": 42.52529612500075
     },
     {
       "id": "s2-u01-ar",
@@ -2907,7 +2907,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 14.558928830985678
+      "seconds": 13.619901649000894
     },
     {
       "id": "s2-u01-en",
@@ -3033,7 +3033,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 10.60683130499092
+      "seconds": 15.155658607000078
     },
     {
       "id": "s2-u02-ar",
@@ -3159,7 +3159,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 10.872949350014096
+      "seconds": 13.317818292000084
     },
     {
       "id": "s2-u02-en",
@@ -3285,7 +3285,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 16.93009560898645
+      "seconds": 15.054836092998812
     }
   ],
   "generation_config": {
@@ -3332,7 +3332,7 @@
     "cpu_threads": 6,
     "batch_size": 4
   },
-  "pipeline_fingerprint": "f3dceb41e96c96f66063ba0c312c3b600bbc28e2c0416998a0734c2059ea629d",
+  "pipeline_fingerprint": "756014752c8f75a48180a86b0b4b82b616cd89f0013280f43060cef1c3f0547a",
   "questions_sha256": "ac7084a279bc928542613ee894b27c5da95d6aa17929b24778b84acdf634e722",
   "reused_record_count": 0,
   "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
@@ -3345,7 +3345,7 @@
     "google-genai": "2.29.0",
     "mlflow": "3.17.0"
   },
-  "mlflow_run_id": "1f850cd6221742938bfe824f6d03209b",
+  "mlflow_run_id": "87258d7cb92d4b8fa6cb626f3de70ba5",
   "judge_sanity_check": {
     "supported_control": 1.0,
     "unsupported_control": 0.0

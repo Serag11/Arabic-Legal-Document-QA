@@ -66,7 +66,7 @@ def download_model(config):
     from huggingface_hub import snapshot_download
 
     return snapshot_download(
-        repo_id=config["model_id"], revision=config["model_revision"],
+        repo_id=config["model_id"], revision=config["model_revision"], token=False,
         allow_patterns=[
             "config.json", "model.safetensors", "modules.json", "1_Pooling/config.json",
             "sentence_bert_config.json", "sentencepiece.bpe.model", "special_tokens_map.json",
@@ -79,7 +79,7 @@ def load_tokenizer(config):
     from transformers import AutoTokenizer
 
     return AutoTokenizer.from_pretrained(
-        config["model_id"], revision=config["model_revision"], local_files_only=True,
+        config["model_id"], revision=config["model_revision"], local_files_only=True, token=False,
     )
 
 
@@ -180,7 +180,8 @@ class E5Encoder:
             torch.set_num_threads(config["cpu_threads"])
         self.model = SentenceTransformer(
             config["model_id"], revision=config["model_revision"], device=self.device,
-            local_files_only=True, model_kwargs={"torch_dtype": getattr(torch, self.precision), "use_safetensors": True},
+            local_files_only=True, token=False,
+            model_kwargs={"torch_dtype": getattr(torch, self.precision), "use_safetensors": True},
         )
         self.model.max_seq_length = config["max_tokens"]
         self.tokenizer = self.model.tokenizer

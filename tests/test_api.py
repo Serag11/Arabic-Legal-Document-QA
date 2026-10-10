@@ -50,6 +50,8 @@ def test_startup_loads_once_and_health_reports_index_counts():
     {"question": ""}, {"question": "  \n"}, {}, {"question": 147},
     {"question": "contract", "language": "fr"},
     {"question": "contract", "filters": {"article_number": "147"}},
+    {"question": "contract", "filters": {"article_number": 0}},
+    {"question": "contract", "filters": {"article_number": -1}},
     {"question": "contract", "filters": {"is_repealed": "false"}},
     {"question": "contract", "filters": {"unknown": "value"}},
 ])
@@ -65,3 +67,38 @@ def test_provider_failure_returns_bad_gateway():
         response = client.post("/ask", json={"question": "provider failure"})
         assert response.status_code == 502
         assert response.json() == {"detail": "Google generation failed (HTTP 429)"}
+
+
+def test_swagger_examples_are_valid_requests_without_placeholder_filters():
+    from src.api import AskRequest
+
+    service = FakeService()
+    with TestClient(create_app(lambda: service)) as client:
+        schema = client.get("/openapi.json").json()
+        examples = schema["paths"]["/ask"]["post"]["requestBody"]["content"]["application/json"]["examples"]
+        assert examples["arabic_question"]["value"] == {"question": "ما تعريف عقد الإيجار؟", "language": "ar"}
+        for example in examples.values():
+            value = example["value"]
+            AskRequest.model_validate(value)
+            assert client.post("/ask", json=value).status_code == 200
+            assert value["question"] != "string"
+
+
+def test_default_startup_initializes_encoder_once(monkeypatch):
+    service = FakeService()
+    service.retriever.config = {"test": "configuration"}
+    encoders = []
+
+    def encoder(config):
+        assert config == service.retriever.config
+        result = object()
+        encoders.append(result)
+        return result
+
+    monkeypatch.setattr("src.api.AnsweringService", lambda: service)
+    monkeypatch.setattr("src.api.E5Encoder", encoder)
+    with TestClient(create_app()) as client:
+        assert client.get("/health").status_code == 200
+        client.post("/ask", json={"question": "contract"})
+        assert service.retriever.encoder is encoders[0]
+        assert len(encoders) == 1

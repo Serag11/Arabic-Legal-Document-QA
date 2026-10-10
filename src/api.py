@@ -2,18 +2,35 @@
 
 from contextlib import asynccontextmanager
 from threading import Lock
-from typing import Literal
+from typing import Annotated, Literal
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import Body, FastAPI, HTTPException, Request
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, field_validator
 
 from .generation import AnsweringService, GenerationError
+from .retrieval import E5Encoder
+
+
+ASK_EXAMPLES = {
+    "arabic_question": {
+        "summary": "Arabic legal question (no filters needed)",
+        "value": {"question": "ما تعريف عقد الإيجار؟", "language": "ar"},
+    },
+    "english_question": {
+        "summary": "English question with English-source filtering",
+        "value": {"question": "What is a lease?", "language": "en", "filters": {"language": "en", "is_repealed": False}},
+    },
+    "repeal_lookup": {
+        "summary": "Look up a repealed article (English notice, Arabic answer)",
+        "value": {"question": "ما حالة المادة 54 في المصدر؟", "language": "ar", "filters": {"article_number": 54, "is_repealed": True}},
+    },
+}
 
 
 class MetadataFilters(BaseModel):
     model_config = ConfigDict(extra="forbid")
     language: Literal["ar", "en"] | None = None
-    article_number: StrictInt | None = None
+    article_number: StrictInt | None = Field(default=None, ge=1, examples=[147])
     is_repealed: StrictBool | None = None
     book: str | None = None
     chapter: str | None = None
@@ -24,10 +41,10 @@ class MetadataFilters(BaseModel):
 
 
 class AskRequest(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    question: str = Field(min_length=1)
+    model_config = ConfigDict(extra="forbid", json_schema_extra={"examples": [ASK_EXAMPLES["arabic_question"]["value"]]})
+    question: str = Field(min_length=1, description="A question about the supplied Egyptian Civil Code corpus.")
     language: Literal["ar", "en"] | None = None
-    filters: MetadataFilters = Field(default_factory=MetadataFilters)
+    filters: MetadataFilters = Field(default_factory=MetadataFilters, description="Optional exact-match constraints combined with AND. Omit for normal questions.")
 
     @field_validator("question")
     @classmethod
@@ -68,6 +85,11 @@ def create_app(service_factory=None):
     @asynccontextmanager
     async def lifespan(app):
         app.state.service = factory()
+        if service_factory is None:
+            # Exercise cached embedding loading before declaring the API ready;
+            # exact-number lookups alone do not validate semantic retrieval.
+            retriever = app.state.service.retriever
+            retriever.encoder = E5Encoder(retriever.config)
         # Serialize the baseline's CPU encoder initialization/inference. This
         # also avoids loading duplicate embedding models under concurrent calls.
         app.state.ask_lock = Lock()
@@ -85,7 +107,7 @@ def create_app(service_factory=None):
                 "indexed_articles": manifest["article_count"]}
 
     @application.post("/ask", response_model=AskResponse)
-    def ask(body: AskRequest, request: Request):
+    def ask(body: Annotated[AskRequest, Body(openapi_examples=ASK_EXAMPLES)], request: Request):
         try:
             with request.app.state.ask_lock:
                 return request.app.state.service.ask(

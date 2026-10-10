@@ -69,7 +69,7 @@ coverage-adjusted faithfulness >= 0.75. Stale/partial/low-quality measurements
 fail, including the absence of a completed full validation. Live evaluation is
 explicit and is not silently executed in CI.
 
-## Measured comparison
+## Initial measured comparison (before the API loader fix)
 
 Each comparison has 20 supported questions and four unsupported probes.
 
@@ -120,3 +120,24 @@ model automatically; the running service's baseline remains top-k 5.
 locally with all 60 questions present and 52 scored supported answers. The CI
 workflow is added; remote GitHub execution occurs after pushing, not during this
 local session.
+
+## Current refresh after the API loader fix
+
+The user reran the comparisons and full evaluation for the current code. The
+winner is now **top-k 5**, and the current provenance-sensitive gate passes:
+
+- Full dataset: 60 questions (56 supported and four unsupported probes).
+- Expected article retrieved: **55/56**.
+- Supported answers produced: **52/56**.
+- Answers with expected article citations: **51/56**.
+- Raw faithfulness over 52 scored answers: **0.9962**.
+- Coverage-adjusted faithfulness: **0.9250** (threshold 0.75).
+- Unsupported refusals: **4/4**; operational errors: **zero**.
+
+Current full-validation run: `10172bb91c14400fb892c2ade807c2d0`.
+`ArabicLegalDocumentQA` **version 2**, alias **`champion`**, is registered from
+that run. The alias and successful registration were checked against the local
+MLflow database. The refreshed results match the current pipeline fingerprint;
+the offline suite for the API/cache fixes has **69 passing tests**. The running
+API and current champion both use top-k 5. Earlier tables and version 1 describe
+the initial checkpoint, not the latest selected model.

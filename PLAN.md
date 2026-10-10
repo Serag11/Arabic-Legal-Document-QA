@@ -164,11 +164,11 @@ POST /ask
 - [X] Include Arabic/English paraphrases, source exceptions, opposite-language retrieval experiment, and unsupported refusal probes.
 - [X] Measure retrieval hit/recall/MRR, citation/answer coverage, refusal accuracy and RAGAS faithfulness; document metric definitions and results in `reports/answer-evaluation.md`.
 - [X] Expand to 60 language-specific questions (30 reviewed pairs): 56 supported questions and four refusal probes; record provenance in `evaluation/answer_questions.manifest.json`.
-- [X] Run five MLflow retrieval comparisons on the same 24-question subset; log chunk size/units/strategy, overlap, embedding model/revision, retrieval settings and faithfulness. Validate the selected top-k-8 configuration on all 60 questions.
-- [X] Register `ArabicLegalDocumentQA` version 1 with alias `champion`; verify artifact reload and live prediction. Credentials and Google weights are not stored.
-- [X] Add and locally pass the CI gate: complete fixed-dataset coverage, >=20 scored supported questions, no operational errors, current provenance and coverage-adjusted faithfulness >=0.75. Measured result: 0.9226 with 52 scored supported answers.
+- [X] Run five MLflow retrieval comparisons on the same 24-question subset; log chunk size/units/strategy, overlap, embedding model/revision, retrieval settings and faithfulness. After the API loader fix, the user reran all comparisons and full 60-question validation; top-k 5 is selected.
+- [X] Register `ArabicLegalDocumentQA` version 2 with alias `champion`; verify the alias, completed registration, and matching refreshed evaluation run. Version 1 reload/prediction was verified previously. Credentials and Google weights are not stored.
+- [X] Add and locally pass the CI gate: complete fixed-dataset coverage, >=20 scored supported questions, no operational errors, current provenance and coverage-adjusted faithfulness >=0.75. Refreshed result: 0.9250 with 52 scored supported answers.
 
-**Stages 4 and 5 complete:** installable package, healthy Docker/FastAPI service, 64 offline tests, five comparative runs, full 60-question evaluation, registered champion and locally passing CI gate. The service baseline remains top-k 5; the registered champion uses top-k 8. Live GitHub execution and delivery/publishing are Stage 6.
+**Stages 4 and 5 complete:** installable package, healthy Docker/FastAPI service, 69 offline tests, five comparative runs, refreshed full 60-question evaluation, registered champion and locally passing CI gate. The service and registered champion both use top-k 5. Live GitHub execution and delivery/publishing are Stage 6.
 
 ## Phase 6 — Add CI and delivery automation
 

@@ -42,10 +42,25 @@ curl -s http://localhost:8000/ask -H 'Content-Type: application/json' -d '{"ques
 ```
 
 Empty/invalid questions return HTTP 422; provider failures return HTTP 502.
+The `/docs` request selector contains usable Arabic, English and repeal-lookup
+examples. For a normal question, send only `question` and optionally the answer
+`language`; omit `filters`. Filters are exact matches combined with AND, so
+placeholder values such as `"book": "string"` will not match the corpus.
+Article-number filters must be positive integers. The top-level `language`
+controls the answer language; `filters.language` restricts source passages.
+
+```json
+{"question":"ما تعريف عقد الإيجار؟","language":"ar"}
+```
+
 The baseline serializes CPU inference/generation to avoid duplicate model loads.
 Container startup needs the prepared index and cached model; it does not fetch
 model weights. A deployed wheel uses `LEGAL_QA_ROOT` to locate external
 configuration, prompts, index, and the optional `.env` file.
+
+The encoder is initialized during startup so cached-model errors are detected
+before readiness. Only the Hugging Face `hub` model-cache directory is mounted;
+personal Hugging Face token files are not needed for this public cached model.
 
 Retrieval supports exact article-number lookup and metadata filters:
 
@@ -83,13 +98,13 @@ Tracking/model artifacts remain local under ignored `data/mlflow/` and `mlruns/`
 Measured reports are kept under `reports/experiments/`. The registered model
 packages the selected configuration and index, not Google's weights or API key.
 
-The measured champion is **top-k 8**, registered as
-`models:/ArabicLegalDocumentQA@champion` (version 1). Full validation found the
+The measured champion is **top-k 5**, registered as
+`models:/ArabicLegalDocumentQA@champion` (version 2). Full validation found the
 expected article in 55/56 supported questions, answered with expected citations
-in 52/56, and correctly refused all four unsupported probes. Raw faithfulness
-was 0.9936 and coverage-adjusted faithfulness 0.9226. Details and limitations are
-in `reports/answer-evaluation.md`. The running API baseline still uses top-k 5;
-registry registration does not automatically deploy a new configuration.
+in 51/56, and correctly refused all four unsupported probes. It produced 52/56
+supported answers. Raw faithfulness was 0.9962 and coverage-adjusted faithfulness
+0.9250. Details and limitations are in `reports/answer-evaluation.md`. The
+running API also uses top-k 5; registry registration itself does not deploy code.
 
 When loading the registered artifact, set `LEGAL_QA_ROOT` to the project/resource
 root (or supply the key through the environment) so credentials remain external

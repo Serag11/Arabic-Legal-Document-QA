@@ -6,25 +6,25 @@
   },
   "metrics": {
     "supported_count": 20,
-    "scored_count": 18,
+    "scored_count": 19,
     "unsupported_count": 4,
     "retrieval_hit": 0.95,
     "retrieval_recall": 0.95,
     "retrieval_mrr": 0.8766666666666667,
-    "supported_answer_coverage": 0.9,
-    "expected_citation_hit": 0.9,
+    "supported_answer_coverage": 0.95,
+    "expected_citation_hit": 0.95,
     "faithfulness_answered": 1.0,
-    "faithfulness_coverage_adjusted": 0.9,
+    "faithfulness_coverage_adjusted": 0.95,
     "answer_accuracy_coverage_adjusted": null,
     "unsupported_refusal_accuracy": 1.0,
-    "mean_seconds": 40.87032279458557,
-    "error_count": 1,
+    "mean_seconds": 37.856540267458286,
+    "error_count": 0,
     "retrieval_hit_ar": 0.9,
     "faithfulness_ar": 0.9,
     "citation_hit_ar": 0.9,
     "retrieval_hit_en": 1.0,
-    "faithfulness_en": 0.9,
-    "citation_hit_en": 0.9
+    "faithfulness_en": 1.0,
+    "citation_hit_en": 1.0
   },
   "records": [
     {
@@ -187,7 +187,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 24.663418880023528
+      "seconds": 36.03356968300068
     },
     {
       "id": "s2-004-en",
@@ -275,13 +275,91 @@
           "source_text": "An intention may be declared verbally, in writing, by signs in general use, and also by such conduct as, in the circumstances of the case, leaves no doubt as to its true meaning. A declaration of intention may be implied when neither the law nor the parties require it to be expressed."
         }
       ],
-      "faithfulness": null,
+      "faithfulness": 1.0,
       "answer_accuracy": null,
       "retrieval_hit": 1,
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
-      "error": "Generation or RAGAS scoring failed (GenerationError)",
-      "seconds": 63.20717718900414
+      "result": {
+        "answer": "A contract is formed at the moment two parties exchange two concordant intentions, provided that any special formalities required by law for the contract's conclusion are satisfied.",
+        "sources": [
+          "Egyptian Civil Code, Article 89"
+        ],
+        "insufficient_evidence": false,
+        "evidence": [
+          {
+            "citation": "Egyptian Civil Code, Article 89",
+            "quote": "A contract is created, subject to any special formalities that may be required by law for its conclusion, from the moment that two persons have exchanged two concordant intentions.",
+            "language": "en"
+          }
+        ],
+        "source_notes": [],
+        "configuration": {
+          "generation": {
+            "schema_version": 1,
+            "provider": "google",
+            "model": "gemini-3.1-flash-lite",
+            "thinking_level": "minimal",
+            "api_key_env": "GOOGLE_API_KEY",
+            "prompt_version": "civil-code-grounded-v1",
+            "grounding_version": "exact-evidence-and-source-notes-v1",
+            "temperature": 0.0,
+            "max_output_tokens": 2048,
+            "thinking_budget": 0,
+            "timeout_ms": 60000,
+            "retrieval_top_k": 5,
+            "max_context_characters": 24000
+          },
+          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "retrieval": {
+            "schema_version": 1,
+            "model_id": "intfloat/multilingual-e5-base",
+            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+            "dimensions": 768,
+            "max_tokens": 512,
+            "query_prefix": "query: ",
+            "passage_prefix": "passage: ",
+            "normalize_embeddings": true,
+            "normalization_version": "extractor-arabic-search-v1",
+            "chunk_strategy": "whole_article_or_source_provisions",
+            "source_provision_starts": {
+              "egyptian-civil-code:1143:en:0": [
+                "House and agricultural rents",
+                "Subject to the provisions relating to stolen or lost property",
+                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
+                "These privileged claims are payable",
+                "If movables and crops so charged are removed"
+              ]
+            },
+            "overlap": 0,
+            "collection": "egyptian-civil-code-e5-base",
+            "distance": "cosine",
+            "device": "auto",
+            "gpu_precision": "float16",
+            "cpu_precision": "float32",
+            "cpu_threads": 6,
+            "batch_size": 4
+          },
+          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
+          "filters": {},
+          "answer_language": "en",
+          "context_passage_count": 6
+        },
+        "usage": {
+          "candidates_token_count": 125,
+          "prompt_token_count": 1189,
+          "prompt_tokens_details": [
+            {
+              "modality": "TEXT",
+              "token_count": 1189
+            }
+          ],
+          "total_token_count": 1314
+        },
+        "model_version": "gemini-3.1-flash-lite"
+      },
+      "seconds": 45.38731497899971
     },
     {
       "id": "s2-008-ar",
@@ -443,7 +521,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 35.54990678402828
+      "seconds": 36.78543467000054
     },
     {
       "id": "s2-008-en",
@@ -605,7 +683,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 43.53722605400253
+      "seconds": 42.41672983100034
     },
     {
       "id": "s2-009-ar",
@@ -767,7 +845,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 49.899757826991845
+      "seconds": 42.02097976100049
     },
     {
       "id": "s2-009-en",
@@ -935,7 +1013,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 35.3373330339964
+      "seconds": 44.95473272199888
     },
     {
       "id": "s2-013-ar",
@@ -1097,7 +1175,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 47.00064858599217
+      "seconds": 47.206383049999204
     },
     {
       "id": "s2-013-en",
@@ -1259,7 +1337,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 25.183932825981174
+      "seconds": 40.62025658799939
     },
     {
       "id": "s2-019-ar",
@@ -1421,7 +1499,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 36.24090889800573
+      "seconds": 49.559426280999105
     },
     {
       "id": "s2-019-en",
@@ -1583,7 +1661,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 57.43650588099263
+      "seconds": 48.84312589199908
     },
     {
       "id": "s2-021-ar",
@@ -1745,7 +1823,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 50.39744377302122
+      "seconds": 40.172179036999296
     },
     {
       "id": "s2-021-en",
@@ -1907,7 +1985,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 63.389074378006626
+      "seconds": 51.97727933499846
     },
     {
       "id": "s2-024-ar",
@@ -2061,7 +2139,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 11.524932180007454
+      "seconds": 7.547008879000714
     },
     {
       "id": "s2-024-en",
@@ -2223,7 +2301,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 43.25894857000094
+      "seconds": 46.59095877999971
     },
     {
       "id": "s2-025-ar",
@@ -2385,7 +2463,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 48.14088044498931
+      "seconds": 54.241264038000736
     },
     {
       "id": "s2-025-en",
@@ -2557,7 +2635,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 54.049205552990315
+      "seconds": 42.42395759399915
     },
     {
       "id": "s2-026-ar",
@@ -2719,7 +2797,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 45.6306528839923
+      "seconds": 52.67502352400152
     },
     {
       "id": "s2-026-en",
@@ -2881,7 +2959,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 50.349715662014205
+      "seconds": 38.40797922599995
     },
     {
       "id": "s2-028-ar",
@@ -2999,7 +3077,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 99.1369024279993
+      "seconds": 49.529892890001065
     },
     {
       "id": "s2-028-en",
@@ -3117,7 +3195,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 30.941065694001736
+      "seconds": 42.732388519998494
     },
     {
       "id": "s2-u01-ar",
@@ -3265,7 +3343,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 13.456983259005938
+      "seconds": 10.243349328000477
     },
     {
       "id": "s2-u01-en",
@@ -3413,7 +3491,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 27.10020291400724
+      "seconds": 16.89561486599996
     },
     {
       "id": "s2-u02-ar",
@@ -3561,7 +3639,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 14.962429898994742
+      "seconds": 10.746036678001474
     },
     {
       "id": "s2-u02-en",
@@ -3709,7 +3787,7 @@
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 10.492493472003844
+      "seconds": 10.546080267000434
     }
   ],
   "generation_config": {
@@ -3756,7 +3834,7 @@
     "cpu_threads": 6,
     "batch_size": 4
   },
-  "pipeline_fingerprint": "f3dceb41e96c96f66063ba0c312c3b600bbc28e2c0416998a0734c2059ea629d",
+  "pipeline_fingerprint": "756014752c8f75a48180a86b0b4b82b616cd89f0013280f43060cef1c3f0547a",
   "questions_sha256": "ac7084a279bc928542613ee894b27c5da95d6aa17929b24778b84acdf634e722",
   "reused_record_count": 0,
   "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
@@ -3769,7 +3847,7 @@
     "google-genai": "2.29.0",
     "mlflow": "3.17.0"
   },
-  "mlflow_run_id": "3d054d79098f441f9827fff1d99274d6",
+  "mlflow_run_id": "22ae42580b3f4e1c8dccd05c6a443556",
   "judge_sanity_check": {
     "supported_control": 1.0,
     "unsupported_control": 0.0

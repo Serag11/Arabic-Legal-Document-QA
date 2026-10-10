@@ -92,6 +92,26 @@ def test_exact_lookup_handles_digits_and_does_not_hide_multiple_articles():
     assert explicit_article_number("Compare Article 147 with Article 148") is None
 
 
+def test_public_cached_encoder_does_not_read_huggingface_credentials(monkeypatch):
+    from types import SimpleNamespace
+    import sentence_transformers
+    from huggingface_hub.utils import _headers
+
+    def unreadable_token():
+        raise PermissionError("Private token file is not readable by the container user")
+
+    def cached_model(*args, **kwargs):
+        # Exercise the actual Hub authentication helper used by the loader.
+        _headers.build_hf_headers(token=kwargs.get("token"))
+        assert kwargs["local_files_only"]
+        return SimpleNamespace(tokenizer=CharacterTokenizer())
+
+    monkeypatch.setattr(_headers, "get_token", unreadable_token)
+    monkeypatch.setattr(sentence_transformers, "SentenceTransformer", cached_model)
+    encoder = E5Encoder(load_config())
+    assert encoder.tokenizer is not None
+
+
 def test_repeal_missing_language_filters_and_semantic_source_mapping(tmp_path, by_number):
     config = load_config()
     docs = prepare_documents([by_number[54], by_number[147], by_number[1022]])

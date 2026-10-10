@@ -1,12 +1,12 @@
 {
   "name": "ArabicLegalDocumentQA",
-  "version": 1,
+  "version": 2,
   "alias": "champion",
-  "model_uri": "models:/m-ed011bf79fba4c13917381d71ffb2b11",
-  "registration_run_id": "e18a01e6c9f14b4ca689528847e6a9ea",
-  "evaluation_run_id": "4194a08fc48840ac9768b8b741098860",
+  "model_uri": "models:/m-36561981329643f78474bffcc68058fc",
+  "registration_run_id": "392023a1ee684b3fb5b9e7acc16bdee5",
+  "evaluation_run_id": "10172bb91c14400fb892c2ade807c2d0",
   "gate": {
-    "coverage_adjusted_faithfulness": 0.9226190476190476,
+    "coverage_adjusted_faithfulness": 0.9249999999999999,
     "scored_questions": 52,
     "supported_questions": 56,
     "threshold": 0.75

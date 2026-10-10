@@ -56,8 +56,8 @@ stages:
       size: 1192
     - path: src/api.py
       hash: md5
-      md5: 2c6daa99623b01c538852bae68a9d586
-      size: 3296
+      md5: 441688f1483f9b96b43649b4459ab665
+      size: 4681
     - path: src/experiments.py
       hash: md5
       md5: bf34b64c017d2758e8cc221ec6b56a3e
@@ -76,12 +76,12 @@ stages:
       size: 7945
     - path: src/retrieval.py
       hash: md5
-      md5: 91b6c58e943715fe8834760f9abdd946
-      size: 22520
+      md5: 653c07be7366c69f4dc3eead6c7eb2b9
+      size: 22571
     - path: tests
       hash: md5
-      md5: 34c6e006d219cc2d8f47636c9d1cd7de.dir
-      size: 32107
+      md5: 0f5893e9583f6c5d9ae517fcc4f4354f.dir
+      size: 34504
       nfiles: 8
     - path: uv.lock
       hash: md5
@@ -113,8 +113,8 @@ stages:
       size: 1192
     - path: src/api.py
       hash: md5
-      md5: 2c6daa99623b01c538852bae68a9d586
-      size: 3296
+      md5: 441688f1483f9b96b43649b4459ab665
+      size: 4681
     - path: src/experiments.py
       hash: md5
       md5: bf34b64c017d2758e8cc221ec6b56a3e
@@ -137,12 +137,12 @@ stages:
       size: 7945
     - path: src/retrieval.py
       hash: md5
-      md5: 91b6c58e943715fe8834760f9abdd946
-      size: 22520
+      md5: 653c07be7366c69f4dc3eead6c7eb2b9
+      size: 22571
     - path: tests
       hash: md5
-      md5: 34c6e006d219cc2d8f47636c9d1cd7de.dir
-      size: 32107
+      md5: 0f5893e9583f6c5d9ae517fcc4f4354f.dir
+      size: 34504
       nfiles: 8
     - path: uv.lock
       hash: md5
@@ -186,12 +186,12 @@ stages:
       size: 7945
     - path: src/retrieval.py
       hash: md5
-      md5: 91b6c58e943715fe8834760f9abdd946
-      size: 22520
+      md5: 653c07be7366c69f4dc3eead6c7eb2b9
+      size: 22571
     - path: tests
       hash: md5
-      md5: 34c6e006d219cc2d8f47636c9d1cd7de.dir
-      size: 32107
+      md5: 0f5893e9583f6c5d9ae517fcc4f4354f.dir
+      size: 34504
       nfiles: 8
     - path: uv.lock
       hash: md5
@@ -200,8 +200,8 @@ stages:
     outs:
     - path: data/retrieval/chroma
       hash: md5
-      md5: 76704bb9d364deeb743ebe5dd3da70c2.dir
-      size: 32776162
+      md5: e657e191f5fcdf0be6e067658459f6ae.dir
+      size: 32751589
       nfiles: 7
   evaluate_retrieval:
     cmd: uv run python src/retrieval.py evaluate
@@ -212,8 +212,8 @@ stages:
       size: 976
     - path: data/retrieval/chroma
       hash: md5
-      md5: 76704bb9d364deeb743ebe5dd3da70c2.dir
-      size: 32776162
+      md5: e657e191f5fcdf0be6e067658459f6ae.dir
+      size: 32751589
       nfiles: 7
     - path: evaluation/retrieval_questions.jsonl
       hash: md5
@@ -237,8 +237,8 @@ stages:
       size: 7945
     - path: src/retrieval.py
       hash: md5
-      md5: 91b6c58e943715fe8834760f9abdd946
-      size: 22520
+      md5: 653c07be7366c69f4dc3eead6c7eb2b9
+      size: 22571
     - path: uv.lock
       hash: md5
       md5: 0c5b38bb41ac00a518095c9fbc17a488
@@ -246,8 +246,8 @@ stages:
     outs:
     - path: reports/retrieval-results.json
       hash: md5
-      md5: cc1239c832b71406431eab552de0be6e
-      size: 649286
+      md5: 56a1f704d89ddc640639d8c348f6aca4
+      size: 648837
     - path: reports/retrieval-results.metrics.json
       hash: md5
       md5: e155123665720ea7e3500e8e00be199f
@@ -289,8 +289,8 @@ stages:
       size: 7945
     - path: src/retrieval.py
       hash: md5
-      md5: 91b6c58e943715fe8834760f9abdd946
-      size: 22520
+      md5: 653c07be7366c69f4dc3eead6c7eb2b9
+      size: 22571
     - path: uv.lock
       hash: md5
       md5: 0c5b38bb41ac00a518095c9fbc17a488
