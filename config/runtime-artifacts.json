@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "repository": "Serag11/Arabic-Legal-Document-QA",
+  "release": "runtime-v1",
+  "asset": "runtime-v1.tar.gz",
+  "sha256": "eed251f9176e9ad497382a1185a6fe3ff0c77216681858ae0b61e7aecac2c81a",
+  "bundle_manifest_sha256": "cb26f7880c50e800988d57b9366218ee21f488ec999d535665f90b399f0c9405",
+  "model_directory_sha256": "095e6be5ee3b409ea12a58d8b7d2fbef58ea53856eed56bfecd6e05cb7f1ac47",
+  "index_directory_sha256": "691137d17b35030b417ebec36d708b642dbac6b2af396162a80640a7a48f8193",
+  "model": {
+    "model_id": "intfloat/multilingual-e5-base",
+    "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+    "dimensions": 768,
+    "max_tokens": 512,
+    "backend": "onnxruntime",
+    "precision": "float16-storage-float32-compute",
+    "pooling": "attention_mask_mean",
+    "normalize_embeddings": true,
+    "opset": 17,
+    "weights_sha256": "bbcb400c4386d10105370b31d4e73d0114336a32b991254c068f729192c8b810",
+    "model_bytes": 555132709,
+    "onnxruntime_version": "1.31.0"
+  },
+  "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
+  "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1"
+}

@@ -1,0 +1,5 @@
+target-version = "py313"
+
+[lint]
+# Check correctness across the existing project without rewriting evaluated code.
+select = ["E9", "F63", "F7", "F82"]

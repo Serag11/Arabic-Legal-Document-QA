@@ -14,8 +14,9 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 - [X] Glyph-position-based reordering for zero-width alef variants applied during extraction and covered by regression tests.
 - [X] Add automated corpus validation and run it as a DVC stage.
 - [ ] Manually review the 20 sampled article crops and the remaining flagged records; record findings.
-- [ ] Configure a DVC remote and make the full corpus pipeline reproducible for others.
-- [ ] Build article-aware retrieval, then generation and the `/ask` API.
+- [X] Configure a DVC remote and push tracked artifacts (user confirmed).
+- [ ] Verify the full corpus pipeline is reproducible from a clean checkout using the remote.
+- [X] Build article-aware retrieval, then generation and the `/ask` API.
 
 ## Phase 1 — Make the corpus trustworthy (remaining work deferred)
 
@@ -42,8 +43,9 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 
 - [X] Use `ar_text` as the canonical source-text field in the extractor and corpus tests; carry it forward into ingestion and the API.
 - [X] Keep source-faithful Arabic separate from normalized retrieval text; do not use normalized text as a legal quotation.
-- [X] Configure Google Drive DVC remote `storage`; use local user OAuth settings for the personal Drive destination (browser authorization pending).
-- [ ] Push tracked artifacts to `storage` and verify `dvc pull` from a clean checkout.
+- [X] Configure Google Drive DVC remote `storage` (user confirmed configuration is complete).
+- [X] Push tracked artifacts to `storage` (user confirmed successful push).
+- [ ] Verify `dvc pull` from a clean checkout.
 - [X] Verify `dvc repro` regenerates the structured corpus and QA artifacts from the tracked source PDF.
 
 **Phase 1 exit criteria:** corpus tests pass; active article text is present in both languages except the documented source exception; flagged records and the 20-item visual sample have been reviewed; DVC can reproduce the extraction and a remote is available to collaborators.
@@ -172,10 +174,20 @@ POST /ask
 
 ## Phase 6 — Add CI and delivery automation
 
-- [ ] Add GitHub Actions for lint, tests, evaluation/quality gate, Docker build, and image publication.
-- [ ] Store credentials in GitHub Actions secrets; never commit API keys or `.env` files.
-- [ ] Track the source PDF and derived corpus with DVC; verify clean-checkout reproduction using `dvc pull` and `dvc repro`.
-- [ ] Publish the container image and document how to run it without cloning the repository.
+- [X] Add GitHub Actions for lint, offline tests, measured quality/runtime-equivalence gates, Docker build, offline container checks, and conditional Docker Hub publication in `.github/workflows/delivery.yml`.
+- [X] Store Docker Hub credentials in GitHub Actions secrets (user confirmed setup); runtime Google credentials remain external to the image.
+- [X] Track the source PDF and derived corpus with DVC; configure the remote and push tracked artifacts (user confirmed remote setup and push).
+- [ ] Verify clean-checkout reproduction using `dvc pull` and `dvc repro`.
+- [X] Use a checksum-pinned GitHub Release runtime bundle for CI instead of DVC/Google Drive authentication; create the local `runtime-v1.tar.gz` bundle and descriptor.
+- [X] Export and compare FP32, INT8, and compact ONNX models. Select FP16 weight storage with FP32 CPU computation: 555 MB, all 60 generator contexts unchanged; reject INT8's retrieval drop from 55/56 to 53/56.
+- [X] Build and locally verify a self-contained, non-root, PyTorch-free image with bundled tokenizer/model/index; document running it without cloning the repository.
+- [X] Authenticate GitHub CLI and verify repository Actions secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`.
+- [X] Publish `runtime-v1` with the runtime archive and manifest; verify GitHub's archive SHA256 matches `config/runtime-artifacts.json` (529,911,987 bytes).
+- [ ] Run the workflow on GitHub and verify Docker Hub publication to public `serag11/arabic-legal-document-qa`.
+
+**Stage 6 delivery design:** DVC stays local for corpus/index reproducibility. CI obtains runtime artifacts from a pinned GitHub Release and verifies checksums. The additional deployment gate permits reuse of the current generation scores only after exact context equivalence on the complete 60-question evaluation; changed contexts require fresh answer evaluation. See `reports/stage6-delivery.md` for bootstrap instructions and verification results.
+
+**Storage constraint:** remove intermediate export models, expanded runtime bundles, and temporary Stage 6 images/build-cache records after local verification. Retain only the compressed release archive for upload; perform subsequent image builds in GitHub Actions.
 
 ## Phase 7 — Serving, optimization, and observability
 
@@ -194,8 +206,8 @@ Complete these after the baseline RAG service, evaluation, and CI are working.
 
 ## Suggested order for the next work session
 
-1. Start Stage 6 CI/delivery and choose how the registered champion is deployed.
-2. Complete deferred DVC remote reproduction before promising clean-checkout data availability.
+1. Commit/push the Stage 6 implementation and verify GitHub Actions/Docker Hub delivery; the pinned `runtime-v1` release is published and its checksum verified.
+2. Verify clean-checkout reproduction with `dvc pull` and `dvc repro`; remote configuration and artifact upload are complete.
 3. Retain source QA and the Arabic Article 1065 retrieval miss as follow-ups.
 
-**Return to Phase 1:** review all 20 sampled article crops and every flagged record; review the zero-width alef diagnostic sample; document findings in `reports/corpus-extraction.md`; add the Article 1021 regression assertion; configure a DVC remote and verify clean-checkout push/pull reproduction. Keep these tasks unchecked until completed, and rebuild the index after any corpus corrections.
+**Return to Phase 1:** review all 20 sampled article crops and every flagged record; review the zero-width alef diagnostic sample; document findings in `reports/corpus-extraction.md`; add the Article 1021 regression assertion; verify clean-checkout reproduction from the configured and populated DVC remote. Keep these tasks unchecked until completed, and rebuild the index after any corpus corrections.

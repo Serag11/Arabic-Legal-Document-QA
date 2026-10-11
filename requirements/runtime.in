@@ -1,0 +1,13 @@
+# CPU ONNX serving only; export/evaluation dependencies stay outside the image.
+chromadb==1.5.9
+fastapi==0.143.0
+google-genai==2.29.0
+pyarabic==0.6.15
+pydantic==2.13.5
+pymupdf==1.28.2
+python-dotenv==1.2.3
+transformers==4.57.6
+uvicorn==0.54.0
+onnxruntime==1.31.0
+numpy==2.5.3
+tokenizers==0.22.2

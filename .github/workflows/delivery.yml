@@ -1,0 +1,102 @@
+name: Tests and self-contained Docker delivery
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: delivery-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  delivery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.9.22'
+          enable-cache: true
+      - name: Check current measured quality and compact-runtime equivalence
+        run: |
+          python -m src.quality_gate
+          python -m src.deployment_gate
+      - name: Lint
+        run: |
+          uvx ruff==0.14.0 check src tests
+          uvx ruff==0.14.0 check --select E9,F src/deployment.py src/deployment_gate.py src/benchmark_runtime.py src/export_runtime.py src/runtime_artifacts.py src/runtime_smoke.py tests/test_runtime_artifacts.py
+      - name: Cache pinned release artifacts
+        uses: actions/cache@v4
+        with:
+          path: runtime
+          key: runtime-${{ runner.os }}-${{ hashFiles('config/runtime-artifacts.json') }}
+      - name: Download or verify the runtime bundle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python -m src.runtime_artifacts ensure --output runtime
+          rm -f runtime.tar.gz
+          mkdir -p data
+          cp runtime/data/egyptian_civil_code_articles.jsonl data/egyptian_civil_code_articles.jsonl
+      - name: Install frozen development dependencies
+        run: uv sync --frozen
+      - name: Offline tests
+        run: uv run --frozen python -m pytest tests/ -q
+      - uses: docker/setup-buildx-action@v3
+      - name: Build image for smoke testing
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile.runtime
+          platforms: linux/amd64
+          load: true
+          tags: legal-qa:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Verify offline container startup and semantic retrieval
+        run: |
+          docker run --rm --no-healthcheck --network none --volume "$PWD/reports/experiments/selected-full-validation.json:/tmp/validation.json:ro" --entrypoint python legal-qa:ci -m src.runtime_smoke --evaluation /tmp/validation.json
+          docker run -d --name legal-qa-ci -p 8000:8000 -e GOOGLE_API_KEY=build-smoke-placeholder legal-qa:ci
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://localhost:8000/health; then exit 0; fi
+            sleep 2
+          done
+          docker logs legal-qa-ci
+          exit 1
+      - name: Stop smoke container
+        if: always()
+        run: docker rm -f legal-qa-ci || true
+      - name: Authenticate to Docker Hub
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Publish tested image
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile.runtime
+          platforms: linux/amd64
+          push: true
+          tags: |
+            serag11/arabic-legal-document-qa:latest
+            serag11/arabic-legal-document-qa:sha-${{ github.sha }}
+          cache-from: type=gha
+          provenance: mode=max
+          sbom: true
+      - name: Verify anonymous pull of the published image
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          mkdir -p "$RUNNER_TEMP/docker-public"
+          docker --config "$RUNNER_TEMP/docker-public" pull serag11/arabic-legal-document-qa:sha-${{ github.sha }}

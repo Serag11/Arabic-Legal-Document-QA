@@ -222,3 +222,7 @@ data/mlflow/
 mlruns/
 mlartifacts/
 reports/experiments/*.partial.json
+data/deployment/
+/runtime/
+/runtime.tar.gz
+reports/deployment/*.partial.json

@@ -6,19 +6,21 @@ Egyptian Civil Code corpus. E5 embeddings and Chroma run locally; Google's
 
 ## Quickstart
 
-Install [uv](https://docs.astral.sh/uv/), make the DVC-tracked corpus available,
-and set `GOOGLE_API_KEY` in a `.env` file in the project root (see `.env.example`).
-The Drive remote upload is still pending; corpus availability is a prerequisite
-on a new checkout. Then run:
+Install [uv](https://docs.astral.sh/uv/) and set `GOOGLE_API_KEY` in a `.env` file
+in the project root (see `.env.example`). The DVC-tracked artifacts have been
+pushed to the Google Drive remote `storage`. From the project root, run:
 
 ```bash
 uv sync --group evaluation
-uv run python src/retrieval.py download && uv run dvc repro
+uv run dvc pull -r storage && uv run python src/retrieval.py download && uv run dvc repro
 docker compose up --build -d
 ```
 
-The second command explicitly downloads pinned E5 weights once, then builds and
-evaluates the local index. The third command starts FastAPI on port 8000 with
+The second command pulls the tracked artifacts from `storage` (complete Google
+Drive authentication if prompted), explicitly downloads pinned E5 weights once,
+then reproduces any out-of-date pipeline stages. To pull artifacts again on an
+existing setup, run `uv run dvc pull -r storage`.
+The third command starts FastAPI on port 8000 with
 the local index and Hugging Face cache mounted read-only. `/ask` sends the
 question plus retrieved source passages to Google's API. Generation calls use
 the account's quota/billing; no local generation weights are downloaded.
@@ -28,6 +30,49 @@ exact source `evidence`, and reproducibility/usage metadata. Arabic questions
 default to Arabic answers; `--language ar` or `--language en` overrides this.
 Unsupported questions return a localized insufficient-evidence response.
 Provider failures return a nonzero CLI exit status rather than an invented answer.
+
+## Self-contained published image
+
+The Stage 6 delivery target is the public Docker Hub repository
+`serag11/arabic-legal-document-qa`. Once the first release/image is published,
+set `GOOGLE_API_KEY` in your shell and run:
+
+```bash
+docker pull serag11/arabic-legal-document-qa:latest
+docker run -d --name legal-qa -p 8000:8000 -e GOOGLE_API_KEY serag11/arabic-legal-document-qa:latest
+```
+
+This image includes the tokenizer, compact ONNX E5 weights, and Chroma index.
+It needs no repository checkout, DVC credentials, model download, or host data
+mounts. Generation still uses Google's API. `/health` and `/docs` are available
+at `http://localhost:8000`. For a reproducible deployment, use the published
+`sha-<full-git-commit>` tag or image digest instead of `latest`.
+
+Weights use **FP16 storage with FP32 CPU computation**, reducing the ONNX model
+from 1.11 GB to 555 MB. The INT8 experiment was smaller but lost two expected
+Arabic retrieval hits, so it was rejected. The selected compact model preserves
+all 60 evaluated generator contexts exactly; existing generation scores are
+reused on that basis, rather than represented as a new RAGAS run. The actual
+PyTorch-free image also passed this full offline comparison.
+
+The development quickstart above retains the original PyTorch/Compose path.
+See [`reports/stage6-delivery.md`](reports/stage6-delivery.md) for the artifact
+release bootstrap, build commands, verification results, and publication status.
+
+## CI and artifact delivery
+
+`.github/workflows/delivery.yml` runs lint, offline tests, the measured quality
+gate, the compact-runtime equivalence gate, Docker builds, and offline container
+checks. Successful `main` builds publish `latest` and a commit-specific tag to
+Docker Hub. Pull requests build/test without publishing or using Docker secrets.
+
+The workflow needs repository Actions secrets `DOCKERHUB_USERNAME` and
+`DOCKERHUB_TOKEN`. It downloads a pinned GitHub Release bundle and verifies its
+archive and per-file checksums using `config/runtime-artifacts.json`. Google
+Drive/DVC authentication and `GOOGLE_API_KEY` are not needed in CI. DVC remains
+the local corpus/index versioning and reproduction mechanism.
+Private GitHub release assets use the workflow's built-in GitHub token with
+`contents: read`; no additional GitHub token secret is needed.
 
 ## API and architecture
 

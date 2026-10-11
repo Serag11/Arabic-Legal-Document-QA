@@ -1,0 +1,1541 @@
+{
+  "model": {
+    "model_id": "intfloat/multilingual-e5-base",
+    "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+    "dimensions": 768,
+    "max_tokens": 512,
+    "backend": "onnxruntime",
+    "precision": "float16-storage-float32-compute",
+    "pooling": "attention_mask_mean",
+    "normalize_embeddings": true,
+    "opset": 17,
+    "weights_sha256": "bbcb400c4386d10105370b31d4e73d0114336a32b991254c068f729192c8b810",
+    "model_bytes": 555132709,
+    "onnxruntime_version": "1.31.0"
+  },
+  "embedding_sample_cosine": [
+    1.0,
+    0.9999997615814209,
+    0.9999998211860657
+  ],
+  "runtime_fingerprint": "3e085d321b3b9b8aa71c3ae5a73acb9e9053245b48b4caf983ce007d13a11399",
+  "baseline_report_sha256": "6660dc9f1d9d2847af173b628f1984f5345b3aaa9394b45e3384cb9a0be5bb29",
+  "model_directory_sha256": "095e6be5ee3b409ea12a58d8b7d2fbef58ea53856eed56bfecd6e05cb7f1ac47",
+  "index_directory_sha256": "691137d17b35030b417ebec36d708b642dbac6b2af396162a80640a7a48f8193",
+  "count": 60,
+  "supported_count": 56,
+  "expected_article_hits": 55,
+  "context_identical_count": 60,
+  "changed_context_ids": [],
+  "mean_query_seconds": 0.041639167916635716,
+  "language_hits": {
+    "ar": 27,
+    "en": 28
+  },
+  "records": [
+    {
+      "id": "s2-001-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        1
+      ],
+      "retrieved_article_numbers": [
+        24,
+        1,
+        229,
+        200,
+        876
+      ],
+      "baseline_article_numbers": [
+        24,
+        1,
+        229,
+        200,
+        876
+      ],
+      "context_identical": true,
+      "context_sha256": "021a236fabe87885e0806a899a40d710d4bc856fa5c76642bb1729f38f83eb6e",
+      "hit": true,
+      "rr": 0.5,
+      "seconds": 0.05184299199981979
+    },
+    {
+      "id": "s2-001-en",
+      "language": "en",
+      "expected_article_numbers": [
+        1
+      ],
+      "retrieved_article_numbers": [
+        838,
+        730,
+        200,
+        876,
+        1
+      ],
+      "baseline_article_numbers": [
+        838,
+        730,
+        200,
+        876,
+        1
+      ],
+      "context_identical": true,
+      "context_sha256": "bdd1b9b5a0d17be0a35a0aa5b87bea4727b2b29cf09b9dbf77373008cb82f5f4",
+      "hit": true,
+      "rr": 0.2,
+      "seconds": 0.04492025499985175
+    },
+    {
+      "id": "s2-002-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        2
+      ],
+      "retrieved_article_numbers": [
+        2,
+        115,
+        6,
+        346,
+        238
+      ],
+      "baseline_article_numbers": [
+        2,
+        115,
+        6,
+        346,
+        238
+      ],
+      "context_identical": true,
+      "context_sha256": "5168727a6458f6cdcaf7ee75a0d521e7492f3a688a79e58ae388ae0100bd5c97",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.043407995000052324
+    },
+    {
+      "id": "s2-002-en",
+      "language": "en",
+      "expected_article_numbers": [
+        2
+      ],
+      "retrieved_article_numbers": [
+        2,
+        388,
+        139,
+        608,
+        580
+      ],
+      "baseline_article_numbers": [
+        2,
+        388,
+        139,
+        608,
+        580
+      ],
+      "context_identical": true,
+      "context_sha256": "e247441af39f40323605853cf992f344e40874936747fc5f4f77956a02e1a2ae",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04231202699975256
+    },
+    {
+      "id": "s2-003-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        5
+      ],
+      "retrieved_article_numbers": [
+        5,
+        4,
+        988,
+        639,
+        806
+      ],
+      "baseline_article_numbers": [
+        5,
+        4,
+        988,
+        639,
+        806
+      ],
+      "context_identical": true,
+      "context_sha256": "728311df65f140d28df1eaf7ba33671552443496ac6569d642b6cdb074193681",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.043738128000313736
+    },
+    {
+      "id": "s2-003-en",
+      "language": "en",
+      "expected_article_numbers": [
+        5
+      ],
+      "retrieved_article_numbers": [
+        5,
+        92,
+        172,
+        425,
+        807
+      ],
+      "baseline_article_numbers": [
+        5,
+        92,
+        172,
+        425,
+        807
+      ],
+      "context_identical": true,
+      "context_sha256": "7c83ae68bbff0d6b45cab9939d7587c9fe9ef1e6596af30b38d1d1eeaeed6f89",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04834580999977334
+    },
+    {
+      "id": "s2-004-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        89
+      ],
+      "retrieved_article_numbers": [
+        89,
+        101,
+        20,
+        122,
+        150
+      ],
+      "baseline_article_numbers": [
+        89,
+        101,
+        20,
+        122,
+        150
+      ],
+      "context_identical": true,
+      "context_sha256": "931df43ededac7adaec1ad193ae447d0ef1ee56e6630868c4ef633b48a5f85ce",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.042937339000218344
+    },
+    {
+      "id": "s2-004-en",
+      "language": "en",
+      "expected_article_numbers": [
+        89
+      ],
+      "retrieved_article_numbers": [
+        89,
+        150,
+        1017,
+        92,
+        90
+      ],
+      "baseline_article_numbers": [
+        89,
+        150,
+        1017,
+        92,
+        90
+      ],
+      "context_identical": true,
+      "context_sha256": "46d9e2671962cbb9692beb353229e8da3ee71ede9252796e21170b388dc9d3a3",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04476230399995984
+    },
+    {
+      "id": "s2-005-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        147
+      ],
+      "retrieved_article_numbers": [
+        157,
+        147,
+        507,
+        149,
+        658
+      ],
+      "baseline_article_numbers": [
+        157,
+        147,
+        507,
+        149,
+        658
+      ],
+      "context_identical": true,
+      "context_sha256": "e006a581a20a9038d1f2494b579aa3e7906ded93098d892ca7e7afcd0409c5a7",
+      "hit": true,
+      "rr": 0.5,
+      "seconds": 0.04524862399966878
+    },
+    {
+      "id": "s2-005-en",
+      "language": "en",
+      "expected_article_numbers": [
+        147
+      ],
+      "retrieved_article_numbers": [
+        147,
+        453,
+        686,
+        650,
+        155
+      ],
+      "baseline_article_numbers": [
+        147,
+        453,
+        686,
+        650,
+        155
+      ],
+      "context_identical": true,
+      "context_sha256": "6ce1cf4e212debff604dc941c2177cc35d1991de10094837f3664abf458e4c25",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.041209184999843274
+    },
+    {
+      "id": "s2-006-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        147
+      ],
+      "retrieved_article_numbers": [
+        200,
+        346,
+        147,
+        272,
+        213
+      ],
+      "baseline_article_numbers": [
+        200,
+        346,
+        147,
+        272,
+        213
+      ],
+      "context_identical": true,
+      "context_sha256": "ce66ec54352bde042c32be0e9f70f8baec8f7a563ab160f3e8733d01ccedaa54",
+      "hit": true,
+      "rr": 0.3333333333333333,
+      "seconds": 0.0555243439998776
+    },
+    {
+      "id": "s2-006-en",
+      "language": "en",
+      "expected_article_numbers": [
+        147
+      ],
+      "retrieved_article_numbers": [
+        147,
+        129,
+        213,
+        210,
+        530
+      ],
+      "baseline_article_numbers": [
+        147,
+        129,
+        213,
+        210,
+        530
+      ],
+      "context_identical": true,
+      "context_sha256": "cad237dad808216a83c106621966f7b135d21748c088c620971d10b390b7aa87",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.05642558799991093
+    },
+    {
+      "id": "s2-007-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        148
+      ],
+      "retrieved_article_numbers": [
+        148,
+        124,
+        107,
+        275,
+        102
+      ],
+      "baseline_article_numbers": [
+        148,
+        124,
+        107,
+        275,
+        102
+      ],
+      "context_identical": true,
+      "context_sha256": "e4549013b730fd7041899a8f4a756f99105127257d663045a3fb2d50a436112c",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.052135411000108434
+    },
+    {
+      "id": "s2-007-en",
+      "language": "en",
+      "expected_article_numbers": [
+        148
+      ],
+      "retrieved_article_numbers": [
+        148,
+        124,
+        161,
+        210,
+        150
+      ],
+      "baseline_article_numbers": [
+        148,
+        124,
+        161,
+        210,
+        150
+      ],
+      "context_identical": true,
+      "context_sha256": "de0a08efba718afbfe78c2941e0b6c0c561e2339da94070098adefad595dbb04",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.07671455299987429
+    },
+    {
+      "id": "s2-008-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        163
+      ],
+      "retrieved_article_numbers": [
+        949,
+        990,
+        179,
+        221,
+        163
+      ],
+      "baseline_article_numbers": [
+        949,
+        990,
+        179,
+        221,
+        163
+      ],
+      "context_identical": true,
+      "context_sha256": "6cb7201e6a3d3fcc947502642da364718d8b9a8267d0c9e97d40a01a0008b24d",
+      "hit": true,
+      "rr": 0.2,
+      "seconds": 0.07057989599979919
+    },
+    {
+      "id": "s2-008-en",
+      "language": "en",
+      "expected_article_numbers": [
+        163
+      ],
+      "retrieved_article_numbers": [
+        163,
+        168,
+        175,
+        166,
+        769
+      ],
+      "baseline_article_numbers": [
+        163,
+        168,
+        175,
+        166,
+        769
+      ],
+      "context_identical": true,
+      "context_sha256": "4f86787331655d7946cde9ac95e987599c0248854b70b0f48c6d598de67879ac",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04870177300017531
+    },
+    {
+      "id": "s2-009-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        179
+      ],
+      "retrieved_article_numbers": [
+        179,
+        153,
+        215,
+        165,
+        293
+      ],
+      "baseline_article_numbers": [
+        179,
+        153,
+        215,
+        165,
+        293
+      ],
+      "context_identical": true,
+      "context_sha256": "24db853fcb063b693c8fe844ce0b67c18122944abd21953c1279b9105c2ee64d",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.047571571999924345
+    },
+    {
+      "id": "s2-009-en",
+      "language": "en",
+      "expected_article_numbers": [
+        179
+      ],
+      "retrieved_article_numbers": [
+        179,
+        180,
+        365,
+        370,
+        513
+      ],
+      "baseline_article_numbers": [
+        179,
+        180,
+        365,
+        370,
+        513
+      ],
+      "context_identical": true,
+      "context_sha256": "84c00bbcbc37819ff43e41e4bb8af2019095ddd5e02953354b04377b234329bd",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.05578807699976096
+    },
+    {
+      "id": "s2-010-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        221
+      ],
+      "retrieved_article_numbers": [
+        221,
+        695,
+        217,
+        215,
+        157
+      ],
+      "baseline_article_numbers": [
+        221,
+        695,
+        217,
+        215,
+        157
+      ],
+      "context_identical": true,
+      "context_sha256": "a335c66ef68b43f490bda3315fd744a914b235aaffc483c439be9b1e05c37716",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04933982299962736
+    },
+    {
+      "id": "s2-010-en",
+      "language": "en",
+      "expected_article_numbers": [
+        221
+      ],
+      "retrieved_article_numbers": [
+        221,
+        142,
+        217,
+        225,
+        215
+      ],
+      "baseline_article_numbers": [
+        221,
+        142,
+        217,
+        225,
+        215
+      ],
+      "context_identical": true,
+      "context_sha256": "74fe8a548bdd577dd0fa7b96e016761028387af590f41a1b8431a2f003b29d09",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.0541406989996176
+    },
+    {
+      "id": "s2-011-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        374
+      ],
+      "retrieved_article_numbers": [
+        374,
+        8,
+        7,
+        346,
+        386
+      ],
+      "baseline_article_numbers": [
+        374,
+        8,
+        7,
+        346,
+        386
+      ],
+      "context_identical": true,
+      "context_sha256": "d9ea600df729abca5aca17cb49f39bd4325592fd487601168a44e82f0d656a35",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04192687599970668
+    },
+    {
+      "id": "s2-011-en",
+      "language": "en",
+      "expected_article_numbers": [
+        374
+      ],
+      "retrieved_article_numbers": [
+        374,
+        381,
+        379,
+        973,
+        377
+      ],
+      "baseline_article_numbers": [
+        374,
+        381,
+        379,
+        973,
+        377
+      ],
+      "context_identical": true,
+      "context_sha256": "9a11ca3fe6c74a3726fddf28db4e7461d2ce2772a7a6f5a7d6db520090ac389e",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04024039099977017
+    },
+    {
+      "id": "s2-012-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        418
+      ],
+      "retrieved_article_numbers": [
+        418,
+        428,
+        945,
+        538,
+        430
+      ],
+      "baseline_article_numbers": [
+        418,
+        428,
+        945,
+        538,
+        430
+      ],
+      "context_identical": true,
+      "context_sha256": "44ef8fc6593197e27f3e3633660fffd7ec35bdf438f92087e3595f1e06e13e14",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.03876990300022953
+    },
+    {
+      "id": "s2-012-en",
+      "language": "en",
+      "expected_article_numbers": [
+        418
+      ],
+      "retrieved_article_numbers": [
+        418,
+        428,
+        932,
+        458,
+        430
+      ],
+      "baseline_article_numbers": [
+        418,
+        428,
+        932,
+        458,
+        430
+      ],
+      "context_identical": true,
+      "context_sha256": "069cf27b3e4c1801a46f6e3e80ea760f0bbbcd53f826897db0bd5dfd4f296c6f",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.040792601999783074
+    },
+    {
+      "id": "s2-013-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        439
+      ],
+      "retrieved_article_numbers": [
+        439,
+        446,
+        447,
+        945,
+        440
+      ],
+      "baseline_article_numbers": [
+        439,
+        446,
+        447,
+        945,
+        440
+      ],
+      "context_identical": true,
+      "context_sha256": "344a0d9b8316e9c8443bf58d45c25c2bca2216995c00c424950b48ed0a048f69",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04240196900036608
+    },
+    {
+      "id": "s2-013-en",
+      "language": "en",
+      "expected_article_numbers": [
+        439
+      ],
+      "retrieved_article_numbers": [
+        439,
+        441,
+        457,
+        446,
+        460
+      ],
+      "baseline_article_numbers": [
+        439,
+        441,
+        457,
+        446,
+        460
+      ],
+      "context_identical": true,
+      "context_sha256": "65c314aa1a1ce1d0d5698afb3b0dd790b8e7e70577561a7ac99b2416549f01e1",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.046214262999910716
+    },
+    {
+      "id": "s2-014-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        558
+      ],
+      "retrieved_article_numbers": [
+        558,
+        690,
+        823,
+        992,
+        89
+      ],
+      "baseline_article_numbers": [
+        558,
+        690,
+        823,
+        992,
+        89
+      ],
+      "context_identical": true,
+      "context_sha256": "9fe03796d5f915d31395d49ad172583b83ea26eb3f23721d1a1d9408c135141a",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.040560512999945786
+    },
+    {
+      "id": "s2-014-en",
+      "language": "en",
+      "expected_article_numbers": [
+        558
+      ],
+      "retrieved_article_numbers": [
+        558,
+        1014,
+        587,
+        726,
+        457
+      ],
+      "baseline_article_numbers": [
+        558,
+        1014,
+        587,
+        726,
+        457
+      ],
+      "context_identical": true,
+      "context_sha256": "48b40890cbadd6982845bfdfa654865edba8562a1b85e59a4a7d09130485c875",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.044226634000096965
+    },
+    {
+      "id": "s2-015-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        563
+      ],
+      "retrieved_article_numbers": [
+        559,
+        563,
+        1045,
+        612,
+        608
+      ],
+      "baseline_article_numbers": [
+        559,
+        563,
+        1045,
+        612,
+        608
+      ],
+      "context_identical": true,
+      "context_sha256": "0e4bde70bc0b0eea5c3c1b54475014a227fec96d3c817f31abfd27fac6913962",
+      "hit": true,
+      "rr": 0.5,
+      "seconds": 0.043515192000086245
+    },
+    {
+      "id": "s2-015-en",
+      "language": "en",
+      "expected_article_numbers": [
+        563
+      ],
+      "retrieved_article_numbers": [
+        563,
+        1045,
+        588,
+        569,
+        633
+      ],
+      "baseline_article_numbers": [
+        563,
+        1045,
+        588,
+        569,
+        633
+      ],
+      "context_identical": true,
+      "context_sha256": "0b28ce7b443d4d800dc11d8eb660bfa61b53af714bf8cc4f310278c54cbcc69b",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04565231500009759
+    },
+    {
+      "id": "s2-016-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        571
+      ],
+      "retrieved_article_numbers": [
+        570,
+        580,
+        565,
+        569,
+        571
+      ],
+      "baseline_article_numbers": [
+        570,
+        580,
+        565,
+        569,
+        571
+      ],
+      "context_identical": true,
+      "context_sha256": "3f7b218c5278c086ba97b313125801f03162f4db01a3fd412c5477469d3c9dd2",
+      "hit": true,
+      "rr": 0.2,
+      "seconds": 0.03986976299984235
+    },
+    {
+      "id": "s2-016-en",
+      "language": "en",
+      "expected_article_numbers": [
+        571
+      ],
+      "retrieved_article_numbers": [
+        571,
+        580,
+        570,
+        575,
+        576
+      ],
+      "baseline_article_numbers": [
+        571,
+        580,
+        570,
+        575,
+        576
+      ],
+      "context_identical": true,
+      "context_sha256": "406e74de8be24ae0121c6488e4a9b394c7a95d5ec158ace061b2c66131d31819",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.046316306999869994
+    },
+    {
+      "id": "s2-017-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        646
+      ],
+      "retrieved_article_numbers": [
+        646,
+        674,
+        558,
+        669,
+        505
+      ],
+      "baseline_article_numbers": [
+        646,
+        674,
+        558,
+        669,
+        505
+      ],
+      "context_identical": true,
+      "context_sha256": "038c5b2125ac11ad304406d02902c812925985bcbc4a553d4b454b4d4c2c61a5",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.03743568699974276
+    },
+    {
+      "id": "s2-017-en",
+      "language": "en",
+      "expected_article_numbers": [
+        646
+      ],
+      "retrieved_article_numbers": [
+        646,
+        674,
+        695,
+        154,
+        680
+      ],
+      "baseline_article_numbers": [
+        646,
+        674,
+        695,
+        154,
+        680
+      ],
+      "context_identical": true,
+      "context_sha256": "0b8e4d87a3fdad4a272a3b42eb5fc097fce7b1e1adebae0630648f212879d18e",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.041814205999799015
+    },
+    {
+      "id": "s2-018-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        802
+      ],
+      "retrieved_article_numbers": [
+        802,
+        803,
+        479,
+        988,
+        1110
+      ],
+      "baseline_article_numbers": [
+        802,
+        803,
+        479,
+        988,
+        1110
+      ],
+      "context_identical": true,
+      "context_sha256": "1ebf40a687763495dfb675c8307836b382f931406ddfd2b35c761ba30a7b560b",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.0326619419997769
+    },
+    {
+      "id": "s2-018-en",
+      "language": "en",
+      "expected_article_numbers": [
+        802
+      ],
+      "retrieved_article_numbers": [
+        802,
+        53,
+        81,
+        803,
+        112
+      ],
+      "baseline_article_numbers": [
+        802,
+        53,
+        81,
+        803,
+        112
+      ],
+      "context_identical": true,
+      "context_sha256": "417332734466f323a186351374feebde93af952985e14f780286403f1b1b26ed",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.038944084999911865
+    },
+    {
+      "id": "s2-019-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        805
+      ],
+      "retrieved_article_numbers": [
+        805,
+        923,
+        528,
+        171,
+        852
+      ],
+      "baseline_article_numbers": [
+        805,
+        923,
+        528,
+        171,
+        852
+      ],
+      "context_identical": true,
+      "context_sha256": "f3b3f0b1b327fec345c7242b05b40340055cdc60b7d415e488d6d3231eb94e55",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.037727785000242875
+    },
+    {
+      "id": "s2-019-en",
+      "language": "en",
+      "expected_article_numbers": [
+        805
+      ],
+      "retrieved_article_numbers": [
+        605,
+        565,
+        805,
+        980,
+        1065
+      ],
+      "baseline_article_numbers": [
+        605,
+        565,
+        805,
+        980,
+        1065
+      ],
+      "context_identical": true,
+      "context_sha256": "4dc87a2fd9c25e15e3e6814f3d763c0ca503f68056f49df11ff5abaf5dc44b2f",
+      "hit": true,
+      "rr": 0.3333333333333333,
+      "seconds": 0.04149763500026893
+    },
+    {
+      "id": "s2-020-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        826
+      ],
+      "retrieved_article_numbers": [
+        826,
+        830,
+        834,
+        836,
+        825
+      ],
+      "baseline_article_numbers": [
+        826,
+        830,
+        834,
+        836,
+        825
+      ],
+      "context_identical": true,
+      "context_sha256": "404c82c1d9c0742e41b70e1e06026b76053bb8e17a4554d3a4fc07de953b7a20",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04660083700036921
+    },
+    {
+      "id": "s2-020-en",
+      "language": "en",
+      "expected_article_numbers": [
+        826
+      ],
+      "retrieved_article_numbers": [
+        835,
+        853,
+        834,
+        850,
+        826
+      ],
+      "baseline_article_numbers": [
+        835,
+        853,
+        834,
+        850,
+        826
+      ],
+      "context_identical": true,
+      "context_sha256": "efdd8cdc1ec06002267499d7a0edfbd36a428dbc0114086ae33159b89ae2b2c1",
+      "hit": true,
+      "rr": 0.2,
+      "seconds": 0.044264848000239
+    },
+    {
+      "id": "s2-021-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        968
+      ],
+      "retrieved_article_numbers": [
+        968,
+        969,
+        18,
+        976,
+        958
+      ],
+      "baseline_article_numbers": [
+        968,
+        969,
+        18,
+        976,
+        958
+      ],
+      "context_identical": true,
+      "context_sha256": "fc33ea54543b44359564ca9dfac83ee8d0f263361b5af8ac028f1220c18a7964",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.043421721999948204
+    },
+    {
+      "id": "s2-021-en",
+      "language": "en",
+      "expected_article_numbers": [
+        968
+      ],
+      "retrieved_article_numbers": [
+        968,
+        870,
+        961,
+        958,
+        871
+      ],
+      "baseline_article_numbers": [
+        968,
+        870,
+        961,
+        958,
+        871
+      ],
+      "context_identical": true,
+      "context_sha256": "c6660026c5b6f2e48aec78fa6b48149005b27a7ebacff0d05825585fe54d80b9",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.042959600999893155
+    },
+    {
+      "id": "s2-022-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        1022
+      ],
+      "retrieved_article_numbers": [
+        1022
+      ],
+      "baseline_article_numbers": [
+        1022
+      ],
+      "context_identical": true,
+      "context_sha256": "121a67e984a29973a43ed972ddc17778f280c37f5e7a16deb54957a8e9d43140",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.0020819139999730396
+    },
+    {
+      "id": "s2-022-en",
+      "language": "en",
+      "expected_article_numbers": [
+        1022
+      ],
+      "retrieved_article_numbers": [
+        1022
+      ],
+      "baseline_article_numbers": [
+        1022
+      ],
+      "context_identical": true,
+      "context_sha256": "121a67e984a29973a43ed972ddc17778f280c37f5e7a16deb54957a8e9d43140",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.00187536600014937
+    },
+    {
+      "id": "s2-023-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        1030
+      ],
+      "retrieved_article_numbers": [
+        1030,
+        1096,
+        1106,
+        1107,
+        332
+      ],
+      "baseline_article_numbers": [
+        1030,
+        1096,
+        1106,
+        1107,
+        332
+      ],
+      "context_identical": true,
+      "context_sha256": "036c0e5aa933eca2f97648675bbc4c3e667bff17a3fd60291a2e3629cd8b6825",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.049103392000233725
+    },
+    {
+      "id": "s2-023-en",
+      "language": "en",
+      "expected_article_numbers": [
+        1030
+      ],
+      "retrieved_article_numbers": [
+        326,
+        1030,
+        932,
+        1096,
+        1051
+      ],
+      "baseline_article_numbers": [
+        326,
+        1030,
+        932,
+        1096,
+        1051
+      ],
+      "context_identical": true,
+      "context_sha256": "da49984d993b4b501198c8a65b379346b75a491c9cdf734895492cba3f926ec7",
+      "hit": true,
+      "rr": 0.5,
+      "seconds": 0.05166024699974514
+    },
+    {
+      "id": "s2-024-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        1065
+      ],
+      "retrieved_article_numbers": [
+        331,
+        1075,
+        1101,
+        1063,
+        1083
+      ],
+      "baseline_article_numbers": [
+        331,
+        1075,
+        1101,
+        1063,
+        1083
+      ],
+      "context_identical": true,
+      "context_sha256": "f8368d15aa3919bf8b592015e0194649dbee4fd8a3f537fc93d745ee3d6a259d",
+      "hit": false,
+      "rr": 0,
+      "seconds": 0.0499645260001671
+    },
+    {
+      "id": "s2-024-en",
+      "language": "en",
+      "expected_article_numbers": [
+        1065
+      ],
+      "retrieved_article_numbers": [
+        1065,
+        1075,
+        1083,
+        1064,
+        836
+      ],
+      "baseline_article_numbers": [
+        1065,
+        1075,
+        1083,
+        1064,
+        836
+      ],
+      "context_identical": true,
+      "context_sha256": "fceccdb9df8bbd76d9469677033bff48805ade1d054af885f29679c3c1add310",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.044481518999873515
+    },
+    {
+      "id": "s2-025-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        1143
+      ],
+      "retrieved_article_numbers": [
+        1143,
+        589,
+        588,
+        576,
+        571
+      ],
+      "baseline_article_numbers": [
+        1143,
+        589,
+        588,
+        576,
+        571
+      ],
+      "context_identical": true,
+      "context_sha256": "16d895acb2e133be2cbe26a0ec71dcde3743215cf709c7dfb7ed1af2a172e922",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.06225847099995008
+    },
+    {
+      "id": "s2-025-en",
+      "language": "en",
+      "expected_article_numbers": [
+        1143
+      ],
+      "retrieved_article_numbers": [
+        1143,
+        589,
+        588,
+        616,
+        591
+      ],
+      "baseline_article_numbers": [
+        1143,
+        589,
+        588,
+        616,
+        591
+      ],
+      "context_identical": true,
+      "context_sha256": "3164865458eb241f8486c19b6f5e69609102d5923d66240eaea22cb9338e3f59",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.06001237400005266
+    },
+    {
+      "id": "s2-026-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        1149
+      ],
+      "retrieved_article_numbers": [
+        1149,
+        869,
+        1147,
+        1143,
+        1146
+      ],
+      "baseline_article_numbers": [
+        1149,
+        869,
+        1147,
+        1143,
+        1146
+      ],
+      "context_identical": true,
+      "context_sha256": "46f6e1620b0c32abde88d2f6c7fe4e89033854620cdc5c2ec62594defc11e90b",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.03987651200031905
+    },
+    {
+      "id": "s2-026-en",
+      "language": "en",
+      "expected_article_numbers": [
+        1149
+      ],
+      "retrieved_article_numbers": [
+        1149,
+        1146,
+        1147,
+        869,
+        1134
+      ],
+      "baseline_article_numbers": [
+        1149,
+        1146,
+        1147,
+        869,
+        1134
+      ],
+      "context_identical": true,
+      "context_sha256": "56140d663d1aff7a190dc93c2fff2da4d45312a295e4dc0d0dfc43994f53a1fb",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.04557547800004613
+    },
+    {
+      "id": "s2-027-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        54
+      ],
+      "retrieved_article_numbers": [
+        54
+      ],
+      "baseline_article_numbers": [
+        54
+      ],
+      "context_identical": true,
+      "context_sha256": "3ab340f06292a6df17b7dc24701bfbb5647765c0c20b738deb38ef9d7be2f03f",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.0017782959998839942
+    },
+    {
+      "id": "s2-027-en",
+      "language": "en",
+      "expected_article_numbers": [
+        54
+      ],
+      "retrieved_article_numbers": [
+        54
+      ],
+      "baseline_article_numbers": [
+        54
+      ],
+      "context_identical": true,
+      "context_sha256": "3ab340f06292a6df17b7dc24701bfbb5647765c0c20b738deb38ef9d7be2f03f",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.0013086739995742391
+    },
+    {
+      "id": "s2-028-ar",
+      "language": "ar",
+      "expected_article_numbers": [
+        389
+      ],
+      "retrieved_article_numbers": [
+        389
+      ],
+      "baseline_article_numbers": [
+        389
+      ],
+      "context_identical": true,
+      "context_sha256": "563d759cfd7b0b6d96217abf1fb69bbdc6706506b51c0cebffd1e58151dfe6a4",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.0013949909998700605
+    },
+    {
+      "id": "s2-028-en",
+      "language": "en",
+      "expected_article_numbers": [
+        389
+      ],
+      "retrieved_article_numbers": [
+        389
+      ],
+      "baseline_article_numbers": [
+        389
+      ],
+      "context_identical": true,
+      "context_sha256": "563d759cfd7b0b6d96217abf1fb69bbdc6706506b51c0cebffd1e58151dfe6a4",
+      "hit": true,
+      "rr": 1.0,
+      "seconds": 0.0020667329999923822
+    },
+    {
+      "id": "s2-u01-ar",
+      "language": "ar",
+      "expected_article_numbers": [],
+      "retrieved_article_numbers": [
+        764,
+        940,
+        1004,
+        45,
+        130
+      ],
+      "baseline_article_numbers": [
+        764,
+        940,
+        1004,
+        45,
+        130
+      ],
+      "context_identical": true,
+      "context_sha256": "4cba363179b25aac06ebdf1879d7ae05258e4700306aade385e4bc9ba9df0607",
+      "hit": false,
+      "rr": 0,
+      "seconds": 0.03872222400013925
+    },
+    {
+      "id": "s2-u01-en",
+      "language": "en",
+      "expected_article_numbers": [],
+      "retrieved_article_numbers": [
+        425,
+        764,
+        969,
+        382,
+        376
+      ],
+      "baseline_article_numbers": [
+        425,
+        764,
+        969,
+        382,
+        376
+      ],
+      "context_identical": true,
+      "context_sha256": "d94c2a541bb63438c4f4d5d97e7bd248af811bbc96b9577c667807b5ea64c7a3",
+      "hit": false,
+      "rr": 0,
+      "seconds": 0.03554908300020543
+    },
+    {
+      "id": "s2-u02-ar",
+      "language": "ar",
+      "expected_article_numbers": [],
+      "retrieved_article_numbers": [
+        940,
+        380,
+        536,
+        433,
+        624
+      ],
+      "baseline_article_numbers": [
+        940,
+        380,
+        536,
+        433,
+        624
+      ],
+      "context_identical": true,
+      "context_sha256": "911620968d57f452b7d43e1d13877b639f5472b4935fc6cf095987ba8e3ec631",
+      "hit": false,
+      "rr": 0,
+      "seconds": 0.041052661999856355
+    },
+    {
+      "id": "s2-u02-en",
+      "language": "en",
+      "expected_article_numbers": [],
+      "retrieved_article_numbers": [
+        626,
+        36,
+        3,
+        1147,
+        1005
+      ],
+      "baseline_article_numbers": [
+        626,
+        36,
+        3,
+        1147,
+        1005
+      ],
+      "context_identical": true,
+      "context_sha256": "b052777ea5fff87c08da396cba526df4fd5b3b49d1c2d20354e23ebe6ad79426",
+      "hit": false,
+      "rr": 0,
+      "seconds": 0.036126142000284744
+    }
+  ]
+}

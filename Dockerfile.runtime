@@ -1,0 +1,22 @@
+# Self-contained linux/amd64 CPU image; artifacts are verified before this build.
+FROM python:3.13-slim
+COPY --from=ghcr.io/astral-sh/uv:0.9.22 /uv /bin/uv
+WORKDIR /app
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 \
+    LEGAL_QA_ROOT=/app HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
+    USE_TORCH=0 USE_TF=0 TOKENIZERS_PARALLELISM=false
+COPY requirements/runtime.lock ./requirements/runtime.lock
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv pip install --system --require-hashes -r requirements/runtime.lock \
+    && useradd --create-home --uid 10001 app
+COPY src ./src
+COPY config ./config
+COPY prompts ./prompts
+COPY runtime/model ./model
+COPY runtime/data/retrieval/chroma ./data/retrieval/chroma
+COPY runtime/bundle-manifest.json ./bundle-manifest.json
+USER app
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=5)"
+CMD ["uvicorn", "src.deployment:app", "--host", "0.0.0.0", "--port", "8000"]
