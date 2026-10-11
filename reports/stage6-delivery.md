@@ -2,8 +2,18 @@
 
 ## Current status
 
-Implementation and local image verification are complete. GitHub Actions has
-not yet run with these changes, and the Docker image has not been published.
+Implementation, local image verification, and GitHub Actions delivery are complete.
+Commit `efef5f368e46e5b714bc03dffb9eed9aef630922` passed delivery run
+https://github.com/Serag11/Arabic-Legal-Document-QA/actions/runs/38151794649
+in 4m37s. The measured-quality workflow also passed (run `38151794656`).
+The delivery runner verified the full 60-context comparison, oversized-input
+rejection, HTTP readiness, publication, and anonymous pull from Docker Hub.
+
+Published image: `serag11/arabic-legal-document-qa:latest` and
+`serag11/arabic-legal-document-qa:sha-efef5f368e46e5b714bc03dffb9eed9aef630922`.
+Published manifest digest:
+`sha256:c0e7d883d1752f3c9b724f978bd960443f0da1e98737bab7a0de646f57efdb0b`.
+No image was downloaded locally for this verification.
 The `runtime-v1` release is published; GitHub reports the archive as uploaded,
 529,911,987 bytes, with SHA256 matching `config/runtime-artifacts.json`:
 `eed251f9176e9ad497382a1185a6fe3ff0c77216681858ae0b61e7aecac2c81a`.
@@ -127,9 +137,8 @@ support `--latest=false`. Since the draft already exists, use GitHub's web UI to
 edit it, upload the exact archive, and publish it instead of creating another
 release. This browser upload/publication step is now complete.
 
-After the implementation is committed and pushed to `main`, verify the delivery
-workflow and the Docker Hub tags. These Git operations and publication have not
-been performed during local implementation.
+The implementation was committed and pushed to `main`, and the delivery workflow
+and public Docker Hub tags were verified as recorded above.
 
 ## Rebuild the artifact locally
 
@@ -175,6 +184,5 @@ run on GitHub rather than accumulating local copies.
 
 ## Remaining verification
 
-- Commit/push the implementation and run the workflow on GitHub.
-- Verify the published image can be pulled/run from Docker Hub.
 - Perform the separately deferred clean-checkout `dvc pull` / `dvc repro` check.
+  This is independent of the verified CI release-bundle and container delivery.

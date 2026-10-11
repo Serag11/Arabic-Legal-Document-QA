@@ -34,8 +34,8 @@ Provider failures return a nonzero CLI exit status rather than an invented answe
 ## Self-contained published image
 
 The Stage 6 delivery target is the public Docker Hub repository
-`serag11/arabic-legal-document-qa`. Once the first release/image is published,
-set `GOOGLE_API_KEY` in your shell and run:
+`serag11/arabic-legal-document-qa`; the first image is published and its anonymous
+pull verified in GitHub Actions. Set `GOOGLE_API_KEY` in your shell and run:
 
 ```bash
 docker pull serag11/arabic-legal-document-qa:latest

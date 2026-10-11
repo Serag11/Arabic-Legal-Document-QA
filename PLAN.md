@@ -183,7 +183,7 @@ POST /ask
 - [X] Build and locally verify a self-contained, non-root, PyTorch-free image with bundled tokenizer/model/index; document running it without cloning the repository.
 - [X] Authenticate GitHub CLI and verify repository Actions secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN`.
 - [X] Publish `runtime-v1` with the runtime archive and manifest; verify GitHub's archive SHA256 matches `config/runtime-artifacts.json` (529,911,987 bytes).
-- [ ] Run the workflow on GitHub and verify Docker Hub publication to public `serag11/arabic-legal-document-qa`.
+- [X] Run the workflow on GitHub and verify Docker Hub publication to public `serag11/arabic-legal-document-qa`: run `38151794649` passed for commit `efef5f3`, including full offline image checks and anonymous pull.
 
 **Stage 6 delivery design:** DVC stays local for corpus/index reproducibility. CI obtains runtime artifacts from a pinned GitHub Release and verifies checksums. The additional deployment gate permits reuse of the current generation scores only after exact context equivalence on the complete 60-question evaluation; changed contexts require fresh answer evaluation. See `reports/stage6-delivery.md` for bootstrap instructions and verification results.
 
@@ -206,7 +206,7 @@ Complete these after the baseline RAG service, evaluation, and CI are working.
 
 ## Suggested order for the next work session
 
-1. Commit/push the Stage 6 implementation and verify GitHub Actions/Docker Hub delivery; the pinned `runtime-v1` release is published and its checksum verified.
+1. Proceed to Stage 7 serving/optimization/observability; Stage 6 CI and public image delivery are verified.
 2. Verify clean-checkout reproduction with `dvc pull` and `dvc repro`; remote configuration and artifact upload are complete.
 3. Retain source QA and the Arabic Article 1065 retrieval miss as follow-ups.
 
