@@ -106,6 +106,7 @@
       "results": [
         {
           "article_number": 24,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 24",
           "score": 0.8294672966003418,
           "method": "semantic",
@@ -140,6 +141,7 @@
         },
         {
           "article_number": 1,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1",
           "score": 0.8238626718521118,
           "method": "semantic",
@@ -174,6 +176,7 @@
         },
         {
           "article_number": 229,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 229",
           "score": 0.8215746879577637,
           "method": "semantic",
@@ -208,6 +211,7 @@
         },
         {
           "article_number": 200,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 200",
           "score": 0.8197320699691772,
           "method": "semantic",
@@ -242,6 +246,7 @@
         },
         {
           "article_number": 876,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 876",
           "score": 0.8174870610237122,
           "method": "semantic",
@@ -275,7 +280,7 @@
           "rank": 5
         }
       ],
-      "seconds": 8.997691618002136,
+      "seconds": 8.50834582200332,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -299,6 +304,7 @@
       "results": [
         {
           "article_number": 838,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 838",
           "score": 0.8352451324462891,
           "method": "semantic",
@@ -333,6 +339,7 @@
         },
         {
           "article_number": 730,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 730",
           "score": 0.8260934948921204,
           "method": "semantic",
@@ -367,6 +374,7 @@
         },
         {
           "article_number": 200,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 200",
           "score": 0.8258225917816162,
           "method": "semantic",
@@ -401,6 +409,7 @@
         },
         {
           "article_number": 876,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 876",
           "score": 0.8222954869270325,
           "method": "semantic",
@@ -435,6 +444,7 @@
         },
         {
           "article_number": 1,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1",
           "score": 0.8195385336875916,
           "method": "semantic",
@@ -468,7 +478,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05736084699674393,
+      "seconds": 0.04217127899755724,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -492,6 +502,7 @@
       "results": [
         {
           "article_number": 2,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 2",
           "score": 0.894006609916687,
           "method": "semantic",
@@ -526,6 +537,7 @@
         },
         {
           "article_number": 115,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 115",
           "score": 0.8357976675033569,
           "method": "semantic",
@@ -560,6 +572,7 @@
         },
         {
           "article_number": 6,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 6",
           "score": 0.8321655988693237,
           "method": "semantic",
@@ -594,6 +607,7 @@
         },
         {
           "article_number": 346,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 346",
           "score": 0.8285074830055237,
           "method": "semantic",
@@ -628,6 +642,7 @@
         },
         {
           "article_number": 238,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 238",
           "score": 0.8254739046096802,
           "method": "semantic",
@@ -661,7 +676,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.047197780000715284,
+      "seconds": 0.042316866005421616,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -685,6 +700,7 @@
       "results": [
         {
           "article_number": 2,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 2",
           "score": 0.880985677242279,
           "method": "semantic",
@@ -713,12 +729,38 @@
                 "qa_flags": [],
                 "content_kind": "article_text"
               }
+            },
+            {
+              "document_id": "egyptian-civil-code:2:ar:0",
+              "chunk_index": 0,
+              "source_field": "ar_text",
+              "source_start": 0,
+              "source_end": 171,
+              "source_text": "لا يجوز إلغاء نص تشريعي إلا بتشريع لاحق ينص صراحة على هذا الإلغاء، أو يشتمل على نص يتعارض مع نص التشريع القديم، أو ينظم من جديد الموضوع الذي سبق أن قرر قواعده ذلك التشريع.",
+              "embedding_text": "لا يجوز الغاء نص تشريعي الا بتشريع لاحق ينص صراحة علي هذا الالغاء، او يشتمل علي نص يتعارض مع نص التشريع القديم، او ينظم من جديد الموضوع الذي سبق ان قرر قواعده ذلك التشريع.",
+              "metadata": {
+                "corpus_id": "egyptian-civil-code",
+                "article_number": 2,
+                "citation": "Egyptian Civil Code, Article 2",
+                "book": null,
+                "chapter": null,
+                "section": "Laws and their Applications",
+                "topic": "Laws and Rights",
+                "source_book": null,
+                "source_page": 1,
+                "language": "ar",
+                "is_repealed": false,
+                "repeal_note": null,
+                "qa_flags": [],
+                "content_kind": "article_text"
+              }
             }
           ],
           "rank": 1
         },
         {
           "article_number": 388,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 388",
           "score": 0.8125075101852417,
           "method": "semantic",
@@ -753,6 +795,7 @@
         },
         {
           "article_number": 139,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 139",
           "score": 0.8085852265357971,
           "method": "semantic",
@@ -787,6 +830,7 @@
         },
         {
           "article_number": 608,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 608",
           "score": 0.8079787492752075,
           "method": "semantic",
@@ -821,6 +865,7 @@
         },
         {
           "article_number": 580,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 580",
           "score": 0.8061143755912781,
           "method": "semantic",
@@ -854,7 +899,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0657533150006202,
+      "seconds": 0.04110395300085656,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -878,6 +923,7 @@
       "results": [
         {
           "article_number": 5,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 5",
           "score": 0.8935108184814453,
           "method": "semantic",
@@ -912,6 +958,7 @@
         },
         {
           "article_number": 4,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 4",
           "score": 0.8525652289390564,
           "method": "semantic",
@@ -946,6 +993,7 @@
         },
         {
           "article_number": 988,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 988",
           "score": 0.8428770303726196,
           "method": "semantic",
@@ -980,6 +1028,7 @@
         },
         {
           "article_number": 639,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 639",
           "score": 0.827210009098053,
           "method": "semantic",
@@ -1014,6 +1063,7 @@
         },
         {
           "article_number": 806,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 806",
           "score": 0.8236798644065857,
           "method": "semantic",
@@ -1047,7 +1097,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.044911466000485234,
+      "seconds": 0.04786162900563795,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1071,6 +1121,7 @@
       "results": [
         {
           "article_number": 5,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 5",
           "score": 0.9163691997528076,
           "method": "semantic",
@@ -1105,6 +1156,7 @@
         },
         {
           "article_number": 92,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 92",
           "score": 0.8329391479492188,
           "method": "semantic",
@@ -1139,6 +1191,7 @@
         },
         {
           "article_number": 172,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 172",
           "score": 0.8327218294143677,
           "method": "semantic",
@@ -1173,6 +1226,7 @@
         },
         {
           "article_number": 425,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 425",
           "score": 0.8323459625244141,
           "method": "semantic",
@@ -1207,6 +1261,7 @@
         },
         {
           "article_number": 807,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 807",
           "score": 0.8301694393157959,
           "method": "semantic",
@@ -1240,7 +1295,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04233281800043187,
+      "seconds": 0.058528355992166325,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1264,6 +1319,7 @@
       "results": [
         {
           "article_number": 89,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 89",
           "score": 0.8748296499252319,
           "method": "semantic",
@@ -1298,6 +1354,7 @@
         },
         {
           "article_number": 101,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 101",
           "score": 0.8258084654808044,
           "method": "semantic",
@@ -1332,6 +1389,7 @@
         },
         {
           "article_number": 20,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 20",
           "score": 0.824441134929657,
           "method": "semantic",
@@ -1366,6 +1424,7 @@
         },
         {
           "article_number": 122,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 122",
           "score": 0.8243368268013,
           "method": "semantic",
@@ -1400,6 +1459,7 @@
         },
         {
           "article_number": 150,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 150",
           "score": 0.8217886686325073,
           "method": "semantic",
@@ -1433,7 +1493,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.045209400999738136,
+      "seconds": 0.05216866100090556,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1457,6 +1517,7 @@
       "results": [
         {
           "article_number": 89,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 89",
           "score": 0.9041620492935181,
           "method": "semantic",
@@ -1516,6 +1577,7 @@
         },
         {
           "article_number": 150,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 150",
           "score": 0.8391358256340027,
           "method": "semantic",
@@ -1550,6 +1612,7 @@
         },
         {
           "article_number": 1017,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1017",
           "score": 0.8267703056335449,
           "method": "semantic",
@@ -1584,6 +1647,7 @@
         },
         {
           "article_number": 92,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 92",
           "score": 0.8248628377914429,
           "method": "semantic",
@@ -1618,6 +1682,7 @@
         },
         {
           "article_number": 90,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 90",
           "score": 0.8226972222328186,
           "method": "semantic",
@@ -1651,7 +1716,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.03894328499882249,
+      "seconds": 0.03760185399733018,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1675,6 +1740,7 @@
       "results": [
         {
           "article_number": 157,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 157",
           "score": 0.8429117202758789,
           "method": "semantic",
@@ -1709,6 +1775,7 @@
         },
         {
           "article_number": 147,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 147",
           "score": 0.8410142064094543,
           "method": "semantic",
@@ -1743,6 +1810,7 @@
         },
         {
           "article_number": 507,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 507",
           "score": 0.8408843278884888,
           "method": "semantic",
@@ -1777,6 +1845,7 @@
         },
         {
           "article_number": 149,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 149",
           "score": 0.8373820185661316,
           "method": "semantic",
@@ -1811,6 +1880,7 @@
         },
         {
           "article_number": 658,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 658",
           "score": 0.8350495100021362,
           "method": "semantic",
@@ -1844,7 +1914,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04471014800219564,
+      "seconds": 0.039408682991052046,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -1868,6 +1938,7 @@
       "results": [
         {
           "article_number": 147,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 147",
           "score": 0.8393628597259521,
           "method": "semantic",
@@ -1902,6 +1973,7 @@
         },
         {
           "article_number": 453,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 453",
           "score": 0.8343893885612488,
           "method": "semantic",
@@ -1936,6 +2008,7 @@
         },
         {
           "article_number": 686,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 686",
           "score": 0.8336020708084106,
           "method": "semantic",
@@ -1970,6 +2043,7 @@
         },
         {
           "article_number": 650,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 650",
           "score": 0.831200122833252,
           "method": "semantic",
@@ -2004,6 +2078,7 @@
         },
         {
           "article_number": 155,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 155",
           "score": 0.8307676315307617,
           "method": "semantic",
@@ -2037,7 +2112,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04522093400009908,
+      "seconds": 0.039297148992773145,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2061,6 +2136,7 @@
       "results": [
         {
           "article_number": 200,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 200",
           "score": 0.8641941547393799,
           "method": "semantic",
@@ -2095,6 +2171,7 @@
         },
         {
           "article_number": 346,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 346",
           "score": 0.8593780398368835,
           "method": "semantic",
@@ -2129,6 +2206,7 @@
         },
         {
           "article_number": 147,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 147",
           "score": 0.8575088381767273,
           "method": "semantic",
@@ -2163,6 +2241,7 @@
         },
         {
           "article_number": 272,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 272",
           "score": 0.8501357436180115,
           "method": "semantic",
@@ -2197,6 +2276,7 @@
         },
         {
           "article_number": 213,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 213",
           "score": 0.8469255566596985,
           "method": "semantic",
@@ -2230,7 +2310,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05896510999809834,
+      "seconds": 0.04719208099413663,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.3333333333333333,
@@ -2254,6 +2334,7 @@
       "results": [
         {
           "article_number": 147,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 147",
           "score": 0.8761453628540039,
           "method": "semantic",
@@ -2288,6 +2369,7 @@
         },
         {
           "article_number": 129,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 129",
           "score": 0.8393225073814392,
           "method": "semantic",
@@ -2322,6 +2404,7 @@
         },
         {
           "article_number": 213,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 213",
           "score": 0.8385971188545227,
           "method": "semantic",
@@ -2356,6 +2439,7 @@
         },
         {
           "article_number": 210,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 210",
           "score": 0.8321689367294312,
           "method": "semantic",
@@ -2390,6 +2474,7 @@
         },
         {
           "article_number": 530,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 530",
           "score": 0.8232294321060181,
           "method": "semantic",
@@ -2423,7 +2508,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06749686799957999,
+      "seconds": 0.05732441900181584,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2447,6 +2532,7 @@
       "results": [
         {
           "article_number": 148,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 148",
           "score": 0.8833476901054382,
           "method": "semantic",
@@ -2481,6 +2567,7 @@
         },
         {
           "article_number": 124,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 124",
           "score": 0.8584834337234497,
           "method": "semantic",
@@ -2515,6 +2602,7 @@
         },
         {
           "article_number": 107,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 107",
           "score": 0.8570412397384644,
           "method": "semantic",
@@ -2549,6 +2637,7 @@
         },
         {
           "article_number": 275,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 275",
           "score": 0.8528779745101929,
           "method": "semantic",
@@ -2583,6 +2672,7 @@
         },
         {
           "article_number": 102,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 102",
           "score": 0.8503741025924683,
           "method": "semantic",
@@ -2616,7 +2706,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05955075700330781,
+      "seconds": 0.042941054998664185,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2640,6 +2730,7 @@
       "results": [
         {
           "article_number": 148,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 148",
           "score": 0.8771355152130127,
           "method": "semantic",
@@ -2674,6 +2765,7 @@
         },
         {
           "article_number": 124,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 124",
           "score": 0.8523536324501038,
           "method": "semantic",
@@ -2708,6 +2800,7 @@
         },
         {
           "article_number": 161,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 161",
           "score": 0.8427051901817322,
           "method": "semantic",
@@ -2742,6 +2835,7 @@
         },
         {
           "article_number": 210,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 210",
           "score": 0.8424016833305359,
           "method": "semantic",
@@ -2776,6 +2870,7 @@
         },
         {
           "article_number": 150,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 150",
           "score": 0.8408724069595337,
           "method": "semantic",
@@ -2809,7 +2904,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04896940300022834,
+      "seconds": 0.04179539000324439,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2833,6 +2928,7 @@
       "results": [
         {
           "article_number": 949,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 949",
           "score": 0.8352528810501099,
           "method": "semantic",
@@ -2867,6 +2963,7 @@
         },
         {
           "article_number": 990,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 990",
           "score": 0.8337920904159546,
           "method": "semantic",
@@ -2901,6 +2998,7 @@
         },
         {
           "article_number": 179,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 179",
           "score": 0.8311927914619446,
           "method": "semantic",
@@ -2935,6 +3033,7 @@
         },
         {
           "article_number": 221,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 221",
           "score": 0.8306170701980591,
           "method": "semantic",
@@ -2969,6 +3068,7 @@
         },
         {
           "article_number": 163,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 163",
           "score": 0.8303065896034241,
           "method": "semantic",
@@ -3002,7 +3102,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0392303870030446,
+      "seconds": 0.042282016001990996,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -3026,6 +3126,7 @@
       "results": [
         {
           "article_number": 163,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 163",
           "score": 0.8824211955070496,
           "method": "semantic",
@@ -3060,6 +3161,7 @@
         },
         {
           "article_number": 168,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 168",
           "score": 0.8777217864990234,
           "method": "semantic",
@@ -3094,6 +3196,7 @@
         },
         {
           "article_number": 175,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 175",
           "score": 0.8722007870674133,
           "method": "semantic",
@@ -3128,6 +3231,7 @@
         },
         {
           "article_number": 166,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 166",
           "score": 0.8695642948150635,
           "method": "semantic",
@@ -3162,6 +3266,7 @@
         },
         {
           "article_number": 769,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 769",
           "score": 0.8644780516624451,
           "method": "semantic",
@@ -3195,7 +3300,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04134652199718403,
+      "seconds": 0.0377979999902891,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3219,6 +3324,7 @@
       "results": [
         {
           "article_number": 179,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 179",
           "score": 0.892645001411438,
           "method": "semantic",
@@ -3253,6 +3359,7 @@
         },
         {
           "article_number": 153,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 153",
           "score": 0.867670476436615,
           "method": "semantic",
@@ -3287,6 +3394,7 @@
         },
         {
           "article_number": 215,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 215",
           "score": 0.8634093403816223,
           "method": "semantic",
@@ -3321,6 +3429,7 @@
         },
         {
           "article_number": 165,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 165",
           "score": 0.860843300819397,
           "method": "semantic",
@@ -3355,6 +3464,7 @@
         },
         {
           "article_number": 293,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 293",
           "score": 0.8599824905395508,
           "method": "semantic",
@@ -3388,7 +3498,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.055281405002460815,
+      "seconds": 0.04302253501373343,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3412,6 +3522,7 @@
       "results": [
         {
           "article_number": 179,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 179",
           "score": 0.8878755569458008,
           "method": "semantic",
@@ -3446,6 +3557,7 @@
         },
         {
           "article_number": 180,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 180",
           "score": 0.8685319423675537,
           "method": "semantic",
@@ -3480,6 +3592,7 @@
         },
         {
           "article_number": 365,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 365",
           "score": 0.868455171585083,
           "method": "semantic",
@@ -3514,6 +3627,7 @@
         },
         {
           "article_number": 370,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 370",
           "score": 0.851485550403595,
           "method": "semantic",
@@ -3548,6 +3662,7 @@
         },
         {
           "article_number": 513,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 513",
           "score": 0.8514063358306885,
           "method": "semantic",
@@ -3581,7 +3696,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05331393999949796,
+      "seconds": 0.04427455698896665,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3605,6 +3720,7 @@
       "results": [
         {
           "article_number": 221,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 221",
           "score": 0.8601418733596802,
           "method": "semantic",
@@ -3639,6 +3755,7 @@
         },
         {
           "article_number": 695,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 695",
           "score": 0.8510295152664185,
           "method": "semantic",
@@ -3673,6 +3790,7 @@
         },
         {
           "article_number": 217,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 217",
           "score": 0.8485316038131714,
           "method": "semantic",
@@ -3707,6 +3825,7 @@
         },
         {
           "article_number": 215,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 215",
           "score": 0.8482595682144165,
           "method": "semantic",
@@ -3741,6 +3860,7 @@
         },
         {
           "article_number": 157,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 157",
           "score": 0.8461300134658813,
           "method": "semantic",
@@ -3774,7 +3894,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.050803838999854634,
+      "seconds": 0.049167100005433895,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3798,6 +3918,7 @@
       "results": [
         {
           "article_number": 221,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 221",
           "score": 0.8873180150985718,
           "method": "semantic",
@@ -3832,6 +3953,7 @@
         },
         {
           "article_number": 142,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 142",
           "score": 0.8529393672943115,
           "method": "semantic",
@@ -3866,6 +3988,7 @@
         },
         {
           "article_number": 217,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 217",
           "score": 0.8492277264595032,
           "method": "semantic",
@@ -3900,6 +4023,7 @@
         },
         {
           "article_number": 225,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 225",
           "score": 0.845471978187561,
           "method": "semantic",
@@ -3934,6 +4058,7 @@
         },
         {
           "article_number": 215,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 215",
           "score": 0.8409947156906128,
           "method": "semantic",
@@ -3967,7 +4092,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.051690056003280915,
+      "seconds": 0.04492835499695502,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3991,6 +4116,7 @@
       "results": [
         {
           "article_number": 374,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 374",
           "score": 0.8675146698951721,
           "method": "semantic",
@@ -4025,6 +4151,7 @@
         },
         {
           "article_number": 8,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 8",
           "score": 0.8469493389129639,
           "method": "semantic",
@@ -4059,6 +4186,7 @@
         },
         {
           "article_number": 7,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 7",
           "score": 0.8392590880393982,
           "method": "semantic",
@@ -4093,6 +4221,7 @@
         },
         {
           "article_number": 346,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 346",
           "score": 0.8366824388504028,
           "method": "semantic",
@@ -4127,6 +4256,7 @@
         },
         {
           "article_number": 386,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 386",
           "score": 0.8361841440200806,
           "method": "semantic",
@@ -4160,7 +4290,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.08305163200202514,
+      "seconds": 0.05323784700885881,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4184,6 +4314,7 @@
       "results": [
         {
           "article_number": 374,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 374",
           "score": 0.8827516436576843,
           "method": "semantic",
@@ -4218,6 +4349,7 @@
         },
         {
           "article_number": 381,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 381",
           "score": 0.8543041944503784,
           "method": "semantic",
@@ -4252,6 +4384,7 @@
         },
         {
           "article_number": 379,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 379",
           "score": 0.8401501178741455,
           "method": "semantic",
@@ -4286,6 +4419,7 @@
         },
         {
           "article_number": 973,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 973",
           "score": 0.837480902671814,
           "method": "semantic",
@@ -4320,6 +4454,7 @@
         },
         {
           "article_number": 377,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 377",
           "score": 0.8362194895744324,
           "method": "semantic",
@@ -4353,7 +4488,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04415803699885146,
+      "seconds": 0.05000985600054264,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4377,6 +4512,7 @@
       "results": [
         {
           "article_number": 418,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 418",
           "score": 0.9023513793945312,
           "method": "semantic",
@@ -4411,6 +4547,7 @@
         },
         {
           "article_number": 428,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 428",
           "score": 0.867411196231842,
           "method": "semantic",
@@ -4445,6 +4582,7 @@
         },
         {
           "article_number": 945,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 945",
           "score": 0.8511253595352173,
           "method": "semantic",
@@ -4479,6 +4617,7 @@
         },
         {
           "article_number": 538,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 538",
           "score": 0.8502230644226074,
           "method": "semantic",
@@ -4513,6 +4652,7 @@
         },
         {
           "article_number": 430,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 430",
           "score": 0.849694550037384,
           "method": "semantic",
@@ -4546,7 +4686,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0452418540007784,
+      "seconds": 0.05801025799883064,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4570,6 +4710,7 @@
       "results": [
         {
           "article_number": 418,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 418",
           "score": 0.8604162335395813,
           "method": "semantic",
@@ -4604,6 +4745,7 @@
         },
         {
           "article_number": 428,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 428",
           "score": 0.8538537621498108,
           "method": "semantic",
@@ -4638,6 +4780,7 @@
         },
         {
           "article_number": 932,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 932",
           "score": 0.8520307540893555,
           "method": "semantic",
@@ -4672,6 +4815,7 @@
         },
         {
           "article_number": 458,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 458",
           "score": 0.8518068790435791,
           "method": "semantic",
@@ -4706,6 +4850,7 @@
         },
         {
           "article_number": 430,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 430",
           "score": 0.8488245010375977,
           "method": "semantic",
@@ -4739,7 +4884,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04194851900319918,
+      "seconds": 0.05540654699143488,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4763,6 +4908,7 @@
       "results": [
         {
           "article_number": 439,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 439",
           "score": 0.9098031520843506,
           "method": "semantic",
@@ -4797,6 +4943,7 @@
         },
         {
           "article_number": 446,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 446",
           "score": 0.8781908750534058,
           "method": "semantic",
@@ -4831,6 +4978,7 @@
         },
         {
           "article_number": 447,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 447",
           "score": 0.8771682381629944,
           "method": "semantic",
@@ -4865,6 +5013,7 @@
         },
         {
           "article_number": 945,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 945",
           "score": 0.8761693239212036,
           "method": "semantic",
@@ -4899,6 +5048,7 @@
         },
         {
           "article_number": 440,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 440",
           "score": 0.8682336211204529,
           "method": "semantic",
@@ -4932,7 +5082,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05357833100060816,
+      "seconds": 0.05339070399350021,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4956,6 +5106,7 @@
       "results": [
         {
           "article_number": 439,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 439",
           "score": 0.9225398302078247,
           "method": "semantic",
@@ -4990,6 +5141,7 @@
         },
         {
           "article_number": 441,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 441",
           "score": 0.8845888376235962,
           "method": "semantic",
@@ -5024,6 +5176,7 @@
         },
         {
           "article_number": 457,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 457",
           "score": 0.8839277625083923,
           "method": "semantic",
@@ -5058,6 +5211,7 @@
         },
         {
           "article_number": 446,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 446",
           "score": 0.8776013851165771,
           "method": "semantic",
@@ -5092,6 +5246,7 @@
         },
         {
           "article_number": 460,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 460",
           "score": 0.8689538836479187,
           "method": "semantic",
@@ -5125,7 +5280,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.059777171998575795,
+      "seconds": 0.05372483799874317,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5149,6 +5304,7 @@
       "results": [
         {
           "article_number": 558,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 558",
           "score": 0.825406551361084,
           "method": "semantic",
@@ -5183,6 +5339,7 @@
         },
         {
           "article_number": 690,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 690",
           "score": 0.8241573572158813,
           "method": "semantic",
@@ -5217,6 +5374,7 @@
         },
         {
           "article_number": 823,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 823",
           "score": 0.822208046913147,
           "method": "semantic",
@@ -5251,6 +5409,7 @@
         },
         {
           "article_number": 992,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 992",
           "score": 0.8216927647590637,
           "method": "semantic",
@@ -5285,6 +5444,7 @@
         },
         {
           "article_number": 89,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 89",
           "score": 0.8213486671447754,
           "method": "semantic",
@@ -5318,7 +5478,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.17542619300002116,
+      "seconds": 0.04623735000495799,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5342,6 +5502,7 @@
       "results": [
         {
           "article_number": 558,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 558",
           "score": 0.8714519739151001,
           "method": "semantic",
@@ -5376,6 +5537,7 @@
         },
         {
           "article_number": 1014,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1014",
           "score": 0.8405938148498535,
           "method": "semantic",
@@ -5410,6 +5572,7 @@
         },
         {
           "article_number": 587,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 587",
           "score": 0.8302148580551147,
           "method": "semantic",
@@ -5444,6 +5607,7 @@
         },
         {
           "article_number": 726,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 726",
           "score": 0.8285912275314331,
           "method": "semantic",
@@ -5478,6 +5642,7 @@
         },
         {
           "article_number": 457,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 457",
           "score": 0.8241835832595825,
           "method": "semantic",
@@ -5511,7 +5676,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.058042909997311654,
+      "seconds": 0.05139556199719664,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5535,6 +5700,7 @@
       "results": [
         {
           "article_number": 559,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 559",
           "score": 0.8781577348709106,
           "method": "semantic",
@@ -5569,6 +5735,7 @@
         },
         {
           "article_number": 563,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 563",
           "score": 0.8739851713180542,
           "method": "semantic",
@@ -5603,6 +5770,7 @@
         },
         {
           "article_number": 1045,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1045",
           "score": 0.8715001940727234,
           "method": "semantic",
@@ -5637,6 +5805,7 @@
         },
         {
           "article_number": 612,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 612",
           "score": 0.8689537048339844,
           "method": "semantic",
@@ -5671,6 +5840,7 @@
         },
         {
           "article_number": 608,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 608",
           "score": 0.8686097264289856,
           "method": "semantic",
@@ -5704,7 +5874,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.053938369997922564,
+      "seconds": 0.05225015600444749,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -5728,6 +5898,7 @@
       "results": [
         {
           "article_number": 563,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 563",
           "score": 0.8647492527961731,
           "method": "semantic",
@@ -5762,6 +5933,7 @@
         },
         {
           "article_number": 1045,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1045",
           "score": 0.8568853735923767,
           "method": "semantic",
@@ -5796,6 +5968,7 @@
         },
         {
           "article_number": 588,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 588",
           "score": 0.8463000059127808,
           "method": "semantic",
@@ -5830,6 +6003,7 @@
         },
         {
           "article_number": 569,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 569",
           "score": 0.8461530208587646,
           "method": "semantic",
@@ -5864,6 +6038,7 @@
         },
         {
           "article_number": 633,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 633",
           "score": 0.8452520370483398,
           "method": "semantic",
@@ -5897,7 +6072,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05002793400126393,
+      "seconds": 0.05224488100793678,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5921,6 +6096,7 @@
       "results": [
         {
           "article_number": 570,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 570",
           "score": 0.8926301598548889,
           "method": "semantic",
@@ -5955,6 +6131,7 @@
         },
         {
           "article_number": 580,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 580",
           "score": 0.889286994934082,
           "method": "semantic",
@@ -5989,6 +6166,7 @@
         },
         {
           "article_number": 565,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 565",
           "score": 0.875708818435669,
           "method": "semantic",
@@ -6023,6 +6201,7 @@
         },
         {
           "article_number": 569,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 569",
           "score": 0.8754956722259521,
           "method": "semantic",
@@ -6057,6 +6236,7 @@
         },
         {
           "article_number": 571,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 571",
           "score": 0.8751527070999146,
           "method": "semantic",
@@ -6090,7 +6270,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04144374399766093,
+      "seconds": 0.04812652499822434,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -6114,6 +6294,7 @@
       "results": [
         {
           "article_number": 571,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 571",
           "score": 0.9040806293487549,
           "method": "semantic",
@@ -6148,6 +6329,7 @@
         },
         {
           "article_number": 580,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 580",
           "score": 0.8920263051986694,
           "method": "semantic",
@@ -6182,6 +6364,7 @@
         },
         {
           "article_number": 570,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 570",
           "score": 0.8903900384902954,
           "method": "semantic",
@@ -6216,6 +6399,7 @@
         },
         {
           "article_number": 575,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 575",
           "score": 0.8820546269416809,
           "method": "semantic",
@@ -6250,6 +6434,7 @@
         },
         {
           "article_number": 576,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 576",
           "score": 0.8804953098297119,
           "method": "semantic",
@@ -6283,7 +6468,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0441171470010886,
+      "seconds": 0.05902782001066953,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6307,6 +6492,7 @@
       "results": [
         {
           "article_number": 646,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 646",
           "score": 0.8638749122619629,
           "method": "semantic",
@@ -6341,6 +6527,7 @@
         },
         {
           "article_number": 674,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 674",
           "score": 0.8550834655761719,
           "method": "semantic",
@@ -6375,6 +6562,7 @@
         },
         {
           "article_number": 558,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 558",
           "score": 0.8493748903274536,
           "method": "semantic",
@@ -6409,6 +6597,7 @@
         },
         {
           "article_number": 669,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 669",
           "score": 0.8468038439750671,
           "method": "semantic",
@@ -6443,6 +6632,7 @@
         },
         {
           "article_number": 505,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 505",
           "score": 0.8461787700653076,
           "method": "semantic",
@@ -6476,7 +6666,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05384045199753018,
+      "seconds": 0.055553779006004333,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6500,6 +6690,7 @@
       "results": [
         {
           "article_number": 646,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 646",
           "score": 0.9092088937759399,
           "method": "semantic",
@@ -6534,6 +6725,7 @@
         },
         {
           "article_number": 674,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 674",
           "score": 0.8899245262145996,
           "method": "semantic",
@@ -6568,6 +6760,7 @@
         },
         {
           "article_number": 695,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 695",
           "score": 0.8436019420623779,
           "method": "semantic",
@@ -6602,6 +6795,7 @@
         },
         {
           "article_number": 154,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 154",
           "score": 0.8386523127555847,
           "method": "semantic",
@@ -6636,6 +6830,7 @@
         },
         {
           "article_number": 680,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 680",
           "score": 0.8367311358451843,
           "method": "semantic",
@@ -6669,7 +6864,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04213661700123339,
+      "seconds": 0.055460923991631716,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6693,6 +6888,7 @@
       "results": [
         {
           "article_number": 802,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 802",
           "score": 0.8545015454292297,
           "method": "semantic",
@@ -6752,6 +6948,7 @@
         },
         {
           "article_number": 803,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 803",
           "score": 0.8368759155273438,
           "method": "semantic",
@@ -6786,6 +6983,7 @@
         },
         {
           "article_number": 479,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 479",
           "score": 0.8259857892990112,
           "method": "semantic",
@@ -6820,6 +7018,7 @@
         },
         {
           "article_number": 988,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 988",
           "score": 0.8195438385009766,
           "method": "semantic",
@@ -6854,6 +7053,7 @@
         },
         {
           "article_number": 1110,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1110",
           "score": 0.8192235231399536,
           "method": "semantic",
@@ -6887,7 +7087,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.03925285500008613,
+      "seconds": 0.04928828199626878,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6911,6 +7111,7 @@
       "results": [
         {
           "article_number": 802,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 802",
           "score": 0.8923443555831909,
           "method": "semantic",
@@ -6970,6 +7171,7 @@
         },
         {
           "article_number": 53,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 53",
           "score": 0.8433916568756104,
           "method": "semantic",
@@ -7004,6 +7206,7 @@
         },
         {
           "article_number": 81,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 81",
           "score": 0.8427183628082275,
           "method": "semantic",
@@ -7038,6 +7241,7 @@
         },
         {
           "article_number": 803,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 803",
           "score": 0.8403133749961853,
           "method": "semantic",
@@ -7072,6 +7276,7 @@
         },
         {
           "article_number": 112,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 112",
           "score": 0.8287969827651978,
           "method": "semantic",
@@ -7105,7 +7310,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04047864099993603,
+      "seconds": 0.052816719995462336,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7129,6 +7334,7 @@
       "results": [
         {
           "article_number": 805,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 805",
           "score": 0.8606574535369873,
           "method": "semantic",
@@ -7163,6 +7369,7 @@
         },
         {
           "article_number": 923,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 923",
           "score": 0.834098219871521,
           "method": "semantic",
@@ -7197,6 +7404,7 @@
         },
         {
           "article_number": 528,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 528",
           "score": 0.8263251185417175,
           "method": "semantic",
@@ -7231,6 +7439,7 @@
         },
         {
           "article_number": 171,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 171",
           "score": 0.8260563015937805,
           "method": "semantic",
@@ -7265,6 +7474,7 @@
         },
         {
           "article_number": 852,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 852",
           "score": 0.8249937295913696,
           "method": "semantic",
@@ -7298,7 +7508,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04115675099819782,
+      "seconds": 0.04119390399137046,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7322,6 +7532,7 @@
       "results": [
         {
           "article_number": 605,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 605",
           "score": 0.8342847228050232,
           "method": "semantic",
@@ -7356,6 +7567,7 @@
         },
         {
           "article_number": 565,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 565",
           "score": 0.8328667879104614,
           "method": "semantic",
@@ -7390,6 +7602,7 @@
         },
         {
           "article_number": 805,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 805",
           "score": 0.8292739391326904,
           "method": "semantic",
@@ -7424,6 +7637,7 @@
         },
         {
           "article_number": 980,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 980",
           "score": 0.8281360864639282,
           "method": "semantic",
@@ -7458,6 +7672,7 @@
         },
         {
           "article_number": 1065,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1065",
           "score": 0.8279770016670227,
           "method": "semantic",
@@ -7491,7 +7706,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0483305300003849,
+      "seconds": 0.045104256001650356,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.3333333333333333,
@@ -7515,6 +7730,7 @@
       "results": [
         {
           "article_number": 826,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 826",
           "score": 0.8722534775733948,
           "method": "semantic",
@@ -7549,6 +7765,7 @@
         },
         {
           "article_number": 830,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 830",
           "score": 0.8555501103401184,
           "method": "semantic",
@@ -7583,6 +7800,7 @@
         },
         {
           "article_number": 834,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 834",
           "score": 0.8522533774375916,
           "method": "semantic",
@@ -7617,6 +7835,7 @@
         },
         {
           "article_number": 836,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 836",
           "score": 0.8467928767204285,
           "method": "semantic",
@@ -7651,6 +7870,7 @@
         },
         {
           "article_number": 825,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 825",
           "score": 0.844747006893158,
           "method": "semantic",
@@ -7684,7 +7904,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07195049399888376,
+      "seconds": 0.04759351199027151,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7708,6 +7928,7 @@
       "results": [
         {
           "article_number": 835,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 835",
           "score": 0.8778679370880127,
           "method": "semantic",
@@ -7742,6 +7963,7 @@
         },
         {
           "article_number": 853,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 853",
           "score": 0.8759253621101379,
           "method": "semantic",
@@ -7776,6 +7998,7 @@
         },
         {
           "article_number": 834,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 834",
           "score": 0.875481128692627,
           "method": "semantic",
@@ -7810,6 +8033,7 @@
         },
         {
           "article_number": 850,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 850",
           "score": 0.8716276288032532,
           "method": "semantic",
@@ -7844,6 +8068,7 @@
         },
         {
           "article_number": 826,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 826",
           "score": 0.8707091212272644,
           "method": "semantic",
@@ -7877,7 +8102,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.046267587997135706,
+      "seconds": 0.051520845998311415,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -7901,6 +8126,7 @@
       "results": [
         {
           "article_number": 968,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 968",
           "score": 0.89143306016922,
           "method": "semantic",
@@ -7935,6 +8161,7 @@
         },
         {
           "article_number": 969,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 969",
           "score": 0.8625853657722473,
           "method": "semantic",
@@ -7969,6 +8196,7 @@
         },
         {
           "article_number": 18,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 18",
           "score": 0.8559755086898804,
           "method": "semantic",
@@ -8003,6 +8231,7 @@
         },
         {
           "article_number": 976,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 976",
           "score": 0.8530441522598267,
           "method": "semantic",
@@ -8037,6 +8266,7 @@
         },
         {
           "article_number": 958,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 958",
           "score": 0.847704291343689,
           "method": "semantic",
@@ -8070,7 +8300,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.059830772999703186,
+      "seconds": 0.04361615599191282,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8094,6 +8324,7 @@
       "results": [
         {
           "article_number": 968,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 968",
           "score": 0.8997578620910645,
           "method": "semantic",
@@ -8128,6 +8359,7 @@
         },
         {
           "article_number": 870,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 870",
           "score": 0.8670369386672974,
           "method": "semantic",
@@ -8162,6 +8394,7 @@
         },
         {
           "article_number": 961,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 961",
           "score": 0.8575270175933838,
           "method": "semantic",
@@ -8196,6 +8429,7 @@
         },
         {
           "article_number": 958,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 958",
           "score": 0.8486120700836182,
           "method": "semantic",
@@ -8230,6 +8464,7 @@
         },
         {
           "article_number": 871,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 871",
           "score": 0.8485855460166931,
           "method": "semantic",
@@ -8263,7 +8498,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05142588599846931,
+      "seconds": 0.0446379600034561,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8283,6 +8518,7 @@
       "results": [
         {
           "article_number": 1022,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1022",
           "score": null,
           "method": "article_lookup",
@@ -8319,7 +8555,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.001598366001417162,
+      "seconds": 0.0016238050011452287,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8339,6 +8575,7 @@
       "results": [
         {
           "article_number": 1022,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1022",
           "score": null,
           "method": "article_lookup",
@@ -8375,7 +8612,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0015048029999888968,
+      "seconds": 0.0012012860097456723,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8399,6 +8636,7 @@
       "results": [
         {
           "article_number": 1030,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1030",
           "score": 0.8923813700675964,
           "method": "semantic",
@@ -8433,6 +8671,7 @@
         },
         {
           "article_number": 1096,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1096",
           "score": 0.8560792207717896,
           "method": "semantic",
@@ -8467,6 +8706,7 @@
         },
         {
           "article_number": 1106,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1106",
           "score": 0.8536497354507446,
           "method": "semantic",
@@ -8501,6 +8741,7 @@
         },
         {
           "article_number": 1107,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1107",
           "score": 0.852496862411499,
           "method": "semantic",
@@ -8535,6 +8776,7 @@
         },
         {
           "article_number": 332,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 332",
           "score": 0.8508598804473877,
           "method": "semantic",
@@ -8568,7 +8810,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04858859299929463,
+      "seconds": 0.04372650998993777,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8592,6 +8834,7 @@
       "results": [
         {
           "article_number": 326,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 326",
           "score": 0.8737823963165283,
           "method": "semantic",
@@ -8626,6 +8869,7 @@
         },
         {
           "article_number": 1030,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1030",
           "score": 0.8616846203804016,
           "method": "semantic",
@@ -8660,6 +8904,7 @@
         },
         {
           "article_number": 932,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 932",
           "score": 0.8470112085342407,
           "method": "semantic",
@@ -8694,6 +8939,7 @@
         },
         {
           "article_number": 1096,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1096",
           "score": 0.8467159867286682,
           "method": "semantic",
@@ -8728,6 +8974,7 @@
         },
         {
           "article_number": 1051,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1051",
           "score": 0.8444933891296387,
           "method": "semantic",
@@ -8761,7 +9008,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04624811499888892,
+      "seconds": 0.0442549170111306,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -8785,6 +9032,7 @@
       "results": [
         {
           "article_number": 331,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 331",
           "score": 0.8368869423866272,
           "method": "semantic",
@@ -8819,6 +9067,7 @@
         },
         {
           "article_number": 1075,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1075",
           "score": 0.836616039276123,
           "method": "semantic",
@@ -8853,6 +9102,7 @@
         },
         {
           "article_number": 1101,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1101",
           "score": 0.828720211982727,
           "method": "semantic",
@@ -8887,6 +9137,7 @@
         },
         {
           "article_number": 1063,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1063",
           "score": 0.8259812593460083,
           "method": "semantic",
@@ -8921,6 +9172,7 @@
         },
         {
           "article_number": 1083,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1083",
           "score": 0.8257085084915161,
           "method": "semantic",
@@ -8954,7 +9206,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.048685452002246166,
+      "seconds": 0.04427860600117128,
       "hit_at_k": 0,
       "recall_at_k": 0.0,
       "reciprocal_rank": 0,
@@ -8978,6 +9230,7 @@
       "results": [
         {
           "article_number": 1065,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1065",
           "score": 0.8729655742645264,
           "method": "semantic",
@@ -9012,6 +9265,7 @@
         },
         {
           "article_number": 1075,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1075",
           "score": 0.8594194650650024,
           "method": "semantic",
@@ -9046,6 +9300,7 @@
         },
         {
           "article_number": 1083,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1083",
           "score": 0.8551038503646851,
           "method": "semantic",
@@ -9080,6 +9335,7 @@
         },
         {
           "article_number": 1064,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1064",
           "score": 0.8514226078987122,
           "method": "semantic",
@@ -9114,6 +9370,7 @@
         },
         {
           "article_number": 836,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 836",
           "score": 0.8507338762283325,
           "method": "semantic",
@@ -9147,7 +9404,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04618400800245581,
+      "seconds": 0.04183308199571911,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9171,6 +9428,7 @@
       "results": [
         {
           "article_number": 1143,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1143",
           "score": 0.8781757354736328,
           "method": "semantic",
@@ -9205,6 +9463,7 @@
         },
         {
           "article_number": 589,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 589",
           "score": 0.865558385848999,
           "method": "semantic",
@@ -9239,6 +9498,7 @@
         },
         {
           "article_number": 588,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 588",
           "score": 0.8648895025253296,
           "method": "semantic",
@@ -9273,6 +9533,7 @@
         },
         {
           "article_number": 576,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 576",
           "score": 0.8592720627784729,
           "method": "semantic",
@@ -9307,6 +9568,7 @@
         },
         {
           "article_number": 571,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 571",
           "score": 0.8589748740196228,
           "method": "semantic",
@@ -9340,7 +9602,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.08205173299938906,
+      "seconds": 0.05439225600275677,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9364,6 +9626,7 @@
       "results": [
         {
           "article_number": 1143,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1143",
           "score": 0.9097475409507751,
           "method": "semantic",
@@ -9423,6 +9686,7 @@
         },
         {
           "article_number": 589,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 589",
           "score": 0.8704670667648315,
           "method": "semantic",
@@ -9457,6 +9721,7 @@
         },
         {
           "article_number": 588,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 588",
           "score": 0.864668607711792,
           "method": "semantic",
@@ -9491,6 +9756,7 @@
         },
         {
           "article_number": 616,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 616",
           "score": 0.8607878088951111,
           "method": "semantic",
@@ -9525,6 +9791,7 @@
         },
         {
           "article_number": 591,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 591",
           "score": 0.8599423170089722,
           "method": "semantic",
@@ -9558,7 +9825,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06499723500019172,
+      "seconds": 0.08113230000890326,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9582,6 +9849,7 @@
       "results": [
         {
           "article_number": 1149,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1149",
           "score": 0.8566280007362366,
           "method": "semantic",
@@ -9616,6 +9884,7 @@
         },
         {
           "article_number": 869,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 869",
           "score": 0.8470809459686279,
           "method": "semantic",
@@ -9650,6 +9919,7 @@
         },
         {
           "article_number": 1147,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1147",
           "score": 0.846723198890686,
           "method": "semantic",
@@ -9684,6 +9954,7 @@
         },
         {
           "article_number": 1143,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1143",
           "score": 0.8429659605026245,
           "method": "semantic",
@@ -9718,6 +9989,7 @@
         },
         {
           "article_number": 1146,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1146",
           "score": 0.8428415060043335,
           "method": "semantic",
@@ -9751,7 +10023,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04325136899933568,
+      "seconds": 0.05733312899246812,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9775,6 +10047,7 @@
       "results": [
         {
           "article_number": 1149,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1149",
           "score": 0.9394940137863159,
           "method": "semantic",
@@ -9809,6 +10082,7 @@
         },
         {
           "article_number": 1146,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1146",
           "score": 0.8960179090499878,
           "method": "semantic",
@@ -9843,6 +10117,7 @@
         },
         {
           "article_number": 1147,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1147",
           "score": 0.8817993998527527,
           "method": "semantic",
@@ -9877,6 +10152,7 @@
         },
         {
           "article_number": 869,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 869",
           "score": 0.8655858039855957,
           "method": "semantic",
@@ -9911,6 +10187,7 @@
         },
         {
           "article_number": 1134,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1134",
           "score": 0.8580547571182251,
           "method": "semantic",
@@ -9944,7 +10221,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04748209200261044,
+      "seconds": 0.053349074005382136,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9964,6 +10241,7 @@
       "results": [
         {
           "article_number": 54,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 54",
           "score": null,
           "method": "article_lookup",
@@ -9999,7 +10277,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0014471130016318057,
+      "seconds": 0.0012997140001971275,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10019,6 +10297,7 @@
       "results": [
         {
           "article_number": 54,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 54",
           "score": null,
           "method": "article_lookup",
@@ -10054,7 +10333,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0011011229980795179,
+      "seconds": 0.0010458489996381104,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10074,6 +10353,7 @@
       "results": [
         {
           "article_number": 389,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 389",
           "score": null,
           "method": "article_lookup",
@@ -10107,7 +10387,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.001112437999836402,
+      "seconds": 0.001102609996451065,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10127,6 +10407,7 @@
       "results": [
         {
           "article_number": 389,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 389",
           "score": null,
           "method": "article_lookup",
@@ -10160,7 +10441,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0011262910011282656,
+      "seconds": 0.0012298479996388778,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10177,11 +10458,12 @@
         940,
         1004,
         45,
-        425
+        130
       ],
       "results": [
         {
           "article_number": 764,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 764",
           "score": 0.7972860932350159,
           "method": "semantic",
@@ -10216,6 +10498,7 @@
         },
         {
           "article_number": 940,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 940",
           "score": 0.7838651537895203,
           "method": "semantic",
@@ -10250,6 +10533,7 @@
         },
         {
           "article_number": 1004,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1004",
           "score": 0.7832319736480713,
           "method": "semantic",
@@ -10284,6 +10568,7 @@
         },
         {
           "article_number": 45,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 45",
           "score": 0.7803391814231873,
           "method": "semantic",
@@ -10317,29 +10602,30 @@
           "rank": 4
         },
         {
-          "article_number": 425,
-          "citation": "Egyptian Civil Code, Article 425",
-          "score": 0.7759990692138672,
+          "article_number": 130,
+          "corpus_id": "egyptian-civil-code",
+          "citation": "Egyptian Civil Code, Article 130",
+          "score": 0.7788748741149902,
           "method": "semantic",
           "passages": [
             {
-              "document_id": "egyptian-civil-code:425:ar:0",
+              "document_id": "egyptian-civil-code:130:ar:0",
               "chunk_index": 0,
               "source_field": "ar_text",
               "source_start": 0,
-              "source_end": 222,
-              "source_text": "(١) إذا بيع عقار مملوك لشخص لا تتوافر فيه الأهلية وكان في البيع غبن يزيد على الخمس فالبائع أن يطلب تكملة الثمن إلى أربعة أخماس ثمن المثل. (٢) ويجب لتقدير ما إذا كان الغبن يزيد على الخمس أن يقوم العقار بحسب قيمته وقت البيع.",
-              "embedding_text": "(١) اذا بيع عقار مملوك لشخص لا تتوافر فيه الاهلية وكان في البيع غبن يزيد علي الخمس فالبايع ان يطلب تكملة الثمن الي اربعة اخماس ثمن المثل. (٢) ويجب لتقدير ما اذا كان الغبن يزيد علي الخمس ان يقوم العقار بحسب قيمته وقت البيع.",
+              "source_end": 95,
+              "source_text": "يراعى فى تطبيق المادة السابقة عدم الإخلال بالأحكام الخاصة بالغبن فى بعض العقود أو بسعر الفائدة.",
+              "embedding_text": "يراعي في تطبيق المادة السابقة عدم الاخلال بالاحكام الخاصة بالغبن في بعض العقود او بسعر الفايدة.",
               "metadata": {
                 "corpus_id": "egyptian-civil-code",
-                "article_number": 425,
-                "citation": "Egyptian Civil Code, Article 425",
+                "article_number": 130,
+                "citation": "Egyptian Civil Code, Article 130",
                 "book": "Obligations or Personal Rights",
-                "chapter": "Contracts as Regards Ownership",
-                "section": "Sale",
-                "topic": "Elements of Sale",
-                "source_book": "Specific Contracts",
-                "source_page": 54,
+                "chapter": "Sources of Obligations",
+                "section": "Contracts",
+                "topic": "Consent",
+                "source_book": "Obligations Generally",
+                "source_page": 14,
                 "language": "ar",
                 "is_repealed": false,
                 "repeal_note": null,
@@ -10351,7 +10637,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.038786059001722606,
+      "seconds": 0.04196669301018119,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10373,6 +10659,7 @@
       "results": [
         {
           "article_number": 425,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 425",
           "score": 0.7870404124259949,
           "method": "semantic",
@@ -10407,6 +10694,7 @@
         },
         {
           "article_number": 764,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 764",
           "score": 0.7818016409873962,
           "method": "semantic",
@@ -10441,6 +10729,7 @@
         },
         {
           "article_number": 969,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 969",
           "score": 0.7777825593948364,
           "method": "semantic",
@@ -10475,6 +10764,7 @@
         },
         {
           "article_number": 382,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 382",
           "score": 0.777134895324707,
           "method": "semantic",
@@ -10509,6 +10799,7 @@
         },
         {
           "article_number": 376,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 376",
           "score": 0.7762001752853394,
           "method": "semantic",
@@ -10542,7 +10833,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.10958767699776217,
+      "seconds": 0.06632929699844681,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10556,14 +10847,15 @@
       "expected_article_numbers": [],
       "retrieved_article_numbers": [
         940,
-        36,
         380,
         536,
-        433
+        433,
+        624
       ],
       "results": [
         {
           "article_number": 940,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 940",
           "score": 0.8042289614677429,
           "method": "semantic",
@@ -10597,41 +10889,8 @@
           "rank": 1
         },
         {
-          "article_number": 36,
-          "citation": "Egyptian Civil Code, Article 36",
-          "score": 0.796493411064148,
-          "method": "semantic",
-          "passages": [
-            {
-              "document_id": "egyptian-civil-code:36:ar:0",
-              "chunk_index": 0,
-              "source_field": "ar_text",
-              "source_start": 0,
-              "source_end": 227,
-              "source_text": "يراعى في حساب درجة القرابة المباشرة، اعتبار كل فرع درجة عند الصعود للأصل بخروج هذا الأصل، وعدد حساب درجة الحواشي تعد الدرجات صعوداً من الفرع للأصل المشترك ثم نزولا منه إلى الفرع الآخر، وكل فرع فيما عدا الأصل المشترك يعتبر درجة.",
-              "embedding_text": "يراعي في حساب درجة القرابة المباشرة، اعتبار كل فرع درجة عند الصعود للاصل بخروج هذا الاصل، وعدد حساب درجة الحواشي تعد الدرجات صعودا من الفرع للاصل المشترك ثم نزولا منه الي الفرع الاخر، وكل فرع فيما عدا الاصل المشترك يعتبر درجة.",
-              "metadata": {
-                "corpus_id": "egyptian-civil-code",
-                "article_number": 36,
-                "citation": "Egyptian Civil Code, Article 36",
-                "book": null,
-                "chapter": null,
-                "section": "Persons",
-                "topic": "Individuals",
-                "source_book": null,
-                "source_page": 5,
-                "language": "ar",
-                "is_repealed": false,
-                "repeal_note": null,
-                "qa_flags": [],
-                "content_kind": "article_text"
-              }
-            }
-          ],
-          "rank": 2
-        },
-        {
           "article_number": 380,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 380",
           "score": 0.7904000282287598,
           "method": "semantic",
@@ -10662,10 +10921,11 @@
               }
             }
           ],
-          "rank": 3
+          "rank": 2
         },
         {
           "article_number": 536,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 536",
           "score": 0.7841700315475464,
           "method": "semantic",
@@ -10696,10 +10956,11 @@
               }
             }
           ],
-          "rank": 4
+          "rank": 3
         },
         {
           "article_number": 433,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 433",
           "score": 0.7821946740150452,
           "method": "semantic",
@@ -10730,10 +10991,45 @@
               }
             }
           ],
+          "rank": 4
+        },
+        {
+          "article_number": 624,
+          "corpus_id": "egyptian-civil-code",
+          "citation": "Egyptian Civil Code, Article 624",
+          "score": 0.7808246612548828,
+          "method": "semantic",
+          "passages": [
+            {
+              "document_id": "egyptian-civil-code:624:ar:0",
+              "chunk_index": 0,
+              "source_field": "ar_text",
+              "source_start": 0,
+              "source_end": 240,
+              "source_text": "(١) توزع الغلة بين الطرفين بالنسبة المتفق عليها أو بالنسبة التى يعينها العرف، فإذا لم يوجد اتفاق أو عرف كان لكل منهما نصف الغلة. (٢) هلكت الغلة كلها أو بعضها بسبب قوة قاهرة، تحمل الطرفانًفإذامعا تبعه هذا الهلاك ولا يرجع أحد منهما على الآخر.",
+              "embedding_text": "(١) توزع الغلة بين الطرفين بالنسبة المتفق عليها او بالنسبة التي يعينها العرف، فاذا لم يوجد اتفاق او عرف كان لكل منهما نصف الغلة. (٢) هلكت الغلة كلها او بعضها بسبب قوة قاهرة، تحمل الطرفانفاذامعا تبعه هذا الهلاك ولا يرجع احد منهما علي الاخر.",
+              "metadata": {
+                "corpus_id": "egyptian-civil-code",
+                "article_number": 624,
+                "citation": "Egyptian Civil Code, Article 624",
+                "book": "Obligations or Personal Rights",
+                "chapter": "Contracts relating to the use of a thing",
+                "section": "Leases",
+                "topic": "Amodiation",
+                "source_book": "Specific Contracts",
+                "source_page": 84,
+                "language": "ar",
+                "is_repealed": false,
+                "repeal_note": null,
+                "qa_flags": [],
+                "content_kind": "article_text"
+              }
+            }
+          ],
           "rank": 5
         }
       ],
-      "seconds": 0.03963496000142186,
+      "seconds": 0.055790346988942474,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10755,6 +11051,7 @@
       "results": [
         {
           "article_number": 626,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 626",
           "score": 0.7930520176887512,
           "method": "semantic",
@@ -10789,6 +11086,7 @@
         },
         {
           "article_number": 36,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 36",
           "score": 0.7907647490501404,
           "method": "semantic",
@@ -10823,6 +11121,7 @@
         },
         {
           "article_number": 3,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 3",
           "score": 0.7819745540618896,
           "method": "semantic",
@@ -10857,6 +11156,7 @@
         },
         {
           "article_number": 1147,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1147",
           "score": 0.7806771993637085,
           "method": "semantic",
@@ -10891,6 +11191,7 @@
         },
         {
           "article_number": 1005,
+          "corpus_id": "egyptian-civil-code",
           "citation": "Egyptian Civil Code, Article 1005",
           "score": 0.7795266509056091,
           "method": "semantic",
@@ -10924,7 +11225,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.053574393001326825,
+      "seconds": 0.047469280994846486,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,

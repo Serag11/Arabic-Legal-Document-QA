@@ -122,7 +122,7 @@ and your Hugging Face model cache mounted read-only, so do the data and `downloa
 | Symptom | Cause and fix |
 | --- | --- |
 | `/ask` returns 502 "Set GOOGLE_API_KEY…" | No key. Put it in `.env` (checkout) or pass `-e GOOGLE_API_KEY` (Docker). |
-| 502 "Google generation failed (HTTP 429)" or 503 | Your Google quota or rate limit, or a Google outage. Wait and retry; there is no automatic retry. |
+| 502 "Google generation failed (HTTP 429)" or 503 | Your Google quota or rate limit, or a Google outage. The service already retried twice (after 3 s and 10 s); wait a minute and ask again. A *daily* quota error is not retried. |
 | Answers take 15–25 s | Typical for Gemini calls in our tests; retrieval itself takes well under a second. |
 | `docker run` says the port is taken | Use another host port, e.g. `-p 8080:8000`, then `localhost:8080`. |
 | Docker on Apple Silicon is slow or refuses the image | The image is `linux/amd64` only; add `--platform linux/amd64` (runs under emulation). |
@@ -381,7 +381,7 @@ variants), `prompts/answer_v1.txt`. Set `LEGAL_QA_ROOT` when running outside the
 ## Developing
 
 ```bash
-uv run python -m pytest tests/ -q     # ~110 offline tests, no key or network
+uv run python -m pytest tests/ -q     # ~120 offline tests, no key or network once the data is in place
 uvx ruff==0.14.0 check src tests
 uv run python src/evaluate_generation.py            # live six-case smoke run (uses quota)
 uv run --group evaluation python -m src.experiments prepare|run|register   # full paid evaluation + MLflow
@@ -396,13 +396,16 @@ pull. Deeper notes: `tests/README.md`, `reports/`, and the roadmap in `PLAN.md`.
 
 ## Limitations
 
-- **Not authoritative:** extracted from a PDF and not audited article by article. The planned
-  manual review of 20 sampled crops and all flagged records is still open.
+- **Not authoritative:** extracted from a PDF and not audited article by article. A visual review of
+  20 sampled articles, the 9 flagged records and a sample of repaired Arabic lines found no extraction
+  errors, but it was AI-assisted and is not a legal review. One source quirk is known: the PDF prints
+  the Arabic of Article 1022's second and third sentences inside Article 1021's row, and the corpus
+  keeps that layout (`reports/corpus-extraction.md`).
 - **One corpus** is answered; one known Arabic retrieval miss (Article 1065); the evaluation has
   one seed article per question and is not exhaustive.
 - **Faithfulness scores are automated** (same model family as the generator) and the sample is small.
 - **Provider dependence:** Google's latency, quota and outages directly affect users; 429/503 are
-  surfaced as HTTP 502 with no automatic retry.
+  surfaced as HTTP 502 after two short automatic retries (not for daily-quota errors).
 - **Wrong-rule answers are possible** even when every quote is verbatim (a past case cited the
   employment article for a contract-for-work question).
 - Questions and passages go to Google (and to Langfuse when tracing is on).

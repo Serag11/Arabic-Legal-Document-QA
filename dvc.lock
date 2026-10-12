@@ -11,16 +11,16 @@ stages:
       size: 2599703
     - path: pyproject.toml
       hash: md5
-      md5: cbda54eef5c879a035608d2c7cc0bdf5
-      size: 1192
+      md5: 059d23c6499520e88a290875d4893f56
+      size: 1324
     - path: src/extract_egyptian_civil_code.py
       hash: md5
       md5: b1361bf3408f6f56caa75c528ca9d2b9
       size: 34548
     - path: uv.lock
       hash: md5
-      md5: 0c5b38bb41ac00a518095c9fbc17a488
-      size: 976537
+      md5: eece18ea1b6d6be82dc0def12cbda9ab
+      size: 1088813
     outs:
     - path: data/egyptian_civil_code_articles.jsonl
       hash: md5
@@ -36,8 +36,8 @@ stages:
     deps:
     - path: config/generation.json
       hash: md5
-      md5: 103ef511d051a61f8a3c76638b2f51d6
-      size: 416
+      md5: be8b4e8d4e1a7be34f633e686fdb8cc6
+      size: 725
     - path: config/retrieval.json
       hash: md5
       md5: d8abbaf6e3894539ed9fbcb333b8a3bc
@@ -48,53 +48,53 @@ stages:
       size: 1770974
     - path: prompts/answer_v1.txt
       hash: md5
-      md5: c9997ee58e0c75fe0dde7349f553cc08
-      size: 1630
+      md5: ba3dc011b74f8e40b140c2d1b5ca783f
+      size: 2038
     - path: pyproject.toml
       hash: md5
-      md5: cbda54eef5c879a035608d2c7cc0bdf5
-      size: 1192
+      md5: 059d23c6499520e88a290875d4893f56
+      size: 1324
     - path: src/api.py
       hash: md5
-      md5: 441688f1483f9b96b43649b4459ab665
-      size: 4681
+      md5: a70b75474688d6637e26e816eb508629
+      size: 7060
     - path: src/experiments.py
       hash: md5
-      md5: bf34b64c017d2758e8cc221ec6b56a3e
-      size: 20354
+      md5: 2ba9ff5349282bf5f2c15b8677156a26
+      size: 25237
     - path: src/generation.py
       hash: md5
-      md5: 696424c0ddde793510db9292984a496f
-      size: 10333
+      md5: 63ec10a5246610c3431ef813f442294d
+      size: 16594
     - path: src/quality_gate.py
       hash: md5
       md5: 6bb279458fb1243b586a6c4de7a35942
       size: 3626
     - path: src/rag.py
       hash: md5
-      md5: c4606f6452e4b6b38cc1641421bc88e1
-      size: 7945
+      md5: 28073219c1bd18dc3d935235b9f4fc0d
+      size: 8017
     - path: src/retrieval.py
       hash: md5
-      md5: 653c07be7366c69f4dc3eead6c7eb2b9
-      size: 22571
+      md5: e686e2ef8eba6f1ec0090f858f921b9b
+      size: 23480
     - path: tests
       hash: md5
-      md5: 093e4d4d3d2ff286970c28e552654b93.dir
-      size: 39064
-      nfiles: 9
+      md5: 6ae2a9c782b40e31617e88b04a972a77.dir
+      size: 79193
+      nfiles: 15
     - path: uv.lock
       hash: md5
-      md5: 0c5b38bb41ac00a518095c9fbc17a488
-      size: 976537
+      md5: eece18ea1b6d6be82dc0def12cbda9ab
+      size: 1088813
   prepare_retrieval:
     cmd: uv run python -m pytest tests/ -q && uv run python src/retrieval.py 
       prepare
     deps:
     - path: config/generation.json
       hash: md5
-      md5: 103ef511d051a61f8a3c76638b2f51d6
-      size: 416
+      md5: be8b4e8d4e1a7be34f633e686fdb8cc6
+      size: 725
     - path: config/retrieval.json
       hash: md5
       md5: d8abbaf6e3894539ed9fbcb333b8a3bc
@@ -105,49 +105,49 @@ stages:
       size: 1770974
     - path: prompts/answer_v1.txt
       hash: md5
-      md5: c9997ee58e0c75fe0dde7349f553cc08
-      size: 1630
+      md5: ba3dc011b74f8e40b140c2d1b5ca783f
+      size: 2038
     - path: pyproject.toml
       hash: md5
-      md5: cbda54eef5c879a035608d2c7cc0bdf5
-      size: 1192
+      md5: 059d23c6499520e88a290875d4893f56
+      size: 1324
     - path: src/api.py
       hash: md5
-      md5: 441688f1483f9b96b43649b4459ab665
-      size: 4681
+      md5: a70b75474688d6637e26e816eb508629
+      size: 7060
     - path: src/experiments.py
       hash: md5
-      md5: bf34b64c017d2758e8cc221ec6b56a3e
-      size: 20354
+      md5: 2ba9ff5349282bf5f2c15b8677156a26
+      size: 25237
     - path: src/extract_egyptian_civil_code.py
       hash: md5
       md5: b1361bf3408f6f56caa75c528ca9d2b9
       size: 34548
     - path: src/generation.py
       hash: md5
-      md5: 696424c0ddde793510db9292984a496f
-      size: 10333
+      md5: 63ec10a5246610c3431ef813f442294d
+      size: 16594
     - path: src/quality_gate.py
       hash: md5
       md5: 6bb279458fb1243b586a6c4de7a35942
       size: 3626
     - path: src/rag.py
       hash: md5
-      md5: c4606f6452e4b6b38cc1641421bc88e1
-      size: 7945
+      md5: 28073219c1bd18dc3d935235b9f4fc0d
+      size: 8017
     - path: src/retrieval.py
       hash: md5
-      md5: 653c07be7366c69f4dc3eead6c7eb2b9
-      size: 22571
+      md5: e686e2ef8eba6f1ec0090f858f921b9b
+      size: 23480
     - path: tests
       hash: md5
-      md5: 093e4d4d3d2ff286970c28e552654b93.dir
-      size: 39064
-      nfiles: 9
+      md5: 6ae2a9c782b40e31617e88b04a972a77.dir
+      size: 79193
+      nfiles: 15
     - path: uv.lock
       hash: md5
-      md5: 0c5b38bb41ac00a518095c9fbc17a488
-      size: 976537
+      md5: eece18ea1b6d6be82dc0def12cbda9ab
+      size: 1088813
     outs:
     - path: data/retrieval/chunks.jsonl
       hash: md5
@@ -174,34 +174,34 @@ stages:
       size: 1781
     - path: pyproject.toml
       hash: md5
-      md5: cbda54eef5c879a035608d2c7cc0bdf5
-      size: 1192
+      md5: 059d23c6499520e88a290875d4893f56
+      size: 1324
     - path: src/extract_egyptian_civil_code.py
       hash: md5
       md5: b1361bf3408f6f56caa75c528ca9d2b9
       size: 34548
     - path: src/rag.py
       hash: md5
-      md5: c4606f6452e4b6b38cc1641421bc88e1
-      size: 7945
+      md5: 28073219c1bd18dc3d935235b9f4fc0d
+      size: 8017
     - path: src/retrieval.py
       hash: md5
-      md5: 653c07be7366c69f4dc3eead6c7eb2b9
-      size: 22571
+      md5: e686e2ef8eba6f1ec0090f858f921b9b
+      size: 23480
     - path: tests
       hash: md5
-      md5: 093e4d4d3d2ff286970c28e552654b93.dir
-      size: 39064
-      nfiles: 9
+      md5: 6ae2a9c782b40e31617e88b04a972a77.dir
+      size: 79193
+      nfiles: 15
     - path: uv.lock
       hash: md5
-      md5: 0c5b38bb41ac00a518095c9fbc17a488
-      size: 976537
+      md5: eece18ea1b6d6be82dc0def12cbda9ab
+      size: 1088813
     outs:
     - path: data/retrieval/chroma
       hash: md5
-      md5: 38dc9d1091d877b69af214aa2c23cf0c.dir
-      size: 32718823
+      md5: e657e191f5fcdf0be6e067658459f6ae.dir
+      size: 32751589
       nfiles: 7
   evaluate_retrieval:
     cmd: uv run python src/retrieval.py evaluate
@@ -212,8 +212,8 @@ stages:
       size: 976
     - path: data/retrieval/chroma
       hash: md5
-      md5: 38dc9d1091d877b69af214aa2c23cf0c.dir
-      size: 32718823
+      md5: e657e191f5fcdf0be6e067658459f6ae.dir
+      size: 32751589
       nfiles: 7
     - path: evaluation/retrieval_questions.jsonl
       hash: md5
@@ -225,29 +225,29 @@ stages:
       size: 448
     - path: pyproject.toml
       hash: md5
-      md5: cbda54eef5c879a035608d2c7cc0bdf5
-      size: 1192
+      md5: 059d23c6499520e88a290875d4893f56
+      size: 1324
     - path: src/extract_egyptian_civil_code.py
       hash: md5
       md5: b1361bf3408f6f56caa75c528ca9d2b9
       size: 34548
     - path: src/rag.py
       hash: md5
-      md5: c4606f6452e4b6b38cc1641421bc88e1
-      size: 7945
+      md5: 28073219c1bd18dc3d935235b9f4fc0d
+      size: 8017
     - path: src/retrieval.py
       hash: md5
-      md5: 653c07be7366c69f4dc3eead6c7eb2b9
-      size: 22571
+      md5: e686e2ef8eba6f1ec0090f858f921b9b
+      size: 23480
     - path: uv.lock
       hash: md5
-      md5: 0c5b38bb41ac00a518095c9fbc17a488
-      size: 976537
+      md5: eece18ea1b6d6be82dc0def12cbda9ab
+      size: 1088813
     outs:
     - path: reports/retrieval-results.json
       hash: md5
-      md5: 9190ab622f7146761a135640d357a421
-      size: 647632
+      md5: 1497d35b9494d12a1aa901c384add8b3
+      size: 661534
     - path: reports/retrieval-results.metrics.json
       hash: md5
       md5: e155123665720ea7e3500e8e00be199f
@@ -269,32 +269,32 @@ stages:
       size: 448
     - path: pyproject.toml
       hash: md5
-      md5: cbda54eef5c879a035608d2c7cc0bdf5
-      size: 1192
+      md5: 059d23c6499520e88a290875d4893f56
+      size: 1324
     - path: src/experiments.py
       hash: md5
-      md5: bf34b64c017d2758e8cc221ec6b56a3e
-      size: 20354
+      md5: 2ba9ff5349282bf5f2c15b8677156a26
+      size: 25237
     - path: src/generation.py
       hash: md5
-      md5: 696424c0ddde793510db9292984a496f
-      size: 10333
+      md5: 63ec10a5246610c3431ef813f442294d
+      size: 16594
     - path: src/quality_gate.py
       hash: md5
       md5: 6bb279458fb1243b586a6c4de7a35942
       size: 3626
     - path: src/rag.py
       hash: md5
-      md5: c4606f6452e4b6b38cc1641421bc88e1
-      size: 7945
+      md5: 28073219c1bd18dc3d935235b9f4fc0d
+      size: 8017
     - path: src/retrieval.py
       hash: md5
-      md5: 653c07be7366c69f4dc3eead6c7eb2b9
-      size: 22571
+      md5: e686e2ef8eba6f1ec0090f858f921b9b
+      size: 23480
     - path: uv.lock
       hash: md5
-      md5: 0c5b38bb41ac00a518095c9fbc17a488
-      size: 976537
+      md5: eece18ea1b6d6be82dc0def12cbda9ab
+      size: 1088813
     outs:
     - path: evaluation/answer_questions.jsonl
       hash: md5
