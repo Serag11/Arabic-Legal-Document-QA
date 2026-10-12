@@ -89,3 +89,24 @@ def test_judge_calls_retry_transient_failures_but_not_daily_quota(monkeypatch):
     with pytest.raises(RuntimeError, match="quota"):
         asyncio.run(with_retries(exhausted))
     assert len(calls) == 1
+
+
+def test_deployed_validation_must_have_no_errors_enough_scores_and_adjusted_faithfulness():
+    from src.experiments import check_validation
+
+    config = {"minimum_scored_questions": 20, "faithfulness_threshold": 0.75}
+    good = {"metrics": {"error_count": 0, "scored_count": 52, "faithfulness_coverage_adjusted": 0.9}}
+    check_validation(good, config)
+    for change in ({"error_count": 1}, {"scored_count": 19}, {"faithfulness_coverage_adjusted": 0.74}):
+        with pytest.raises(RuntimeError, match="did not pass"):
+            check_validation({"metrics": dict(good["metrics"], **change)}, config)
+
+
+def test_experiment_config_names_a_variant_matching_the_deployed_retrieval_settings():
+    import json
+
+    from src.generation import load_generation_config
+
+    config = json.loads(open("config/experiments.json").read())
+    variant, = [v for v in config["variants"] if v["name"] == config["deployed_variant"]]
+    assert variant["top_k"] == load_generation_config()["retrieval_top_k"] and variant["document_language"] == "all"

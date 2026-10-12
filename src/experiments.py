@@ -341,12 +341,80 @@ async def run_experiments(config_path=DEFAULT_EXPERIMENTS):
     return summary
 
 
+def check_validation(report, config):
+    metrics = report["metrics"]
+    if metrics["error_count"] or metrics["scored_count"] < config["minimum_scored_questions"] \
+            or metrics["faithfulness_coverage_adjusted"] < config["faithfulness_threshold"]:
+        raise RuntimeError("Deployed configuration did not pass full validation; do not register a champion")
+
+
+async def validate_deployed(config_path=DEFAULT_EXPERIMENTS):
+    """Validate the configuration the service actually runs on all reviewed questions.
+
+    `run` compares retrieval settings on a subset and may rank another one first by a single question.
+    The quality and deployment gates must describe the deployed configuration, so after any pipeline
+    change this re-measures just that configuration (no variant comparison) and records it as selected.
+    """
+    import mlflow
+
+    prepare_questions()
+    config = json.loads(config_path.read_text())
+    variant = next((v for v in config["variants"] if v["name"] == config["deployed_variant"]), None)
+    deployed_top_k = load_generation_config()["retrieval_top_k"]
+    if variant is None or variant["top_k"] != deployed_top_k or variant["document_language"] != "all":
+        raise ValueError("deployed_variant must match the service's retrieval_top_k and search all languages")
+    rows = [json.loads(line) for line in DEFAULT_QUESTIONS.read_text().splitlines()]
+    tracking = ROOT / "data/mlflow"
+    tracking.mkdir(parents=True, exist_ok=True)
+    mlflow.set_tracking_uri(f"sqlite:///{tracking / 'tracking.db'}")
+    base = Retriever(ROOT / "data/retrieval/chroma")
+    pacer = ApiPacer(config["requests_per_minute"])
+    judge = RagasJudge(config["judge_model"], pacer, config["score_answer_accuracy"])
+    output = ROOT / "reports/experiments/selected-full-validation.json"
+    try:
+        sanity = await with_retries(judge.sanity_check)
+        mlflow.set_experiment("CivilCode/selected-full-validation")
+        with mlflow.start_run(run_name="deployed-full-validation") as run:
+            report = await evaluate_variant(base, judge, rows, variant, config, output, pacer=pacer)
+            report.update(mlflow_run_id=run.info.run_id, judge_sanity_check=sanity)
+            mlflow.log_params({"retrieval_top_k": variant["top_k"], "document_language": variant["document_language"],
+                               "chunk_size": base.config["max_tokens"], "overlap": 0, "embedding_model": base.config["model_id"],
+                               "question_count": len(rows), "pipeline_fingerprint": report["pipeline_fingerprint"]})
+            mlflow.log_metrics({key: value for key, value in report["metrics"].items() if value is not None})
+            write_json(output, report)
+            mlflow.log_artifact(str(output), artifact_path="evaluation")
+    finally:
+        await judge.close()
+    summary_path = ROOT / "reports/experiments/summary.json"
+    summary = json.loads(summary_path.read_text()) if summary_path.exists() else {}
+    # The variant comparison keeps the fingerprint it was measured under; only the deployed
+    # configuration is revalidated on every pipeline change.
+    summary.setdefault("comparison_pipeline_fingerprint", summary.get("pipeline_fingerprint"))
+    summary.update(
+        pipeline_fingerprint=report["pipeline_fingerprint"], full_question_count=len(rows),
+        faithfulness_threshold=config["faithfulness_threshold"], minimum_scored_questions=config["minimum_scored_questions"],
+        selected={"file": str(output.relative_to(ROOT)), "variant": variant, "metrics": report["metrics"],
+                  "mlflow_run_id": run.info.run_id, "basis": "deployed configuration (config/experiments.json deployed_variant)"},
+        validation_file=str(output.relative_to(ROOT)), validation_metrics=report["metrics"], validation_run_id=run.info.run_id,
+        selection_rule="The gates validate the deployed configuration on all reviewed questions. The variant comparison in "
+                       "`experiments` is informational and may rank another top-k first by a single question.",
+    )
+    write_json(summary_path, summary)
+    check_validation(report, config)
+    return summary
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("prepare", "run", "register"))
+    parser.add_argument("command", choices=("prepare", "run", "validate", "register"))
     args = parser.parse_args()
     if args.command == "prepare":
         print(json.dumps(prepare_questions(), indent=2))
+    elif args.command == "validate":
+        try:
+            asyncio.run(validate_deployed())
+        except Exception as exc:
+            raise SystemExit(f"Live validation failed ({type(exc).__name__}); check API quota and saved records") from None
     elif args.command == "run":
         try:
             asyncio.run(run_experiments())
