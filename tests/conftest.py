@@ -16,3 +16,11 @@ def articles():
 @pytest.fixture(scope="session")
 def by_number(articles):
     return {article["article_number"]: article for article in articles}
+
+
+@pytest.fixture(autouse=True)
+def no_external_tracing(monkeypatch):
+    """Tests must never send traces to a configured Langfuse project."""
+    from src import observability
+
+    monkeypatch.setattr(observability, "_default", observability.Tracer())

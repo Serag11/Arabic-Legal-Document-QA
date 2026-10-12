@@ -1,14 +1,15 @@
 """FastAPI service with one shared retriever per application lifetime."""
 
 from contextlib import asynccontextmanager
-from threading import Lock
 from typing import Annotated, Literal
 
 from fastapi import Body, FastAPI, HTTPException, Request
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, field_validator
 
 from .generation import AnsweringService, GenerationError
 from .retrieval import E5Encoder
+from .streaming import stream_events
 
 
 ASK_EXAMPLES = {
@@ -91,9 +92,6 @@ def create_app(service_factory=None):
             # exact-number lookups alone do not validate semantic retrieval.
             retriever = app.state.service.retriever
             retriever.encoder = E5Encoder(retriever.config)
-        # Serialize the baseline's CPU encoder initialization/inference. This
-        # also avoids loading duplicate embedding models under concurrent calls.
-        app.state.ask_lock = Lock()
         try:
             yield
         finally:
@@ -111,15 +109,40 @@ def create_app(service_factory=None):
     @application.post("/ask", response_model=AskResponse)
     def ask(body: Annotated[AskRequest, Body(openapi_examples=ASK_EXAMPLES)], request: Request):
         try:
-            with request.app.state.ask_lock:
-                return request.app.state.service.ask(
-                    body.question, language=body.language,
-                    filters=body.filters.model_dump(exclude_none=True),
-                )
+            return request.app.state.service.ask(
+                body.question, language=body.language,
+                filters=body.filters.model_dump(exclude_none=True),
+            )
         except ValueError as exc:
             raise HTTPException(status_code=422, detail=str(exc)) from None
         except GenerationError as exc:
             raise HTTPException(status_code=502, detail=str(exc)) from None
+
+    @application.post(
+        "/ask/stream",
+        response_class=StreamingResponse,
+        responses={200: {"description": "Server-sent events: `context` (retrieved citations), `delta` (provisional "
+                         "answer text), then `final` (the validated AskResponse, authoritative) or `error`.",
+                         "content": {"text/event-stream": {}}}},
+    )
+    async def ask_stream(body: Annotated[AskRequest, Body(openapi_examples=ASK_EXAMPLES)], request: Request):
+        service, filters = request.app.state.service, body.filters.model_dump(exclude_none=True)
+
+        def work(emit):
+            try:
+                result = service.ask(
+                    body.question, language=body.language, filters=filters,
+                    on_context=lambda articles: emit("context", {"articles": articles}),
+                    on_text=lambda text: emit("delta", {"text": text}),
+                )
+            except ValueError as exc:
+                raise RuntimeError(f"Invalid request: {exc}") from None
+            except GenerationError as exc:
+                raise RuntimeError(str(exc)) from None
+            emit("final", AskResponse.model_validate(result).model_dump(mode="json"))
+
+        return StreamingResponse(stream_events(work), media_type="text/event-stream",
+                                 headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
 
     return application
 

@@ -6,14 +6,17 @@ import json
 import os
 from pathlib import Path
 import re
+from threading import Lock
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 
 if __package__:
     from .observability import get_tracer
+    from .streaming import AnswerTextStream
     from .retrieval import Retriever
 else:
     from observability import get_tracer
+    from streaming import AnswerTextStream
     from retrieval import Retriever
 
 
@@ -72,7 +75,7 @@ class GoogleGenerator:
     def __init__(self, config):
         self.config = config
 
-    def generate(self, question, context, language, system_prompt):
+    def generate(self, question, context, language, system_prompt, on_text=None):
         from google import genai
         from google.genai import errors, types
         from pydantic import ValidationError
@@ -83,7 +86,7 @@ class GoogleGenerator:
                 api_key=load_google_api_key(), vertexai=False,
                 http_options=types.HttpOptions(timeout=self.config["timeout_ms"]),
             ) as client:
-                response = client.models.generate_content(
+                request = dict(
                     model=self.config["model"], contents=contents,
                     config=types.GenerateContentConfig(
                         system_instruction=system_prompt,
@@ -94,10 +97,21 @@ class GoogleGenerator:
                         response_mime_type="application/json", response_json_schema=GeneratedAnswer.model_json_schema(),
                     ),
                 )
-            if isinstance(response.parsed, GeneratedAnswer):
-                answer = response.parsed
-            else:
-                answer = GeneratedAnswer.model_validate_json(response.text or "")
+                if on_text is None:
+                    response = client.models.generate_content(**request)
+                    if isinstance(response.parsed, GeneratedAnswer):
+                        answer = response.parsed
+                    else:
+                        answer = GeneratedAnswer.model_validate_json(response.text or "")
+                else:
+                    # The structured JSON arrives in fragments; surface the growing "answer" text.
+                    parser, fragments, response = AnswerTextStream(), [], None
+                    for response in client.models.generate_content_stream(**request):
+                        fragment = response.text or ""
+                        fragments.append(fragment)
+                        if delta := parser.feed(fragment):
+                            on_text(delta)
+                    answer = GeneratedAnswer.model_validate_json("".join(fragments))
         except errors.APIError as exc:
             failure = GenerationError(f"Google generation failed (HTTP {exc.code})")
             failure.status_code = exc.code
@@ -168,8 +182,10 @@ class AnsweringService:
         self.generator = generator or GoogleGenerator(self.config)
         self.prompt = Path(prompt_path or PROMPT_PATH).read_text(encoding="utf-8")
         self.tracer = tracer or get_tracer()
+        # Only the shared CPU encoder/index needs serializing, not the provider call.
+        self.retrieval_lock = Lock()
 
-    def ask(self, question, *, language=None, filters=None):
+    def ask(self, question, *, language=None, filters=None, on_context=None, on_text=None):
         question = question.strip()
         if not question:
             raise ValueError("Question must be nonempty")
@@ -177,19 +193,23 @@ class AnsweringService:
         if language not in ("ar", "en"):
             raise ValueError("Answer language must be ar or en")
         with self.tracer.observation("ask", input={"question": question, "language": language, "filters": filters or {}}) as root:
-            result = self._ask(question, language, filters, root)
+            result = self._ask(question, language, filters, on_context, on_text)
             root.update(output={key: result.get(key) for key in ("answer", "sources", "insufficient_evidence", "reason", "usage")},
                         metadata={"model_version": result.get("model_version")})
             if root.trace_id:
                 result["trace_id"] = root.trace_id
             return result
 
-    def _ask(self, question, language, filters, root):
+    def _ask(self, question, language, filters, on_context, on_text):
         with self.tracer.observation("retrieval", as_type="retriever", input={"question": question, "filters": filters or {}}) as span:
-            results = self.retriever.search(question, k=self.config["retrieval_top_k"], filters=filters)
+            with self.retrieval_lock:
+                results = self.retriever.search(question, k=self.config["retrieval_top_k"], filters=filters)
             context = build_context(results, self.config["max_context_characters"])
             span.update(output=[{"article_number": p["article_number"], "language": p["language"], "citation": p["citation"]}
                                 for p in context])
+        if on_context:
+            on_context([{"article_number": p["article_number"], "citation": p["citation"], "language": p["language"]}
+                        for p in context])
         run = {
             "generation": self.config, "prompt_sha256": hashlib.sha256(self.prompt.encode()).hexdigest(),
             "retrieval": self.retriever.manifest["config"],
@@ -212,7 +232,8 @@ class AnsweringService:
             input={"question": question, "answer_language": language, "passages": context},
             metadata={"prompt_version": self.config.get("prompt_version"), "prompt_sha256": run["prompt_sha256"]},
         ) as span:
-            response = self.generator.generate(question, context, language, self.prompt)
+            extra = {"on_text": on_text} if on_text else {}
+            response = self.generator.generate(question, context, language, self.prompt, **extra)
             usage = {key: value for key, value in (response.usage or {}).items() if isinstance(value, int)}
             span.update(output=response.answer.model_dump(), usage_details=usage or None,
                         model=response.model_version or self.config["model"])

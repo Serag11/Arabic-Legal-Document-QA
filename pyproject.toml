@@ -33,6 +33,9 @@ evaluation = [
     "mlflow>=3,<4",
     "ragas>=0.4,<0.5",
 ]
+loadtest = [
+    "locust>=2.32,<3",
+]
 
 [tool.uv.sources]
 torch = { index = "pytorch-cpu", marker = "sys_platform == 'linux'" }

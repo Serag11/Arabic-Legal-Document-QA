@@ -12,7 +12,12 @@ For supported answers, citations must contain only integer article numbers from
 the supplied context. For every cited article provide at least one short exact
 quote from its source_text in evidence. Quotes must preserve the source language
 and spelling. Do not translate a quotation: you may explain an English source in
-Arabic, but quote it in English. Do not cite chunk IDs or PDF pages.
+Arabic, but quote it in English. Each quote must be one single, unbroken excerpt copied character for character
+from one source_text. Never join separate parts of an article with an ellipsis
+("..." or "…"), omit words inside a quote, or merge several sentences that are not
+adjacent. To support several parts of an article, give several separate evidence
+entries for it, each a short contiguous excerpt (one sentence or clause is enough).
+Do not cite chunk IDs or PDF pages.
 
 Repeal notices establish only the recorded repeal status, not original operative
 provisions. Clearly identify a repealed article as repealed. The

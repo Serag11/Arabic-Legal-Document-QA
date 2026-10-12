@@ -98,8 +98,8 @@ controls the answer language; `filters.language` restricts source passages.
 {"question":"ما تعريف عقد الإيجار؟","language":"ar"}
 ```
 
-The baseline serializes CPU inference/generation to avoid duplicate model loads.
-Container startup needs the prepared index and cached model; it does not fetch
+Only retrieval (the shared CPU encoder and index) is serialized; provider calls run
+concurrently. Container startup needs the prepared index and cached model; it does not fetch
 model weights. A deployed wheel uses `LEGAL_QA_ROOT` to locate external
 configuration, prompts, index, and the optional `.env` file.
 
@@ -113,6 +113,37 @@ Retrieval supports exact article-number lookup and metadata filters:
 uv run python src/retrieval.py query "Article 1022"
 uv run python src/rag.py ask "What is a lease?" --filters '{"language":"en","is_repealed":false}'
 ```
+
+### Streaming
+
+`POST /ask/stream` takes the same body and returns server-sent events: `context`
+(retrieved citations), `delta` (provisional answer text as it is generated), then
+`final` (the complete validated response) or `error`. Grounding can only be checked
+once the answer is complete, so treat deltas as a draft and **replace them with
+`final`**, which may be a refusal if validation fails.
+
+```bash
+curl -sN http://localhost:8000/ask/stream -H 'Content-Type: application/json' -d '{"question":"What is a lease?"}'
+```
+
+### Tracing
+
+Set `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY` and `LANGFUSE_BASE_URL` in `.env` to trace
+every request (`ask`, `retrieval`, `generation`, `grounding` spans, including the rejected
+candidate and failing check). Without them tracing is off. Responses carry a `trace_id`
+when tracing is on. Questions and passages are sent to the configured Langfuse project.
+
+### Load testing
+
+`uv sync --group loadtest`, then run a service with simulated generation latency
+(`STUB_LATENCY_SECONDS`, default 1.5; no provider calls) and Locust:
+
+```bash
+LANGFUSE_PUBLIC_KEY= uv run uvicorn src.loadtest_app:app --port 8001
+uv run locust -f loadtest/locustfile.py --headless -H http://localhost:8001 -u 50 -r 10 -t 90s
+```
+
+Results and caveats: `reports/load-test.md`.
 
 ## Tests and reports
 

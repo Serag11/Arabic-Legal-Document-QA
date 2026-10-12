@@ -194,13 +194,13 @@ POST /ask
 Complete these after the baseline RAG service, evaluation, and CI are working.
 
 - [ ] Wrap the RAG pipeline with BentoML and serve the generative model with vLLM (or document the API-based model used initially).
-- [ ] Add streaming `/ask` responses and verify progressive output with `curl`.
-- [ ] Run Locust at 50 concurrent users and save the report under `reports/`.
+- [X] Add streaming `POST /ask/stream` (SSE: context, delta, validated final) and verify progressive output with `curl`.
+- [X] Run Locust at 50 concurrent users (simulated provider latency) and save the report under `reports/`; see `reports/load-test.md`. Retrieval-only locking raised throughput from 0.5 to ~13 req/s.
 - [ ] Add batch re-indexing and test it with at least one additional document.
 - [ ] Document a canary rollout configuration and rollout stages.
 - [ ] Compare original and AWQ 4-bit generation using RAGAS; report quality, latency, and model size.
 - [ ] Add a reranker baseline and distill it; compare retrieval and RAGAS quality before/after as required by the handbook's Project 2 optimization deliverables (p. 66).
-- [ ] Add Langfuse traces for every `/ask` request, including retrieval and generation spans; attach the faithfulness score when available.
+- [X] Add Langfuse traces for every `/ask` request (ask, retrieval, generation, grounding spans; rejected candidate kept). Attaching faithfulness scores to traces is still open.
 - [ ] Track answer faithfulness, embedding/cosine drift, and token usage/cost; add Prometheus/Grafana panels and an alert threshold.
 - [ ] Document the final architecture and measured results in the README and project reports.
 
