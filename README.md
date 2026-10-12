@@ -61,9 +61,9 @@ The image is self-contained (about 1.3 GB): code, tokenizer, compact embedding m
 search index are inside, so it needs no repository, DVC login or model download. For a
 reproducible deployment use a `sha-<commit>` tag or the image digest instead of `latest`.
 
-> The published `latest` image was built before streaming (`/ask/stream`), `/metrics` and
-> tracing were added. Those need an image built from the `stage7-observability` branch, which
-> has not been published yet (see [Status](#status)).
+> The image includes streaming (`POST /ask/stream`), `GET /metrics` and optional tracing. Images
+> published before 2026-10-12 (`sha-4d9f1fb…` and older) predate them; if `/ask/stream` returns
+> 404, pull again.
 
 ---
 
@@ -123,7 +123,7 @@ and your Hugging Face model cache mounted read-only, so do the data and `downloa
 | --- | --- |
 | `/ask` returns 502 "Set GOOGLE_API_KEY…" | No key. Put it in `.env` (checkout) or pass `-e GOOGLE_API_KEY` (Docker). |
 | 502 "Google generation failed (HTTP 429)" or 503 | Your Google quota or rate limit, or a Google outage. The service already retried twice (after 3 s and 10 s); wait a minute and ask again. A *daily* quota error is not retried. |
-| Answers take 15–25 s | Typical for Gemini calls in our tests; retrieval itself takes well under a second. |
+| Answers take 7–30 s | Typical for `gemini-3.5-flash-lite` calls in our tests (the first call after a start was the slowest); retrieval itself takes well under a second. |
 | `docker run` says the port is taken | Use another host port, e.g. `-p 8080:8000`, then `localhost:8080`. |
 | Docker on Apple Silicon is slow or refuses the image | The image is `linux/amd64` only; add `--platform linux/amd64` (runs under emulation). |
 | `/health` does not answer right away | The first start loads the embedding model; wait up to a minute and check `docker logs legal-qa`. |
