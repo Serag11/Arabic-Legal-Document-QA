@@ -203,3 +203,22 @@ def test_public_download_gives_up_after_the_attempt_limit_and_accepts_416_as_com
     stalled_then_ok(monkeypatch, [urllib.error.HTTPError("u", 416, "range", {}, None)])
     download_public("https://example.invalid/a", done)
     assert done.read_bytes() == b"complete"
+
+
+def context_of(*numbers):
+    return [{"article_number": n, "language": "en", "source_text": f"text {n}"} for n in numbers]
+
+
+def test_smoke_equivalence_is_exact_for_supported_questions_and_tolerates_one_boundary_swap_for_probes():
+    from src.runtime_smoke import equivalent
+
+    supported = {"expected_article_numbers": [147], "retrieved_contexts": context_of(147, 1, 2, 3, 4)}
+    assert equivalent(supported, context_of(147, 1, 2, 3, 4))
+    assert not equivalent(supported, context_of(147, 1, 2, 3, 5))  # a supported question may not change at all
+
+    probe = {"expected_article_numbers": [], "retrieved_contexts": context_of(940, 380, 536, 433, 624)}
+    assert equivalent(probe, context_of(940, 380, 536, 433, 817))      # boundary article swapped
+    assert equivalent(probe, context_of(940, 536, 380, 433, 624))      # order changed, same set
+    assert not equivalent(probe, context_of(940, 380, 536, 1, 2))      # two articles differ
+    assert not equivalent(probe, context_of(380, 940, 536, 433, 624))  # the top hit changed
+    assert not equivalent(probe, [])

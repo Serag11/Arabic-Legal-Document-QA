@@ -186,3 +186,15 @@ run on GitHub rather than accumulating local copies.
 
 - Perform the separately deferred clean-checkout `dvc pull` / `dvc repro` check.
   This is independent of the verified CI release-bundle and container delivery.
+
+
+## CI smoke-test tolerance for unsupported probes (2026-10-12)
+
+The offline image smoke test (`src/runtime_smoke.py`) compares the image's retrieved contexts with the
+evaluation's recorded contexts. One run failed with "Image retrieval changed for s2-u02-ar" on a commit
+whose only change was the README; re-running the same commit passed. The cause is nearly tied scores for
+off-topic queries: for the unsupported probes the 5th and 6th articles differ by as little as 0.00001
+(`s2-u01-en`) or 0.00009 (`s2-u02-ar`), so floating-point differences between GitHub runner CPUs can swap
+the boundary article. Supported questions have clear winners and must still match exactly; unsupported
+probes may now differ by one article provided the top hit is unchanged (`equivalent()`, unit-tested). Any
+tolerated difference is listed in the smoke output (`tolerated_unsupported_probe_differences`).
