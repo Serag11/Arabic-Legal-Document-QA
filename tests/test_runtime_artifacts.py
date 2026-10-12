@@ -95,3 +95,38 @@ def test_authenticated_download_requires_cli(monkeypatch, tmp_path):
     monkeypatch.setattr("src.runtime_artifacts.shutil.which", lambda name: None)
     with pytest.raises(ValueError, match="Install GitHub CLI"):
         download_archive({}, tmp_path / "runtime.tar.gz")
+
+
+def test_local_gh_login_failure_falls_back_to_anonymous_public_download(monkeypatch, tmp_path):
+    import io
+    import subprocess
+
+    monkeypatch.delenv("GH_TOKEN", raising=False)
+    monkeypatch.setenv("GH_BINARY", "/usr/bin/gh")
+
+    def fake_run(args, **kwargs):
+        if args[1:3] == ["auth", "status"]:
+            return subprocess.CompletedProcess(args, 0)
+        raise subprocess.CalledProcessError(1, args)
+
+    urls = []
+    monkeypatch.setattr("src.runtime_artifacts.subprocess.run", fake_run)
+    monkeypatch.setattr("src.runtime_artifacts.urllib.request.urlopen",
+                        lambda url, timeout: urls.append(url) or io.BytesIO(b"archive-bytes"))
+    archive = tmp_path / "runtime.tar.gz"
+    download_archive({"release": "runtime-v1", "repository": "owner/repo", "asset": "runtime.tar.gz"}, archive)
+    assert archive.read_bytes() == b"archive-bytes"
+    assert urls == ["https://github.com/owner/repo/releases/download/runtime-v1/runtime.tar.gz"]
+
+
+def test_ci_token_download_failure_is_not_silently_retried_anonymously(monkeypatch, tmp_path):
+    import subprocess
+
+    import pytest
+
+    monkeypatch.setenv("GH_TOKEN", "ci-token")
+    monkeypatch.setenv("GH_BINARY", "/usr/bin/gh")
+    monkeypatch.setattr("src.runtime_artifacts.subprocess.run",
+                        lambda args, **kwargs: (_ for _ in ()).throw(subprocess.CalledProcessError(1, args)))
+    with pytest.raises(subprocess.CalledProcessError):
+        download_archive({"release": "r", "repository": "o/r", "asset": "a"}, tmp_path / "a")

@@ -69,29 +69,64 @@ reproducible deployment use a `sha-<commit>` tag or the image digest instead of 
 
 ## Setup from a checkout
 
-Use this path to change the code, rebuild the data, run evaluations or the monitoring stack.
+Use this path to change the code, run the tests or the evaluations, or run the monitoring stack.
 
-**Prerequisites:** Linux or macOS, [uv](https://docs.astral.sh/uv/) (installs Python 3.13 for
-you), Docker (optional, for containers), a Google API key, and access to the project's DVC
-remote (a Google Drive folder) for the source PDF and derived data.
+**Prerequisites:** Linux or macOS, [uv](https://docs.astral.sh/uv/) (it installs Python 3.13 for you),
+a Google API key, and roughly **6 GB of free disk** (Python environment about 2 GB, embedding model
+about 1.1 GB, data bundle about 1 GB). Embeddings run on the CPU; no GPU is needed. Docker is optional.
+
+### Option A — anyone, no logins except your own Google key
+
+The data (corpus, search index) is published as a public, checksum-verified GitHub release, so
+nothing here needs the maintainers' accounts.
 
 ```bash
-git clone <this repository> && cd Arabic-Legal-Document-QA
-cp .env.example .env            # then put your key in GOOGLE_API_KEY=
-uv sync --group evaluation      # app + evaluation tools; add `--group loadtest` for Locust
-uv run dvc pull -r storage      # source PDF, corpus, chunks and index (Google Drive login if prompted)
-uv run python src/retrieval.py download   # pinned embedding model, once (~1.1 GB, then fully offline)
-uv run dvc repro                # re-runs any out-of-date pipeline stage (tests gate each one)
-uv run uvicorn src.api:app --port 8000    # or: docker compose up --build -d
+git clone https://github.com/Serag11/Arabic-Legal-Document-QA.git && cd Arabic-Legal-Document-QA
+cp .env.example .env                                  # then put your key in GOOGLE_API_KEY=
+uv sync                                               # add `--group evaluation` / `--group loadtest` for those tools
+uv run python -m src.runtime_artifacts ensure --output runtime     # ~530 MB release bundle, checksum-verified
+mkdir -p data/retrieval && cp runtime/data/egyptian_civil_code_articles.jsonl data/ \
+  && cp -r runtime/data/retrieval/chroma data/retrieval/
+uv run python src/retrieval.py download               # pinned embedding model from Hugging Face, once (~1.1 GB)
+uv run python -m pytest tests/ -q                     # offline: no Google key or network needed once the above is done
+uv run uvicorn src.api:app --port 8000
 ```
 
-What the data stages do (`dvc.yaml`): `extract_civil_code` (PDF → structured JSONL) →
-`validate_corpus` (tests) → `prepare_retrieval` (chunks) → `index_retrieval` (Chroma) →
-`evaluate_retrieval` (metrics). Run `uv run python -m pytest tests/ -q` at any time; it
-needs no network and no API key.
+This gives you the already-extracted corpus and index. Rebuilding them from the source PDF is a
+maintainer task (Option B), because the PDF is not stored in git.
 
-`docker compose up --build -d` runs the development image (PyTorch) with the index and your
-Hugging Face model cache mounted read-only, so run the `download` step first.
+### Option B — maintainers: rebuild everything from the PDF with DVC
+
+The source PDF, corpus, chunks and index are tracked with DVC in a **private Google Drive folder**
+(remote `storage`), so you need the folder shared with you and your own Google OAuth client:
+
+```bash
+uv sync --group evaluation
+uv run dvc remote modify --local storage gdrive_client_id <your OAuth client id>
+uv run dvc remote modify --local storage gdrive_client_secret <your OAuth client secret>
+uv run dvc pull -r storage                  # first run opens a Google login
+uv run python src/retrieval.py download     # pinned embedding model, once
+uv run dvc repro                            # re-runs any out-of-date stage; the tests gate each one
+```
+
+The `--local` settings land in the git-ignored `.dvc/config.local`; never commit them.
+What the stages do (`dvc.yaml`): `extract_civil_code` (PDF → structured JSONL) → `validate_corpus`
+(tests) → `prepare_retrieval` (chunks) → `index_retrieval` (Chroma) → `evaluate_retrieval` (metrics).
+A clean-checkout run of this path is recorded in `reports/reproducibility.md`.
+
+`docker compose up --build -d` runs the development image (PyTorch) with `data/retrieval/chroma`
+and your Hugging Face model cache mounted read-only, so do the data and `download` steps first.
+
+### If something goes wrong
+
+| Symptom | Cause and fix |
+| --- | --- |
+| `/ask` returns 502 "Set GOOGLE_API_KEY…" | No key. Put it in `.env` (checkout) or pass `-e GOOGLE_API_KEY` (Docker). |
+| 502 "Google generation failed (HTTP 429)" or 503 | Your Google quota or rate limit, or a Google outage. Wait and retry; there is no automatic retry. |
+| Answers take 15–25 s | Typical for Gemini calls in our tests; retrieval itself takes well under a second. |
+| `docker run` says the port is taken | Use another host port, e.g. `-p 8080:8000`, then `localhost:8080`. |
+| Docker on Apple Silicon is slow or refuses the image | The image is `linux/amd64` only; add `--platform linux/amd64` (runs under emulation). |
+| `/health` does not answer right away | The first start loads the embedding model; wait up to a minute and check `docker logs legal-qa`. |
 
 Command-line use without the server:
 

@@ -31,19 +31,26 @@ def download_archive(config, archive):
     # Actions supplies its built-in read token; gh handles private release asset
     # authentication and redirects without exposing credentials in command args.
     gh = os.environ.get("GH_BINARY") or shutil.which("gh")
-    authenticated = bool(os.environ.get("GH_TOKEN"))
+    token_given = bool(os.environ.get("GH_TOKEN"))
+    authenticated = token_given
     if gh and not authenticated:
         authenticated = subprocess.run([gh, "auth", "status"], capture_output=True).returncode == 0
     if authenticated:
         if not gh:
             raise ValueError("Install GitHub CLI to download authenticated release assets")
-        subprocess.run([gh, "release", "download", config["release"], "--repo", config["repository"],
-                        "--pattern", config["asset"], "--output", str(archive), "--clobber"], check=True)
-    else:
-        url = (f"https://github.com/{config['repository']}/releases/download/"
-               f"{config['release']}/{config['asset']}")
-        with urllib.request.urlopen(url, timeout=120) as response, archive.open("wb") as handle:
-            shutil.copyfileobj(response, handle)
+        try:
+            subprocess.run([gh, "release", "download", config["release"], "--repo", config["repository"],
+                            "--pattern", config["asset"], "--output", str(archive), "--clobber"], check=True)
+            return
+        except subprocess.CalledProcessError:
+            # CI must fail loudly. A merely logged-in local gh (for example an old version without
+            # --clobber) should not block downloading a public release, which needs no login.
+            if token_given:
+                raise
+    url = (f"https://github.com/{config['repository']}/releases/download/"
+           f"{config['release']}/{config['asset']}")
+    with urllib.request.urlopen(url, timeout=120) as response, archive.open("wb") as handle:
+        shutil.copyfileobj(response, handle)
 
 
 def verify_directory(root, manifest):
