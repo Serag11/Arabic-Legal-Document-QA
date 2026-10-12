@@ -55,7 +55,7 @@ class RetrievalResult:
     score: float
 
 
-def load_articles(path: Path) -> list[dict[str, Any]]:
+def load_articles(path: Path, citation_prefix: str = "Egyptian Civil Code") -> list[dict[str, Any]]:
     """Read structured JSONL; reject broken numbering and source metadata."""
     articles = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
     if not articles:
@@ -64,7 +64,7 @@ def load_articles(path: Path) -> list[dict[str, Any]]:
         number = article["article_number"]
         if type(number) is not int or number != expected_number:
             raise ValueError("Article numbers must be consecutive integers starting at 1")
-        if article["citation"] != f"Egyptian Civil Code, Article {number}":
+        if article["citation"] != f"{citation_prefix}, Article {number}":
             raise ValueError(f"Article {number}: citation does not match article number")
         if type(article["is_repealed"]) is not bool:
             raise ValueError(f"Article {number}: invalid repeal status")
@@ -73,7 +73,7 @@ def load_articles(path: Path) -> list[dict[str, Any]]:
     return articles
 
 
-def prepare_documents(articles: list[dict[str, Any]]) -> list[RetrievalDocument]:
+def prepare_documents(articles: list[dict[str, Any]], corpus_id: str = CORPUS_ID) -> list[RetrievalDocument]:
     """Create one whole-article chunk per available language, with zero overlap.
 
     Repealed articles produce one English source-notice chunk. Empty Arabic is
@@ -104,7 +104,7 @@ def prepare_documents(articles: list[dict[str, Any]]) -> list[RetrievalDocument]
 
         for language, source_field, source_text, embedding_text in texts:
             metadata = ArticleMetadata(
-                corpus_id=CORPUS_ID,
+                corpus_id=corpus_id,
                 article_number=number,
                 citation=article["citation"],
                 book=article["book"],
@@ -120,7 +120,7 @@ def prepare_documents(articles: list[dict[str, Any]]) -> list[RetrievalDocument]
                 content_kind="repeal_notice" if article["is_repealed"] else "article_text",
             )
             documents.append(RetrievalDocument(
-                document_id=f"{CORPUS_ID}:{number}:{language}:0",
+                document_id=f"{corpus_id}:{number}:{language}:0",
                 chunk_index=0,
                 source_field=source_field,
                 source_start=0,

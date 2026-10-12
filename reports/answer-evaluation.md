@@ -141,3 +141,37 @@ MLflow database. The refreshed results match the current pipeline fingerprint;
 the offline suite for the API/cache fixes has **69 passing tests**. The running
 API and current champion both use top-k 5. Earlier tables and version 1 describe
 the initial checkpoint, not the latest selected model.
+
+
+## Stage 7 re-evaluation (gemini-3.5-flash-lite)
+
+The prompt now requires contiguous evidence quotes, the generation and judge model changed to
+`gemini-3.5-flash-lite`, and retries were added for transient provider errors, so the gates required a
+fresh measurement. The deployed configuration (top-k 5, all-language search) was validated on all 60
+reviewed questions with `python -m src.experiments validate`.
+
+| Measure | Result |
+| --- | --- |
+| Supported questions answered / scored by the judge | 55 / 56 answered, 55 scored |
+| Expected article retrieved | 55 / 56 (Arabic 27/28, English 28/28) |
+| Answered with the expected citation | 55 / 56 |
+| Unsupported probes refused | 4 / 4 |
+| Answers discarded by grounding validation | 0 |
+| Faithfulness | 0.982 on scored answers; 0.964 coverage-adjusted (gate 0.75) |
+| Operational errors | 0 |
+
+Failures: `s2-024-ar` (the known Arabic Article 1065 retrieval miss, refused) and one low-scoring
+answer, `s2-013-ar`, scored 0.0 by the judge. The judge is the same model as the generator and
+RAGAS scores are automated estimates; the 0.0 was not manually reviewed.
+
+**Variant comparison caveat.** The five-variant comparison was run once after the prompt change,
+under `gemini-3.1-flash-lite` (the free-tier cap of 500 requests/day for that model was then exhausted,
+which is why the model changed). On the 24-question subset it ranked `top-k-8` first, by one
+question (19 vs 18 of 20 supported). That is within noise, the service and the image smoke test use
+top-k 5, and the README documents 5, so `config/experiments.json` now names the deployed variant
+and the gates validate it. The comparison files in `reports/experiments/` remain informational: they
+were measured with the 3.1 model under `comparison_pipeline_fingerprint` in `summary.json`.
+
+MLflow champion `ArabicLegalDocumentQA` is registered as version 3 (alias `champion`). The compact-runtime
+comparison was re-run against the shipped ONNX model and index: 60 of 60 generator contexts identical
+(`reports/deployment/compact-retrieval.json`).

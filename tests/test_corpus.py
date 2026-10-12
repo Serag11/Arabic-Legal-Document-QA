@@ -82,6 +82,28 @@ def test_article_1022_missing_arabic_is_an_explicit_source_exception(by_number):
     assert "missing_ar_text_in_source" in article["qa_flags"]
 
 
+def test_article_1021_boundary_with_1022_matches_the_source_rows(by_number):
+    """Page 147 prints Arabic paragraphs (1)-(3) in the 1021 row; (2) and (3) are the Arabic of 1022's
+    English (see reports/corpus-extraction.md). The corpus keeps the literal row structure."""
+    article, following = by_number[1021], by_number[1022]
+    assert article["source_page"] == following["source_page"] == 147
+    assert not article["is_repealed"] and article["qa_flags"] == []
+    arabic = article["ar_text"]
+    assert arabic.startswith("(١) لا يلزم مالك العقار المرتفق به")
+    assert arabic.index("(٢)") < arabic.index("(٣)") and "(٤)" not in arabic
+    # 1021's English is only the first paragraph; nothing of 1022's English leaked into it.
+    assert article["text_en"].startswith("In the absence of an agreement to the contrary, the owner of the servient tenement")
+    assert article["text_en"].endswith("necessitated by the normal use of the servitude.")
+    assert "cost" not in article["text_en"] and "abandoning" not in article["text_en"]
+    # 1022 starts with its own first sentence and has no Arabic of its own (the exception above).
+    assert following["text_en"].startswith("In the absence o f an agreement to the contrary, the cost of the necessary works")
+    assert "abandoning the servient tenement" in following["text_en"]
+    assert following["ar_text"] == ""
+    # Neighbours stay separate.
+    assert by_number[1020]["article_number"] == 1020 and by_number[1023]["article_number"] == 1023
+    assert by_number[1020]["text_en"] not in article["text_en"]
+
+
 def test_article_147_text_and_hierarchy(by_number):
     article = by_number[147]
     assert "العقد شريعة المتعاقدين" in article["ar_text"]

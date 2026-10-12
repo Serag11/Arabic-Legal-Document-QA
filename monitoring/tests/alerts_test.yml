@@ -1,0 +1,159 @@
+rule_files:
+  - ../alerts.yml
+evaluation_interval: 1m
+
+tests:
+  - interval: 1m
+    name: grounding rejections above 10% fire; a 5% rate does not
+    input_series:
+      - series: 'legal_qa_answers_total{outcome="invalid_grounding"}'
+        values: "0+3x60"
+      - series: 'legal_qa_answers_total{outcome="grounded"}'
+        values: "0+17x60"
+      - series: 'legal_qa_answers_total{outcome="model_refusal"}'
+        values: "0+0x60"
+    alert_rule_test:
+      - eval_time: 55m
+        alertname: LegalQAGroundingRejectionHigh
+        exp_alerts:
+          - exp_labels: {severity: warning}
+            exp_annotations:
+              summary: "More than 10% of answers are discarded by source-grounding validation"
+              description: "Check recent Langfuse traces (grounding spans keep the rejected candidate and the failing check)."
+
+  - interval: 1m
+    name: low rejection rate and low volume stay quiet
+    input_series:
+      - series: 'legal_qa_answers_total{outcome="invalid_grounding"}'
+        values: "0+1x60"
+      - series: 'legal_qa_answers_total{outcome="grounded"}'
+        values: "0+19x60"
+    alert_rule_test:
+      - eval_time: 55m
+        alertname: LegalQAGroundingRejectionHigh
+        exp_alerts: []
+
+  - interval: 1m
+    name: drift fires when the mean cosine drops below baseline minus 3 sigma
+    input_series:
+      - series: 'legal_qa_query_centroid_cosine_baseline_mean'
+        values: "0.878x120"
+      - series: 'legal_qa_query_centroid_cosine_baseline_std'
+        values: "0.018x120"
+      - series: 'legal_qa_query_centroid_cosine_sum'
+        values: "0+8x120"
+      - series: 'legal_qa_query_centroid_cosine_count'
+        values: "0+10x120"
+    alert_rule_test:
+      - eval_time: 100m
+        alertname: LegalQAQueryDrift
+        exp_alerts:
+          - exp_labels: {severity: warning}
+            exp_annotations:
+              summary: "Incoming questions have drifted away from the evaluated question distribution"
+              description: "Queries no longer resemble the 60 reference questions (for example a new legal domain). Re-evaluate retrieval before trusting quality scores."
+
+  - interval: 1m
+    name: in-distribution queries do not trigger drift
+    input_series:
+      - series: 'legal_qa_query_centroid_cosine_baseline_mean'
+        values: "0.878x120"
+      - series: 'legal_qa_query_centroid_cosine_baseline_std'
+        values: "0.018x120"
+      - series: 'legal_qa_query_centroid_cosine_sum'
+        values: "0+8.7x120"
+      - series: 'legal_qa_query_centroid_cosine_count'
+        values: "0+10x120"
+    alert_rule_test:
+      - eval_time: 100m
+        alertname: LegalQAQueryDrift
+        exp_alerts: []
+
+  - interval: 5m
+    name: sampled faithfulness below 0.75 fires
+    input_series:
+      - series: 'legal_qa_faithfulness_sum'
+        values: "0+6x120"
+      - series: 'legal_qa_faithfulness_count'
+        values: "0+10x120"
+    alert_rule_test:
+      - eval_time: 8h
+        alertname: LegalQAFaithfulnessLow
+        exp_alerts:
+          - exp_labels: {severity: critical}
+            exp_annotations:
+              summary: "Sampled answer faithfulness is below the 0.75 release threshold"
+
+  - interval: 1m
+    name: provider errors above 20% fire
+    input_series:
+      - series: 'legal_qa_answers_total{outcome="provider_error"}'
+        values: "0+5x30"
+      - series: 'legal_qa_answers_total{outcome="grounded"}'
+        values: "0+5x30"
+    alert_rule_test:
+      - eval_time: 25m
+        alertname: LegalQAProviderErrorsHigh
+        exp_alerts:
+          - exp_labels: {severity: critical}
+            exp_annotations:
+              summary: "More than 20% of generation calls fail at the provider (rate limits or outage)"
+              description: "See legal_qa_provider_errors_total by status (429 = quota, 503 = provider)."
+
+  - interval: 1m
+    name: daily cost over budget fires
+    input_series:
+      - series: 'legal_qa_estimated_cost_usd_total'
+        values: "0+0.01x1500"
+    alert_rule_test:
+      - eval_time: 1450m
+        alertname: LegalQAEstimatedCostHigh
+        exp_alerts:
+          - exp_labels: {severity: warning}
+            exp_annotations:
+              summary: "Estimated generation spend exceeded 5 USD in 24 hours"
+
+  - interval: 1m
+    name: high refusal share fires and a normal share does not
+    input_series:
+      - series: 'legal_qa_answers_total{outcome="model_refusal"}'
+        values: "0+4x120"
+      - series: 'legal_qa_answers_total{outcome="grounded"}'
+        values: "0+6x120"
+    alert_rule_test:
+      - eval_time: 100m
+        alertname: LegalQARefusalRateHigh
+        exp_alerts:
+          - exp_labels: {severity: warning}
+            exp_annotations:
+              summary: "More than 25% of questions are refused for insufficient evidence"
+              description: "Users may be asking about subjects outside the Egyptian Civil Code corpus, or retrieval has degraded."
+
+  - interval: 1m
+    name: a 7 percent refusal share stays quiet
+    input_series:
+      - series: 'legal_qa_answers_total{outcome="model_refusal"}'
+        values: "0+0.7x120"
+      - series: 'legal_qa_answers_total{outcome="grounded"}'
+        values: "0+9.3x120"
+    alert_rule_test:
+      - eval_time: 100m
+        alertname: LegalQARefusalRateHigh
+        exp_alerts: []
+
+  - interval: 1m
+    name: p95 latency above 40 s fires
+    input_series:
+      - series: 'legal_qa_stage_seconds_bucket{stage="total",le="40"}'
+        values: "0x30"
+      - series: 'legal_qa_stage_seconds_bucket{stage="total",le="80"}'
+        values: "0+5x30"
+      - series: 'legal_qa_stage_seconds_bucket{stage="total",le="+Inf"}'
+        values: "0+5x30"
+    alert_rule_test:
+      - eval_time: 25m
+        alertname: LegalQALatencyP95High
+        exp_alerts:
+          - exp_labels: {severity: warning}
+            exp_annotations:
+              summary: "p95 end-to-end answer latency above 40 s"

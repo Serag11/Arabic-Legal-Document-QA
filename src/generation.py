@@ -6,12 +6,22 @@ import json
 import os
 from pathlib import Path
 import re
+from threading import Lock
+import time
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 
 if __package__:
+    from .metrics import get_metrics
+    from .observability import get_tracer
+    from .online_eval import FaithfulnessSampler
+    from .streaming import AnswerTextStream
     from .retrieval import Retriever
 else:
+    from metrics import get_metrics
+    from observability import get_tracer
+    from online_eval import FaithfulnessSampler
+    from streaming import AnswerTextStream
     from retrieval import Retriever
 
 
@@ -70,7 +80,29 @@ class GoogleGenerator:
     def __init__(self, config):
         self.config = config
 
-    def generate(self, question, context, language, system_prompt):
+    def generate(self, question, context, language, system_prompt, on_text=None):
+        """One answer, retrying transient provider limits (HTTP 429 per-minute, 503) with a short backoff.
+
+        A daily-quota 429 is never retried, and neither is a streamed call once text has been shown.
+        """
+        backoff = list(self.config.get("provider_retry_backoff_seconds", []))
+        emitted = False
+
+        def track(text):
+            nonlocal emitted
+            emitted = True
+            on_text(text)
+
+        for attempt in range(len(backoff) + 1):
+            try:
+                return self._generate_once(question, context, language, system_prompt, track if on_text else None)
+            except GenerationError as failure:
+                transient = getattr(failure, "status_code", None) in (429, 503) and not getattr(failure, "daily_quota", False)
+                if not transient or emitted or attempt == len(backoff):
+                    raise
+                time.sleep(backoff[attempt])
+
+    def _generate_once(self, question, context, language, system_prompt, on_text=None):
         from google import genai
         from google.genai import errors, types
         from pydantic import ValidationError
@@ -81,7 +113,7 @@ class GoogleGenerator:
                 api_key=load_google_api_key(), vertexai=False,
                 http_options=types.HttpOptions(timeout=self.config["timeout_ms"]),
             ) as client:
-                response = client.models.generate_content(
+                request = dict(
                     model=self.config["model"], contents=contents,
                     config=types.GenerateContentConfig(
                         system_instruction=system_prompt,
@@ -92,10 +124,21 @@ class GoogleGenerator:
                         response_mime_type="application/json", response_json_schema=GeneratedAnswer.model_json_schema(),
                     ),
                 )
-            if isinstance(response.parsed, GeneratedAnswer):
-                answer = response.parsed
-            else:
-                answer = GeneratedAnswer.model_validate_json(response.text or "")
+                if on_text is None:
+                    response = client.models.generate_content(**request)
+                    if isinstance(response.parsed, GeneratedAnswer):
+                        answer = response.parsed
+                    else:
+                        answer = GeneratedAnswer.model_validate_json(response.text or "")
+                else:
+                    # The structured JSON arrives in fragments; surface the growing "answer" text.
+                    parser, fragments, response = AnswerTextStream(), [], None
+                    for response in client.models.generate_content_stream(**request):
+                        fragment = response.text or ""
+                        fragments.append(fragment)
+                        if delta := parser.feed(fragment):
+                            on_text(delta)
+                    answer = GeneratedAnswer.model_validate_json("".join(fragments))
         except errors.APIError as exc:
             failure = GenerationError(f"Google generation failed (HTTP {exc.code})")
             failure.status_code = exc.code
@@ -160,21 +203,59 @@ def validate_grounding(answer, context):
 
 
 class AnsweringService:
-    def __init__(self, retriever=None, generator=None, config=None, index=None, prompt_path=None):
+    def __init__(self, retriever=None, generator=None, config=None, index=None, prompt_path=None, tracer=None, metrics=None, sampler=None):
         self.config = config or load_generation_config()
         self.retriever = retriever or Retriever(index or ROOT / "data/retrieval/chroma")
         self.generator = generator or GoogleGenerator(self.config)
         self.prompt = Path(prompt_path or PROMPT_PATH).read_text(encoding="utf-8")
+        self.tracer = tracer or get_tracer()
+        self.metrics = metrics or get_metrics()
+        if self.metrics.drift and not self.metrics.drift.matches(self.retriever.manifest["config"]):
+            self.metrics.drift = None  # baseline was built with another embedding model
+        self.sampler = sampler if sampler is not None else FaithfulnessSampler.from_environment(self.metrics, self.tracer)
+        # Only the shared CPU encoder/index needs serializing, not the provider call.
+        self.retrieval_lock = Lock()
 
-    def ask(self, question, *, language=None, filters=None):
+    def ask(self, question, *, language=None, filters=None, on_context=None, on_text=None):
         question = question.strip()
         if not question:
             raise ValueError("Question must be nonempty")
         language = language or ("ar" if ARABIC.search(question) else "en")
         if language not in ("ar", "en"):
             raise ValueError("Answer language must be ar or en")
-        results = self.retriever.search(question, k=self.config["retrieval_top_k"], filters=filters)
-        context = build_context(results, self.config["max_context_characters"])
+        with self.tracer.observation("ask", input={"question": question, "language": language, "filters": filters or {}}) as root:
+            started = time.perf_counter()
+            try:
+                result, context = self._ask(question, language, filters, on_context, on_text)
+            except GenerationError as exc:
+                self.metrics.observe_provider_error(exc)
+                raise
+            self.metrics.observe_stage("total", time.perf_counter() - started)
+            self.metrics.observe_answer(result)
+            root.update(output={key: result.get(key) for key in ("answer", "sources", "insufficient_evidence", "reason", "usage")},
+                        metadata={"model_version": result.get("model_version")})
+            if root.trace_id:
+                result["trace_id"] = root.trace_id
+            if self.sampler:
+                self.sampler.maybe_submit(question, result, context)
+            return result
+
+    def _ask(self, question, language, filters, on_context, on_text):
+        with self.tracer.observation("retrieval", as_type="retriever", input={"question": question, "filters": filters or {}}) as span:
+            options = {"on_query_vector": self.metrics.observe_query_vector} if getattr(self.retriever, "supports_query_vector", False) else {}
+            started = time.perf_counter()
+            with self.retrieval_lock:
+                # Article numbers repeat across indexed documents, so answers stay within one corpus.
+                scoped = {**(filters or {}), "corpus_id": self.config["corpus_id"]}
+                results = self.retriever.search(question, k=self.config["retrieval_top_k"], filters=scoped, **options)
+            self.metrics.observe_stage("retrieval", time.perf_counter() - started)
+            self.metrics.observe_results(results)
+            context = build_context(results, self.config["max_context_characters"])
+            span.update(output=[{"article_number": p["article_number"], "language": p["language"], "citation": p["citation"]}
+                                for p in context])
+        if on_context:
+            on_context([{"article_number": p["article_number"], "citation": p["citation"], "language": p["language"]}
+                        for p in context])
         run = {
             "generation": self.config, "prompt_sha256": hashlib.sha256(self.prompt.encode()).hexdigest(),
             "retrieval": self.retriever.manifest["config"],
@@ -186,18 +267,36 @@ class AnsweringService:
 
         def insufficient(reason, usage=None, model_version=None):
             text = "لا تتوفر في النصوص المسترجعة أدلة كافية للإجابة عن هذا السؤال." if language == "ar" else "The retrieved passages do not provide sufficient evidence to answer this question."
-            return {"answer": text, "sources": [], "insufficient_evidence": True, "evidence": [],
-                    "reason": reason, "configuration": run, "usage": usage or {}, "model_version": model_version}
+            return ({"answer": text, "sources": [], "insufficient_evidence": True, "evidence": [],
+                     "reason": reason, "configuration": run, "usage": usage or {}, "model_version": model_version}, context)
 
         if not context:
             return insufficient("no_retrieved_evidence")
-        response = self.generator.generate(question, context, language, self.prompt)
+        with self.tracer.observation(
+            "generation", as_type="generation", model=self.config["model"],
+            model_parameters={key: self.config[key] for key in ("temperature", "max_output_tokens") if key in self.config},
+            input={"question": question, "answer_language": language, "passages": context},
+            metadata={"prompt_version": self.config.get("prompt_version"), "prompt_sha256": run["prompt_sha256"]},
+        ) as span:
+            extra = {"on_text": on_text} if on_text else {}
+            started = time.perf_counter()
+            response = self.generator.generate(question, context, language, self.prompt, **extra)
+            self.metrics.observe_stage("generation", time.perf_counter() - started)
+            usage = {key: value for key, value in (response.usage or {}).items() if isinstance(value, int)}
+            span.update(output=response.answer.model_dump(), usage_details=usage or None,
+                        model=response.model_version or self.config["model"])
         if response.answer.insufficient_evidence:
             return insufficient("model_reported_insufficient_evidence", response.usage, response.model_version)
-        try:
-            evidence = validate_grounding(response.answer, context)
-        except ValueError:
-            return insufficient("invalid_source_grounding", response.usage, response.model_version)
+        with self.tracer.observation("grounding", as_type="guardrail", input=response.answer.model_dump()) as span:
+            try:
+                evidence = validate_grounding(response.answer, context)
+                span.update(output={"valid": True})
+            except ValueError as exc:
+                # The discarded candidate and the failing check are kept in the trace for diagnosis.
+                span.update(output={"valid": False, "error": str(exc)}, level="WARNING", status_message=str(exc))
+                rejected, _ = insufficient("invalid_source_grounding", response.usage, response.model_version)
+                rejected["reason_detail"] = str(exc)
+                return rejected, context
         citations = list(dict.fromkeys(response.answer.citations))
         source_map = {p["article_number"]: p["citation"] for p in context}
         answer_text = response.answer.answer
@@ -209,7 +308,7 @@ class AnsweringService:
                 note = f"ملاحظة: النص العربي للمادة {number} غير موجود في نسخة المصدر؛ استندت الإجابة إلى النص الإنجليزي."
                 source_notes.append(note)
                 answer_text += "\n\n" + note
-        return {"answer": answer_text, "sources": [source_map[n] for n in citations],
-                "insufficient_evidence": False, "evidence": evidence,
-                "source_notes": source_notes,
-                "configuration": run, "usage": response.usage or {}, "model_version": response.model_version}
+        return ({"answer": answer_text, "sources": [source_map[n] for n in citations],
+                 "insufficient_evidence": False, "evidence": evidence,
+                 "source_notes": source_notes,
+                 "configuration": run, "usage": response.usage or {}, "model_version": response.model_version}, context)

@@ -13,14 +13,14 @@
     "retrieval_mrr": 0.85,
     "supported_answer_coverage": 0.8,
     "expected_citation_hit": 0.8,
-    "faithfulness_answered": 1.0,
-    "faithfulness_coverage_adjusted": 0.8,
+    "faithfulness_answered": 0.9791666666666666,
+    "faithfulness_coverage_adjusted": 0.7833333333333333,
     "answer_accuracy_coverage_adjusted": null,
     "unsupported_refusal_accuracy": 1.0,
-    "mean_seconds": 33.86030180604158,
-    "error_count": 0,
+    "mean_seconds": 57.653397634417466,
+    "error_count": 1,
     "retrieval_hit_ar": 0.8,
-    "faithfulness_ar": 0.7,
+    "faithfulness_ar": 0.6666666666666667,
     "citation_hit_ar": 0.7,
     "retrieval_hit_en": 0.9,
     "faithfulness_en": 0.9,
@@ -65,7 +65,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "ينشأ العقد بمجرد أن يتبادل الطرفان التعبير عن إرادتين متطابقتين، وذلك مع مراعاة الأوضاع المعينة التي قد يقررها القانون لانعقاد العقد بالإضافة إلى ذلك.",
+        "answer": "ينشأ العقد بمجرد أن يتبادل الطرفان التعبير عن إرادتين متطابقتين، وذلك مع مراعاة الأوضاع المعينة التي قد يقررها القانون لانعقاد العقد فوق ذلك، وفقاً للمادة 89 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 89"
         ],
@@ -85,16 +85,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -131,19 +141,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 163,
-          "prompt_token_count": 485,
+          "candidates_token_count": 174,
+          "prompt_token_count": 569,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 485
+              "token_count": 569
             }
           ],
-          "total_token_count": 648
+          "total_token_count": 743
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 31.870343999999022
+      "seconds": 58.44118487800006
     },
     {
       "id": "s2-004-en",
@@ -183,7 +193,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "A contract is formed the moment two parties exchange concordant intentions, provided that any special formalities required by law for the contract's conclusion are satisfied.",
+        "answer": "A contract is formed the moment two parties exchange two concordant intentions, provided that any special formalities required by law for the contract's conclusion are satisfied.",
         "sources": [
           "Egyptian Civil Code, Article 89"
         ],
@@ -203,16 +213,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -249,19 +269,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 123,
-          "prompt_token_count": 458,
+          "candidates_token_count": 124,
+          "prompt_token_count": 542,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 458
+              "token_count": 542
             }
           ],
-          "total_token_count": 581
+          "total_token_count": 666
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 35.662613231999785
+      "seconds": 116.63240575300006
     },
     {
       "id": "s2-008-ar",
@@ -313,16 +333,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -360,18 +390,18 @@
         },
         "usage": {
           "candidates_token_count": 79,
-          "prompt_token_count": 526,
+          "prompt_token_count": 610,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 526
+              "token_count": 610
             }
           ],
-          "total_token_count": 605
+          "total_token_count": 689
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 8.765360721999969
+      "seconds": 15.772663957002806
     },
     {
       "id": "s2-008-en",
@@ -411,7 +441,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Any person who commits a fault that causes injury to another is legally obligated to provide reparation for that injury.",
+        "answer": "Any person who commits a fault that causes injury to another is obligated to provide reparation for that injury.",
         "sources": [
           "Egyptian Civil Code, Article 163"
         ],
@@ -431,16 +461,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -477,19 +517,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 110,
-          "prompt_token_count": 443,
+          "candidates_token_count": 106,
+          "prompt_token_count": 527,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 443
+              "token_count": 527
             }
           ],
-          "total_token_count": 553
+          "total_token_count": 633
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 42.96338436299993
+      "seconds": 82.09519820100104
     },
     {
       "id": "s2-009-ar",
@@ -528,78 +568,8 @@
       "retrieval_hit": 1,
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
-      "result": {
-        "answer": "لا تتوفر في النصوص المسترجعة أدلة كافية للإجابة عن هذا السؤال.",
-        "sources": [],
-        "insufficient_evidence": true,
-        "evidence": [],
-        "reason": "invalid_source_grounding",
-        "configuration": {
-          "generation": {
-            "schema_version": 1,
-            "provider": "google",
-            "model": "gemini-3.1-flash-lite",
-            "thinking_level": "minimal",
-            "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
-            "grounding_version": "exact-evidence-and-source-notes-v1",
-            "temperature": 0.0,
-            "max_output_tokens": 2048,
-            "thinking_budget": 0,
-            "timeout_ms": 60000,
-            "retrieval_top_k": 1,
-            "max_context_characters": 24000
-          },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
-          "retrieval": {
-            "schema_version": 1,
-            "model_id": "intfloat/multilingual-e5-base",
-            "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
-            "dimensions": 768,
-            "max_tokens": 512,
-            "query_prefix": "query: ",
-            "passage_prefix": "passage: ",
-            "normalize_embeddings": true,
-            "normalization_version": "extractor-arabic-search-v1",
-            "chunk_strategy": "whole_article_or_source_provisions",
-            "source_provision_starts": {
-              "egyptian-civil-code:1143:en:0": [
-                "House and agricultural rents",
-                "Subject to the provisions relating to stolen or lost property",
-                "This privilege is also enforceable over movables and crops belonging to a sub-lessee",
-                "These privileged claims are payable",
-                "If movables and crops so charged are removed"
-              ]
-            },
-            "overlap": 0,
-            "collection": "egyptian-civil-code-e5-base",
-            "distance": "cosine",
-            "device": "auto",
-            "gpu_precision": "float16",
-            "cpu_precision": "float32",
-            "cpu_threads": 6,
-            "batch_size": 4
-          },
-          "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
-          "chunks_sha256": "8ffb502711dc6741c935f101bc5ca19ab6a9363462f0754199396f090af348a1",
-          "filters": {},
-          "answer_language": "ar",
-          "context_passage_count": 1
-        },
-        "usage": {
-          "candidates_token_count": 149,
-          "prompt_token_count": 497,
-          "prompt_tokens_details": [
-            {
-              "modality": "TEXT",
-              "token_count": 497
-            }
-          ],
-          "total_token_count": 646
-        },
-        "model_version": "gemini-3.1-flash-lite"
-      },
-      "seconds": 15.053833222000321
+      "error": "Generation or RAGAS scoring failed (GenerationError)",
+      "seconds": 21.755637460999424
     },
     {
       "id": "s2-009-en",
@@ -639,7 +609,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Yes, the obligation to compensate remains even if the enrichment disappears at a later date. The liability is limited to the extent of the profit gained by the person who was enriched.",
+        "answer": "Yes, the obligation to compensate remains even if the enrichment disappears at a later date. The compensation is limited to the extent of the person's profit.",
         "sources": [
           "Egyptian Civil Code, Article 179"
         ],
@@ -647,7 +617,12 @@
         "evidence": [
           {
             "citation": "Egyptian Civil Code, Article 179",
-            "quote": "A person, even one lacking discretion, who without just cause enriches himself to the detriment of another person, is liable, to the extent of his profit, to compensate such other person for the loss sustained by him. This obligation remains, even if the profit disappeared at a later date.",
+            "quote": "is liable, to the extent of his profit, to compensate such other person for the loss sustained by him.",
+            "language": "en"
+          },
+          {
+            "citation": "Egyptian Civil Code, Article 179",
+            "quote": "This obligation remains, even if the profit disappeared at a later date.",
             "language": "en"
           }
         ],
@@ -659,16 +634,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -705,19 +690,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 155,
-          "prompt_token_count": 494,
+          "candidates_token_count": 157,
+          "prompt_token_count": 578,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 494
+              "token_count": 578
             }
           ],
-          "total_token_count": 649
+          "total_token_count": 735
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 49.11777272799918
+      "seconds": 143.07666500699997
     },
     {
       "id": "s2-013-ar",
@@ -751,13 +736,13 @@
           "source_text": "يضمن البائع عدم التعرض للمشتري في الانتفاع بالمبيع كله أو بعضه سواء كان التعرض من فعله هو أو من فعل أجنبي يكون له وقت البيع حق على المبيع يحتج به على المشتري البيع إذا كان هذا الحق قد آل إليه من البائع نفسه."
         }
       ],
-      "faithfulness": 1.0,
+      "faithfulness": 0.6666666666666666,
       "answer_accuracy": null,
       "retrieval_hit": 1,
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "نعم، يضمن البائع عدم تعرض الغير للمشتري إذا كان هذا الحق قد آل إلى الغير من البائع نفسه، حتى لو كان التعرض من فعل أجنبي، وذلك وفقاً للمادة 439 من القانون المدني.",
+        "answer": "نعم، يضمن البائع عدم تعرض الغير للمشتري إذا كان هذا التعرض مستمداً من حق آل إلى الغير من البائع نفسه، حتى لو نشأ هذا الحق بعد البيع، وذلك وفقاً للمادة 439 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 439"
         ],
@@ -777,16 +762,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -823,19 +818,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 176,
-          "prompt_token_count": 498,
+          "candidates_token_count": 180,
+          "prompt_token_count": 582,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 498
+              "token_count": 582
             }
           ],
-          "total_token_count": 674
+          "total_token_count": 762
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 45.26074102600069
+      "seconds": 61.004865477007115
     },
     {
       "id": "s2-013-en",
@@ -895,16 +890,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -942,18 +947,18 @@
         },
         "usage": {
           "candidates_token_count": 130,
-          "prompt_token_count": 519,
+          "prompt_token_count": 603,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 519
+              "token_count": 603
             }
           ],
-          "total_token_count": 649
+          "total_token_count": 733
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 45.05756734799979
+      "seconds": 101.09589626199158
     },
     {
       "id": "s2-019-ar",
@@ -993,7 +998,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "لا يجوز حرمان الشخص من ملكه إلا في الأحوال التي يقررها القانون وبالطريقة التي يرسمها، ويشترط في المقابل الحصول على تعويض عادل.",
+        "answer": "لا يجوز حرمان أي شخص من ملكيته إلا في الحالات التي يحددها القانون وبالطريقة التي ينص عليها، ويشترط في المقابل الحصول على تعويض عادل.",
         "sources": [
           "Egyptian Civil Code, Article 805"
         ],
@@ -1013,16 +1018,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -1060,18 +1075,18 @@
         },
         "usage": {
           "candidates_token_count": 141,
-          "prompt_token_count": 467,
+          "prompt_token_count": 551,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 467
+              "token_count": 551
             }
           ],
-          "total_token_count": 608
+          "total_token_count": 692
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 41.474386113000946
+      "seconds": 34.86350896899239
     },
     {
       "id": "s2-019-en",
@@ -1123,16 +1138,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -1169,19 +1194,20 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 222,
-          "prompt_token_count": 532,
+          "candidates_token_count": 298,
+          "prompt_token_count": 616,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 532
+              "token_count": 616
             }
           ],
-          "total_token_count": 754
+          "total_token_count": 914
         },
-        "model_version": "gemini-3.1-flash-lite"
+        "model_version": "gemini-3.1-flash-lite",
+        "reason_detail": "Inline article citation differs from declared sources"
       },
-      "seconds": 14.783945892000702
+      "seconds": 47.05694516800577
     },
     {
       "id": "s2-021-ar",
@@ -1241,16 +1267,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -1288,18 +1324,18 @@
         },
         "usage": {
           "candidates_token_count": 137,
-          "prompt_token_count": 506,
+          "prompt_token_count": 590,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 506
+              "token_count": 590
             }
           ],
-          "total_token_count": 643
+          "total_token_count": 727
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 44.52682660699975
+      "seconds": 97.25734852200549
     },
     {
       "id": "s2-021-en",
@@ -1359,16 +1395,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -1406,18 +1452,18 @@
         },
         "usage": {
           "candidates_token_count": 162,
-          "prompt_token_count": 487,
+          "prompt_token_count": 571,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 487
+              "token_count": 571
             }
           ],
-          "total_token_count": 649
+          "total_token_count": 733
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 44.894416020999415
+      "seconds": 16.02960754200467
     },
     {
       "id": "s2-024-ar",
@@ -1469,16 +1515,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -1515,19 +1571,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 90,
-          "prompt_token_count": 505,
+          "candidates_token_count": 77,
+          "prompt_token_count": 589,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 505
+              "token_count": 589
             }
           ],
-          "total_token_count": 595
+          "total_token_count": 666
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 14.36246598499929
+      "seconds": 16.573625293996884
     },
     {
       "id": "s2-024-en",
@@ -1567,7 +1623,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Yes, if parts of the property are charged with separate mortgages, the third party holder must value each part separately when proceeding with the purge of the property, as required by Article 1065 of the Egyptian Civil Code.",
+        "answer": "Yes, if the property is divided into parts that are charged with separate mortgages, the third party holder must value each of those parts separately when proceeding with the purge of the property.",
         "sources": [
           "Egyptian Civil Code, Article 1065"
         ],
@@ -1587,16 +1643,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -1633,19 +1699,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 132,
-          "prompt_token_count": 689,
+          "candidates_token_count": 118,
+          "prompt_token_count": 773,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 689
+              "token_count": 773
             }
           ],
-          "total_token_count": 821
+          "total_token_count": 891
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 45.35407280800064
+      "seconds": 43.25459030200727
     },
     {
       "id": "s2-025-ar",
@@ -1685,7 +1751,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "يشمل امتياز المؤجر على المنقولات والمحاصيل الموجودة بالعين المؤجرة والمملوكة للمستأجر أجرة المباني والأراضي الزراعية لمدة سنتين أو لمدة الإيجار إن كانت أقل من ذلك، بالإضافة إلى كل حق آخر للمؤجر بمقتضى عقد الإيجار.",
+        "answer": "يشمل امتياز المؤجر على المنقولات والمحاصيل الموجودة بالعين المؤجرة والمملوكة للمستأجر أجرة المباني والأراضي الزراعية لمدة سنتين أو لمدة الإيجار إن كانت أقل من ذلك، بالإضافة إلى كل حق آخر للمؤجر بمقتضى عقد الإيجار، وذلك وفقاً للمادة 1143 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 1143"
         ],
@@ -1705,16 +1771,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -1751,19 +1827,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 206,
-          "prompt_token_count": 932,
+          "candidates_token_count": 217,
+          "prompt_token_count": 1016,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 932
+              "token_count": 1016
             }
           ],
-          "total_token_count": 1138
+          "total_token_count": 1233
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 45.74352000699946
+      "seconds": 100.77483044700057
     },
     {
       "id": "s2-025-en",
@@ -1813,7 +1889,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "The lessor's privilege covers house and agricultural rents for a period of two years, or for the duration of the lease if it is less than two years. Additionally, it covers all sums due to the lessor by virtue of the lease contract.",
+        "answer": "The lessor's privilege covers house and agricultural rents for a period of two years, or for the duration of the lease if it is less than two years. Additionally, it covers all other sums due to the lessor arising from the lease contract.",
         "sources": [
           "Egyptian Civil Code, Article 1143"
         ],
@@ -1833,16 +1909,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -1880,18 +1966,18 @@
         },
         "usage": {
           "candidates_token_count": 173,
-          "prompt_token_count": 948,
+          "prompt_token_count": 1032,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 948
+              "token_count": 1032
             }
           ],
-          "total_token_count": 1121
+          "total_token_count": 1205
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 45.520819912999286
+      "seconds": 81.62091693399998
     },
     {
       "id": "s2-026-ar",
@@ -1931,7 +2017,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "نعم، يجب قيد امتياز الشركاء الناتج عن قسمة عقار، وتتحدد مرتبة هذا الامتياز من وقت إتمام القيد، وذلك وفقاً للمادة 1149 من القانون المدني.",
+        "answer": "نعم، يجب قيد امتياز الشركاء الناتج عن قسمة عقار، وتتحدد مرتبة هذا الامتياز من وقت إجراء القيد.",
         "sources": [
           "Egyptian Civil Code, Article 1149"
         ],
@@ -1951,16 +2037,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -1997,19 +2093,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 132,
-          "prompt_token_count": 500,
+          "candidates_token_count": 116,
+          "prompt_token_count": 584,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 500
+              "token_count": 584
             }
           ],
-          "total_token_count": 632
+          "total_token_count": 700
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 45.10962434099929
+      "seconds": 56.080444799008546
     },
     {
       "id": "s2-026-en",
@@ -2069,16 +2165,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -2116,18 +2222,18 @@
         },
         "usage": {
           "candidates_token_count": 114,
-          "prompt_token_count": 493,
+          "prompt_token_count": 577,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 493
+              "token_count": 577
             }
           ],
-          "total_token_count": 607
+          "total_token_count": 691
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 44.87038904699875
+      "seconds": 93.84544579799694
     },
     {
       "id": "s2-028-ar",
@@ -2167,7 +2273,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "تم إلغاء المادة 389 بموجب إشعار يفيد بإلغاء المواد من 389 إلى 417.",
+        "answer": "نص إشعار الإلغاء الخاص بالمادة 389 على أن المواد من 389 إلى 417 قد أُلغيت.",
         "sources": [
           "Egyptian Civil Code, Article 389"
         ],
@@ -2187,16 +2293,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -2233,19 +2349,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 107,
-          "prompt_token_count": 460,
+          "candidates_token_count": 108,
+          "prompt_token_count": 544,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 460
+              "token_count": 544
             }
           ],
-          "total_token_count": 567
+          "total_token_count": 652
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 45.67423042900009
+      "seconds": 58.48229368899774
     },
     {
       "id": "s2-028-en",
@@ -2285,7 +2401,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Article 389 is repealed, and the repeal notice specifies that Articles 389 through 417 have been repealed.",
+        "answer": "Article 389 is recorded as repealed, and the repeal notice specifies the range of articles from 389 to 417.",
         "sources": [
           "Egyptian Civil Code, Article 389"
         ],
@@ -2305,16 +2421,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -2351,19 +2477,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 102,
-          "prompt_token_count": 450,
+          "candidates_token_count": 103,
+          "prompt_token_count": 534,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 450
+              "token_count": 534
             }
           ],
-          "total_token_count": 552
+          "total_token_count": 637
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 49.126253791000636
+      "seconds": 62.00031497499731
     },
     {
       "id": "s2-u01-ar",
@@ -2409,16 +2535,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -2455,19 +2591,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 72,
-          "prompt_token_count": 638,
+          "candidates_token_count": 57,
+          "prompt_token_count": 722,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 638
+              "token_count": 722
             }
           ],
-          "total_token_count": 710
+          "total_token_count": 779
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 14.16883536899877
+      "seconds": 26.03735877299914
     },
     {
       "id": "s2-u01-en",
@@ -2513,16 +2649,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -2559,19 +2705,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 50,
-          "prompt_token_count": 503,
+          "candidates_token_count": 51,
+          "prompt_token_count": 587,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 503
+              "token_count": 587
             }
           ],
-          "total_token_count": 553
+          "total_token_count": 638
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 14.590574225001546
+      "seconds": 18.570488152996404
     },
     {
       "id": "s2-u02-ar",
@@ -2617,16 +2763,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -2663,19 +2819,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 65,
-          "prompt_token_count": 502,
+          "candidates_token_count": 84,
+          "prompt_token_count": 586,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 502
+              "token_count": 586
             }
           ],
-          "total_token_count": 567
+          "total_token_count": 670
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 15.156805563001399
+      "seconds": 11.939437200009706
     },
     {
       "id": "s2-u02-en",
@@ -2721,16 +2877,26 @@
             "model": "gemini-3.1-flash-lite",
             "thinking_level": "minimal",
             "api_key_env": "GOOGLE_API_KEY",
-            "prompt_version": "civil-code-grounded-v1",
+            "prompt_version": "civil-code-grounded-v1.1",
             "grounding_version": "exact-evidence-and-source-notes-v1",
             "temperature": 0.0,
             "max_output_tokens": 2048,
             "thinking_budget": 0,
             "timeout_ms": 60000,
+            "provider_retry_backoff_seconds": [
+              3,
+              10
+            ],
+            "corpus_id": "egyptian-civil-code",
             "retrieval_top_k": 1,
-            "max_context_characters": 24000
+            "max_context_characters": 24000,
+            "pricing_usd_per_million_tokens": {
+              "input": 0.25,
+              "output": 1.5,
+              "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+            }
           },
-          "prompt_sha256": "851d7e56d62e5ef6cf0ab5c21d9948c9a7fc455f1b404e0935ab95feb1e9ec6b",
+          "prompt_sha256": "eba4fe78ec75edf43c602174fa18b5e0ba34ce2d6e399283a6277803cf5a0b64",
           "retrieval": {
             "schema_version": 1,
             "model_id": "intfloat/multilingual-e5-base",
@@ -2767,19 +2933,19 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 53,
-          "prompt_token_count": 447,
+          "candidates_token_count": 55,
+          "prompt_token_count": 531,
           "prompt_tokens_details": [
             {
               "modality": "TEXT",
-              "token_count": 447
+              "token_count": 531
             }
           ],
-          "total_token_count": 500
+          "total_token_count": 586
         },
         "model_version": "gemini-3.1-flash-lite"
       },
-      "seconds": 13.5384605929994
+      "seconds": 19.41986966499826
     }
   ],
   "generation_config": {
@@ -2788,14 +2954,24 @@
     "model": "gemini-3.1-flash-lite",
     "thinking_level": "minimal",
     "api_key_env": "GOOGLE_API_KEY",
-    "prompt_version": "civil-code-grounded-v1",
+    "prompt_version": "civil-code-grounded-v1.1",
     "grounding_version": "exact-evidence-and-source-notes-v1",
     "temperature": 0.0,
     "max_output_tokens": 2048,
     "thinking_budget": 0,
     "timeout_ms": 60000,
+    "provider_retry_backoff_seconds": [
+      3,
+      10
+    ],
+    "corpus_id": "egyptian-civil-code",
     "retrieval_top_k": 1,
-    "max_context_characters": 24000
+    "max_context_characters": 24000,
+    "pricing_usd_per_million_tokens": {
+      "input": 0.25,
+      "output": 1.5,
+      "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."
+    }
   },
   "retrieval_config": {
     "schema_version": 1,
@@ -2826,7 +3002,7 @@
     "cpu_threads": 6,
     "batch_size": 4
   },
-  "pipeline_fingerprint": "756014752c8f75a48180a86b0b4b82b616cd89f0013280f43060cef1c3f0547a",
+  "pipeline_fingerprint": "d3bbcb55ae4cb7b5931795d6a3e6d931d54d048b9c48fe671a5e0ba2fe235b13",
   "questions_sha256": "ac7084a279bc928542613ee894b27c5da95d6aa17929b24778b84acdf634e722",
   "reused_record_count": 0,
   "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
@@ -2839,7 +3015,7 @@
     "google-genai": "2.29.0",
     "mlflow": "3.17.0"
   },
-  "mlflow_run_id": "be35bc6cd1b84b9c8d2598bf60e4ac11",
+  "mlflow_run_id": "c8bb5098db20419abcd023bbbc5aeead",
   "judge_sanity_check": {
     "supported_control": 1.0,
     "unsupported_control": 0.0

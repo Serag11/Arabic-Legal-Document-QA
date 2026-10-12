@@ -27,5 +27,5 @@ passes 64 tests. Docker build and Compose startup succeeded. The running
 container is healthy on port 8000. `/health` returned 2,242 indexed documents
 and 1,149 articles; a blank `/ask` question returned 422; an Arabic Article 54
 query returned HTTP 200 and the correct article citation with a repeal answer.
-The live service uses the user-selected `gemini-3.1-flash-lite` model. A wheel
+The live service uses `gemini-3.5-flash-lite` (earlier `gemini-3.1-flash-lite`; it is a config value). A wheel
 was built successfully at `/tmp/opencode/arabic_legal_document_qa-0.1.0-py3-none-any.whl`.

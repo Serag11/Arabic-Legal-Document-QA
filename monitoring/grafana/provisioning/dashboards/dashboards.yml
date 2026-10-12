@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: legal-qa
+    folder: Legal QA
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

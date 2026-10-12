@@ -13,9 +13,9 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 - [X] Article 558 bold Arabic body preserved; Article 1022's absent Arabic text documented as a source exception.
 - [X] Glyph-position-based reordering for zero-width alef variants applied during extraction and covered by regression tests.
 - [X] Add automated corpus validation and run it as a DVC stage.
-- [ ] Manually review the 20 sampled article crops and the remaining flagged records; record findings.
+- [X] Manually review the 20 sampled article crops and the remaining flagged records; findings recorded in `reports/corpus-extraction.md` (AI-assisted visual review; Article 1021/1022 boundary decision still open).
 - [X] Configure a DVC remote and push tracked artifacts (user confirmed).
-- [ ] Verify the full corpus pipeline is reproducible from a clean checkout using the remote.
+- [X] Verify the full corpus pipeline is reproducible from a clean checkout using the remote (`reports/reproducibility.md`: corpus, chunks and retrieval metrics identical).
 - [X] Build article-aware retrieval, then generation and the `/ask` API.
 
 ## Phase 1 — Make the corpus trustworthy (remaining work deferred)
@@ -24,10 +24,10 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 
 - [X] Compare Articles 558 and 1022 with the original PDF: Article 558's Arabic body is bold; Article 1022 has no Arabic body in the source.
 - [X] Check the Article 1021–1022 boundary against the source; preserve Article 1022 as an explicit missing-Arabic source exception.
-- [ ] Review every record with a `qa_flags` entry, prioritizing single-column article anchors and missing text.
-- [ ] Inspect `data/qa_civil_code/qa_random_articles.html` and compare all 20 sampled records with their PDF crops.
+- [X] Review every record with a `qa_flags` entry, prioritizing single-column article anchors and missing text.
+- [X] Inspect `data/qa_civil_code/qa_random_articles.html` and compare all 20 sampled records with their PDF crops (no extraction errors found).
 - [X] Record known extraction issues, bold-body and zero-width alef fixes, source exceptions, and current review status in `reports/corpus-extraction.md`.
-- [ ] Complete the report with the 20-article and flagged-record manual review outcomes.
+- [X] Complete the report with the 20-article and flagged-record manual review outcomes.
 
 ### 2. Add automated validation
 
@@ -36,7 +36,7 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 - [X] Assert repealed records are retained, flagged, and carry repeal metadata.
 - [X] Check article length bounds, citations, and metadata.
 - [X] Add regression checks for Articles 1–3, 147, 558, and 1022.
-- [ ] Add a specific regression assertion for Article 1021's extracted text and its boundary with Article 1022.
+- [X] Add a specific regression assertion for Article 1021's extracted text and its boundary with Article 1022 (it pins the literal source layout; see `reports/corpus-extraction.md`).
 - [X] Run validation after extraction as a DVC stage so extraction cannot silently produce an invalid corpus.
 
 ### 3. Standardize and version the corpus
@@ -45,7 +45,7 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 - [X] Keep source-faithful Arabic separate from normalized retrieval text; do not use normalized text as a legal quotation.
 - [X] Configure Google Drive DVC remote `storage` (user confirmed configuration is complete).
 - [X] Push tracked artifacts to `storage` (user confirmed successful push).
-- [ ] Verify `dvc pull` from a clean checkout.
+- [X] Verify `dvc pull` from a clean checkout (`reports/reproducibility.md`).
 - [X] Verify `dvc repro` regenerates the structured corpus and QA artifacts from the tracked source PDF.
 
 **Phase 1 exit criteria:** corpus tests pass; active article text is present in both languages except the documented source exception; flagged records and the 20-item visual sample have been reviewed; DVC can reproduce the extraction and a remote is available to collaborators.
@@ -177,7 +177,7 @@ POST /ask
 - [X] Add GitHub Actions for lint, offline tests, measured quality/runtime-equivalence gates, Docker build, offline container checks, and conditional Docker Hub publication in `.github/workflows/delivery.yml`.
 - [X] Store Docker Hub credentials in GitHub Actions secrets (user confirmed setup); runtime Google credentials remain external to the image.
 - [X] Track the source PDF and derived corpus with DVC; configure the remote and push tracked artifacts (user confirmed remote setup and push).
-- [ ] Verify clean-checkout reproduction using `dvc pull` and `dvc repro`.
+- [X] Verify clean-checkout reproduction using `dvc pull` and `dvc repro` (`reports/reproducibility.md`).
 - [X] Use a checksum-pinned GitHub Release runtime bundle for CI instead of DVC/Google Drive authentication; create the local `runtime-v1.tar.gz` bundle and descriptor.
 - [X] Export and compare FP32, INT8, and compact ONNX models. Select FP16 weight storage with FP32 CPU computation: 555 MB, all 60 generator contexts unchanged; reject INT8's retrieval drop from 55/56 to 53/56.
 - [X] Build and locally verify a self-contained, non-root, PyTorch-free image with bundled tokenizer/model/index; document running it without cloning the repository.
@@ -194,20 +194,21 @@ POST /ask
 Complete these after the baseline RAG service, evaluation, and CI are working.
 
 - [ ] Wrap the RAG pipeline with BentoML and serve the generative model with vLLM (or document the API-based model used initially).
-- [ ] Add streaming `/ask` responses and verify progressive output with `curl`.
-- [ ] Run Locust at 50 concurrent users and save the report under `reports/`.
-- [ ] Add batch re-indexing and test it with at least one additional document.
-- [ ] Document a canary rollout configuration and rollout stages.
+- [X] Add streaming `POST /ask/stream` (SSE: context, delta, validated final) and verify progressive output with `curl`.
+- [X] Run Locust at 50 concurrent users (simulated provider latency) and save the report under `reports/`; see `reports/load-test.md`. Retrieval-only locking raised throughput from 0.5 to ~13 req/s.
+- [X] Add incremental batch re-indexing (`legal-qa-reindex`, `src/reindex.py`) and test it with a fictional second document (`tests/fixtures/test_statute.jsonl`). Index-level only: `/ask` still answers from `egyptian-civil-code`; a real second document needs its own reviewed evaluation.
+- [X] Document a canary rollout configuration and rollout stages (`deploy/canary/`; validated with `docker compose config` only, never started).
 - [ ] Compare original and AWQ 4-bit generation using RAGAS; report quality, latency, and model size.
 - [ ] Add a reranker baseline and distill it; compare retrieval and RAGAS quality before/after as required by the handbook's Project 2 optimization deliverables (p. 66).
-- [ ] Add Langfuse traces for every `/ask` request, including retrieval and generation spans; attach the faithfulness score when available.
-- [ ] Track answer faithfulness, embedding/cosine drift, and token usage/cost; add Prometheus/Grafana panels and an alert threshold.
+- [X] Add Langfuse traces for every `/ask` request (ask, retrieval, generation, grounding spans; rejected candidate kept). Attaching faithfulness scores to traces is still open.
+- [X] Track answer faithfulness (sampled), embedding/cosine drift, and token usage/cost; Prometheus rules (promtool-tested) and Grafana dashboard added in `monitoring/`; containers not yet run (see `reports/monitoring.md`).
 - [ ] Document the final architecture and measured results in the README and project reports.
 
 ## Suggested order for the next work session
 
-1. Proceed to Stage 7 serving/optimization/observability; Stage 6 CI and public image delivery are verified.
-2. Verify clean-checkout reproduction with `dvc pull` and `dvc repro`; remote configuration and artifact upload are complete.
-3. Retain source QA and the Arabic Article 1065 retrieval miss as follow-ups.
+Stage 7's needed items are done and merged: tracing, streaming, load test, metrics/alerts, batch re-indexing, canary guide, README, corpus audit, clean-checkout reproduction, and a re-evaluation (`gemini-3.5-flash-lite`, coverage-adjusted faithfulness 0.964, champion v3) that cleared both CI gates.
 
-**Return to Phase 1:** review all 20 sampled article crops and every flagged record; review the zero-width alef diagnostic sample; document findings in `reports/corpus-extraction.md`; add the Article 1021 regression assertion; verify clean-checkout reproduction from the configured and populated DVC remote. Keep these tasks unchecked until completed, and rebuild the index after any corpus corrections.
+1. Add a reranker baseline and distill it (needs a model download, disk and synthetic training queries); measure retrieval and RAGAS before/after. It targets the one known Arabic miss (Article 1065).
+2. Run the monitoring (`compose.monitoring.yaml`) and canary (`deploy/canary/`) containers, which have only been config-validated.
+3. Decide whether to move Article 1021's Arabic paragraphs (٢)–(٣) to 1022 (see `reports/corpus-extraction.md`); add a `LICENSE`.
+4. Optional: BentoML/vLLM/AWQ are documented as out of scope without a GPU and a self-hosted generator.

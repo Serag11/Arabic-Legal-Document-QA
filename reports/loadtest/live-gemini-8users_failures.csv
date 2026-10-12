@@ -1,0 +1,4 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,/ask/stream,"CatchResponseError('stream error: {""detail"": ""Google generation failed (HTTP 429)""}')",90,2026-10-12T08:35:34Z,2026-10-12T08:40:03Z
+POST,/ask/stream,"CatchResponseError('stream error: {""detail"": ""Google generation failed (HTTP 503)""}')",1,2026-10-12T08:36:15Z,2026-10-12T08:36:15Z
+POST,/ask,CatchResponseError('HTTP 502'),305,2026-10-12T08:35:26Z,2026-10-12T08:40:04Z

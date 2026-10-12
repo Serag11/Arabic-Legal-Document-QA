@@ -49,3 +49,64 @@ def test_abstention_and_operational_failure_do_not_inflate_quality():
     assert summary["faithfulness_answered"] == 1.0
     assert summary["faithfulness_coverage_adjusted"] == 0.5
     assert summary["supported_answer_coverage"] == summary["expected_citation_hit"] == 0.5
+
+
+def test_judge_calls_retry_transient_failures_but_not_daily_quota(monkeypatch):
+    import asyncio
+
+    from src.experiments import with_retries
+
+    sleeps = []
+
+    async def fake_sleep(seconds):
+        sleeps.append(seconds)
+
+    monkeypatch.setattr("src.experiments.asyncio.sleep", fake_sleep)
+    outcomes = [RuntimeError("503"), RuntimeError("503"), {"faithfulness": 1.0}]
+
+    async def flaky():
+        outcome = outcomes.pop(0)
+        if isinstance(outcome, Exception):
+            raise outcome
+        return outcome
+
+    assert asyncio.run(with_retries(flaky)) == {"faithfulness": 1.0} and sleeps == [5, 15]
+
+    async def always_failing():
+        raise RuntimeError("down")
+
+    with pytest.raises(RuntimeError, match="down"):
+        asyncio.run(with_retries(always_failing))
+
+    daily = RuntimeError("quota")
+    daily.daily_quota = True
+    calls = []
+
+    async def exhausted():
+        calls.append(1)
+        raise daily
+
+    with pytest.raises(RuntimeError, match="quota"):
+        asyncio.run(with_retries(exhausted))
+    assert len(calls) == 1
+
+
+def test_deployed_validation_must_have_no_errors_enough_scores_and_adjusted_faithfulness():
+    from src.experiments import check_validation
+
+    config = {"minimum_scored_questions": 20, "faithfulness_threshold": 0.75}
+    good = {"metrics": {"error_count": 0, "scored_count": 52, "faithfulness_coverage_adjusted": 0.9}}
+    check_validation(good, config)
+    for change in ({"error_count": 1}, {"scored_count": 19}, {"faithfulness_coverage_adjusted": 0.74}):
+        with pytest.raises(RuntimeError, match="did not pass"):
+            check_validation({"metrics": dict(good["metrics"], **change)}, config)
+
+
+def test_experiment_config_names_a_variant_matching_the_deployed_retrieval_settings():
+    import json
+
+    from src.generation import load_generation_config
+
+    config = json.loads(open("config/experiments.json").read())
+    variant, = [v for v in config["variants"] if v["name"] == config["deployed_variant"]]
+    assert variant["top_k"] == load_generation_config()["retrieval_top_k"] and variant["document_language"] == "all"
