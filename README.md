@@ -141,6 +141,11 @@ cost, query-embedding drift, sampled faithfulness). The optional stack
 rules and a Grafana dashboard (set `GRAFANA_ADMIN_PASSWORD`). Details, thresholds and
 limitations: `reports/monitoring.md`.
 
+### Canary rollout
+
+Weighted nginx split between a stable and a candidate image, with rollout stages, promotion
+gates and rollback: `deploy/canary/README.md` (configuration validated, not yet run).
+
 ### Load testing
 
 `uv sync --group loadtest`, then run a service with simulated generation latency

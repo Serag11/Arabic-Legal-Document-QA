@@ -1,0 +1,30 @@
+# Weighted canary split. nginx's official image substitutes ${CANARY_PERCENT} at start-up
+# (templates are rendered with envsubst); $request_id and other nginx variables are left alone.
+split_clients $request_id $weighted_pool {
+    ${CANARY_PERCENT}%  canary;
+    *                   stable;
+}
+
+# Operators and smoke tests can pin a request: "X-Canary: always" or "X-Canary: never".
+map $http_x_canary $pool {
+    default  $weighted_pool;
+    always   canary;
+    never    stable;
+}
+
+upstream stable { server api-stable:8000; }
+upstream canary { server api-canary:8000; }
+
+server {
+    listen 8080;
+
+    location / {
+        proxy_pass http://$pool;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header Connection "";
+        proxy_buffering off;          # keep /ask/stream server-sent events progressive
+        proxy_read_timeout 120s;      # Gemini calls can take 20+ s
+        add_header X-Served-By $pool always;
+    }
+}

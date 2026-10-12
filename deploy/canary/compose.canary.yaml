@@ -1,0 +1,48 @@
+# Canary rollout on a single Docker host. Not run in this repository's CI; see README.md.
+#   STABLE_IMAGE=serag11/arabic-legal-document-qa@sha256:<current>  \
+#   CANARY_IMAGE=serag11/arabic-legal-document-qa:sha-<candidate>    \
+#   CANARY_PERCENT=5 docker compose -f deploy/canary/compose.canary.yaml up -d
+x-api: &api
+  env_file: ../../.env
+  healthcheck:
+    test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=5)"]
+    interval: 30s
+    timeout: 10s
+    start_period: 60s
+    retries: 3
+
+services:
+  api-stable:
+    <<: *api
+    image: ${STABLE_IMAGE:?pin the current production image by digest}
+
+  api-canary:
+    <<: *api
+    image: ${CANARY_IMAGE:?set the candidate image (sha-<commit> tag)}
+    environment:
+      # Judge every grounded answer on the canary: at a small traffic share, sampling would be too sparse.
+      ONLINE_FAITHFULNESS_SAMPLE_RATE: ${CANARY_FAITHFULNESS_SAMPLE_RATE:-0}
+
+  gateway:
+    image: nginx:1.27-alpine
+    environment:
+      CANARY_PERCENT: ${CANARY_PERCENT:-0}
+    ports:
+      - "8000:8080"
+    volumes:
+      - ./nginx.conf.template:/etc/nginx/templates/default.conf.template:ro
+    depends_on:
+      api-stable:
+        condition: service_healthy
+      api-canary:
+        condition: service_healthy
+
+  # Scrapes each track separately so that every query below can compare them.
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    command: ["--config.file=/etc/prometheus/prometheus.yml"]
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - ./prometheus.canary.yml:/etc/prometheus/prometheus.yml:ro
+      - ../../monitoring/alerts.yml:/etc/prometheus/alerts.yml:ro

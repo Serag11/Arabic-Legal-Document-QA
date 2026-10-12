@@ -197,7 +197,7 @@ Complete these after the baseline RAG service, evaluation, and CI are working.
 - [X] Add streaming `POST /ask/stream` (SSE: context, delta, validated final) and verify progressive output with `curl`.
 - [X] Run Locust at 50 concurrent users (simulated provider latency) and save the report under `reports/`; see `reports/load-test.md`. Retrieval-only locking raised throughput from 0.5 to ~13 req/s.
 - [ ] Add batch re-indexing and test it with at least one additional document.
-- [ ] Document a canary rollout configuration and rollout stages.
+- [X] Document a canary rollout configuration and rollout stages (`deploy/canary/`; validated with `docker compose config` only, never started).
 - [ ] Compare original and AWQ 4-bit generation using RAGAS; report quality, latency, and model size.
 - [ ] Add a reranker baseline and distill it; compare retrieval and RAGAS quality before/after as required by the handbook's Project 2 optimization deliverables (p. 66).
 - [X] Add Langfuse traces for every `/ask` request (ask, retrieval, generation, grounding spans; rejected candidate kept). Attaching faithfulness scores to traces is still open.
