@@ -22,9 +22,9 @@ docker compose -f compose.yaml -f compose.monitoring.yaml up
 | `legal_qa_provider_errors_total{status}`, `legal_qa_http_*` | provider and HTTP errors |
 
 **Cost** is an estimate: tokens x the per-million prices in `config/generation.json`
-(0.25 input / 1.50 output USD, thinking billed as output). Those prices come from
-third-party reports that disagree with each other (one lists 0.125 / 0.75), so verify them
-against Google's pricing page.
+(0.30 input / 2.50 output USD for `gemini-3.5-flash-lite`, thinking billed as output). Those prices come
+from third-party price trackers, not Google's pricing page (for the previous 3.1 model such sources
+disagreed with each other), so verify them before relying on the cost figures.
 
 **Drift**: `config/drift_baseline.json` holds the centroid of the 60 evaluation-question
 embeddings (`uv run python -m src.drift` rebuilds it; it is bound to the embedding model and

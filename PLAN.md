@@ -206,8 +206,9 @@ Complete these after the baseline RAG service, evaluation, and CI are working.
 
 ## Suggested order for the next work session
 
-1. Proceed to Stage 7 serving/optimization/observability; Stage 6 CI and public image delivery are verified.
-2. Verify clean-checkout reproduction with `dvc pull` and `dvc repro`; remote configuration and artifact upload are complete.
-3. Retain source QA and the Arabic Article 1065 retrieval miss as follow-ups.
+Stage 7's needed items are done and merged: tracing, streaming, load test, metrics/alerts, batch re-indexing, canary guide, README, corpus audit, clean-checkout reproduction, and a re-evaluation (`gemini-3.5-flash-lite`, coverage-adjusted faithfulness 0.964, champion v3) that cleared both CI gates.
 
-**Return to Phase 1:** review all 20 sampled article crops and every flagged record; review the zero-width alef diagnostic sample; document findings in `reports/corpus-extraction.md`; add the Article 1021 regression assertion; verify clean-checkout reproduction from the configured and populated DVC remote. Keep these tasks unchecked until completed, and rebuild the index after any corpus corrections.
+1. Add a reranker baseline and distill it (needs a model download, disk and synthetic training queries); measure retrieval and RAGAS before/after. It targets the one known Arabic miss (Article 1065).
+2. Run the monitoring (`compose.monitoring.yaml`) and canary (`deploy/canary/`) containers, which have only been config-validated.
+3. Decide whether to move Article 1021's Arabic paragraphs (٢)–(٣) to 1022 (see `reports/corpus-extraction.md`); add a `LICENSE`.
+4. Optional: BentoML/vLLM/AWQ are documented as out of scope without a GPU and a self-hosted generator.

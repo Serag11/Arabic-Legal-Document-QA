@@ -229,9 +229,9 @@ measurement it points to the report; where it is a judgement, it says so.
 *Why:* the development machine has a 4 GiB GTX 1650 and about 5 GiB of free RAM, so a
 capable local generator would be slow and hard to ship. Using the API means no generator
 weights to download or distribute, and a 1.3 GB image. The model is a config value (`config/generation.json`, currently
-`gemini-3.1-flash-lite`) so it can be swapped. *Cost:* every question sends the question and
+`gemini-3.5-flash-lite`) so it can be swapped. *Cost:* every question sends the question and
 retrieved passages to Google, needs a key and quota, and inherits Google's latency and rate
-limits (14–26 s per call and frequent HTTP 429/503 in our live runs). A local 4-bit Qwen3-4B was
+limits (with the earlier `gemini-3.1-flash-lite` we saw 14–26 s per call and frequent HTTP 429/503; the free tier allows only 500 requests per day per model). A local 4-bit Qwen3-4B was
 considered and **not** benchmarked; the expected risks are more grounding failures, slow CPU
 generation and a 3 GB+ image, so it was deferred. The key lives only in `.env`/the environment,
 never in config, prompts, reports, the image or the registered model.
@@ -297,8 +297,7 @@ Five retrieval settings were compared in MLflow; **top-k 5** won and is what the
 `quality_gate` requires coverage-adjusted faithfulness ≥ 0.75 and refuses scores that were
 measured on different code, prompts, config, dependencies or data (a fingerprint). *Why:* a
 number that no longer describes the system is worse than none. *Cost:* any change to those
-files needs a fresh paid evaluation before CI turns green; this is why the Stage 7 work sits on a
-branch (see Status). Abstentions count as zero in the adjusted score, so being too cautious is penalized.
+files needs a fresh evaluation (about 230 Google calls) before CI turns green. Abstentions count as zero in the adjusted score, so being too cautious is penalized.
 
 ### A compact ONNX image, built in CI from a pinned release bundle
 
@@ -344,17 +343,17 @@ the Prometheus/Grafana containers have not been run yet (`reports/monitoring.md`
 
 ## Results
 
-Measured on the fixed 60-question set (`reports/answer-evaluation.md`, `reports/retrieval-baseline.md`),
-before the Stage 7 prompt change:
+Measured on the fixed 60-question set with `gemini-3.5-flash-lite` as generator and judge, top-k 5,
+after the Stage 7 prompt change (`reports/answer-evaluation.md`, `reports/experiments/selected-full-validation.json`):
 
 | Measure | Result |
 | --- | --- |
 | Expected article in the top 5 | 55 / 56 supported questions (Arabic semantic 24/25, English 25/25) |
-| Answered with the expected citation | 51 / 56 |
-| Answers produced | 52 / 56 supported; all 4 unsupported probes correctly refused |
-| Faithfulness (RAGAS) | 0.996 on scored answers; **0.925 coverage-adjusted** (gate ≥ 0.75) |
+| Answered with the expected citation | 55 / 56 |
+| Answers produced | 55 / 56 supported; all 4 unsupported probes correctly refused; 0 discarded for failed grounding |
+| Faithfulness (RAGAS) | 0.982 on scored answers; **0.964 coverage-adjusted** (gate ≥ 0.75); one answer (`s2-013-ar`) scored 0 |
 | Known retrieval miss | Arabic question for Article 1065 (English ranks it first) |
-| Latency (retrieval / our overhead) | 0.04–0.07 s / about 0.1 s at 50 users; Gemini adds 14–26 s |
+| Latency (retrieval / our overhead) | 0.04–0.07 s / about 0.1 s at 50 users; the Google call dominates and varies by model and day |
 
 ---
 
@@ -414,11 +413,12 @@ pull. Deeper notes: `tests/README.md`, `reports/`, and the roadmap in `PLAN.md`.
 
 ## Status
 
-- **Main** has the verified baseline: corpus, retrieval, grounded generation, API, ONNX image,
-  CI and public Docker Hub delivery.
-- **Branch `stage7-observability`** adds tracing, streaming, metrics/alerts, load testing, the
-  prompt fix, the canary guide and re-indexing. 112 offline tests pass; the quality and
-  deployment gates are intentionally **stale** until the full 60-question evaluation is re-run
-  once Stage 7 is complete, so it should not be merged or published before that.
-- **Open:** clean-checkout `dvc pull` + `dvc repro` check, manual corpus review, a reranker,
-  running the monitoring and canary containers, and the final re-evaluation. See `PLAN.md`.
+- **Main** has everything described here: corpus, retrieval, grounded generation, API with streaming,
+  tracing, metrics, load tests, the canary guide, re-indexing and the ONNX image. The quality and
+  deployment gates are current (re-measured with `gemini-3.5-flash-lite`), and CI publishes the
+  image to Docker Hub on every merge to `main`. Check that the image you pulled has the new
+  endpoints: `POST /ask/stream` and `GET /metrics` should not return 404.
+- **Done and recorded:** clean-checkout `dvc pull` + `dvc repro` (`reports/reproducibility.md`) and the
+  corpus review (`reports/corpus-extraction.md`).
+- **Open:** a reranker (aimed at the one Arabic miss), running the monitoring and canary containers,
+  deciding whether to move Article 1021's Arabic paragraphs to 1022, and a `LICENSE` file. See `PLAN.md`.
