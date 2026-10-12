@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "provider": "google",
-  "model": "gemini-3.1-flash-lite",
+  "model": "gemini-3.5-flash-lite",
   "thinking_level": "minimal",
   "api_key_env": "GOOGLE_API_KEY",
   "prompt_version": "civil-code-grounded-v1.1",
@@ -10,9 +10,16 @@
   "max_output_tokens": 2048,
   "thinking_budget": 0,
   "timeout_ms": 60000,
-  "provider_retry_backoff_seconds": [3, 10],
+  "provider_retry_backoff_seconds": [
+    3,
+    10
+  ],
   "corpus_id": "egyptian-civil-code",
   "retrieval_top_k": 5,
   "max_context_characters": 24000,
-  "pricing_usd_per_million_tokens": {"input": 0.25, "output": 1.5, "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."}
+  "pricing_usd_per_million_tokens": {
+    "input": 0.3,
+    "output": 2.5,
+    "note": "Estimate from third-party price trackers for gemini-3.5-flash-lite; verify against Google's pricing page. Thinking tokens are billed as output."
+  }
 }

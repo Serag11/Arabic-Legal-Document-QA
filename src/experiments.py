@@ -390,6 +390,10 @@ async def validate_deployed(config_path=DEFAULT_EXPERIMENTS):
     # The variant comparison keeps the fingerprint it was measured under; only the deployed
     # configuration is revalidated on every pipeline change.
     summary.setdefault("comparison_pipeline_fingerprint", summary.get("pipeline_fingerprint"))
+    if "comparison_generation_model" not in summary and summary.get("selected", {}).get("file"):
+        compared = json.loads((ROOT / summary["selected"]["file"]).read_text())
+        summary["comparison_generation_model"] = compared["generation_config"]["model"]
+        summary["comparison_judge_model"] = compared["judge_model"]
     summary.update(
         pipeline_fingerprint=report["pipeline_fingerprint"], full_question_count=len(rows),
         faithfulness_threshold=config["faithfulness_threshold"], minimum_scored_questions=config["minimum_scored_questions"],
