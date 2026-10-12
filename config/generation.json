@@ -10,6 +10,7 @@
   "max_output_tokens": 2048,
   "thinking_budget": 0,
   "timeout_ms": 60000,
+  "provider_retry_backoff_seconds": [3, 10],
   "corpus_id": "egyptian-civil-code",
   "retrieval_top_k": 5,
   "max_context_characters": 24000,

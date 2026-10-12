@@ -154,6 +154,99 @@ def test_google_api_errors_are_redacted(monkeypatch):
             raise errors.ClientError(429, {"error": {"message": "test-secret quota failure", "status": "RESOURCE_EXHAUSTED"}})
 
     monkeypatch.setattr(genai, "Client", FailingClient)
+    monkeypatch.setattr("src.generation.time.sleep", lambda seconds: None)
     with pytest.raises(GenerationError) as caught:
         GoogleGenerator(load_generation_config()).generate("question", [], "en", "prompt")
     assert "429" in str(caught.value) and "test-secret" not in str(caught.value)
+
+
+class ScriptedClient:
+    """Fake genai client: replays scripted outcomes, one per generate_content call."""
+
+    outcomes = []
+    calls = 0
+
+    def __init__(self, **kwargs):
+        self.models = self
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        pass
+
+    def generate_content(self, **kwargs):
+        type(self).calls += 1
+        outcome = type(self).outcomes.pop(0)
+        if isinstance(outcome, Exception):
+            raise outcome
+        return outcome
+
+
+def scripted(monkeypatch, outcomes):
+    from google import genai
+
+    ScriptedClient.outcomes, ScriptedClient.calls = list(outcomes), 0
+    sleeps = []
+    monkeypatch.setattr("src.generation.load_google_api_key", lambda: "test-key")
+    monkeypatch.setattr(genai, "Client", ScriptedClient)
+    monkeypatch.setattr("src.generation.time.sleep", sleeps.append)
+    return sleeps
+
+
+def api_error(code, message="RESOURCE_EXHAUSTED"):
+    from google.genai import errors
+
+    return errors.ClientError(code, {"error": {"message": message, "status": message}})
+
+
+def good_response():
+    from types import SimpleNamespace
+
+    answer = GeneratedAnswer.model_validate(
+        {"answer": "x", "insufficient_evidence": True, "citations": [], "evidence": []})
+    return SimpleNamespace(parsed=answer, text="", model_version="m", usage_metadata=None)
+
+
+def test_transient_provider_limits_are_retried_with_backoff(monkeypatch):
+    sleeps = scripted(monkeypatch, [api_error(429), api_error(503, "UNAVAILABLE"), good_response()])
+    result = GoogleGenerator(load_generation_config()).generate("q", [], "en", "prompt")
+    assert result.answer.answer == "x" and ScriptedClient.calls == 3 and sleeps == [3, 10]
+
+
+def test_retries_are_bounded_and_skip_daily_quota_and_other_errors(monkeypatch):
+    config = load_generation_config()
+    scripted(monkeypatch, [api_error(429)] * 3)
+    with pytest.raises(GenerationError, match="429"):
+        GoogleGenerator(config).generate("q", [], "en", "prompt")
+    assert ScriptedClient.calls == 3  # the first attempt plus two retries
+
+    scripted(monkeypatch, [api_error(429, "PerDay quota exhausted")])
+    with pytest.raises(GenerationError) as daily:
+        GoogleGenerator(config).generate("q", [], "en", "prompt")
+    assert ScriptedClient.calls == 1 and daily.value.daily_quota
+
+    scripted(monkeypatch, [api_error(400, "INVALID_ARGUMENT")])
+    with pytest.raises(GenerationError, match="400"):
+        GoogleGenerator(config).generate("q", [], "en", "prompt")
+    assert ScriptedClient.calls == 1
+
+
+def test_streamed_calls_are_not_retried_once_text_was_shown(monkeypatch):
+    from google import genai
+
+    shown = []
+
+    class StreamingClient(ScriptedClient):
+        def generate_content_stream(self, **kwargs):
+            type(self).calls += 1
+            yield __import__("types").SimpleNamespace(text='{"answer": "partial', model_version="m", usage_metadata=None)
+            raise api_error(503, "UNAVAILABLE")
+
+    StreamingClient.calls = 0
+    monkeypatch.setattr("src.generation.load_google_api_key", lambda: "test-key")
+    monkeypatch.setattr(genai, "Client", StreamingClient)
+    monkeypatch.setattr("src.generation.time.sleep", lambda seconds: None)
+    with pytest.raises(GenerationError, match="503"):
+        GoogleGenerator(load_generation_config()).generate("q", [], "en", "prompt", on_text=shown.append)
+    assert shown == ["partial"] and StreamingClient.calls == 1

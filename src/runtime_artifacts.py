@@ -9,6 +9,8 @@ from pathlib import Path
 import shutil
 import subprocess
 import tarfile
+import time
+import urllib.error
 import urllib.request
 
 
@@ -49,8 +51,34 @@ def download_archive(config, archive):
                 raise
     url = (f"https://github.com/{config['repository']}/releases/download/"
            f"{config['release']}/{config['asset']}")
-    with urllib.request.urlopen(url, timeout=120) as response, archive.open("wb") as handle:
-        shutil.copyfileobj(response, handle)
+    download_public(url, archive)
+
+
+def download_public(url, archive, attempts=6, timeout=60):
+    """Anonymous download that resumes a partial file and retries stalled or dropped connections.
+
+    The release is large and connections can be slow; the checksum is verified before extraction,
+    so a wrong or partial file can never be used.
+    """
+    archive = Path(archive)
+    for attempt in range(1, attempts + 1):
+        offset = archive.stat().st_size if archive.exists() else 0
+        request = urllib.request.Request(url, headers={"Range": f"bytes={offset}-"} if offset else {})
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                resumed = offset > 0 and getattr(response, "status", 200) == 206
+                with archive.open("ab" if resumed else "wb") as handle:
+                    shutil.copyfileobj(response, handle)
+            return
+        except urllib.error.HTTPError as exc:
+            if exc.code == 416:  # the file on disk is already complete
+                return
+            if exc.code < 500 or attempt == attempts:
+                raise
+        except (TimeoutError, ConnectionError, urllib.error.URLError, OSError):
+            if attempt == attempts:
+                raise
+        time.sleep(min(2 ** attempt, 15))
 
 
 def verify_directory(root, manifest):

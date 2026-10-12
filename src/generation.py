@@ -81,6 +81,28 @@ class GoogleGenerator:
         self.config = config
 
     def generate(self, question, context, language, system_prompt, on_text=None):
+        """One answer, retrying transient provider limits (HTTP 429 per-minute, 503) with a short backoff.
+
+        A daily-quota 429 is never retried, and neither is a streamed call once text has been shown.
+        """
+        backoff = list(self.config.get("provider_retry_backoff_seconds", []))
+        emitted = False
+
+        def track(text):
+            nonlocal emitted
+            emitted = True
+            on_text(text)
+
+        for attempt in range(len(backoff) + 1):
+            try:
+                return self._generate_once(question, context, language, system_prompt, track if on_text else None)
+            except GenerationError as failure:
+                transient = getattr(failure, "status_code", None) in (429, 503) and not getattr(failure, "daily_quota", False)
+                if not transient or emitted or attempt == len(backoff):
+                    raise
+                time.sleep(backoff[attempt])
+
+    def _generate_once(self, question, context, language, system_prompt, on_text=None):
         from google import genai
         from google.genai import errors, types
         from pydantic import ValidationError
