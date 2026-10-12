@@ -13,9 +13,9 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 - [X] Article 558 bold Arabic body preserved; Article 1022's absent Arabic text documented as a source exception.
 - [X] Glyph-position-based reordering for zero-width alef variants applied during extraction and covered by regression tests.
 - [X] Add automated corpus validation and run it as a DVC stage.
-- [ ] Manually review the 20 sampled article crops and the remaining flagged records; record findings.
+- [X] Manually review the 20 sampled article crops and the remaining flagged records; findings recorded in `reports/corpus-extraction.md` (AI-assisted visual review; Article 1021/1022 boundary decision still open).
 - [X] Configure a DVC remote and push tracked artifacts (user confirmed).
-- [ ] Verify the full corpus pipeline is reproducible from a clean checkout using the remote.
+- [X] Verify the full corpus pipeline is reproducible from a clean checkout using the remote (`reports/reproducibility.md`: corpus, chunks and retrieval metrics identical).
 - [X] Build article-aware retrieval, then generation and the `/ask` API.
 
 ## Phase 1 — Make the corpus trustworthy (remaining work deferred)
@@ -24,10 +24,10 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 
 - [X] Compare Articles 558 and 1022 with the original PDF: Article 558's Arabic body is bold; Article 1022 has no Arabic body in the source.
 - [X] Check the Article 1021–1022 boundary against the source; preserve Article 1022 as an explicit missing-Arabic source exception.
-- [ ] Review every record with a `qa_flags` entry, prioritizing single-column article anchors and missing text.
-- [ ] Inspect `data/qa_civil_code/qa_random_articles.html` and compare all 20 sampled records with their PDF crops.
+- [X] Review every record with a `qa_flags` entry, prioritizing single-column article anchors and missing text.
+- [X] Inspect `data/qa_civil_code/qa_random_articles.html` and compare all 20 sampled records with their PDF crops (no extraction errors found).
 - [X] Record known extraction issues, bold-body and zero-width alef fixes, source exceptions, and current review status in `reports/corpus-extraction.md`.
-- [ ] Complete the report with the 20-article and flagged-record manual review outcomes.
+- [X] Complete the report with the 20-article and flagged-record manual review outcomes.
 
 ### 2. Add automated validation
 
@@ -45,7 +45,7 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 - [X] Keep source-faithful Arabic separate from normalized retrieval text; do not use normalized text as a legal quotation.
 - [X] Configure Google Drive DVC remote `storage` (user confirmed configuration is complete).
 - [X] Push tracked artifacts to `storage` (user confirmed successful push).
-- [ ] Verify `dvc pull` from a clean checkout.
+- [X] Verify `dvc pull` from a clean checkout (`reports/reproducibility.md`).
 - [X] Verify `dvc repro` regenerates the structured corpus and QA artifacts from the tracked source PDF.
 
 **Phase 1 exit criteria:** corpus tests pass; active article text is present in both languages except the documented source exception; flagged records and the 20-item visual sample have been reviewed; DVC can reproduce the extraction and a remote is available to collaborators.
@@ -177,7 +177,7 @@ POST /ask
 - [X] Add GitHub Actions for lint, offline tests, measured quality/runtime-equivalence gates, Docker build, offline container checks, and conditional Docker Hub publication in `.github/workflows/delivery.yml`.
 - [X] Store Docker Hub credentials in GitHub Actions secrets (user confirmed setup); runtime Google credentials remain external to the image.
 - [X] Track the source PDF and derived corpus with DVC; configure the remote and push tracked artifacts (user confirmed remote setup and push).
-- [ ] Verify clean-checkout reproduction using `dvc pull` and `dvc repro`.
+- [X] Verify clean-checkout reproduction using `dvc pull` and `dvc repro` (`reports/reproducibility.md`).
 - [X] Use a checksum-pinned GitHub Release runtime bundle for CI instead of DVC/Google Drive authentication; create the local `runtime-v1.tar.gz` bundle and descriptor.
 - [X] Export and compare FP32, INT8, and compact ONNX models. Select FP16 weight storage with FP32 CPU computation: 555 MB, all 60 generator contexts unchanged; reject INT8's retrieval drop from 55/56 to 53/56.
 - [X] Build and locally verify a self-contained, non-root, PyTorch-free image with bundled tokenizer/model/index; document running it without cloning the repository.

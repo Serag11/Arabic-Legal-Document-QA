@@ -94,21 +94,12 @@ uv run dvc repro
 Google Drive remote `storage` has been configured by the project owner.
 Authentication settings are configured locally. The development dependencies
 include DVC's Google Drive support.
-Remote upload and clean-checkout retrieval must be recorded separately when
-verified; configuring the remote alone does not demonstrate reproduction.
-
-The upload was attempted with `uv run dvc push -r storage`. Google Drive
-support was installed, and the client's incompatible `pyOpenSSL` dependency
-was pinned to 24.2.1 (within PyDrive2's supported range). Authentication is
-configured to use the service account. The initial HTTP 404 folder-access
-error was resolved by granting access. A subsequent push reached upload but
-failed for 45 files with HTTP 403: `Service Accounts do not have storage quota`.
-For the personal Google Drive destination, authentication has now been
-switched locally to user OAuth (`gdrive_use_service_account=false`). The
-pending authorization/upload process was stopped when Stage 1 was paused
-to start Stage 2. Resume with `uv run dvc push -r storage` when returning
-to remote verification.
-No successful upload or clean-checkout pull is claimed.
+The remote now holds the tracked artifacts and a clean-checkout `dvc pull` + `dvc repro` has been
+verified; see `reports/reproducibility.md`. Setup history: the client's incompatible `pyOpenSSL`
+dependency was pinned to 24.2.1 (within PyDrive2's supported range), a service account was tried first but
+Google Drive rejected uploads with HTTP 403 (`Service Accounts do not have storage quota`), so the project
+uses user OAuth (`gdrive_use_service_account=false` in the git-ignored `.dvc/config.local`, with the OAuth
+client ID and secret kept there as well).
 
 ## Manual review (recorded)
 
@@ -142,13 +133,17 @@ Limits of that statement:
 The 24 records with unbalanced parentheses (5, 52, 300, …) were not individually
 reviewed beyond Article 52, which matched its source.
 
+**Zero-width alef sample** (`qa_zero_width_alefs.html`, 20 lines): all 20 cards match their source
+crops and the corpus holds the corrected forms. A corpus-wide scan for remaining swapped
+alef/lam words flagged "ثالثا" (Article 352) and "الثالثة" (Article 1012); both are correct Arabic
+("thirdly", "the third paragraph") and the English of Article 352 says "third", so they are not defects.
+
 ## Remaining work
 
 - [ ] Decide whether to move Article 1021's Arabic paragraphs (٢)–(٣) to 1022 (editorial; it would also
   change the reviewed s2-022 evaluation probes). The literal layout is pinned by
   `test_article_1021_boundary_with_1022_matches_the_source_rows`.
-- [ ] Review the zero-width alef diagnostic sample (`qa_zero_width_alefs.html`).
-- [ ] Verify clean-checkout `dvc pull` + `dvc repro` (the remote holds the artifacts).
+- [X] Clean-checkout `dvc pull` + `dvc repro`: see `reports/reproducibility.md`.
 
 Automated checks protect structure and known regressions; they do not certify every
 extracted passage or translation. Rebuild the index after corpus repairs.
