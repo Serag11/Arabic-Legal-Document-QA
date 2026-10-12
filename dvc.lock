@@ -80,15 +80,15 @@ stages:
       size: 22571
     - path: tests
       hash: md5
-      md5: 0f5893e9583f6c5d9ae517fcc4f4354f.dir
-      size: 34504
-      nfiles: 8
+      md5: 093e4d4d3d2ff286970c28e552654b93.dir
+      size: 39064
+      nfiles: 9
     - path: uv.lock
       hash: md5
       md5: 0c5b38bb41ac00a518095c9fbc17a488
       size: 976537
   prepare_retrieval:
-    cmd: uv run python -m pytest tests/ -q && uv run python src/retrieval.py
+    cmd: uv run python -m pytest tests/ -q && uv run python src/retrieval.py 
       prepare
     deps:
     - path: config/generation.json
@@ -141,9 +141,9 @@ stages:
       size: 22571
     - path: tests
       hash: md5
-      md5: 0f5893e9583f6c5d9ae517fcc4f4354f.dir
-      size: 34504
-      nfiles: 8
+      md5: 093e4d4d3d2ff286970c28e552654b93.dir
+      size: 39064
+      nfiles: 9
     - path: uv.lock
       hash: md5
       md5: 0c5b38bb41ac00a518095c9fbc17a488
@@ -190,9 +190,9 @@ stages:
       size: 22571
     - path: tests
       hash: md5
-      md5: 0f5893e9583f6c5d9ae517fcc4f4354f.dir
-      size: 34504
-      nfiles: 8
+      md5: 093e4d4d3d2ff286970c28e552654b93.dir
+      size: 39064
+      nfiles: 9
     - path: uv.lock
       hash: md5
       md5: 0c5b38bb41ac00a518095c9fbc17a488
@@ -200,8 +200,8 @@ stages:
     outs:
     - path: data/retrieval/chroma
       hash: md5
-      md5: e657e191f5fcdf0be6e067658459f6ae.dir
-      size: 32751589
+      md5: 38dc9d1091d877b69af214aa2c23cf0c.dir
+      size: 32718823
       nfiles: 7
   evaluate_retrieval:
     cmd: uv run python src/retrieval.py evaluate
@@ -212,8 +212,8 @@ stages:
       size: 976
     - path: data/retrieval/chroma
       hash: md5
-      md5: e657e191f5fcdf0be6e067658459f6ae.dir
-      size: 32751589
+      md5: 38dc9d1091d877b69af214aa2c23cf0c.dir
+      size: 32718823
       nfiles: 7
     - path: evaluation/retrieval_questions.jsonl
       hash: md5
@@ -246,8 +246,8 @@ stages:
     outs:
     - path: reports/retrieval-results.json
       hash: md5
-      md5: 56a1f704d89ddc640639d8c348f6aca4
-      size: 648837
+      md5: 9190ab622f7146761a135640d357a421
+      size: 647632
     - path: reports/retrieval-results.metrics.json
       hash: md5
       md5: e155123665720ea7e3500e8e00be199f

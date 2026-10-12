@@ -275,7 +275,7 @@
           "rank": 5
         }
       ],
-      "seconds": 7.488351279000199,
+      "seconds": 8.997691618002136,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -468,7 +468,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05766651500016451,
+      "seconds": 0.05736084699674393,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -661,7 +661,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.057610525998825324,
+      "seconds": 0.047197780000715284,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -708,31 +708,6 @@
                 "source_book": null,
                 "source_page": 1,
                 "language": "en",
-                "is_repealed": false,
-                "repeal_note": null,
-                "qa_flags": [],
-                "content_kind": "article_text"
-              }
-            },
-            {
-              "document_id": "egyptian-civil-code:2:ar:0",
-              "chunk_index": 0,
-              "source_field": "ar_text",
-              "source_start": 0,
-              "source_end": 171,
-              "source_text": "لا يجوز إلغاء نص تشريعي إلا بتشريع لاحق ينص صراحة على هذا الإلغاء، أو يشتمل على نص يتعارض مع نص التشريع القديم، أو ينظم من جديد الموضوع الذي سبق أن قرر قواعده ذلك التشريع.",
-              "embedding_text": "لا يجوز الغاء نص تشريعي الا بتشريع لاحق ينص صراحة علي هذا الالغاء، او يشتمل علي نص يتعارض مع نص التشريع القديم، او ينظم من جديد الموضوع الذي سبق ان قرر قواعده ذلك التشريع.",
-              "metadata": {
-                "corpus_id": "egyptian-civil-code",
-                "article_number": 2,
-                "citation": "Egyptian Civil Code, Article 2",
-                "book": null,
-                "chapter": null,
-                "section": "Laws and their Applications",
-                "topic": "Laws and Rights",
-                "source_book": null,
-                "source_page": 1,
-                "language": "ar",
                 "is_repealed": false,
                 "repeal_note": null,
                 "qa_flags": [],
@@ -879,7 +854,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07497980300104246,
+      "seconds": 0.0657533150006202,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1072,7 +1047,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05444934599836415,
+      "seconds": 0.044911466000485234,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1265,7 +1240,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05829683099909744,
+      "seconds": 0.04233281800043187,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1458,7 +1433,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05267251199984457,
+      "seconds": 0.045209400999738136,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1676,7 +1651,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05186059899824613,
+      "seconds": 0.03894328499882249,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1869,7 +1844,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05568305400083773,
+      "seconds": 0.04471014800219564,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -2062,7 +2037,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.055746009000358754,
+      "seconds": 0.04522093400009908,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2255,7 +2230,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06767585899979167,
+      "seconds": 0.05896510999809834,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.3333333333333333,
@@ -2448,7 +2423,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06748515600156679,
+      "seconds": 0.06749686799957999,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2641,7 +2616,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06306575999951747,
+      "seconds": 0.05955075700330781,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -2834,7 +2809,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.058735741000418784,
+      "seconds": 0.04896940300022834,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3027,7 +3002,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0495930099987163,
+      "seconds": 0.0392303870030446,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -3220,7 +3195,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.040744769999946584,
+      "seconds": 0.04134652199718403,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3413,7 +3388,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05047660899981565,
+      "seconds": 0.055281405002460815,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3606,7 +3581,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.054719560999728856,
+      "seconds": 0.05331393999949796,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3799,7 +3774,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.062180968998291064,
+      "seconds": 0.050803838999854634,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -3992,7 +3967,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.067491196001356,
+      "seconds": 0.051690056003280915,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4185,7 +4160,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.08630835799885972,
+      "seconds": 0.08305163200202514,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4378,7 +4353,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07254543300041405,
+      "seconds": 0.04415803699885146,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4571,7 +4546,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06922555100027239,
+      "seconds": 0.0452418540007784,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4764,7 +4739,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04604980399926717,
+      "seconds": 0.04194851900319918,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -4957,7 +4932,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.053410831998917274,
+      "seconds": 0.05357833100060816,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5150,7 +5125,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.061435191999407834,
+      "seconds": 0.059777171998575795,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5343,7 +5318,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07985535300031188,
+      "seconds": 0.17542619300002116,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5536,7 +5511,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.049154188000102295,
+      "seconds": 0.058042909997311654,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -5729,7 +5704,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0587732119984139,
+      "seconds": 0.053938369997922564,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -5922,7 +5897,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.058616038999389275,
+      "seconds": 0.05002793400126393,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6115,7 +6090,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.052611114999308484,
+      "seconds": 0.04144374399766093,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -6308,7 +6283,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.058978757999284426,
+      "seconds": 0.0441171470010886,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6501,7 +6476,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.052955721999751404,
+      "seconds": 0.05384045199753018,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6694,7 +6669,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.053630995000276016,
+      "seconds": 0.04213661700123339,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -6912,7 +6887,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.04582246599966311,
+      "seconds": 0.03925285500008613,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7130,7 +7105,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05059697800061258,
+      "seconds": 0.04047864099993603,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7323,7 +7298,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05123970599925087,
+      "seconds": 0.04115675099819782,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7516,7 +7491,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.052918616000170005,
+      "seconds": 0.0483305300003849,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.3333333333333333,
@@ -7709,7 +7684,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.08547097700102313,
+      "seconds": 0.07195049399888376,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -7902,7 +7877,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0579004770006577,
+      "seconds": 0.046267587997135706,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.2,
@@ -8095,7 +8070,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06867047100058699,
+      "seconds": 0.059830772999703186,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8288,7 +8263,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05196548500134668,
+      "seconds": 0.05142588599846931,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8344,7 +8319,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0020929210004396737,
+      "seconds": 0.001598366001417162,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8400,7 +8375,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.001701047000096878,
+      "seconds": 0.0015048029999888968,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8593,7 +8568,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06288062000021455,
+      "seconds": 0.04858859299929463,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -8786,7 +8761,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06315343099959136,
+      "seconds": 0.04624811499888892,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 0.5,
@@ -8979,7 +8954,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06176100900120218,
+      "seconds": 0.048685452002246166,
       "hit_at_k": 0,
       "recall_at_k": 0.0,
       "reciprocal_rank": 0,
@@ -9172,7 +9147,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.056716229000812746,
+      "seconds": 0.04618400800245581,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9365,7 +9340,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.08309051499963971,
+      "seconds": 0.08205173299938906,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9583,7 +9558,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.0797574309999618,
+      "seconds": 0.06499723500019172,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9776,7 +9751,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.055091063000872964,
+      "seconds": 0.04325136899933568,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -9969,7 +9944,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.058887450000838726,
+      "seconds": 0.04748209200261044,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10024,7 +9999,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.001414596999893547,
+      "seconds": 0.0014471130016318057,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10079,7 +10054,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.001198574998852564,
+      "seconds": 0.0011011229980795179,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10132,7 +10107,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0015989999992598314,
+      "seconds": 0.001112437999836402,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10185,7 +10160,7 @@
           "rank": 1
         }
       ],
-      "seconds": 0.0014642130008724052,
+      "seconds": 0.0011262910011282656,
       "hit_at_k": 1,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -10202,7 +10177,7 @@
         940,
         1004,
         45,
-        130
+        425
       ],
       "results": [
         {
@@ -10342,29 +10317,29 @@
           "rank": 4
         },
         {
-          "article_number": 130,
-          "citation": "Egyptian Civil Code, Article 130",
-          "score": 0.7788748741149902,
+          "article_number": 425,
+          "citation": "Egyptian Civil Code, Article 425",
+          "score": 0.7759990692138672,
           "method": "semantic",
           "passages": [
             {
-              "document_id": "egyptian-civil-code:130:ar:0",
+              "document_id": "egyptian-civil-code:425:ar:0",
               "chunk_index": 0,
               "source_field": "ar_text",
               "source_start": 0,
-              "source_end": 95,
-              "source_text": "يراعى فى تطبيق المادة السابقة عدم الإخلال بالأحكام الخاصة بالغبن فى بعض العقود أو بسعر الفائدة.",
-              "embedding_text": "يراعي في تطبيق المادة السابقة عدم الاخلال بالاحكام الخاصة بالغبن في بعض العقود او بسعر الفايدة.",
+              "source_end": 222,
+              "source_text": "(١) إذا بيع عقار مملوك لشخص لا تتوافر فيه الأهلية وكان في البيع غبن يزيد على الخمس فالبائع أن يطلب تكملة الثمن إلى أربعة أخماس ثمن المثل. (٢) ويجب لتقدير ما إذا كان الغبن يزيد على الخمس أن يقوم العقار بحسب قيمته وقت البيع.",
+              "embedding_text": "(١) اذا بيع عقار مملوك لشخص لا تتوافر فيه الاهلية وكان في البيع غبن يزيد علي الخمس فالبايع ان يطلب تكملة الثمن الي اربعة اخماس ثمن المثل. (٢) ويجب لتقدير ما اذا كان الغبن يزيد علي الخمس ان يقوم العقار بحسب قيمته وقت البيع.",
               "metadata": {
                 "corpus_id": "egyptian-civil-code",
-                "article_number": 130,
-                "citation": "Egyptian Civil Code, Article 130",
+                "article_number": 425,
+                "citation": "Egyptian Civil Code, Article 425",
                 "book": "Obligations or Personal Rights",
-                "chapter": "Sources of Obligations",
-                "section": "Contracts",
-                "topic": "Consent",
-                "source_book": "Obligations Generally",
-                "source_page": 14,
+                "chapter": "Contracts as Regards Ownership",
+                "section": "Sale",
+                "topic": "Elements of Sale",
+                "source_book": "Specific Contracts",
+                "source_page": 54,
                 "language": "ar",
                 "is_repealed": false,
                 "repeal_note": null,
@@ -10376,7 +10351,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.05380681899987394,
+      "seconds": 0.038786059001722606,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10567,7 +10542,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.06685878800089995,
+      "seconds": 0.10958767699776217,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10581,10 +10556,10 @@
       "expected_article_numbers": [],
       "retrieved_article_numbers": [
         940,
+        36,
         380,
         536,
-        433,
-        624
+        433
       ],
       "results": [
         {
@@ -10622,6 +10597,40 @@
           "rank": 1
         },
         {
+          "article_number": 36,
+          "citation": "Egyptian Civil Code, Article 36",
+          "score": 0.796493411064148,
+          "method": "semantic",
+          "passages": [
+            {
+              "document_id": "egyptian-civil-code:36:ar:0",
+              "chunk_index": 0,
+              "source_field": "ar_text",
+              "source_start": 0,
+              "source_end": 227,
+              "source_text": "يراعى في حساب درجة القرابة المباشرة، اعتبار كل فرع درجة عند الصعود للأصل بخروج هذا الأصل، وعدد حساب درجة الحواشي تعد الدرجات صعوداً من الفرع للأصل المشترك ثم نزولا منه إلى الفرع الآخر، وكل فرع فيما عدا الأصل المشترك يعتبر درجة.",
+              "embedding_text": "يراعي في حساب درجة القرابة المباشرة، اعتبار كل فرع درجة عند الصعود للاصل بخروج هذا الاصل، وعدد حساب درجة الحواشي تعد الدرجات صعودا من الفرع للاصل المشترك ثم نزولا منه الي الفرع الاخر، وكل فرع فيما عدا الاصل المشترك يعتبر درجة.",
+              "metadata": {
+                "corpus_id": "egyptian-civil-code",
+                "article_number": 36,
+                "citation": "Egyptian Civil Code, Article 36",
+                "book": null,
+                "chapter": null,
+                "section": "Persons",
+                "topic": "Individuals",
+                "source_book": null,
+                "source_page": 5,
+                "language": "ar",
+                "is_repealed": false,
+                "repeal_note": null,
+                "qa_flags": [],
+                "content_kind": "article_text"
+              }
+            }
+          ],
+          "rank": 2
+        },
+        {
           "article_number": 380,
           "citation": "Egyptian Civil Code, Article 380",
           "score": 0.7904000282287598,
@@ -10653,7 +10662,7 @@
               }
             }
           ],
-          "rank": 2
+          "rank": 3
         },
         {
           "article_number": 536,
@@ -10687,7 +10696,7 @@
               }
             }
           ],
-          "rank": 3
+          "rank": 4
         },
         {
           "article_number": 433,
@@ -10721,44 +10730,10 @@
               }
             }
           ],
-          "rank": 4
-        },
-        {
-          "article_number": 624,
-          "citation": "Egyptian Civil Code, Article 624",
-          "score": 0.7808246612548828,
-          "method": "semantic",
-          "passages": [
-            {
-              "document_id": "egyptian-civil-code:624:ar:0",
-              "chunk_index": 0,
-              "source_field": "ar_text",
-              "source_start": 0,
-              "source_end": 240,
-              "source_text": "(١) توزع الغلة بين الطرفين بالنسبة المتفق عليها أو بالنسبة التى يعينها العرف، فإذا لم يوجد اتفاق أو عرف كان لكل منهما نصف الغلة. (٢) هلكت الغلة كلها أو بعضها بسبب قوة قاهرة، تحمل الطرفانًفإذامعا تبعه هذا الهلاك ولا يرجع أحد منهما على الآخر.",
-              "embedding_text": "(١) توزع الغلة بين الطرفين بالنسبة المتفق عليها او بالنسبة التي يعينها العرف، فاذا لم يوجد اتفاق او عرف كان لكل منهما نصف الغلة. (٢) هلكت الغلة كلها او بعضها بسبب قوة قاهرة، تحمل الطرفانفاذامعا تبعه هذا الهلاك ولا يرجع احد منهما علي الاخر.",
-              "metadata": {
-                "corpus_id": "egyptian-civil-code",
-                "article_number": 624,
-                "citation": "Egyptian Civil Code, Article 624",
-                "book": "Obligations or Personal Rights",
-                "chapter": "Contracts relating to the use of a thing",
-                "section": "Leases",
-                "topic": "Amodiation",
-                "source_book": "Specific Contracts",
-                "source_page": 84,
-                "language": "ar",
-                "is_repealed": false,
-                "repeal_note": null,
-                "qa_flags": [],
-                "content_kind": "article_text"
-              }
-            }
-          ],
           "rank": 5
         }
       ],
-      "seconds": 0.05515544999980193,
+      "seconds": 0.03963496000142186,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
@@ -10949,7 +10924,7 @@
           "rank": 5
         }
       ],
-      "seconds": 0.07971359099974507,
+      "seconds": 0.053574393001326825,
       "hit_at_k": null,
       "recall_at_k": null,
       "reciprocal_rank": null,
