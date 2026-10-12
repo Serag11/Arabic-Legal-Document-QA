@@ -71,6 +71,7 @@ class AskResponse(BaseModel):
     configuration: dict
     usage: dict
     model_version: str | None = None
+    trace_id: str | None = None
 
 
 class HealthResponse(BaseModel):
@@ -96,6 +97,7 @@ def create_app(service_factory=None):
         try:
             yield
         finally:
+            getattr(app.state.service, "tracer", None) and app.state.service.tracer.flush()
             app.state.service = None
 
     application = FastAPI(title="Arabic Legal Document QA", version="0.1.0", lifespan=lifespan)

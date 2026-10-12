@@ -10,8 +10,10 @@ import re
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 
 if __package__:
+    from .observability import get_tracer
     from .retrieval import Retriever
 else:
+    from observability import get_tracer
     from retrieval import Retriever
 
 
@@ -160,11 +162,12 @@ def validate_grounding(answer, context):
 
 
 class AnsweringService:
-    def __init__(self, retriever=None, generator=None, config=None, index=None, prompt_path=None):
+    def __init__(self, retriever=None, generator=None, config=None, index=None, prompt_path=None, tracer=None):
         self.config = config or load_generation_config()
         self.retriever = retriever or Retriever(index or ROOT / "data/retrieval/chroma")
         self.generator = generator or GoogleGenerator(self.config)
         self.prompt = Path(prompt_path or PROMPT_PATH).read_text(encoding="utf-8")
+        self.tracer = tracer or get_tracer()
 
     def ask(self, question, *, language=None, filters=None):
         question = question.strip()
@@ -173,8 +176,20 @@ class AnsweringService:
         language = language or ("ar" if ARABIC.search(question) else "en")
         if language not in ("ar", "en"):
             raise ValueError("Answer language must be ar or en")
-        results = self.retriever.search(question, k=self.config["retrieval_top_k"], filters=filters)
-        context = build_context(results, self.config["max_context_characters"])
+        with self.tracer.observation("ask", input={"question": question, "language": language, "filters": filters or {}}) as root:
+            result = self._ask(question, language, filters, root)
+            root.update(output={key: result.get(key) for key in ("answer", "sources", "insufficient_evidence", "reason", "usage")},
+                        metadata={"model_version": result.get("model_version")})
+            if root.trace_id:
+                result["trace_id"] = root.trace_id
+            return result
+
+    def _ask(self, question, language, filters, root):
+        with self.tracer.observation("retrieval", as_type="retriever", input={"question": question, "filters": filters or {}}) as span:
+            results = self.retriever.search(question, k=self.config["retrieval_top_k"], filters=filters)
+            context = build_context(results, self.config["max_context_characters"])
+            span.update(output=[{"article_number": p["article_number"], "language": p["language"], "citation": p["citation"]}
+                                for p in context])
         run = {
             "generation": self.config, "prompt_sha256": hashlib.sha256(self.prompt.encode()).hexdigest(),
             "retrieval": self.retriever.manifest["config"],
@@ -191,13 +206,28 @@ class AnsweringService:
 
         if not context:
             return insufficient("no_retrieved_evidence")
-        response = self.generator.generate(question, context, language, self.prompt)
+        with self.tracer.observation(
+            "generation", as_type="generation", model=self.config["model"],
+            model_parameters={key: self.config[key] for key in ("temperature", "max_output_tokens") if key in self.config},
+            input={"question": question, "answer_language": language, "passages": context},
+            metadata={"prompt_version": self.config.get("prompt_version"), "prompt_sha256": run["prompt_sha256"]},
+        ) as span:
+            response = self.generator.generate(question, context, language, self.prompt)
+            usage = {key: value for key, value in (response.usage or {}).items() if isinstance(value, int)}
+            span.update(output=response.answer.model_dump(), usage_details=usage or None,
+                        model=response.model_version or self.config["model"])
         if response.answer.insufficient_evidence:
             return insufficient("model_reported_insufficient_evidence", response.usage, response.model_version)
-        try:
-            evidence = validate_grounding(response.answer, context)
-        except ValueError:
-            return insufficient("invalid_source_grounding", response.usage, response.model_version)
+        with self.tracer.observation("grounding", as_type="guardrail", input=response.answer.model_dump()) as span:
+            try:
+                evidence = validate_grounding(response.answer, context)
+                span.update(output={"valid": True})
+            except ValueError as exc:
+                # The discarded candidate and the failing check are kept in the trace for diagnosis.
+                span.update(output={"valid": False, "error": str(exc)}, level="WARNING", status_message=str(exc))
+                rejected = insufficient("invalid_source_grounding", response.usage, response.model_version)
+                rejected["reason_detail"] = str(exc)
+                return rejected
         citations = list(dict.fromkeys(response.answer.citations))
         source_map = {p["article_number"]: p["citation"] for p in context}
         answer_text = response.answer.answer
