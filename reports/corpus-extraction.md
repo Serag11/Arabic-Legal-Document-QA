@@ -59,12 +59,22 @@ lines. These are diagnostic counts, not the number of applied swaps.
 The HTML candidate correction is a review preview; it is not a record of
 every extraction-time correction.
 
-### Source exception — Article 1022
+### Source exception — Articles 1021 and 1022
 
-Article 1022 has no Arabic body in the source PDF on page 147. It is an active
-article, not a repealed one. Its Arabic fields remain empty, its English text
-is retained, and it carries `missing_ar_text_in_source`. Ingestion must handle
+Article 1022's own Arabic cell is empty in the source PDF (page 147). It is an
+active article, not a repealed one. Its Arabic fields remain empty, its English
+text is retained, and it carries `missing_ar_text_in_source`. Ingestion must handle
 the missing language explicitly without fabricating Arabic source text.
+
+The manual review below found that the Arabic does exist on the page, in the
+**wrong row**. Article 1021's Arabic cell holds three paragraphs: (١) translates
+Article 1021's English; (٢) and (٣), highlighted yellow like the whole 1022 row,
+translate the second and third sentences of Article 1022's English. The first
+sentence of 1022's English (the dominant owner bears the cost of necessary works)
+has no Arabic counterpart anywhere on the page. The extractor copies the 1021 cell
+literally, so `ar_text` of 1021 currently contains (٢) and (٣). Whether to keep
+the literal row structure or move (٢)–(٣) to Article 1022 is an editorial decision
+for the project owner; nothing has been moved.
 
 ## Automated validation and reproducibility
 
@@ -100,20 +110,43 @@ to start Stage 2. Resume with `uv run dvc push -r storage` when returning
 to remote verification.
 No successful upload or clean-checkout pull is claimed.
 
-## Manual review status and remaining work
+## Manual review (recorded)
 
-The targeted source inspections and regression examples above are completed.
-The full 20-article visual sample review and review of every flagged record
-have not yet been recorded as completed.
+Reviewed by comparing each record with a rendered view of the source PDF. The
+comparisons were done by AI agents reading the images, with the Article 533 and
+Article 1021/1022 findings re-checked by the maintainer-side assistant; this is a
+useful audit, not a certified legal review.
 
-- [ ] Compare all 20 records in `data/qa_civil_code/qa_random_articles.html`
-  with their source crops and record per-article findings.
-- [ ] Review every record with `qa_flags` and document its disposition.
-- [ ] Review the zero-width alef diagnostic sample against the source crops.
-- [ ] Add a dedicated Article 1021/1022 boundary regression assertion.
-- [ ] Verify remote upload and retrieval from a clean checkout.
+**20 sampled crops** (`data/qa_civil_code/qa_random_articles.html`): no extraction
+error found in any of the 20 records (52, 82, 89, 93, 206, 219, 237, 256, 313, 464,
+504, 508, 514, 533, 558, 620, 916, 921, 976, 1091), and every article number matches.
+Limits of that statement:
 
-Automated checks protect structure and known regressions; they do not certify
-every extracted passage or translation. Stage 2 ingestion development can
-proceed, with initial retrieval results considered provisional until the
-remaining manual audit is completed. Rebuild the index after corpus repairs.
+- Crops for 237, 504, 916 and 1091 are cut off, so only the visible part was compared
+  (237 is "unsure" for its English tail; 504, 916 and 1091 were checked up to the
+  crop edge).
+- Source spellings and typos are preserved and are not extraction errors: "وغلى" in
+  Article 533 (for "وإلى"), "الإلتزام"/"الشئ" in 206, "أجراء"/"أى" in 219, "الأراضى"
+  in 921, "o f" in 1022, "to a be a legacy" in 908.
+
+**Flagged records** (`single_column_article_anchor`: 54, 277, 601, 714, 746, 898,
+908, 1022, 1090):
+
+| Article | Disposition |
+| --- | --- |
+| 54 (and repealed 55–80) | Correct: English repeal note only. The source also prints an *Arabic* repeal notice that is not captured (the schema has no Arabic repeal field). Known limitation; Arabic questions about a repealed article are answered from the English notice. |
+| 277, 714, 746, 898, 908, 1090 | Correct. 714 and 908 span a page break and are stitched correctly. |
+| 601 | Content correct; cosmetic glitch in `ar_text`: `(١ لا ينتهي … المستأجر.) (٢)` where the page shows `(١) لا ينتهي …`. Only record with an unclosed `(digit` marker. Quote validation uses substrings, so answers are unaffected. Not fixed. |
+| 1021 / 1022 | Boundary issue described above; decision pending. |
+
+The 24 records with unbalanced parentheses (5, 52, 300, …) were not individually
+reviewed beyond Article 52, which matched its source.
+
+## Remaining work
+
+- [ ] Decide the 1021/1022 representation, then add the boundary regression test.
+- [ ] Review the zero-width alef diagnostic sample (`qa_zero_width_alefs.html`).
+- [ ] Verify clean-checkout `dvc pull` + `dvc repro` (the remote holds the artifacts).
+
+Automated checks protect structure and known regressions; they do not certify every
+extracted passage or translation. Rebuild the index after corpus repairs.
