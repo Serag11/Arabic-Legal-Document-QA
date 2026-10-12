@@ -223,7 +223,9 @@ class AnsweringService:
             options = {"on_query_vector": self.metrics.observe_query_vector} if getattr(self.retriever, "supports_query_vector", False) else {}
             started = time.perf_counter()
             with self.retrieval_lock:
-                results = self.retriever.search(question, k=self.config["retrieval_top_k"], filters=filters, **options)
+                # Article numbers repeat across indexed documents, so answers stay within one corpus.
+                scoped = {**(filters or {}), "corpus_id": self.config["corpus_id"]}
+                results = self.retriever.search(question, k=self.config["retrieval_top_k"], filters=scoped, **options)
             self.metrics.observe_stage("retrieval", time.perf_counter() - started)
             self.metrics.observe_results(results)
             context = build_context(results, self.config["max_context_characters"])

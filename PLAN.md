@@ -196,7 +196,7 @@ Complete these after the baseline RAG service, evaluation, and CI are working.
 - [ ] Wrap the RAG pipeline with BentoML and serve the generative model with vLLM (or document the API-based model used initially).
 - [X] Add streaming `POST /ask/stream` (SSE: context, delta, validated final) and verify progressive output with `curl`.
 - [X] Run Locust at 50 concurrent users (simulated provider latency) and save the report under `reports/`; see `reports/load-test.md`. Retrieval-only locking raised throughput from 0.5 to ~13 req/s.
-- [ ] Add batch re-indexing and test it with at least one additional document.
+- [X] Add incremental batch re-indexing (`legal-qa-reindex`, `src/reindex.py`) and test it with a fictional second document (`tests/fixtures/test_statute.jsonl`). Index-level only: `/ask` still answers from `egyptian-civil-code`; a real second document needs its own reviewed evaluation.
 - [X] Document a canary rollout configuration and rollout stages (`deploy/canary/`; validated with `docker compose config` only, never started).
 - [ ] Compare original and AWQ 4-bit generation using RAGAS; report quality, latency, and model size.
 - [ ] Add a reranker baseline and distill it; compare retrieval and RAGAS quality before/after as required by the handbook's Project 2 optimization deliverables (p. 66).

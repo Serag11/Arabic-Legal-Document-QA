@@ -10,6 +10,7 @@
   "max_output_tokens": 2048,
   "thinking_budget": 0,
   "timeout_ms": 60000,
+  "corpus_id": "egyptian-civil-code",
   "retrieval_top_k": 5,
   "max_context_characters": 24000,
   "pricing_usd_per_million_tokens": {"input": 0.25, "output": 1.5, "note": "Estimate from third-party reports of the gemini-3.1-flash-lite rate; verify against Google's pricing page. Thinking tokens are billed as output."}

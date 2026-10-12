@@ -262,7 +262,7 @@ def build_index(chunks, index, config, encoder=None):
 
 
 def make_filter(filters):
-    allowed = {"language", "book", "chapter", "section", "topic", "source_book", "article_number", "is_repealed", "content_kind"}
+    allowed = {"corpus_id", "language", "book", "chapter", "section", "topic", "source_book", "article_number", "is_repealed", "content_kind"}
     if set(filters) - allowed:
         raise ValueError("Unknown metadata filter")
     if "article_number" in filters and type(filters["article_number"]) is not int:
@@ -287,12 +287,14 @@ def explicit_article_number(question):
 def group_results(documents, distances, k, method):
     groups = {}
     for doc, distance in zip(documents, distances):
-        number = doc.metadata.article_number
-        if number not in groups:
-            groups[number] = {"article_number": number, "citation": doc.metadata.citation,
-                              "score": None if distance is None else 1.0 - distance,
-                              "method": method, "passages": []}
-        groups[number]["passages"].append(asdict(doc))
+        # Article numbers repeat across corpora, so a group is one article of one corpus.
+        key = (doc.metadata.corpus_id, doc.metadata.article_number)
+        if key not in groups:
+            groups[key] = {"article_number": doc.metadata.article_number, "corpus_id": doc.metadata.corpus_id,
+                           "citation": doc.metadata.citation,
+                           "score": None if distance is None else 1.0 - distance,
+                           "method": method, "passages": []}
+        groups[key]["passages"].append(asdict(doc))
     result = list(groups.values())[:k]
     for rank, item in enumerate(result, 1):
         item["rank"] = rank
@@ -406,6 +408,11 @@ def main():
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("download")
+    reindex = commands.add_parser("reindex", help="Incrementally update an existing index (see src/reindex.py)")
+    reindex.add_argument("--index", type=Path, required=True)
+    reindex.add_argument("--corpus", action="append", default=[], metavar="ID=PATH")
+    reindex.add_argument("--remove", action="append", default=[], metavar="ID")
+    reindex.add_argument("--dry-run", action="store_true")
     prep = commands.add_parser("prepare")
     prep.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS)
     prep.add_argument("--out", type=Path, default=DEFAULT_CHUNKS)
@@ -429,6 +436,12 @@ def main():
         result = {"model_cache": download_model(config)}
     elif args.command == "prepare":
         result = prepare(args.corpus, args.out, config)
+    elif args.command == "reindex":
+        if __package__:
+            from .reindex import run_cli
+        else:
+            from reindex import run_cli
+        result = run_cli(args, config)
     elif args.command == "index":
         result = build_index(args.chunks, args.index, config)
     elif args.command == "query":

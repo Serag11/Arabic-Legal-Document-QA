@@ -56,3 +56,4 @@ packages = ["src"]
 [project.scripts]
 legal-qa = "src.rag:main"
 legal-qa-evaluate = "src.experiments:main"
+legal-qa-reindex = "src.reindex:main"
