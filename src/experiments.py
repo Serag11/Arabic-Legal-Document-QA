@@ -187,6 +187,17 @@ def daily_quota_exhausted(exc):
     return False
 
 
+async def with_retries(call, delays=(5, 15)):
+    """Await call() again after transient judge/provider failures; a daily-quota error is never retried."""
+    for attempt in range(len(delays) + 1):
+        try:
+            return await call()
+        except Exception as exc:
+            if daily_quota_exhausted(exc) or attempt == len(delays):
+                raise
+            await asyncio.sleep(delays[attempt])
+
+
 async def evaluate_variant(base, judge, rows, variant, config, output, reused=None, pacer=None):
     initial_fingerprint = pipeline_fingerprint()
     hits = {}
@@ -209,7 +220,7 @@ async def evaluate_variant(base, judge, rows, variant, config, output, reused=No
                 result = await asyncio.to_thread(service.ask, row["question"], language=row["language"])
                 record["result"] = result
                 if row["expected_article_numbers"] and not result["insufficient_evidence"]:
-                    record.update(await judge.score(row, result["answer"], context))
+                    record.update(await with_retries(lambda: judge.score(row, result["answer"], context)))
             except Exception as exc:
                 # Raw judge/provider exceptions may contain credentials or requests.
                 # Record failure explicitly and penalize missing scores, never fabricate.
@@ -262,7 +273,7 @@ async def run_experiments(config_path=DEFAULT_EXPERIMENTS):
     judge = RagasJudge(config["judge_model"], pacer, config["score_answer_accuracy"])
     outputs = []
     try:
-        sanity = await judge.sanity_check()
+        sanity = await with_retries(judge.sanity_check)
         for variant in config["variants"]:
             output = ROOT / "reports/experiments" / f"{variant['name']}.json"
             mlflow.set_experiment(f"CivilCode/{variant['name']}")
