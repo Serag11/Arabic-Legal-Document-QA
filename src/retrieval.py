@@ -319,7 +319,9 @@ class Retriever:
             raise ValueError("Collection configuration differs from its manifest")
         self.encoder = encoder
 
-    def search(self, question, k=5, filters=None, direct_lookup=True):
+    supports_query_vector = True
+
+    def search(self, question, k=5, filters=None, direct_lookup=True, on_query_vector=None):
         if not question.strip() or k < 1:
             raise ValueError("Question must be nonempty and k must be positive")
         filters = dict(filters or {})
@@ -335,6 +337,8 @@ class Retriever:
             return group_results(docs, [None] * len(docs), k, "article_lookup")
         self.encoder = self.encoder or E5Encoder(self.config)
         vector = self.encoder.encode([normalize_arabic_for_search(question)], query=True)[0].tolist()
+        if on_query_vector:
+            on_query_vector(vector)
         count = self.collection.count()
         n = min(count, max(k * 4, k))
         while True:

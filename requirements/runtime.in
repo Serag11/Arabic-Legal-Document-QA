@@ -12,3 +12,4 @@ onnxruntime==1.31.0
 numpy==2.5.3
 tokenizers==0.22.2
 langfuse==4.17.0
+prometheus-client==0.26.0

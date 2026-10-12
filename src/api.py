@@ -1,13 +1,15 @@
 """FastAPI service with one shared retriever per application lifetime."""
 
 from contextlib import asynccontextmanager
+import time
 from typing import Annotated, Literal
 
-from fastapi import Body, FastAPI, HTTPException, Request
+from fastapi import Body, FastAPI, HTTPException, Request, Response
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, field_validator
 
 from .generation import AnsweringService, GenerationError
+from .metrics import get_metrics
 from .retrieval import E5Encoder
 from .streaming import stream_events
 
@@ -81,8 +83,9 @@ class HealthResponse(BaseModel):
     indexed_articles: int
 
 
-def create_app(service_factory=None):
+def create_app(service_factory=None, metrics=None):
     factory = service_factory or AnsweringService
+    app_metrics = metrics or get_metrics()
 
     @asynccontextmanager
     async def lifespan(app):
@@ -95,10 +98,32 @@ def create_app(service_factory=None):
         try:
             yield
         finally:
+            sampler = getattr(app.state.service, "sampler", None)
+            if sampler:
+                sampler.close()
             getattr(app.state.service, "tracer", None) and app.state.service.tracer.flush()
             app.state.service = None
 
     application = FastAPI(title="Arabic Legal Document QA", version="0.1.0", lifespan=lifespan)
+
+    @application.middleware("http")
+    async def record_http_metrics(request: Request, call_next):
+        started, status = time.perf_counter(), 500
+        try:
+            response = await call_next(request)
+            status = response.status_code
+            return response
+        finally:
+            route = request.scope.get("route")
+            path = getattr(route, "path", "unmatched")
+            app_metrics.http_requests.labels(request.method, path, str(status)).inc()
+            if path != "/metrics":
+                app_metrics.http_seconds.labels(path).observe(time.perf_counter() - started)
+
+    @application.get("/metrics", include_in_schema=False)
+    def prometheus_metrics():
+        body, content_type = app_metrics.render()
+        return Response(body, media_type=content_type)
 
     @application.get("/health", response_model=HealthResponse)
     def health(request: Request):

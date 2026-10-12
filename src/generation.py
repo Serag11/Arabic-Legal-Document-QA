@@ -7,15 +7,20 @@ import os
 from pathlib import Path
 import re
 from threading import Lock
+import time
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 
 if __package__:
+    from .metrics import get_metrics
     from .observability import get_tracer
+    from .online_eval import FaithfulnessSampler
     from .streaming import AnswerTextStream
     from .retrieval import Retriever
 else:
+    from metrics import get_metrics
     from observability import get_tracer
+    from online_eval import FaithfulnessSampler
     from streaming import AnswerTextStream
     from retrieval import Retriever
 
@@ -176,12 +181,16 @@ def validate_grounding(answer, context):
 
 
 class AnsweringService:
-    def __init__(self, retriever=None, generator=None, config=None, index=None, prompt_path=None, tracer=None):
+    def __init__(self, retriever=None, generator=None, config=None, index=None, prompt_path=None, tracer=None, metrics=None, sampler=None):
         self.config = config or load_generation_config()
         self.retriever = retriever or Retriever(index or ROOT / "data/retrieval/chroma")
         self.generator = generator or GoogleGenerator(self.config)
         self.prompt = Path(prompt_path or PROMPT_PATH).read_text(encoding="utf-8")
         self.tracer = tracer or get_tracer()
+        self.metrics = metrics or get_metrics()
+        if self.metrics.drift and not self.metrics.drift.matches(self.retriever.manifest["config"]):
+            self.metrics.drift = None  # baseline was built with another embedding model
+        self.sampler = sampler if sampler is not None else FaithfulnessSampler.from_environment(self.metrics, self.tracer)
         # Only the shared CPU encoder/index needs serializing, not the provider call.
         self.retrieval_lock = Lock()
 
@@ -193,17 +202,30 @@ class AnsweringService:
         if language not in ("ar", "en"):
             raise ValueError("Answer language must be ar or en")
         with self.tracer.observation("ask", input={"question": question, "language": language, "filters": filters or {}}) as root:
-            result = self._ask(question, language, filters, on_context, on_text)
+            started = time.perf_counter()
+            try:
+                result, context = self._ask(question, language, filters, on_context, on_text)
+            except GenerationError as exc:
+                self.metrics.observe_provider_error(exc)
+                raise
+            self.metrics.observe_stage("total", time.perf_counter() - started)
+            self.metrics.observe_answer(result)
             root.update(output={key: result.get(key) for key in ("answer", "sources", "insufficient_evidence", "reason", "usage")},
                         metadata={"model_version": result.get("model_version")})
             if root.trace_id:
                 result["trace_id"] = root.trace_id
+            if self.sampler:
+                self.sampler.maybe_submit(question, result, context)
             return result
 
     def _ask(self, question, language, filters, on_context, on_text):
         with self.tracer.observation("retrieval", as_type="retriever", input={"question": question, "filters": filters or {}}) as span:
+            options = {"on_query_vector": self.metrics.observe_query_vector} if getattr(self.retriever, "supports_query_vector", False) else {}
+            started = time.perf_counter()
             with self.retrieval_lock:
-                results = self.retriever.search(question, k=self.config["retrieval_top_k"], filters=filters)
+                results = self.retriever.search(question, k=self.config["retrieval_top_k"], filters=filters, **options)
+            self.metrics.observe_stage("retrieval", time.perf_counter() - started)
+            self.metrics.observe_results(results)
             context = build_context(results, self.config["max_context_characters"])
             span.update(output=[{"article_number": p["article_number"], "language": p["language"], "citation": p["citation"]}
                                 for p in context])
@@ -221,8 +243,8 @@ class AnsweringService:
 
         def insufficient(reason, usage=None, model_version=None):
             text = "لا تتوفر في النصوص المسترجعة أدلة كافية للإجابة عن هذا السؤال." if language == "ar" else "The retrieved passages do not provide sufficient evidence to answer this question."
-            return {"answer": text, "sources": [], "insufficient_evidence": True, "evidence": [],
-                    "reason": reason, "configuration": run, "usage": usage or {}, "model_version": model_version}
+            return ({"answer": text, "sources": [], "insufficient_evidence": True, "evidence": [],
+                     "reason": reason, "configuration": run, "usage": usage or {}, "model_version": model_version}, context)
 
         if not context:
             return insufficient("no_retrieved_evidence")
@@ -233,7 +255,9 @@ class AnsweringService:
             metadata={"prompt_version": self.config.get("prompt_version"), "prompt_sha256": run["prompt_sha256"]},
         ) as span:
             extra = {"on_text": on_text} if on_text else {}
+            started = time.perf_counter()
             response = self.generator.generate(question, context, language, self.prompt, **extra)
+            self.metrics.observe_stage("generation", time.perf_counter() - started)
             usage = {key: value for key, value in (response.usage or {}).items() if isinstance(value, int)}
             span.update(output=response.answer.model_dump(), usage_details=usage or None,
                         model=response.model_version or self.config["model"])
@@ -246,9 +270,9 @@ class AnsweringService:
             except ValueError as exc:
                 # The discarded candidate and the failing check are kept in the trace for diagnosis.
                 span.update(output={"valid": False, "error": str(exc)}, level="WARNING", status_message=str(exc))
-                rejected = insufficient("invalid_source_grounding", response.usage, response.model_version)
+                rejected, _ = insufficient("invalid_source_grounding", response.usage, response.model_version)
                 rejected["reason_detail"] = str(exc)
-                return rejected
+                return rejected, context
         citations = list(dict.fromkeys(response.answer.citations))
         source_map = {p["article_number"]: p["citation"] for p in context}
         answer_text = response.answer.answer
@@ -260,7 +284,7 @@ class AnsweringService:
                 note = f"ملاحظة: النص العربي للمادة {number} غير موجود في نسخة المصدر؛ استندت الإجابة إلى النص الإنجليزي."
                 source_notes.append(note)
                 answer_text += "\n\n" + note
-        return {"answer": answer_text, "sources": [source_map[n] for n in citations],
-                "insufficient_evidence": False, "evidence": evidence,
-                "source_notes": source_notes,
-                "configuration": run, "usage": response.usage or {}, "model_version": response.model_version}
+        return ({"answer": answer_text, "sources": [source_map[n] for n in citations],
+                 "insufficient_evidence": False, "evidence": evidence,
+                 "source_notes": source_notes,
+                 "configuration": run, "usage": response.usage or {}, "model_version": response.model_version}, context)

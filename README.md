@@ -133,6 +133,14 @@ every request (`ask`, `retrieval`, `generation`, `grounding` spans, including th
 candidate and failing check). Without them tracing is off. Responses carry a `trace_id`
 when tracing is on. Questions and passages are sent to the configured Langfuse project.
 
+### Metrics and monitoring
+
+`GET /metrics` serves Prometheus metrics (outcomes, stage latency, tokens and estimated
+cost, query-embedding drift, sampled faithfulness). The optional stack
+`docker compose -f compose.yaml -f compose.monitoring.yaml up` adds Prometheus with alert
+rules and a Grafana dashboard (set `GRAFANA_ADMIN_PASSWORD`). Details, thresholds and
+limitations: `reports/monitoring.md`.
+
 ### Load testing
 
 `uv sync --group loadtest`, then run a service with simulated generation latency

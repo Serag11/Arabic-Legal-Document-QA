@@ -95,6 +95,15 @@ class Tracer:
         except Exception:
             LOGGER.warning("Langfuse could not end %s", name, exc_info=True)
 
+    def score(self, trace_id, name, value):
+        """Attach a score to a finished trace (e.g. a sampled online faithfulness result)."""
+        if self.client is None or not trace_id:
+            return
+        try:
+            self.client.create_score(trace_id=trace_id, name=name, value=value, data_type="NUMERIC")
+        except Exception:
+            LOGGER.warning("Langfuse score failed", exc_info=True)
+
     def flush(self):
         if self.client is None:
             return

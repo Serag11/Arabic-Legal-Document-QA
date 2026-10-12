@@ -1,0 +1,76 @@
+# Thresholds are starting points chosen from the measured baselines in reports/; tune with real traffic.
+groups:
+  - name: legal-qa
+    rules:
+      - alert: LegalQAGroundingRejectionHigh
+        # Evaluation baseline: 3/60 (5%) before and ~1-2% after the contiguous-quote prompt change.
+        expr: |
+          sum(increase(legal_qa_answers_total{outcome="invalid_grounding"}[30m]))
+            / sum(increase(legal_qa_answers_total[30m])) > 0.10
+          and sum(increase(legal_qa_answers_total[30m])) >= 20
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "More than 10% of answers are discarded by source-grounding validation"
+          description: "Check recent Langfuse traces (grounding spans keep the rejected candidate and the failing check)."
+
+      - alert: LegalQAProviderErrorsHigh
+        expr: |
+          sum(increase(legal_qa_answers_total{outcome="provider_error"}[10m]))
+            / sum(increase(legal_qa_answers_total[10m])) > 0.20
+          and sum(increase(legal_qa_answers_total[10m])) >= 10
+        for: 5m
+        labels: {severity: critical}
+        annotations:
+          summary: "More than 20% of generation calls fail at the provider (rate limits or outage)"
+          description: "See legal_qa_provider_errors_total by status (429 = quota, 503 = provider)."
+
+      - alert: LegalQALatencyP95High
+        # Gemini flash-lite took 14-26 s per call in the live load test, so this is deliberately loose.
+        expr: histogram_quantile(0.95, sum by (le) (rate(legal_qa_stage_seconds_bucket{stage="total"}[10m]))) > 40
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "p95 end-to-end answer latency above 40 s"
+
+      - alert: LegalQAQueryDrift
+        # Mean query-to-centroid cosine fell 3 reference standard deviations below the evaluation-question mean.
+        expr: |
+          (sum(increase(legal_qa_query_centroid_cosine_sum[1h])) / sum(increase(legal_qa_query_centroid_cosine_count[1h])))
+            < (max(legal_qa_query_centroid_cosine_baseline_mean) - 3 * max(legal_qa_query_centroid_cosine_baseline_std))
+          and sum(increase(legal_qa_query_centroid_cosine_count[1h])) >= 20
+        for: 15m
+        labels: {severity: warning}
+        annotations:
+          summary: "Incoming questions have drifted away from the evaluated question distribution"
+          description: "Queries no longer resemble the 60 reference questions (for example a new legal domain). Re-evaluate retrieval before trusting quality scores."
+
+      - alert: LegalQARefusalRateHigh
+        # Catches questions on subjects the corpus does not cover (for example family law), which the embedding
+        # drift alert cannot separate from in-domain questions. Evaluation baseline: 4/60 refusal probes plus one miss.
+        expr: |
+          sum(increase(legal_qa_answers_total{outcome=~"model_refusal|no_evidence"}[1h]))
+            / sum(increase(legal_qa_answers_total[1h])) > 0.25
+          and sum(increase(legal_qa_answers_total[1h])) >= 20
+        for: 15m
+        labels: {severity: warning}
+        annotations:
+          summary: "More than 25% of questions are refused for insufficient evidence"
+          description: "Users may be asking about subjects outside the Egyptian Civil Code corpus, or retrieval has degraded."
+
+      - alert: LegalQAFaithfulnessLow
+        # 0.75 is the CI quality-gate threshold (config/experiments.json).
+        expr: |
+          (sum(increase(legal_qa_faithfulness_sum[6h])) / sum(increase(legal_qa_faithfulness_count[6h]))) < 0.75
+          and sum(increase(legal_qa_faithfulness_count[6h])) >= 10
+        for: 30m
+        labels: {severity: critical}
+        annotations:
+          summary: "Sampled answer faithfulness is below the 0.75 release threshold"
+
+      - alert: LegalQAEstimatedCostHigh
+        # Example daily budget in USD; adjust to your own.
+        expr: sum(increase(legal_qa_estimated_cost_usd_total[24h])) > 5
+        labels: {severity: warning}
+        annotations:
+          summary: "Estimated generation spend exceeded 5 USD in 24 hours"

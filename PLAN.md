@@ -201,7 +201,7 @@ Complete these after the baseline RAG service, evaluation, and CI are working.
 - [ ] Compare original and AWQ 4-bit generation using RAGAS; report quality, latency, and model size.
 - [ ] Add a reranker baseline and distill it; compare retrieval and RAGAS quality before/after as required by the handbook's Project 2 optimization deliverables (p. 66).
 - [X] Add Langfuse traces for every `/ask` request (ask, retrieval, generation, grounding spans; rejected candidate kept). Attaching faithfulness scores to traces is still open.
-- [ ] Track answer faithfulness, embedding/cosine drift, and token usage/cost; add Prometheus/Grafana panels and an alert threshold.
+- [X] Track answer faithfulness (sampled), embedding/cosine drift, and token usage/cost; Prometheus rules (promtool-tested) and Grafana dashboard added in `monitoring/`; containers not yet run (see `reports/monitoring.md`).
 - [ ] Document the final architecture and measured results in the README and project reports.
 
 ## Suggested order for the next work session
