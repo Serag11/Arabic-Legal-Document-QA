@@ -114,7 +114,7 @@ No successful upload or clean-checkout pull is claimed.
 
 Reviewed by comparing each record with a rendered view of the source PDF. The
 comparisons were done by AI agents reading the images, with the Article 533 and
-Article 1021/1022 findings re-checked by the maintainer-side assistant; this is a
+Article 1021/1022 findings re-checked by the coordinating assistant; this is a
 useful audit, not a certified legal review.
 
 **20 sampled crops** (`data/qa_civil_code/qa_random_articles.html`): no extraction
@@ -144,7 +144,9 @@ reviewed beyond Article 52, which matched its source.
 
 ## Remaining work
 
-- [ ] Decide the 1021/1022 representation, then add the boundary regression test.
+- [ ] Decide whether to move Article 1021's Arabic paragraphs (٢)–(٣) to 1022 (editorial; it would also
+  change the reviewed s2-022 evaluation probes). The literal layout is pinned by
+  `test_article_1021_boundary_with_1022_matches_the_source_rows`.
 - [ ] Review the zero-width alef diagnostic sample (`qa_zero_width_alefs.html`).
 - [ ] Verify clean-checkout `dvc pull` + `dvc repro` (the remote holds the artifacts).
 

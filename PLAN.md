@@ -36,7 +36,7 @@ This plan follows the Project 2 requirements in *The MLOps Practitioner Handbook
 - [X] Assert repealed records are retained, flagged, and carry repeal metadata.
 - [X] Check article length bounds, citations, and metadata.
 - [X] Add regression checks for Articles 1–3, 147, 558, and 1022.
-- [ ] Add a specific regression assertion for Article 1021's extracted text and its boundary with Article 1022.
+- [X] Add a specific regression assertion for Article 1021's extracted text and its boundary with Article 1022 (it pins the literal source layout; see `reports/corpus-extraction.md`).
 - [X] Run validation after extraction as a DVC stage so extraction cannot silently produce an invalid corpus.
 
 ### 3. Standardize and version the corpus
