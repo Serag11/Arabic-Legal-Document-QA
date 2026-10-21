@@ -76,7 +76,7 @@ class ApiPacer:
 
 class PacedGenerator(GoogleGenerator):
     def __init__(self, config, pacer):
-        super().__init__(config)
+        super().__init__(config, fallback_models=[])
         self.pacer = pacer
 
     def generate(self, *args, **kwargs):
@@ -205,7 +205,7 @@ async def evaluate_variant(base, judge, rows, variant, config, output, reused=No
         filters = {"language": "en" if row["language"] == "ar" else "ar"} if variant["document_language"] == "opposite" else {}
         hits[row["question"]] = base.search(row["question"], k=variant["top_k"], filters=filters)
     generation = dict(load_generation_config(), retrieval_top_k=variant["top_k"])
-    service = AnsweringService(PreparedRetriever(base, hits), PacedGenerator(generation, pacer) if pacer else GoogleGenerator(generation), generation)
+    service = AnsweringService(PreparedRetriever(base, hits), PacedGenerator(generation, pacer) if pacer else GoogleGenerator(generation, fallback_models=[]), generation)
     semaphore = asyncio.Semaphore(config["concurrency"])
 
     async def one(row):

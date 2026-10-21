@@ -76,16 +76,37 @@ def load_google_api_key(env_file=None):
     return key.strip()
 
 
+def load_fallback_models(env_file=None):
+    """Optional comma-separated GOOGLE_FALLBACK_MODELS, tried in order when a model's quota runs out."""
+    from dotenv import dotenv_values
+
+    values = dotenv_values(env_file if env_file is not None else ROOT / ".env")
+    names = values.get("GOOGLE_FALLBACK_MODELS") or os.environ.get("GOOGLE_FALLBACK_MODELS") or ""
+    return [name.strip() for name in names.split(",") if name.strip()]
+
+
+def quota_day():
+    """Free-tier daily quotas reset at midnight Pacific time."""
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+
+    return datetime.now(ZoneInfo("America/Los_Angeles")).date()
+
+
 class GoogleGenerator:
-    def __init__(self, config):
+    def __init__(self, config, fallback_models=None):
         self.config = config
+        fallbacks = load_fallback_models() if fallback_models is None else fallback_models
+        self.models = list(dict.fromkeys([config["model"], *fallbacks]))
+        self.exhausted = {}  # model -> quota day on which its daily quota (or access) ran out
 
     def generate(self, question, context, language, system_prompt, on_text=None):
-        """One answer, retrying transient provider limits (HTTP 429 per-minute, 503) with a short backoff.
+        """One answer from the first model with quota left, falling back down the configured list.
 
-        A daily-quota 429 is never retried, and neither is a streamed call once text has been shown.
+        A model whose daily quota is exhausted (or that the key cannot use) is skipped until the quota
+        resets; one that stays rate-limited after retries is skipped for this call only. Nothing falls
+        back once streamed text has been shown.
         """
-        backoff = list(self.config.get("provider_retry_backoff_seconds", []))
         emitted = False
 
         def track(text):
@@ -93,16 +114,38 @@ class GoogleGenerator:
             emitted = True
             on_text(text)
 
+        today = quota_day()
+        candidates = [model for model in self.models if self.exhausted.get(model) != today] or self.models[:1]
+        for index, model in enumerate(candidates):
+            try:
+                return self._generate_with_retries(model, question, context, language, system_prompt,
+                                                   track if on_text else None, lambda: emitted)
+            except GenerationError as failure:
+                status = getattr(failure, "status_code", None)
+                if getattr(failure, "daily_quota", False) or status == 404:
+                    self.exhausted[model] = today
+                if emitted or index == len(candidates) - 1 or not (status in (429, 503, 404)):
+                    raise
+
+    def _generate_with_retries(self, model, question, context, language, system_prompt, on_text, emitted):
+        """Retry transient provider limits (HTTP 429 per-minute, 503) with a short backoff, never a daily-quota 429."""
+        backoff = list(self.config.get("provider_retry_backoff_seconds", []))
         for attempt in range(len(backoff) + 1):
             try:
-                return self._generate_once(question, context, language, system_prompt, track if on_text else None)
+                return self._generate_once(question, context, language, system_prompt, on_text, model=model)
             except GenerationError as failure:
                 transient = getattr(failure, "status_code", None) in (429, 503) and not getattr(failure, "daily_quota", False)
-                if not transient or emitted or attempt == len(backoff):
+                if not transient or emitted() or attempt == len(backoff):
                     raise
                 time.sleep(backoff[attempt])
 
-    def _generate_once(self, question, context, language, system_prompt, on_text=None):
+    def _thinking_config(self, model, types):
+        # Gemini 3 takes a thinking level, 2.5 a token budget.
+        if model.startswith("gemini-3") and self.config.get("thinking_level"):
+            return types.ThinkingConfig(thinking_level=self.config["thinking_level"])
+        return types.ThinkingConfig(thinking_budget=self.config["thinking_budget"])
+
+    def _generate_once(self, question, context, language, system_prompt, on_text=None, model=None):
         from google import genai
         from google.genai import errors, types
         from pydantic import ValidationError
@@ -114,13 +157,12 @@ class GoogleGenerator:
                 http_options=types.HttpOptions(timeout=self.config["timeout_ms"]),
             ) as client:
                 request = dict(
-                    model=self.config["model"], contents=contents,
+                    model=model or self.config["model"], contents=contents,
                     config=types.GenerateContentConfig(
                         system_instruction=system_prompt,
                         temperature=self.config["temperature"],
                         max_output_tokens=self.config["max_output_tokens"],
-                        thinking_config=(types.ThinkingConfig(thinking_level=self.config["thinking_level"])
-                                         if self.config.get("thinking_level") else types.ThinkingConfig(thinking_budget=self.config["thinking_budget"])),
+                        thinking_config=self._thinking_config(model or self.config["model"], types),
                         response_mime_type="application/json", response_json_schema=GeneratedAnswer.model_json_schema(),
                     ),
                 )

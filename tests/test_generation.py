@@ -6,10 +6,16 @@ import pytest
 
 from src.generation import (
     AnsweringService, GeneratedAnswer, GenerationError, GenerationResponse,
-    GoogleGenerator, load_generation_config, load_google_api_key,
+    GoogleGenerator, load_fallback_models, load_generation_config, load_google_api_key,
 )
 from src.rag import prepare_documents
 from src.retrieval import load_config
+
+
+@pytest.fixture(autouse=True)
+def no_fallback_models(monkeypatch):
+    # A developer's .env may list fallback models; tests opt in explicitly.
+    monkeypatch.setattr("src.generation.load_fallback_models", lambda: [])
 
 
 class FakeRetriever:
@@ -165,6 +171,7 @@ class ScriptedClient:
 
     outcomes = []
     calls = 0
+    models_called = []
 
     def __init__(self, **kwargs):
         self.models = self
@@ -177,6 +184,7 @@ class ScriptedClient:
 
     def generate_content(self, **kwargs):
         type(self).calls += 1
+        type(self).models_called.append(kwargs["model"])
         outcome = type(self).outcomes.pop(0)
         if isinstance(outcome, Exception):
             raise outcome
@@ -186,7 +194,7 @@ class ScriptedClient:
 def scripted(monkeypatch, outcomes):
     from google import genai
 
-    ScriptedClient.outcomes, ScriptedClient.calls = list(outcomes), 0
+    ScriptedClient.outcomes, ScriptedClient.calls, ScriptedClient.models_called = list(outcomes), 0, []
     sleeps = []
     monkeypatch.setattr("src.generation.load_google_api_key", lambda: "test-key")
     monkeypatch.setattr(genai, "Client", ScriptedClient)
@@ -230,6 +238,58 @@ def test_retries_are_bounded_and_skip_daily_quota_and_other_errors(monkeypatch):
     with pytest.raises(GenerationError, match="400"):
         GoogleGenerator(config).generate("q", [], "en", "prompt")
     assert ScriptedClient.calls == 1
+
+
+def test_exhausted_models_fall_back_in_order_and_stay_skipped_until_reset(monkeypatch):
+    config = load_generation_config()
+    generator = GoogleGenerator(config, fallback_models=["gemini-3.1-flash-lite", "gemini-2.5-flash"])
+    scripted(monkeypatch, [api_error(429, "PerDay quota exhausted"), api_error(404, "NOT_FOUND"), good_response()])
+    assert generator.generate("q", [], "en", "prompt").answer.answer == "x"
+    assert ScriptedClient.models_called == [config["model"], "gemini-3.1-flash-lite", "gemini-2.5-flash"]
+
+    scripted(monkeypatch, [good_response()])
+    generator.generate("q", [], "en", "prompt")
+    assert ScriptedClient.models_called == ["gemini-2.5-flash"]
+
+    monkeypatch.setattr("src.generation.quota_day", lambda: "next day")
+    scripted(monkeypatch, [good_response()])
+    generator.generate("q", [], "en", "prompt")
+    assert ScriptedClient.models_called == [config["model"]]
+
+
+def test_fallback_skips_persistent_rate_limits_but_not_other_errors(monkeypatch):
+    config = load_generation_config()
+    generator = GoogleGenerator(config, fallback_models=["gemini-2.5-flash"])
+    scripted(monkeypatch, [api_error(429)] * 3 + [good_response()])
+    generator.generate("q", [], "en", "prompt")
+    assert ScriptedClient.models_called == [config["model"]] * 3 + ["gemini-2.5-flash"]
+    scripted(monkeypatch, [good_response()])
+    generator.generate("q", [], "en", "prompt")
+    assert ScriptedClient.models_called == [config["model"]]  # a per-minute limit is not remembered
+
+    scripted(monkeypatch, [api_error(400, "INVALID_ARGUMENT")])
+    with pytest.raises(GenerationError, match="400"):
+        generator.generate("q", [], "en", "prompt")
+    assert ScriptedClient.calls == 1
+
+    scripted(monkeypatch, [api_error(429, "PerDay quota exhausted")] * 2)
+    with pytest.raises(GenerationError) as daily:
+        GoogleGenerator(config, fallback_models=["gemini-2.5-flash"]).generate("q", [], "en", "prompt")
+    assert daily.value.daily_quota and ScriptedClient.calls == 2
+
+
+def test_thinking_config_matches_each_model_family():
+    from google.genai import types
+
+    generator = GoogleGenerator(load_generation_config())
+    assert generator._thinking_config("gemini-3.5-flash", types).thinking_level.value.lower() == "minimal"
+    assert generator._thinking_config("gemini-2.5-flash", types).thinking_budget == 0
+
+
+def test_fallback_models_are_read_from_the_env_file(tmp_path):
+    env = tmp_path / ".env"
+    env.write_text("GOOGLE_FALLBACK_MODELS= gemini-2.5-flash , ,gemini-3.5-flash\n")
+    assert load_fallback_models(env) == ["gemini-2.5-flash", "gemini-3.5-flash"]
 
 
 def test_streamed_calls_are_not_retried_once_text_was_shown(monkeypatch):
