@@ -13,14 +13,14 @@
     "retrieval_mrr": 0.8654761904761905,
     "supported_answer_coverage": 0.9821428571428571,
     "expected_citation_hit": 0.9821428571428571,
-    "faithfulness_answered": 0.9818181818181818,
-    "faithfulness_coverage_adjusted": 0.9642857142857143,
+    "faithfulness_answered": 0.9787878787878789,
+    "faithfulness_coverage_adjusted": 0.9613095238095238,
     "answer_accuracy_coverage_adjusted": null,
     "unsupported_refusal_accuracy": 1.0,
-    "mean_seconds": 43.71640557808496,
+    "mean_seconds": 42.091877025683786,
     "error_count": 0,
     "retrieval_hit_ar": 0.9642857142857143,
-    "faithfulness_ar": 0.9285714285714286,
+    "faithfulness_ar": 0.9226190476190476,
     "citation_hit_ar": 0.9642857142857143,
     "retrieval_hit_en": 1.0,
     "faithfulness_en": 1.0,
@@ -109,7 +109,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 0.5,
       "result": {
-        "answer": "إذا لم يوجد نص تشريعي يمكن تطبيقه، يحكم القاضي بمقتضى العرف، فإذا لم يوجد، فبمقتضى مبادئ الشريعة الإسلامية، فإذا لم يوجد فبمقتضى مبادئ القانون الطبيعي وقواعد العدالة، طبقاً للمادة 1.",
+        "answer": "إذا لم يوجد نص تشريعي يمكن تطبيقه، يحكم القاضي بمقتضى العرف، فإذا لم يوجد فبمقتضى مبادئ الشريعة الإسلامية، فإذا لم يوجد فبمقتضى مبادئ القانون الطبيعي وقواعد العدالة، وفقاً لما نصت عليه المادة 1 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 1"
         ],
@@ -185,7 +185,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 199,
+          "candidates_token_count": 206,
           "prompt_token_count": 1095,
           "prompt_tokens_details": [
             {
@@ -193,11 +193,12 @@
               "token_count": 1095
             }
           ],
-          "total_token_count": 1294
+          "total_token_count": 1301
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "918b1f249ede021e207526940b0560b0"
       },
-      "seconds": 36.01749515600386
+      "seconds": 75.49386451600003
     },
     {
       "id": "s2-001-en",
@@ -281,7 +282,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 0.2,
       "result": {
-        "answer": "If there is no applicable provision of the law, the judge must decide according to custom. In the absence of custom, the judge decides in accordance with the principles of Moslem Law, and in the absence of such principles, by applying the principles of natural justice and the rules of equity, according to Article 1.",
+        "answer": "In the absence of an applicable statutory provision, the judge must decide according to custom, then in the absence of custom according to the principles of Moslem Law, and finally, in the absence of such principles, by applying the principles of natural justice and the rules of equity, as set forth in Article 1.",
         "sources": [
           "Egyptian Civil Code, Article 1"
         ],
@@ -362,7 +363,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 206,
+          "candidates_token_count": 205,
           "prompt_token_count": 1126,
           "prompt_tokens_details": [
             {
@@ -370,11 +371,12 @@
               "token_count": 1126
             }
           ],
-          "total_token_count": 1332
+          "total_token_count": 1331
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "fce5d9dac209b8df4bbda4d3aa591ca2"
       },
-      "seconds": 32.064355116992374
+      "seconds": 46.673232788998575
     },
     {
       "id": "s2-002-ar",
@@ -544,9 +546,10 @@
           ],
           "total_token_count": 1528
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "e9fe5930543eb8a913e682cc4774604c"
       },
-      "seconds": 40.09832022400224
+      "seconds": 35.792706341002486
     },
     {
       "id": "s2-002-en",
@@ -640,7 +643,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Yes, a subsequent law can repeal an earlier provision without express declaration if it contains a provision that is inconsistent with the former law or if it regulates anew a matter that had been previously regulated by the former law, according to Article 2.",
+        "answer": "Yes, a provision of a law can be repealed by a subsequent law without an express declaration if the subsequent law contains a provision inconsistent with a provision of the former law or regulates anew a matter previously regulated by a former law, according to Article 2.",
         "sources": [
           "Egyptian Civil Code, Article 2"
         ],
@@ -716,7 +719,7 @@
           "context_passage_count": 6
         },
         "usage": {
-          "candidates_token_count": 153,
+          "candidates_token_count": 156,
           "prompt_token_count": 1254,
           "prompt_tokens_details": [
             {
@@ -724,11 +727,12 @@
               "token_count": 1254
             }
           ],
-          "total_token_count": 1407
+          "total_token_count": 1410
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "01c7c5cdb4ee5c0f3262e65d3dc08294"
       },
-      "seconds": 43.175552103013615
+      "seconds": 32.69068439900002
     },
     {
       "id": "s2-003-ar",
@@ -812,7 +816,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "يعد استعمال الحق غير مشروع في ثلاث حالات: أ) إذا لم يقصد به سوى الإضرار بالغير. ب) إذا كانت المصالح التي يرمي إلى تحقيقها قليلة الأهمية بحيث لا تتناسب البتة مع ما يصيب الغير من ضرر بسببها. ج) إذا كانت المصالح التي يرمي إلى تحقيقها غير مشروعة، وذلك وفقاً لما نصت عليه المادة 5 من المدني.",
+        "answer": "يعد استعمال الحق غير مشروع في الأحوال التالية: أ) إذا لم يقصد به سوى الإضرار بالغير. ب) إذا كانت المصالح التي يرمي إلى تحقيقها قليلة الأهمية، بحيث لا تتناسب البتة مع ما يصيب الغير من ضرر بسببها. ج) إذا كانت المصالح التي يرمي إلى تحقيقها غير مشروعة، وذلك طبقاً للمادة 5 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 5"
         ],
@@ -903,7 +907,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 298,
+          "candidates_token_count": 297,
           "prompt_token_count": 1191,
           "prompt_tokens_details": [
             {
@@ -911,11 +915,12 @@
               "token_count": 1191
             }
           ],
-          "total_token_count": 1489
+          "total_token_count": 1488
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "b77005838f76366811b8a8dffef72367"
       },
-      "seconds": 44.97296607900353
+      "seconds": 37.448653878003825
     },
     {
       "id": "s2-003-en",
@@ -999,7 +1004,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "According to Article 5 of the Egyptian Civil Code, the exercise of a right is considered unlawful in the following cases: a) if the sole aim thereof is to harm another person; b) if the benefit it is desired to realize is out of proportion to the harm caused thereby to another person; c) if the benefit it is desired to realize is unlawful.",
+        "answer": "According to Article 5 of the Egyptian Civil Code, the exercise of a right is considered unlawful if: a) the sole aim thereof is to harm another person; b) the benefit it is desired to realize is out of proportion to the harm caused thereby to another person; or c) the benefit it is desired to realize is unlawful.",
         "sources": [
           "Egyptian Civil Code, Article 5"
         ],
@@ -1075,7 +1080,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 197,
+          "candidates_token_count": 192,
           "prompt_token_count": 1186,
           "prompt_tokens_details": [
             {
@@ -1083,11 +1088,12 @@
               "token_count": 1186
             }
           ],
-          "total_token_count": 1383
+          "total_token_count": 1378
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "b7fc38ee3359d3518f91fdd723db74ca"
       },
-      "seconds": 44.76322729000822
+      "seconds": 37.44405399199604
     },
     {
       "id": "s2-004-ar",
@@ -1171,7 +1177,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "يتم العقد بمجرد أن يتبادل طرفان التعبير عن إرادتين متطابقتين، مع مراعاة ما يقرره القانون فوق ذلك من أوضاع معينة لانعقاد العقد، وذلك طبقاً للمادة 89 من القانون المدني.",
+        "answer": "مع مراعاة الأوضاع المعينة التي قد يقررها القانون لانعقاد العقد، يتم العقد بمجرد أن يتبادل طرفان التعبير عن إرادتين متطابقتين (المادة 89).",
         "sources": [
           "Egyptian Civil Code, Article 89"
         ],
@@ -1247,7 +1253,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 175,
+          "candidates_token_count": 168,
           "prompt_token_count": 1158,
           "prompt_tokens_details": [
             {
@@ -1255,11 +1261,12 @@
               "token_count": 1158
             }
           ],
-          "total_token_count": 1333
+          "total_token_count": 1326
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "8583bab7d06a7fb562fb8447855d81d3"
       },
-      "seconds": 44.17984620999778
+      "seconds": 33.98671155600459
     },
     {
       "id": "s2-004-en",
@@ -1353,7 +1360,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Subject to any special formalities required by law, a contract is created from the moment two persons have exchanged two concordant intentions, according to Article 89.",
+        "answer": "Subject to any special formalities required by law, a contract is created from the moment that two persons have exchanged two concordant intentions, as established in Article 89.",
         "sources": [
           "Egyptian Civil Code, Article 89"
         ],
@@ -1429,7 +1436,7 @@
           "context_passage_count": 6
         },
         "usage": {
-          "candidates_token_count": 129,
+          "candidates_token_count": 131,
           "prompt_token_count": 1273,
           "prompt_tokens_details": [
             {
@@ -1437,11 +1444,12 @@
               "token_count": 1273
             }
           ],
-          "total_token_count": 1402
+          "total_token_count": 1404
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "fd89460114705b10e1956ae1a9ed3d6a"
       },
-      "seconds": 44.84801549700205
+      "seconds": 29.329407905999688
     },
     {
       "id": "s2-005-ar",
@@ -1525,7 +1533,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 0.5,
       "result": {
-        "answer": "لا يجوز نقض العقد أو تعديله من قبل أحد طرفيه وحده، إذ إن العقد شريعة المتعاقدين، فلا يجوز نقضه ولا تعديله إلا باتفاق الطرفين، أو للأسباب التى يقررها القانون. و(استثناءً من ذلك) إذا طرأت حوادث استثنائية عامة لم يكن فى الوسع توقعها وترتب على حدوثها أن تنفيذ الإلتزام التعاقدى، وان لم يصبح مستحيلا، صار مرهقا للمدين بحيث يهدده بخسارة فادحة، جاز للقاضى تبعا للظروف وسد الموازنة بين مصلحة الطرفين أن يرد الإلتزام المرهق إلى الحد المعقول.",
+        "answer": "لا يجوز لأحد طرفي العقد نقضه أو تعديله وحده، فالأساسية هي أن العقد شريعة المتعاقدين فلا يجوز نقضه ولا تعديله إلا باتفاق الطرفين أو للأسباب التي يقررها القانون، وذلك وفقاً لما نصت عليه المادة 147.",
         "sources": [
           "Egyptian Civil Code, Article 147"
         ],
@@ -1534,11 +1542,6 @@
           {
             "citation": "Egyptian Civil Code, Article 147",
             "quote": "العقد شريعة المتعاقدين، فلا يجوز نقضه ولا تعديله إلا باتفاق الطرفين، أو للأسباب التى يقررها القانون.",
-            "language": "ar"
-          },
-          {
-            "citation": "Egyptian Civil Code, Article 147",
-            "quote": "ومع ذلك إذا طرأت حوادث استثنائية عامة لم يكن فى الوسع توقعها وترتب على حدوثها أن تنفيذ الإلتزام التعاقدى، وان لم يصبح مستحيلا، صار مرهقا للمدين بحيث يهدده بخسارة فادحة، جاز للقاضى تبعا للظروف وسد الموازنة بين مصلحة الطرفين أن يرد الإلتزام المرهق إلى الحد المعقول.",
             "language": "ar"
           }
         ],
@@ -1606,7 +1609,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 368,
+          "candidates_token_count": 165,
           "prompt_token_count": 1460,
           "prompt_tokens_details": [
             {
@@ -1614,11 +1617,12 @@
               "token_count": 1460
             }
           ],
-          "total_token_count": 1828
+          "total_token_count": 1625
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "0ac26ce1a0b9dad358b6fa0b8e8393a7"
       },
-      "seconds": 45.17545195299317
+      "seconds": 45.28521697399992
     },
     {
       "id": "s2-005-en",
@@ -1702,7 +1706,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "No, a contract cannot be revoked or altered by one party alone; it can only be revoked or altered by mutual consent of the parties or for reasons provided for by law, according to Article 147.",
+        "answer": "No, a contract cannot be revoked or altered by one party alone. According to Article 147, a contract constitutes the law of the parties and can only be revoked or altered by their mutual consent or for reasons provided for by law. Additionally, if exceptional and unpredictable events of a general character occur that make the performance of the contractual obligation excessively onerous and threaten the debtor with exorbitant loss, the judge may reduce the excessive obligation to reasonable limits.",
         "sources": [
           "Egyptian Civil Code, Article 147"
         ],
@@ -1711,6 +1715,11 @@
           {
             "citation": "Egyptian Civil Code, Article 147",
             "quote": "It can be revoked or altered only by mutual consent of the parties or for reasons provided for by law.",
+            "language": "en"
+          },
+          {
+            "citation": "Egyptian Civil Code, Article 147",
+            "quote": "When, however, as a result of exceptional and unpredictable events of a general character, the performance of the contractual obligation, without becoming impossible, becomes excessively onerous in such way as to threaten the debtor with exorbitant loss, the judge may according to the circumstances, and after taking into consideration the interests of both parties, reduce to reasonable limits, the obligation that has become excessive.",
             "language": "en"
           }
         ],
@@ -1778,7 +1787,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 130,
+          "candidates_token_count": 275,
           "prompt_token_count": 1382,
           "prompt_tokens_details": [
             {
@@ -1786,11 +1795,12 @@
               "token_count": 1382
             }
           ],
-          "total_token_count": 1512
+          "total_token_count": 1657
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "193fd6bbecec79193faddf9eea549eb2"
       },
-      "seconds": 44.715774777010665
+      "seconds": 69.33269810899947
     },
     {
       "id": "s2-006-ar",
@@ -1874,7 +1884,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 0.3333333333333333,
       "result": {
-        "answer": "إذا طرأت حوادث استثنائية عامة لم يكن في الوسع توقعها وجعلت تنفيذ الالتزام مرهقاً للمدين بحيث يهدده بخسارة فادحة دون أن يصبح مستحيلاً، فللقاضي طبقاً للظروف وبعد الموازنة بين مصلحة الطرفين أن يرد الالتزام المرهق إلى الحد المعقول، ويُعد باطلاً كل اتفاق يخالف ذلك.",
+        "answer": "إذا طرأت حوادث استثنائية عامة لم يكن في الوسع توقعها وجعلت تنفيذ الالتزام مرهقاً للمدين بحيث يهدده بخسارة فادحة دون أن يصبح مستحيلاً، جاز للقاضي طبقاً للظروف وبعد الموازنة بين مصلحة الطرفين أن يرد الالتزام المرهق إلى الحد المعقول، ويقع باطلاً كل اتفاق على خلاف ذلك وفقاً للمادة 147.",
         "sources": [
           "Egyptian Civil Code, Article 147"
         ],
@@ -1882,7 +1892,7 @@
         "evidence": [
           {
             "citation": "Egyptian Civil Code, Article 147",
-            "quote": " ومع ذلك إذا طرأت حوادث استثنائية عامة لم يكن فى الوسع توقعها وترتب على حدوثها أن تنفيذ الإلتزام التعاقدى، وان لم يصبح مستحيلا، صار مرهقا للمدين بحيث يهدده بخسارة فادحة، جاز للقاضى تبعا للظروف وسد الموازنة بين مصلحة الطرفين أن يرد الإلتزام المرهق إلى الحد المعقول.",
+            "quote": "إذا طرأت حوادث استثنائية عامة لم يكن فى الوسع توقعها وترتب على حدوثها أن تنفيذ الإلتزام التعاقدى، وان لم يصبح مستحيلا، صار مرهقا للمدين بحيث يهدده بخسارة فادحة، جاز للقاضى تبعا للظروف وسد الموازنة بين مصلحة الطرفين أن يرد الإلتزام المرهق إلى الحد المعقول.",
             "language": "ar"
           },
           {
@@ -1955,7 +1965,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 285,
+          "candidates_token_count": 291,
           "prompt_token_count": 1279,
           "prompt_tokens_details": [
             {
@@ -1963,11 +1973,12 @@
               "token_count": 1279
             }
           ],
-          "total_token_count": 1564
+          "total_token_count": 1570
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "e6e19848bc8070429d1cf7d19c9d3c12"
       },
-      "seconds": 45.55205427699548
+      "seconds": 41.4848797329978
     },
     {
       "id": "s2-006-en",
@@ -2142,9 +2153,10 @@
           ],
           "total_token_count": 1477
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "aa59f73eaf0c2d1ddee1284bb1f0e88d"
       },
-      "seconds": 45.002985108993016
+      "seconds": 41.70103888599988
     },
     {
       "id": "s2-007-ar",
@@ -2228,7 +2240,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "لا تقتصر التزامات المتعاقد على ما ورد في العقد وحده، بل تتناول أيضاً ما هو من مستلزماته وفقاً للقانون والعرف والعدالة بحسب طبيعة الالتزام، كما يجب تنفيذ العقد طبقاً لما اشتمل عليه وبطريقة تتفق مع ما يوجبه حسن النية، طبقاً للمادة 148 من القانون المدني.",
+        "answer": "لا تقتصر التزامات المتعاقد على ما ورد في العقد وحده، بل تتناول أيضاً ما هو من مستلزماته وفقاً للقانون والعرف والعدالة بحسب طبيعة الالتزام، كما يجب تنفيذ العقد طبقاً لما اشتمل عليه وبطريقة تتفق مع ما يوجبه حسن النية، وذلك طبقاً لما نصت عليه المادة 148 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 148"
         ],
@@ -2241,7 +2253,12 @@
           },
           {
             "citation": "Egyptian Civil Code, Article 148",
-            "quote": "(٢) ولا يقتصر العقد على إلزام المتعاقد بما ورد فيه. ولكن يتناول أيضا ما هو من مستلزماته، وفقا للقانون والعرف والعدالة بحسب طبيعة الإلتزام.",
+            "quote": "(٢) ولا يقتصر العقد على إلزام المتعاقد بما ورد فيه.",
+            "language": "ar"
+          },
+          {
+            "citation": "Egyptian Civil Code, Article 148",
+            "quote": "ولكن يتناول أيضا ما هو من مستلزماته، وفقا للقانون والعرف والعدالة بحسب طبيعة الإلتزام.",
             "language": "ar"
           }
         ],
@@ -2309,7 +2326,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 248,
+          "candidates_token_count": 277,
           "prompt_token_count": 1105,
           "prompt_tokens_details": [
             {
@@ -2317,11 +2334,12 @@
               "token_count": 1105
             }
           ],
-          "total_token_count": 1353
+          "total_token_count": 1382
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "074d9ad55d151f344e6e25498a774973"
       },
-      "seconds": 47.00216247899516
+      "seconds": 45.0304625600038
     },
     {
       "id": "s2-007-en",
@@ -2405,7 +2423,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "A contracting party's obligations are not limited solely to the expressed conditions of the contract. According to Article 148, a contract must be performed in accordance with its contents and good faith, and it binds the party regarding everything that law, usage, and equity deem to be a necessary sequel to the contract based on its nature.",
+        "answer": "A contracting party's obligations are not limited solely to the expressed conditions of the contract. According to Article 148, a contract must be performed in accordance with its contents and in compliance with good faith, and it binds the party regarding everything that, in view of the nature of the obligation and according to law, usage, and equity, is considered a necessary sequel to the contract.",
         "sources": [
           "Egyptian Civil Code, Article 148"
         ],
@@ -2486,7 +2504,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 228,
+          "candidates_token_count": 239,
           "prompt_token_count": 1074,
           "prompt_tokens_details": [
             {
@@ -2494,11 +2512,12 @@
               "token_count": 1074
             }
           ],
-          "total_token_count": 1302
+          "total_token_count": 1313
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "2762ed6513f2ae2f79f8a8905201a643"
       },
-      "seconds": 65.9024420689966
+      "seconds": 45.13869534799596
     },
     {
       "id": "s2-008-ar",
@@ -2668,9 +2687,10 @@
           ],
           "total_token_count": 1294
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "dd835aed0b5dd35536f5d844417b562a"
       },
-      "seconds": 42.79426517200773
+      "seconds": 52.000542287001736
     },
     {
       "id": "s2-008-en",
@@ -2754,7 +2774,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "According to Article 163 of the Egyptian Civil Code, every fault that causes injury to another person imposes an obligation on the person who committed the fault to make reparation.",
+        "answer": "Every fault that causes injury to another person imposes an obligation on the person who committed the fault to make reparation, as stated in Article 163.",
         "sources": [
           "Egyptian Civil Code, Article 163"
         ],
@@ -2830,7 +2850,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 124,
+          "candidates_token_count": 120,
           "prompt_token_count": 958,
           "prompt_tokens_details": [
             {
@@ -2838,11 +2858,12 @@
               "token_count": 958
             }
           ],
-          "total_token_count": 1082
+          "total_token_count": 1078
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "f87cc5e3f11fa0892460e32292cfab52"
       },
-      "seconds": 46.403424718999304
+      "seconds": 44.584828860002744
     },
     {
       "id": "s2-009-ar",
@@ -2926,7 +2947,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "نعم، يبقى التزام التعويض قائماً حتى لو زال الإثراء فيما بعد، ويكون هذا الالتزام في حدود ما أثرى به الشخص.",
+        "answer": "نعم، يبقى التزام التعويض قائماً حتى لو زال الإثراء فيما بعد، وذلك في حدود ما أثرى به الشخص، طبقاً لما تنص عليه المادة 179 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 179"
         ],
@@ -3002,7 +3023,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 141,
+          "candidates_token_count": 153,
           "prompt_token_count": 1201,
           "prompt_tokens_details": [
             {
@@ -3010,11 +3031,12 @@
               "token_count": 1201
             }
           ],
-          "total_token_count": 1342
+          "total_token_count": 1354
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "6038daa732b9a898fc4b024b34f35189"
       },
-      "seconds": 45.52094869301072
+      "seconds": 37.792832962994
     },
     {
       "id": "s2-009-en",
@@ -3098,17 +3120,12 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Yes, the compensation obligation remains even if the profit disappears at a later date, and the liability is limited to the extent of the enriched person's profit and the loss sustained by the injured party, according to Article 179.",
+        "answer": "Yes, the compensation obligation remains even if the profit disappears at a later date, and the liability is limited to the extent of the profit made. According to Article 179, a person who enriches without just cause at another's expense is liable to compensate the injured party for the loss sustained up to the extent of their profit, and this obligation remains even if the profit later disappears.",
         "sources": [
           "Egyptian Civil Code, Article 179"
         ],
         "insufficient_evidence": false,
         "evidence": [
-          {
-            "citation": "Egyptian Civil Code, Article 179",
-            "quote": "A person, even one lacking discretion, who without just cause enriches himself to the detriment of another person, is liable, to the extent of his profit, to compensate such other person for the loss sustained by him.",
-            "language": "en"
-          },
           {
             "citation": "Egyptian Civil Code, Article 179",
             "quote": "This obligation remains, even if the profit disappeared at a later date.",
@@ -3179,7 +3196,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 158,
+          "candidates_token_count": 132,
           "prompt_token_count": 1080,
           "prompt_tokens_details": [
             {
@@ -3187,11 +3204,12 @@
               "token_count": 1080
             }
           ],
-          "total_token_count": 1238
+          "total_token_count": 1212
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "b909c911352bccada8e0de39bdc12734"
       },
-      "seconds": 44.87443843699293
+      "seconds": 45.25095827399491
     },
     {
       "id": "s2-010-ar",
@@ -3275,7 +3293,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "إذا لم يكن التعويض مقدرا فى العقد أو بنص فى القانون، يدره القاضى بحيث يشمل ما لحق الدائن من خسارة وما فاته من كسب، بشرط أن يكون ذلك نتيجة طبيعية لعدم الوفاء بالإلتزام أو للتأخر فيه (ويعتبر الضرر نتيجة طبيعية إذا لم يستطع الدائن توقيه ببذل جهد معقول). وإذا كان الإلتزام ناشئاً عن عقد، فإن المدين الذي لم يرتكب غشاً أو خطأ جسيماً لا يلتزم إلا بتعويض الضرر الذي كان يمكن توقعه عادة وقت التعاقد، طبقا للمادة 221.",
+        "answer": "إذا لم يقدر التعويض في العقد أو بنص في القانون، يقدره القاضي بحيث يشمل ما لحق الدائن من خسارة وما فاته من كسب، بشرط أن يكون ذلك نتيجة طبيعية لعدم الوفاء بالتزام أو للتأخر فيه (ويعتبر الضرر طبيعياً إن تعذر على الدائن توقيه ببذل جهد معقول). وإذا كان الالتزام تعاقدياً، فإن المدين الذي لم يرتكب غشاً أو خطأ جسيماً لا يلتزم إلا بتعويض الضرر الذي كان يمكن توقعه عادة وقت التعاقد وفقاً للمادة 221.",
         "sources": [
           "Egyptian Civil Code, Article 221"
         ],
@@ -3283,7 +3301,7 @@
         "evidence": [
           {
             "citation": "Egyptian Civil Code, Article 221",
-            "quote": "ويشمل التعويض ما لحق الدائن من خسارة وما فاته من كسب، بشرط أن يكون هذا نتيجة طبيعية لعدم الوفاء بالإلتزام أو للتأخر فى الوفاء به، ويعتبر الضرر نتيجة طبيعية إذا لم يكن فى استطاعة الدائن أن يتوقاه ببذل جهد معقول.",
+            "quote": "يشمل التعويض ما لحق الدائن من خسارة وما فاته من كسب، بشرط أن يكون هذا نتيجة طبيعية لعدم الوفاء بالإلتزام أو للتأخر فى الوفاء به، ويعتبر الضرر نتيجة طبيعية إذا لم يكن فى استطاعة الدائن أن يتوقاه ببذل جهد معقول.",
             "language": "ar"
           },
           {
@@ -3356,7 +3374,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 362,
+          "candidates_token_count": 357,
           "prompt_token_count": 1512,
           "prompt_tokens_details": [
             {
@@ -3364,11 +3382,12 @@
               "token_count": 1512
             }
           ],
-          "total_token_count": 1874
+          "total_token_count": 1869
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "9511cc8bf55255cb5d7405320b877083"
       },
-      "seconds": 46.875498189008795
+      "seconds": 49.86900482999772
     },
     {
       "id": "s2-010-en",
@@ -3452,7 +3471,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "If the amount of damages is not fixed in the contract or by law, the judge fixes it to include the losses suffered by the creditor and the profits of which the creditor has been deprived, provided they are the normal result of the failure to perform or delay in performance. These are considered a normal result if the creditor cannot avoid them by making a reasonable effort. Furthermore, when the obligation arises from a contract, a debtor who is not guilty of fraud or gross negligence will not be held liable for damages greater than those that could have been normally foreseen at the time of entering into the contract (Article 221).",
+        "answer": "If damages are not fixed in the contract or by law, the judge fixes them to include the losses suffered by the creditor and the profits of which the creditor has been deprived, provided they are the normal result of the failure to perform or delay in performance (considering losses normal if the creditor could not avoid them through reasonable effort). When the obligation arises from a contract, a debtor who is not guilty of fraud or gross negligence is not liable for damages exceeding those normally foreseeable at the time of entering into the contract, as stipulated in Article 221.",
         "sources": [
           "Egyptian Civil Code, Article 221"
         ],
@@ -3461,6 +3480,11 @@
           {
             "citation": "Egyptian Civil Code, Article 221",
             "quote": "The amount of damages includes losses suffered by the creditor and profits of which he has been deprived, provided that they are the normal result of the failure to perform the obligation or of delay in such performance.",
+            "language": "en"
+          },
+          {
+            "citation": "Egyptian Civil Code, Article 221",
+            "quote": "These losses shall be considered to be a normal result, if the creditor is not able to avoid them by making a reasonable effort.",
             "language": "en"
           },
           {
@@ -3533,7 +3557,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 303,
+          "candidates_token_count": 339,
           "prompt_token_count": 1200,
           "prompt_tokens_details": [
             {
@@ -3541,11 +3565,12 @@
               "token_count": 1200
             }
           ],
-          "total_token_count": 1503
+          "total_token_count": 1539
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "ec9ce69c6ef00e89e313012c701305d4"
       },
-      "seconds": 49.658008853002684
+      "seconds": 49.2779493679991
     },
     {
       "id": "s2-011-ar",
@@ -3629,7 +3654,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "المدة العامة لتقادم الالتزامات هي خمس عشرة سنة، وذلك فيما عدا الحالات التي ورد عنها نص خاص في القانون وفيما عدا الاستثناءات المذكورة، طبقاً للمادة 374 من القانون المدني.",
+        "answer": "المدة العامة لتقادم الالتزامات هي خمس عشرة سنة، وذلك فيما عدا الحالات التي ورد عنها نص خاص في القانون وفيما عدا الاستثناءات المنصوص عليها وفقاً للمادة 374.",
         "sources": [
           "Egyptian Civil Code, Article 374"
         ],
@@ -3705,7 +3730,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 153,
+          "candidates_token_count": 148,
           "prompt_token_count": 1140,
           "prompt_tokens_details": [
             {
@@ -3713,11 +3738,12 @@
               "token_count": 1140
             }
           ],
-          "total_token_count": 1293
+          "total_token_count": 1288
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "77e9905b74b48919b4a489a4b28ad3ae"
       },
-      "seconds": 46.00136786000803
+      "seconds": 59.95277339400491
     },
     {
       "id": "s2-011-en",
@@ -3801,7 +3827,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Subject to special provisions and exceptions contained in the law, the term of prescription for obligations is fifteen years, as provided in Article 374.",
+        "answer": "According to Article 374, the general term of prescription for obligations is fifteen years, subject to special provisions contained in the law and specific exceptions.",
         "sources": [
           "Egyptian Civil Code, Article 374"
         ],
@@ -3877,7 +3903,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 131,
+          "candidates_token_count": 132,
           "prompt_token_count": 1208,
           "prompt_tokens_details": [
             {
@@ -3885,11 +3911,12 @@
               "token_count": 1208
             }
           ],
-          "total_token_count": 1339
+          "total_token_count": 1340
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "baf0983ed192d841dbbe88fc27d40e3d"
       },
-      "seconds": 50.77917409900692
+      "seconds": 43.19823198799713
     },
     {
       "id": "s2-012-ar",
@@ -3973,7 +4000,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "العقد الذي يلتزم فيه البائع أن ينقل للمشتري ملكية شيء أو حقاً مالياً آخر في مقابل ثمن نقدي هو عقد البيع، وذلك وفقاً لما نصت عليه المادة 418 من القانون المدني.",
+        "answer": "البيع هو العقد الذي يلتزم به البائع أن ينقل للمشتري ملكية شيء أو حق مالي آخر مقابل ثمن نقدي، وفقاً للمادة 418 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 418"
         ],
@@ -4049,7 +4076,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 151,
+          "candidates_token_count": 143,
           "prompt_token_count": 1184,
           "prompt_tokens_details": [
             {
@@ -4057,11 +4084,12 @@
               "token_count": 1184
             }
           ],
-          "total_token_count": 1335
+          "total_token_count": 1327
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "4362652cf24e5b4ab5e387777e482f4b"
       },
-      "seconds": 46.067363686001045
+      "seconds": 41.01278543499939
     },
     {
       "id": "s2-012-en",
@@ -4145,7 +4173,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Sale is the contract that obliges the vendor to transfer to the purchaser the ownership of a thing or any other propriety right in consideration of a price in money, according to Article 418.",
+        "answer": "Sale is the contract that obliges the vendor to transfer to the purchaser the ownership of a thing or any other property right in return for a price in money, according to Article 418.",
         "sources": [
           "Egyptian Civil Code, Article 418"
         ],
@@ -4231,9 +4259,10 @@
           ],
           "total_token_count": 1304
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "bac4ad923adb111b7320666ebd767682"
       },
-      "seconds": 66.03090622699528
+      "seconds": 33.14827145900199
     },
     {
       "id": "s2-013-ar",
@@ -4311,13 +4340,13 @@
           "source_text": "(١) إذا رفعت على المشتري دعوى باستحقاق المبيع وأخطر ا البائع، كان على البائع بحسب الأحوال، ووفقا لقانون المرافعات أن يتدخل في الدعوى إلى جانب المشتري أو أن يحل فيها محله. (٢) فإذا تم الأخطار في الوقت الملائم ولم يتدخل البائع في الدعوى، وجب عليه الضمان إلا إذا أثبت أن الحكم الصادر في الدعوى كان نتيجة لتدليس من المشتري أو الخطأ جسيم منه. (٣) وإذا لم يخطر المشتري البائع بالدعوى في الوقت الملائم وصدر عليه حكم حاز قوة الأمر المقضي فقد حقه في الرجوع بالضمان إذا أثبت البائع أن تدخله في الدعوى كان يؤدي إلى رفض دعوى الاستحقاق."
         }
       ],
-      "faithfulness": 0.0,
+      "faithfulness": 0.3333333333333333,
       "answer_accuracy": null,
       "retrieval_hit": 1,
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "نعم، يضمن البائع تعرض الغير للمشتري إذا كان حق الأجنبي قد آل إليه من البائع نفسه، حتى لو نشأ ذلك الحق بعد البيع، وذلك وفقاً لما نصت عليه المادة 439.",
+        "answer": "نعم، يضمن البائع تعرض الغير للمشتري إذا كان حق الأجنبي قد آل إليه من البائع نفسه، حتى لو نشأ هذا الحق بعد البيع، وذلك وفقاً لما نصت عليه المادة 439.",
         "sources": [
           "Egyptian Civil Code, Article 439"
         ],
@@ -4403,9 +4432,10 @@
           ],
           "total_token_count": 1586
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "117ef44364b6317f016113e0b586d35f"
       },
-      "seconds": 42.0605629710044
+      "seconds": 37.449049454997294
     },
     {
       "id": "s2-013-en",
@@ -4489,7 +4519,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Yes, the vendor is bound by the warranty even if the third party's right was established after the sale, provided that such right was derived from the vendor himself, as stated in Article 439.",
+        "answer": "Yes, the vendor is bound by the warranty even if the third party's right was established after the sale, provided that the right was derived from the vendor himself, as stated in Article 439.",
         "sources": [
           "Egyptian Civil Code, Article 439"
         ],
@@ -4575,9 +4605,10 @@
           ],
           "total_token_count": 1391
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "d1c3f95a6741743c9d3612e769743d55"
       },
-      "seconds": 42.907334695992176
+      "seconds": 40.4850916180003
     },
     {
       "id": "s2-014-ar",
@@ -4661,7 +4692,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "يعرف القانون الإيجار بأنه عقد يلتزم المؤجر بمقتضاه أن يمكن المستأجر من الانتفاع بشيء معين مدة معينة لقاء أجر معلوم، وفقاً لما نصت عليه المادة 558.",
+        "answer": "يعرف النص عقد الإيجار بأنه عقد يلتزم المؤجر بمقتضاه أن يمكن المستأجر من الانتفاع بشيء معين مدة معينة لقاء أجر معلوم، وفقاً للمادة 558 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 558"
         ],
@@ -4737,7 +4768,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 152,
+          "candidates_token_count": 153,
           "prompt_token_count": 1154,
           "prompt_tokens_details": [
             {
@@ -4745,11 +4776,12 @@
               "token_count": 1154
             }
           ],
-          "total_token_count": 1306
+          "total_token_count": 1307
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "bbcfde2965f92fb0fb03c13b46c0c34d"
       },
-      "seconds": 41.514467729008175
+      "seconds": 43.01336793299561
     },
     {
       "id": "s2-014-en",
@@ -4833,7 +4865,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "The text defines a lease as a contract where the lessor undertakes to enable the lessee to enjoy a specific thing for a certain time in return for a fixed rent, according to Article 558.",
+        "answer": "A lease is defined as a contract whereby the lessor undertakes to enable the lessee to enjoy a specific thing for a certain time in return for a fixed rent, according to Article 558.",
         "sources": [
           "Egyptian Civil Code, Article 558"
         ],
@@ -4909,7 +4941,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 136,
+          "candidates_token_count": 135,
           "prompt_token_count": 1170,
           "prompt_tokens_details": [
             {
@@ -4917,11 +4949,12 @@
               "token_count": 1170
             }
           ],
-          "total_token_count": 1306
+          "total_token_count": 1305
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "998737a43ef74c14d5bf3cfe10a3ef1f"
       },
-      "seconds": 43.73912480400759
+      "seconds": 44.97727219200169
     },
     {
       "id": "s2-015-ar",
@@ -5005,7 +5038,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 0.5,
       "result": {
-        "answer": "إذا عُقد الإيجار دون اتفاق على مدة، أو عُقد لمدة غير معينة، أو تعذر إثبات المدة المدعاة، فإنه يُعتبر منعقداً للفترة المعينة لدفع الأجرة وفقاً للمادة 563.",
+        "answer": "إذا عُقد الإيجار دون اتفاق على مدة، أو عُقد لمدة غير معينة، أو تعذر إثبات المدة المدعاة، فإنه يُعتبر منعقداً للفترة المعينة لدفع الأجرة، وذلك طبقاً لما نصت عليه المادة 563 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 563"
         ],
@@ -5081,7 +5114,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 171,
+          "candidates_token_count": 181,
           "prompt_token_count": 1488,
           "prompt_tokens_details": [
             {
@@ -5089,11 +5122,12 @@
               "token_count": 1488
             }
           ],
-          "total_token_count": 1659
+          "total_token_count": 1669
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "526dd498060ab84674e94bf9e2bcc609"
       },
-      "seconds": 43.38453299200046
+      "seconds": 45.04224279399932
     },
     {
       "id": "s2-015-en",
@@ -5177,7 +5211,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Under Article 563 of the Egyptian Civil Code, if a lease is concluded without any agreement as to term, for an undetermined period, or if the term cannot be established, it is deemed to have been made for the term fixed for payment of the rent.",
+        "answer": "Under Article 563 of the Egyptian Civil Code, if a lease is concluded without any agreement regarding its term, for an undetermined period, or if the term cannot be established, it is deemed to have been made for the term fixed for the payment of the rent.",
         "sources": [
           "Egyptian Civil Code, Article 563"
         ],
@@ -5253,7 +5287,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 163,
+          "candidates_token_count": 164,
           "prompt_token_count": 1586,
           "prompt_tokens_details": [
             {
@@ -5261,11 +5295,12 @@
               "token_count": 1586
             }
           ],
-          "total_token_count": 1749
+          "total_token_count": 1750
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "a4d135557ebc40ffac20cf1c465b6717"
       },
-      "seconds": 43.14096703300311
+      "seconds": 45.16547664399695
     },
     {
       "id": "s2-016-ar",
@@ -5349,7 +5384,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 0.2,
       "result": {
-        "answer": "لا، لا يجوز للمؤجر أن يحدث بالعين المؤجرة أو بملحقاتها أي تغيير من شأنه أن يخل بانتفاع المستأجر بها، حيث يجب عليه أن يمتنع عن كل ما من شأنه أن يحول دون انتفاع المستأجر بالعين المؤجرة وفقاً لما نصت عليه المادة 571 من القانون المدني.",
+        "answer": "لا، لا يجوز للمؤجر أن يحدث بالعين المؤجرة أو بملحقاتها أي تغيير يخل بانتفاع المستأجر بها، حيث يجب عليه أن يمتنع عن كل ما من شأنه أن يحول دون انتفاع المستأجر بالعين المؤجرة وفقاً لما نصت عليه المادة 571.",
         "sources": [
           "Egyptian Civil Code, Article 571"
         ],
@@ -5357,7 +5392,12 @@
         "evidence": [
           {
             "citation": "Egyptian Civil Code, Article 571",
-            "quote": "(١) على المؤجر أن يمتنع عن كل ما من شانه أن يحول دون انتفاع المستأجر بالعيني المؤجرة، ولا يجوز له أن يحدث بالعين أو بملحقاتها أي تغيير يخل بهذا الانتفاع.",
+            "quote": "على المؤجر أن يمتنع عن كل ما من شانه أن يحول دون انتفاع المستأجر بالعيني المؤجرة",
+            "language": "ar"
+          },
+          {
+            "citation": "Egyptian Civil Code, Article 571",
+            "quote": "ولا يجوز له أن يحدث بالعين أو بملحقاتها أي تغيير يخل بهذا الانتفاع.",
             "language": "ar"
           }
         ],
@@ -5425,7 +5465,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 198,
+          "candidates_token_count": 211,
           "prompt_token_count": 1452,
           "prompt_tokens_details": [
             {
@@ -5433,11 +5473,12 @@
               "token_count": 1452
             }
           ],
-          "total_token_count": 1650
+          "total_token_count": 1663
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "e00818a319fd1b229d287a3d5a3dbc7e"
       },
-      "seconds": 44.431167696006014
+      "seconds": 46.85783808400447
     },
     {
       "id": "s2-016-en",
@@ -5521,7 +5562,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "No, the lessor shall not make any alterations to the property or to its accessories that diminish the lessee's enjoyment, as stated in Article 571.",
+        "answer": "No, the lessor must not make any alterations to the leased property or its accessories that diminish the lessee's enjoyment, according to Article 571.",
         "sources": [
           "Egyptian Civil Code, Article 571"
         ],
@@ -5597,7 +5638,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 117,
+          "candidates_token_count": 116,
           "prompt_token_count": 1225,
           "prompt_tokens_details": [
             {
@@ -5605,11 +5646,12 @@
               "token_count": 1225
             }
           ],
-          "total_token_count": 1342
+          "total_token_count": 1341
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "0ae6a78a0ee67d5c4afe487a12da6146"
       },
-      "seconds": 45.034839479994844
+      "seconds": 43.60029596200184
     },
     {
       "id": "s2-017-ar",
@@ -5687,13 +5729,13 @@
           "source_text": "الشركة عقد بمقتضاه يلتزم شخصان أو أكثر بأن يساهم كل منهم في مشروع مالي، بتقديم حصة من مال أو من عمل، لاقتسام ما قد ينشأ عن هذا المشروع من ربح أو من خسارة."
         }
       ],
-      "faithfulness": 1.0,
+      "faithfulness": 0.5,
       "answer_accuracy": null,
       "retrieval_hit": 1,
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "هذا العقد هو عقد المقاولة، حيث يتعهد بمقتضاه أحد المتعاقدين أن يصنع شيئاً أو أن يؤدي عملاً لقاء أجر يتعهد به المتعاقد الآخر، طبقاً لما نصت عليه المادة 646 من القانون المدني.",
+        "answer": "العقد هو عقد المقاولة، حيث يتعهد بمقتضاه أحد المتعاقدين أن يصنع شيئاً أو أن يؤدي عملاً لقاء أجر يتعهد به المتعاقد الآخر، طبقاً للمادة 646 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 646"
         ],
@@ -5769,7 +5811,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 164,
+          "candidates_token_count": 158,
           "prompt_token_count": 1050,
           "prompt_tokens_details": [
             {
@@ -5777,11 +5819,12 @@
               "token_count": 1050
             }
           ],
-          "total_token_count": 1214
+          "total_token_count": 1208
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "6bb82361487d9ee03cf3d3bf36186830"
       },
-      "seconds": 79.07752270098717
+      "seconds": 44.35454308000044
     },
     {
       "id": "s2-017-en",
@@ -5865,7 +5908,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "A contract for work involves one of the contracting parties undertaking to do a piece of work or to perform a service in consideration for a remuneration which the other contracting party undertakes to pay, according to Article 646.",
+        "answer": "A contract for work involves one of the contracting parties undertaking to do a piece of work or to perform a service in consideration for remuneration that the other contracting party undertakes to pay, as set forth in Article 646.",
         "sources": [
           "Egyptian Civil Code, Article 646"
         ],
@@ -5941,7 +5984,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 146,
+          "candidates_token_count": 147,
           "prompt_token_count": 1266,
           "prompt_tokens_details": [
             {
@@ -5949,11 +5992,12 @@
               "token_count": 1266
             }
           ],
-          "total_token_count": 1412
+          "total_token_count": 1413
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "07dfd143d7c0248d3a3e4a20706042f7"
       },
-      "seconds": 44.77459413699398
+      "seconds": 44.720490108004014
     },
     {
       "id": "s2-018-ar",
@@ -6133,9 +6177,10 @@
           ],
           "total_token_count": 1439
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "932b4566927e53ddcae31812b5e89f1f"
       },
-      "seconds": 44.636878065997735
+      "seconds": 44.24017074700532
     },
     {
       "id": "s2-018-en",
@@ -6229,7 +6274,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "According to Article 802 of the Egyptian Civil Code, the owner of a thing has alone, within the limits of the law, the right to use, enjoy, and dispose of it.",
+        "answer": "Within the limits of the law, the owner of a thing alone has the right to use, enjoy, and dispose of it, according to Article 802.",
         "sources": [
           "Egyptian Civil Code, Article 802"
         ],
@@ -6305,7 +6350,7 @@
           "context_passage_count": 6
         },
         "usage": {
-          "candidates_token_count": 132,
+          "candidates_token_count": 126,
           "prompt_token_count": 1250,
           "prompt_tokens_details": [
             {
@@ -6313,11 +6358,12 @@
               "token_count": 1250
             }
           ],
-          "total_token_count": 1382
+          "total_token_count": 1376
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "a8affa06528c68167777696d93f91db2"
       },
-      "seconds": 45.02413113700459
+      "seconds": 46.08093145900057
     },
     {
       "id": "s2-019-ar",
@@ -6401,7 +6447,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "لا يجوز حرمان شخص من ملكه إلا في الأحوال التي يقررها القانون وبالطريقة التي يرسمها، ويكون ذلك في مقابل تعويض عادل طبقاً للمادة 805.",
+        "answer": "لا يجوز حرمان شخص من ملكه إلا في الأحوال التي يقررها القانون وبالطريقة التي يرسمها، ويكون ذلك في مقابل تعويض عادل وفقاً للمادة 805.",
         "sources": [
           "Egyptian Civil Code, Article 805"
         ],
@@ -6487,9 +6533,10 @@
           ],
           "total_token_count": 1534
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "b4cdc075511b74fbdb5281d221da5e92"
       },
-      "seconds": 41.43285795999691
+      "seconds": 46.031276485999115
     },
     {
       "id": "s2-019-en",
@@ -6573,7 +6620,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 0.3333333333333333,
       "result": {
-        "answer": "According to Article 805, no person can be deprived of their property except in the cases and in the manner provided for by law, and upon the payment of fair compensation.",
+        "answer": "According to Article 805, no person can be deprived of their property except in the cases and in the manner prescribed by law, and such deprivation requires the payment of fair compensation.",
         "sources": [
           "Egyptian Civil Code, Article 805"
         ],
@@ -6649,7 +6696,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 130,
+          "candidates_token_count": 131,
           "prompt_token_count": 1414,
           "prompt_tokens_details": [
             {
@@ -6657,11 +6704,12 @@
               "token_count": 1414
             }
           ],
-          "total_token_count": 1544
+          "total_token_count": 1545
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "b357005952d3c3d72e59e06749825464"
       },
-      "seconds": 45.09716216599918
+      "seconds": 44.22414911999658
     },
     {
       "id": "s2-020-ar",
@@ -6745,7 +6793,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "نعم، يملك كل شريك في الشيوع حصته ملكاً تاماً، وله أن يتصرف فيها، وأن يستولي على ثمارها، وأن يستعملها، شريطة ألا يلحق ذلك ضرراً بحقوق سائر الشركاء، وذلك طبقاً لما ورد في المادة 826 من القانون المدني.",
+        "answer": "نعم، يملك كل شريك في الشيوع حصته ملكاً تاماً، وله أن يتصرف فيها، وأن يستولي على ثمارها، وأن يستعملها، شريطة ألا يلحق ذلك ضرراً بحقوق سائر الشركاء، طبقاً لما نصت عليه المادة 826 من القانون المدني.",
         "sources": [
           "Egyptian Civil Code, Article 826"
         ],
@@ -6831,9 +6879,10 @@
           ],
           "total_token_count": 1379
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "575d5303b6af481ab7adbc452ba72c86"
       },
-      "seconds": 45.417621351007256
+      "seconds": 46.06553011499636
     },
     {
       "id": "s2-020-en",
@@ -6917,7 +6966,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 0.2,
       "result": {
-        "answer": "Every co-owner in common is the absolute owner of their share, and they may alienate it, collect its fruits, and make use of it, provided that they do not injure the rights of the other co-owners, as stated in Article 826.",
+        "answer": "Yes, every co-owner in common is the absolute owner of his share. He may alienate his share, collect its fruits, and make use of it, provided that he does not injure the rights of the other co-owners, as set forth in Article 826.",
         "sources": [
           "Egyptian Civil Code, Article 826"
         ],
@@ -6998,7 +7047,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 189,
+          "candidates_token_count": 192,
           "prompt_token_count": 1204,
           "prompt_tokens_details": [
             {
@@ -7006,11 +7055,12 @@
               "token_count": 1204
             }
           ],
-          "total_token_count": 1393
+          "total_token_count": 1396
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "2a491cd0458941391be47ea90f131c9c"
       },
-      "seconds": 45.71558471600292
+      "seconds": 45.48578176600131
     },
     {
       "id": "s2-021-ar",
@@ -7094,7 +7144,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "وفقاً للمادة 968 من القانون المدني، فإن مدة الحيازة المستمرة دون انقطاع التي تكسب ملكية منقول أو عقار (أو حق عيني عليهما) لمن ليس مالكه هي خمس عشرة سنة.",
+        "answer": "وفقاً للنص، إذا استمرت الحيازة دون انقطاع لمدة خمس عشرة سنة، جاز لمن حاز منقولاً أو عقاراً دون أن يكون مالكاً له (أو حاز حقاً عينياً دون أن يكون خاصاً به) أن يكسب ملكية الشيء أو الحق العيني.",
         "sources": [
           "Egyptian Civil Code, Article 968"
         ],
@@ -7170,7 +7220,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 137,
+          "candidates_token_count": 151,
           "prompt_token_count": 1223,
           "prompt_tokens_details": [
             {
@@ -7178,11 +7228,12 @@
               "token_count": 1223
             }
           ],
-          "total_token_count": 1360
+          "total_token_count": 1374
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "a9d97a36e36be9b6a1aa369b70a4c6b5"
       },
-      "seconds": 45.21035314099572
+      "seconds": 44.29170664900448
     },
     {
       "id": "s2-021-en",
@@ -7266,7 +7317,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "A person who has possession of a movable or immovable without being its owner, or of a real right over a movable or immovable without a just title thereto, may acquire ownership or the real right if the possession continues uninterrupted for fifteen years, as outlined in Article 968.",
+        "answer": "Under Article 968 of the Egyptian Civil Code, a person who possesses a movable or immovable without being its owner, or a real right without a just title, may acquire ownership or the title to the real right if the possession continues uninterrupted for fifteen years.",
         "sources": [
           "Egyptian Civil Code, Article 968"
         ],
@@ -7342,7 +7393,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 176,
+          "candidates_token_count": 173,
           "prompt_token_count": 1093,
           "prompt_tokens_details": [
             {
@@ -7350,11 +7401,12 @@
               "token_count": 1093
             }
           ],
-          "total_token_count": 1269
+          "total_token_count": 1266
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "845bea13ef18cb0556b125ff625fc83d"
       },
-      "seconds": 44.912558738011285
+      "seconds": 46.22708425300516
     },
     {
       "id": "s2-022-ar",
@@ -7397,7 +7449,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "إذا لم يوجد اتفاق يخالف ذلك، فإن نفقات الأعمال اللازمة لاستعمال حق الارتفاق والمحافظة عليه يتحملها مالك العقار المرتفق، وفقاً للمادة 1022 (ملاحظة: النص العربي لهذه المادة غير متوفر في المصدر، وتمت الترجمة من النص الإنجليزي).\n\nملاحظة: النص العربي للمادة 1022 غير موجود في نسخة المصدر؛ استندت الإجابة إلى النص الإنجليزي.",
+        "answer": "مع عدم وجود اتفاق مخالف، يتحمل مالك العقار المرتفق نفقات الأعمال اللازمة لاستعمال حق الارتفاق والمحافظة عليه، وفقاً للمادة 1022 (ملاحظة: النص العربي لهذه المادة مفقود في المصدر وتمت الإجابة بالاستناد إلى النص الإنجليزي).\n\nملاحظة: النص العربي للمادة 1022 غير موجود في نسخة المصدر؛ استندت الإجابة إلى النص الإنجليزي.",
         "sources": [
           "Egyptian Civil Code, Article 1022"
         ],
@@ -7475,7 +7527,7 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 178,
+          "candidates_token_count": 177,
           "prompt_token_count": 667,
           "prompt_tokens_details": [
             {
@@ -7483,11 +7535,12 @@
               "token_count": 667
             }
           ],
-          "total_token_count": 845
+          "total_token_count": 844
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "af91ae23ec23eec44e82173a3f50729b"
       },
-      "seconds": 44.25348697899608
+      "seconds": 44.24295327300206
     },
     {
       "id": "s2-022-en",
@@ -7530,7 +7583,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "In the absence of a contrary agreement, the cost of works necessary for the use and preservation of the servitude must be borne by the owner of the dominant tenement, according to Article 1022.",
+        "answer": "In the absence of an agreement to the contrary, the cost of the works necessary for the use and preservation of the servitude must be borne by the owner of the dominant tenement, according to Article 1022.",
         "sources": [
           "Egyptian Civil Code, Article 1022"
         ],
@@ -7606,7 +7659,7 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 145,
+          "candidates_token_count": 148,
           "prompt_token_count": 660,
           "prompt_tokens_details": [
             {
@@ -7614,11 +7667,12 @@
               "token_count": 660
             }
           ],
-          "total_token_count": 805
+          "total_token_count": 808
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "d4f07012423103162724236a612a8f48"
       },
-      "seconds": 44.27855817199452
+      "seconds": 43.974533049004094
     },
     {
       "id": "s2-023-ar",
@@ -7702,7 +7756,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "العقد الذي يمنح الدائن حقاً عينياً على عقار يتيح له أولوية استيفاء دينه من ثمنه في أي يد يكون هو الرهن الرسمي، وذلك وفقاً لما نصت عليه المادة 1030 من القانون المدني.",
+        "answer": "العقد هو الرهن الرسمي، وهو عقد يكسب الدائن حقاً عينياً على عقار مخصص لوفاء دينه، يكون له بمقتضاه أن يتقدم على الدائنين العاديين والدائنين التالين له في المرتبة في استيفاء حقه من ثمن ذلك العقار في أي يد يكون وفقاً للمادة 1030.",
         "sources": [
           "Egyptian Civil Code, Article 1030"
         ],
@@ -7778,7 +7832,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 203,
+          "candidates_token_count": 225,
           "prompt_token_count": 1272,
           "prompt_tokens_details": [
             {
@@ -7786,11 +7840,12 @@
               "token_count": 1272
             }
           ],
-          "total_token_count": 1475
+          "total_token_count": 1497
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "ee8673352b99673cc5194ea6bc0fb3a2"
       },
-      "seconds": 45.01438435999444
+      "seconds": 45.10460420799791
     },
     {
       "id": "s2-023-en",
@@ -7874,7 +7929,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 0.5,
       "result": {
-        "answer": "A mortgage is the contract by which a creditor acquires a real right over an immovable appropriated to the payment of their debt, obtaining preference for payment out of the price of the immovable, regardless of whose hands it has passed into (Article 1030).",
+        "answer": "A mortgage is the contract by which a creditor acquires a real right over an immovable appropriated to the payment of their debt, obtaining preference for payment out of the price of the immovable, regardless of whose hands it has passed into, according to Article 1030.",
         "sources": [
           "Egyptian Civil Code, Article 1030"
         ],
@@ -7950,7 +8005,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 186,
+          "candidates_token_count": 187,
           "prompt_token_count": 1244,
           "prompt_tokens_details": [
             {
@@ -7958,11 +8013,12 @@
               "token_count": 1244
             }
           ],
-          "total_token_count": 1430
+          "total_token_count": 1431
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "89be98644373ebefb2c6174106ef7a71"
       },
-      "seconds": 45.13114014299936
+      "seconds": 45.184087032001116
     },
     {
       "id": "s2-024-ar",
@@ -8124,9 +8180,10 @@
           ],
           "total_token_count": 1391
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "30f6a2e143541fdb3dbeaeac4be6cc68"
       },
-      "seconds": 14.601226147002308
+      "seconds": 12.959031420999963
     },
     {
       "id": "s2-024-en",
@@ -8210,7 +8267,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Yes, if parts of the property are charged with separate mortgages, each part must be valued separately when the third party holder proceeds with the purge of the property, as set forth in Article 1065.",
+        "answer": "Yes, if parts of the property are charged with separate mortgages, each part must be valued separately when a third party holder proceeds with the purge of the property, as set forth in Article 1065.",
         "sources": [
           "Egyptian Civil Code, Article 1065"
         ],
@@ -8296,9 +8353,10 @@
           ],
           "total_token_count": 1473
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "2211ad7121bd3ff225271c5757ddb00a"
       },
-      "seconds": 45.124100536006154
+      "seconds": 46.650060368003324
     },
     {
       "id": "s2-025-ar",
@@ -8382,7 +8440,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "وفقاً للنص، يشمل امتياز المؤجر أجرة المباني والأراضي الزراعية لسنتين أو لمدة الإيجار إن قلت عن ذلك، بالإضافة إلى كل حق آخر للمؤجر بمقتضى عقد الإيجار.",
+        "answer": "وفقاً للمادة ١١٤٣، يشمل امتياز المؤجر أجرة المباني والأراضي الزراعية لسنتين أو لمدة الإيجار إن قلت عن ذلك، بالإضافة إلى كل حق آخر للمؤجر بمقتضى عقد الإيجار.",
         "sources": [
           "Egyptian Civil Code, Article 1143"
         ],
@@ -8458,7 +8516,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 190,
+          "candidates_token_count": 195,
           "prompt_token_count": 1858,
           "prompt_tokens_details": [
             {
@@ -8466,11 +8524,12 @@
               "token_count": 1858
             }
           ],
-          "total_token_count": 2048
+          "total_token_count": 2053
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "a587e9801a06f9a058b1e502ff4ef673"
       },
-      "seconds": 79.00232200100436
+      "seconds": 46.476681617001304
     },
     {
       "id": "s2-025-en",
@@ -8564,7 +8623,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Under Article 1143 of the Egyptian Civil Code, the lessor's privilege covers house and agricultural rents for two years, or for the duration of the lease if less than two years. Additionally, it covers all sums due to the lessor by virtue of the contract of lease.",
+        "answer": "Under Article 1143 of the Egyptian Civil Code, the lessor's privilege covers house and agricultural rents for two years, or for the duration of the lease if it is less than two years. Additionally, it covers all sums due to the lessor by virtue of the contract of lease.",
         "sources": [
           "Egyptian Civil Code, Article 1143"
         ],
@@ -8640,7 +8699,7 @@
           "context_passage_count": 6
         },
         "usage": {
-          "candidates_token_count": 186,
+          "candidates_token_count": 188,
           "prompt_token_count": 1729,
           "prompt_tokens_details": [
             {
@@ -8648,11 +8707,12 @@
               "token_count": 1729
             }
           ],
-          "total_token_count": 1915
+          "total_token_count": 1917
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "cdeceb15a54531171351aacc779e3471"
       },
-      "seconds": 45.57619192299899
+      "seconds": 44.59319852999761
     },
     {
       "id": "s2-026-ar",
@@ -8736,7 +8796,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "نعم، يجب قيد امتياز الشركاء الناتج عن قسمة عقار، وتتحدد مرتبته من وقت القيد طبقاً للمادة 1149.",
+        "answer": "نعم، يجب قيد امتياز الشركاء الناتج عن قسمة عقار، وتتحدد مرتبته من وقت القيد طبقاً لما تنص عليه المادة 1149.",
         "sources": [
           "Egyptian Civil Code, Article 1149"
         ],
@@ -8812,7 +8872,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 124,
+          "candidates_token_count": 128,
           "prompt_token_count": 1546,
           "prompt_tokens_details": [
             {
@@ -8820,11 +8880,12 @@
               "token_count": 1546
             }
           ],
-          "total_token_count": 1670
+          "total_token_count": 1674
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "7fdb9d1b55f4513b85d9379d4dd357ff"
       },
-      "seconds": 44.978332038008375
+      "seconds": 44.8883740559977
     },
     {
       "id": "s2-026-en",
@@ -8908,7 +8969,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Yes, the co-owners' privilege arising from the partition of an immovable must be inscribed, and its rank is fixed by the date of its inscription according to Article 1149.",
+        "answer": "Yes, the co-owners' privilege arising from the partition of an immovable must be inscribed, and its rank is determined by the date of its inscription according to Article 1149.",
         "sources": [
           "Egyptian Civil Code, Article 1149"
         ],
@@ -8994,9 +9055,10 @@
           ],
           "total_token_count": 1328
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "e929c7e0c75888f52cb7398d26112700"
       },
-      "seconds": 44.957783317004214
+      "seconds": 45.656037624998135
     },
     {
       "id": "s2-027-ar",
@@ -9038,7 +9100,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "تشير المادة 54 الملغاة إلى أن المواد من 54 إلى 80 قد ألغيت بموجب قرار جمهوري.",
+        "answer": "تشير المادة 54 الملغاة إلى أن المواد من 54 إلى 80 قد تم إلغاؤها بموجب قرار جمهوري.",
         "sources": [
           "Egyptian Civil Code, Article 54"
         ],
@@ -9114,7 +9176,7 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 110,
+          "candidates_token_count": 112,
           "prompt_token_count": 563,
           "prompt_tokens_details": [
             {
@@ -9122,11 +9184,12 @@
               "token_count": 563
             }
           ],
-          "total_token_count": 673
+          "total_token_count": 675
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "b63343089a7b73038b44cea32e29e9d4"
       },
-      "seconds": 42.54883736099873
+      "seconds": 44.68335468000441
     },
     {
       "id": "s2-027-en",
@@ -9168,7 +9231,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Article 54 is recorded as repealed by a repeal notice stating that articles 54-80 were repealed by Presidential Decree.",
+        "answer": "Article 54 is recorded as repealed by a repeal notice stating that Articles 54-80 have been repealed by Presidential Decree.",
         "sources": [
           "Egyptian Civil Code, Article 54"
         ],
@@ -9254,9 +9317,10 @@
           ],
           "total_token_count": 658
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "371cc04287a6b8c7c8d4dbcfbc8988c5"
       },
-      "seconds": 44.92165452000336
+      "seconds": 45.35567482100305
     },
     {
       "id": "s2-028-ar",
@@ -9296,7 +9360,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "المادة 389 ملغاة بموجب إشعار الإلغاء المسجل للمواد 389-417.",
+        "answer": "المادة 389 ملغاة بموجب إشعار إلغاء يشمل المواد من 389 إلى 417.",
         "sources": [
           "Egyptian Civil Code, Article 389"
         ],
@@ -9382,9 +9446,10 @@
           ],
           "total_token_count": 653
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "1021a85d1175fcc5e7883234797a459f"
       },
-      "seconds": 40.50423836000846
+      "seconds": 44.610530779005785
     },
     {
       "id": "s2-028-en",
@@ -9424,7 +9489,7 @@
       "retrieval_recall": 1.0,
       "retrieval_rr": 1.0,
       "result": {
-        "answer": "Article 389 is recorded as repealed with the notice \"Articles 389-417 repealed\", which mentions the article range from 389 to 417.",
+        "answer": "Article 389 is repealed, and its repeal notice mentions the article range 389-417.",
         "sources": [
           "Egyptian Civil Code, Article 389"
         ],
@@ -9500,7 +9565,7 @@
           "context_passage_count": 1
         },
         "usage": {
-          "candidates_token_count": 117,
+          "candidates_token_count": 102,
           "prompt_token_count": 534,
           "prompt_tokens_details": [
             {
@@ -9508,11 +9573,12 @@
               "token_count": 534
             }
           ],
-          "total_token_count": 651
+          "total_token_count": 636
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "54cf6993fddac380882af45bac288e9e"
       },
-      "seconds": 45.08909069500805
+      "seconds": 44.894282804001705
     },
     {
       "id": "s2-u01-ar",
@@ -9658,7 +9724,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 61,
+          "candidates_token_count": 55,
           "prompt_token_count": 1209,
           "prompt_tokens_details": [
             {
@@ -9666,11 +9732,12 @@
               "token_count": 1209
             }
           ],
-          "total_token_count": 1270
+          "total_token_count": 1264
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "fee4d53cf5fbe3c39171bbc294119784"
       },
-      "seconds": 17.064228386996547
+      "seconds": 13.434793069995067
     },
     {
       "id": "s2-u01-en",
@@ -9816,7 +9883,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 43,
+          "candidates_token_count": 54,
           "prompt_token_count": 1243,
           "prompt_tokens_details": [
             {
@@ -9824,11 +9891,12 @@
               "token_count": 1243
             }
           ],
-          "total_token_count": 1286
+          "total_token_count": 1297
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "dc0485d0bab14639e90f3a40f7bc6574"
       },
-      "seconds": 14.263625464009237
+      "seconds": 13.630613838999125
     },
     {
       "id": "s2-u02-ar",
@@ -9974,7 +10042,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 57,
+          "candidates_token_count": 59,
           "prompt_token_count": 1364,
           "prompt_tokens_details": [
             {
@@ -9982,11 +10050,12 @@
               "token_count": 1364
             }
           ],
-          "total_token_count": 1421
+          "total_token_count": 1423
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "30b55a810dfe7d7bae5b0631dff1d6a5"
       },
-      "seconds": 14.613007816005847
+      "seconds": 13.419145646003017
     },
     {
       "id": "s2-u02-en",
@@ -10132,7 +10201,7 @@
           "context_passage_count": 5
         },
         "usage": {
-          "candidates_token_count": 61,
+          "candidates_token_count": 50,
           "prompt_token_count": 1021,
           "prompt_tokens_details": [
             {
@@ -10140,11 +10209,12 @@
               "token_count": 1021
             }
           ],
-          "total_token_count": 1082
+          "total_token_count": 1071
         },
-        "model_version": "gemini-3.5-flash-lite"
+        "model_version": "gemini-3.5-flash-lite",
+        "trace_id": "ba9899c7e5dfb7734ef30d4100eeadfe"
       },
-      "seconds": 15.073820677003823
+      "seconds": 14.52188041300542
     }
   ],
   "generation_config": {
@@ -10201,9 +10271,9 @@
     "cpu_threads": 6,
     "batch_size": 4
   },
-  "pipeline_fingerprint": "d00a8f169bf3abac960b3d14b5ff25ea1556cd5a15566f71434db40f506f60dc",
+  "pipeline_fingerprint": "37640b22d2da40ff876f3d6d5c3199e46b5732f29ad3a4db7b3455c88cb23cd4",
   "questions_sha256": "ac7084a279bc928542613ee894b27c5da95d6aa17929b24778b84acdf634e722",
-  "reused_record_count": 0,
+  "reused_record_count": 23,
   "corpus_sha256": "3e2d390a79ff93b7f33e5a0e7d0934c444d4999428d4e86d5f29c2c4760473cc",
   "judge_model": "gemini-3.5-flash-lite",
   "judge_prompt_version": "legal-logical-claims-v1",
@@ -10214,7 +10284,7 @@
     "google-genai": "2.29.0",
     "mlflow": "3.17.0"
   },
-  "mlflow_run_id": "b3cfe334d3b2405abf7651e0e0e42250",
+  "mlflow_run_id": "12ca4a6aea5f4bd8bd6f06399716b551",
   "judge_sanity_check": {
     "supported_control": 1.0,
     "unsupported_control": 0.0

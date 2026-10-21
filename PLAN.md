@@ -206,7 +206,7 @@ Complete these after the baseline RAG service, evaluation, and CI are working.
 
 ## Suggested order for the next work session
 
-Stage 7's needed items are done and merged: tracing, streaming, load test, metrics/alerts, batch re-indexing, canary guide, README, corpus audit, clean-checkout reproduction, and a re-evaluation (`gemini-3.5-flash-lite`, coverage-adjusted faithfulness 0.964, champion v3) that cleared both CI gates.
+Stage 7's needed items are done and merged: tracing, streaming, load test, metrics/alerts, batch re-indexing, canary guide, README, corpus audit, clean-checkout reproduction, and a re-evaluation (`gemini-3.5-flash-lite`, coverage-adjusted faithfulness 0.961 after the model-fallback change, champion v3) that cleared both CI gates.
 
 1. Add a reranker baseline and distill it (needs a model download, disk and synthetic training queries); measure retrieval and RAGAS before/after. It targets the one known Arabic miss (Article 1065).
 2. Run the monitoring (`compose.monitoring.yaml`) and canary (`deploy/canary/`) containers, which have only been config-validated.

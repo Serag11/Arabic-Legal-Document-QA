@@ -157,12 +157,17 @@ reviewed questions with `python -m src.experiments validate`.
 | Answered with the expected citation | 55 / 56 |
 | Unsupported probes refused | 4 / 4 |
 | Answers discarded by grounding validation | 0 |
-| Faithfulness | 0.982 on scored answers; 0.964 coverage-adjusted (gate 0.75) |
+| Faithfulness | 0.979 on scored answers; 0.961 coverage-adjusted (gate 0.75) |
 | Operational errors | 0 |
 
-Failures: `s2-024-ar` (the known Arabic Article 1065 retrieval miss, refused) and one low-scoring
-answer, `s2-013-ar`, scored 0.0 by the judge. The judge is the same model as the generator and
-RAGAS scores are automated estimates; the 0.0 was not manually reviewed.
+Failures: `s2-024-ar` (the known Arabic Article 1065 retrieval miss, refused) and two low-scoring
+answers, `s2-013-ar` (0.33) and `s2-017-ar` (0.5). The judge is the same model as the generator and
+RAGAS scores are automated estimates; the low scores were not manually reviewed.
+
+Re-measured on 2026-10-21/22 after the model-fallback change touched fingerprinted code (the
+evaluation itself never falls back). A network outage interrupted the first run, so the report
+reuses its 23 error-free records (`reused_record_count`) and measures the other 37 fresh, all
+under the same pipeline fingerprint.
 
 **Variant comparison caveat.** The five-variant comparison was run once after the prompt change,
 under `gemini-3.1-flash-lite` (the free-tier cap of 500 requests/day for that model was then exhausted,

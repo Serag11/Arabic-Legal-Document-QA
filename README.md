@@ -351,7 +351,7 @@ after the Stage 7 prompt change (`reports/answer-evaluation.md`, `reports/experi
 | Expected article in the top 5 | 55 / 56 supported questions (Arabic semantic 24/25, English 25/25) |
 | Answered with the expected citation | 55 / 56 |
 | Answers produced | 55 / 56 supported; all 4 unsupported probes correctly refused; 0 discarded for failed grounding |
-| Faithfulness (RAGAS) | 0.982 on scored answers; **0.964 coverage-adjusted** (gate ≥ 0.75); one answer (`s2-013-ar`) scored 0 |
+| Faithfulness (RAGAS) | 0.979 on scored answers; **0.961 coverage-adjusted** (gate ≥ 0.75); lowest scores `s2-013-ar` (0.33) and `s2-017-ar` (0.5) |
 | Known retrieval miss | Arabic question for Article 1065 (English ranks it first) |
 | Latency (retrieval / our overhead) | 0.04–0.07 s / about 0.1 s at 50 users; the Google call dominates and varies by model and day |
 
